@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctq5ggr4k6mtl"]
+
+[ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_nlrho"]
+[ext_resource type="PackedScene" uid="uid://baaslto0vly86" path="res://Scenes/boar_graphic.tscn" id="2_5tv31"]
+[ext_resource type="Script" path="res://Scenes/boar.gd" id="2_bkvjh"]
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_iaebd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2dco"]
+size = Vector2(49, 23.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3myn"]
+size = Vector2(49, 21)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8rumn"]
+
+[node name="Boar" groups=["Animal"] instance=ExtResource("1_nlrho")]
+collision_layer = 4
+collision_mask = 21
+script = ExtResource("2_bkvjh")
+gravity = 600
+terminal_velocity = 500
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-3, 4.25)
+shape = SubResource("RectangleShape2D_l2dco")
+
+[node name="BoarGraphic" parent="." index="2" instance=ExtResource("2_5tv31")]
+scale = Vector2(-1, 1)
+
+[node name="FloorRays" type="Node2D" parent="." index="3"]
+position = Vector2(9, 0)
+
+[node name="Right" type="RayCast2D" parent="FloorRays" index="0"]
+position = Vector2(3, 0)
+target_position = Vector2(26, 38)
+
+[node name="Left" type="RayCast2D" parent="FloorRays" index="1"]
+position = Vector2(-31, 0)
+target_position = Vector2(-26, 38)
+
+[node name="WallRays" type="Node2D" parent="." index="4"]
+position = Vector2(9, 0)
+
+[node name="Right" type="RayCast2D" parent="WallRays" index="0"]
+position = Vector2(3, 0)
+target_position = Vector2(15, 0)
+collision_mask = 5
+
+[node name="Left" type="RayCast2D" parent="WallRays" index="1"]
+position = Vector2(-31, 0)
+target_position = Vector2(-15, 0)
+collision_mask = 5
+
+[node name="Agro" type="Node2D" parent="." index="5"]
+
+[node name="AgroRay" type="RayCast2D" parent="Agro" index="0"]
+target_position = Vector2(-185, 0)
+collision_mask = 2
+
+[node name="InteractionArea" parent="." index="6" instance=ExtResource("4_iaebd")]
+position = Vector2(10, 0)
+action_name = "pick up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(-13.5, 5.5)
+shape = SubResource("RectangleShape2D_i3myn")
+
+[node name="Timer" type="Timer" parent="." index="7"]
+wait_time = 5.0
+autostart = true
+
+[node name="ChargeTimer" type="Timer" parent="." index="8"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Tusk" type="Area2D" parent="." index="9"]
+position = Vector2(-23, 2)
+collision_layer = 0
+collision_mask = 6
+
+[node name="TuskHitbox" type="CollisionShape2D" parent="Tusk" index="0"]
+shape = SubResource("CircleShape2D_8rumn")
+disabled = true
+
+[connection signal="knock_back" from="." to="." method="_on_knock_back"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="body_entered" from="Tusk" to="." method="_on_tusk_body_entered"]

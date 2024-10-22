@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://b7n5dl1juxu7t"]
+
+[ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_gn3r3"]
+[ext_resource type="Texture2D" uid="uid://lxjflqfuyumt" path="res://Sprites/Rabbit.png" id="2_oxdbf"]
+[ext_resource type="Script" path="res://Scenes/rabbit.gd" id="2_pnegx"]
+[ext_resource type="Texture2D" uid="uid://boeuesge5iod5" path="res://Sprites/Rabbit_2.png" id="3_wg2gg"]
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="5_kb7ra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eev5y"]
+size = Vector2(20, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7qja"]
+atlas = ExtResource("3_wg2gg")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygq43"]
+atlas = ExtResource("3_wg2gg")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mjpj"]
+atlas = ExtResource("2_oxdbf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_803mt"]
+atlas = ExtResource("2_oxdbf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl0pd"]
+atlas = ExtResource("2_oxdbf")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jgetm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7qja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygq43")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mjpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_803mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl0pd")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uk3hp"]
+radius = 16.0312
+
+[node name="Rabbit" groups=["Animal"] instance=ExtResource("1_gn3r3")]
+collision_layer = 4
+collision_mask = 21
+script = ExtResource("2_pnegx")
+gravity = 600
+terminal_velocity = 500
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_eev5y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_jgetm")
+animation = &"death"
+autoplay = "run"
+frame = 1
+frame_progress = 1.0
+
+[node name="FloorRays" type="Node2D" parent="." index="3"]
+
+[node name="Right" type="RayCast2D" parent="FloorRays" index="0"]
+target_position = Vector2(20, 20)
+
+[node name="Left" type="RayCast2D" parent="FloorRays" index="1"]
+target_position = Vector2(-20, 20)
+
+[node name="WallRays" type="Node2D" parent="." index="4"]
+
+[node name="Right" type="RayCast2D" parent="WallRays" index="0"]
+target_position = Vector2(15, 0)
+collision_mask = 5
+
+[node name="Left" type="RayCast2D" parent="WallRays" index="1"]
+target_position = Vector2(-15, 0)
+collision_mask = 5
+
+[node name="InteractionArea" parent="." index="5" instance=ExtResource("5_kb7ra")]
+action_name = "pick up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_uk3hp")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

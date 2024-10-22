@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://blorwsk7msxwu"]
+
+[ext_resource type="Script" path="res://Scenes/entity.gd" id="1_i6hnx"]
+
+[node name="Entity" type="CharacterBody2D"]
+script = ExtResource("1_i6hnx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Timers" type="Node" parent="."]

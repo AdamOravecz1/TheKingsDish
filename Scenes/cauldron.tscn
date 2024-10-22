@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://c63m3ewwfden1"]
+
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="1_aoxps"]
+[ext_resource type="Script" path="res://Scenes/cauldron.gd" id="1_rvb21"]
+[ext_resource type="Texture2D" uid="uid://kvky50fyd3hp" path="res://Sprites/Cauldron.png" id="2_qtb50"]
+[ext_resource type="Texture2D" uid="uid://bhelfym6j8kjd" path="res://Sprites/light.png" id="3_tfme3"]
+[ext_resource type="PackedScene" uid="uid://cfuyhkeyeusun" path="res://inventory/cauldron_inv.tscn" id="4_x5b8l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rojlo"]
+radius = 38.0132
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5yw5d"]
+radius = 37.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iclev"]
+atlas = ExtResource("2_qtb50")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eukpx"]
+atlas = ExtResource("2_qtb50")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qa3j"]
+atlas = ExtResource("2_qtb50")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lifq0"]
+atlas = ExtResource("2_qtb50")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hk1v3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iclev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eukpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qa3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lifq0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cauldron" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_rvb21")
+
+[node name="InteractionArea" parent="." instance=ExtResource("1_aoxps")]
+action_name = "cook"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_rojlo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5yw5d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hk1v3")
+autoplay = "default"
+frame_progress = 0.504392
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CauldronInv" parent="CanvasLayer" instance=ExtResource("4_x5b8l")]
+offset_left = 19.0
+offset_top = -244.0
+offset_right = 19.0
+offset_bottom = -244.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 14)
+color = Color(0.945098, 0.411765, 0.113725, 1)
+texture = ExtResource("3_tfme3")
+texture_scale = 0.5
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

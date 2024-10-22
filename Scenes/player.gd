@@ -1,0 +1,187 @@
+extends Entity
+
+@export var inv: Inv
+
+@export_group('move')
+@export var speed := 200
+@export var acceleration := 700
+@export var friction := 900
+var direction := Vector2.ZERO
+var can_move := true
+var ducking := false
+
+@export_group('jump')
+@export var jump_strength := 300
+@export var gun_jump_strength := 180
+@export var gravity := 600
+@export var terminal_velocity := 500
+var jump := false
+var faster_fall := false
+var gravity_multiplier := 1
+var last_pos := Vector2.ZERO 
+var time_elapsed := 0.0
+
+var knockback_force: Vector2 = Vector2.ZERO
+var knockback_duration: float = 0.0
+var knockback_strength: float = 15000.0
+var knocked_back: bool = false
+
+var current_weapon = Global.weapons.KNIFE
+var aim_direction := Vector2.LEFT
+var reloded := true
+
+@onready var playerinv = get_tree().get_first_node_in_group("PlayerInv")
+var free_inv_slot := true
+
+func _ready():
+	$Label.material.set_shader_parameter("alpha", 0.0)
+	health = 100
+	if inv == null:
+		inv = load("res://inventory/playerinv.tres") as Inv
+	playerinv.inv = inv
+	playerinv._ready()
+
+func _process(delta):
+	if knockback_duration > 0 and alive:
+		# Apply knockback force
+		var motion = knockback_force * delta
+		velocity = motion
+		# Decrease knockback duration over time
+		knockback_duration -= delta
+		if knockback_duration <= 0:
+			knockback_force = Vector2.ZERO # Reset knockback force when duration is over
+	else:
+		check_pos()
+		if can_move:
+			get_input()
+			apply_movement(delta)
+			animate()
+	apply_gravity(delta)
+	move_and_slide()
+	if knocked_back and is_on_floor():
+		can_move = true
+		knocked_back = false
+
+		
+func animate():
+	$PlayerGraphics.update_legs(direction, is_on_floor())
+	$PlayerGraphics.update_torso(direction, current_weapon, ducking)
+	
+func get_input():
+	# horizontal movement 
+	direction.x = Input.get_axis("left", "right")
+	#aim
+	if direction.x > 0:
+		aim_direction = Vector2.RIGHT
+	elif direction.x < 0:
+		aim_direction = Vector2.LEFT
+	
+	# jump 
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor() or $Timers/Coyote.time_left:
+			jump = true
+		
+		if velocity.y > 0 and not is_on_floor():
+			$Timers/JumpBuffer.start()
+		
+	if Input.is_action_just_released("jump") and not is_on_floor() and velocity.y < 0:
+		faster_fall = true
+		
+	#switch
+	if Input.is_action_just_pressed("switch"):
+		current_weapon = Global.weapons[Global.weapons.keys()[(current_weapon + 1) % len(Global.weapons)]]
+
+		
+	#hit
+	if Input.is_action_just_pressed("hit"):
+		$PlayerGraphics.hit()
+		slash()
+		
+	#relode
+	if Input.is_action_just_pressed("relode"):
+		reloded = true
+		$PlayerGraphics.relode()
+		
+	# ducking
+	ducking = Input.is_action_pressed("duck") and is_on_floor()
+	
+
+func apply_gravity(delta):
+	velocity.y += gravity * delta
+	velocity.y = velocity.y / 2 if faster_fall and velocity.y < 0 else velocity.y
+	velocity.y = velocity.y * gravity_multiplier
+	velocity.y = min(velocity.y, terminal_velocity)
+	
+func apply_movement(delta):
+	# left/right movement 
+	if direction.x:
+		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+		
+	if ducking:
+		speed = 50
+		jump = false
+	else:
+		speed = 200
+	
+	# jump 
+	if jump or $Timers/JumpBuffer.time_left and is_on_floor():
+		velocity.y = -jump_strength
+		jump = false
+		faster_fall = false
+	
+	var on_floor = is_on_floor()
+	if on_floor and not is_on_floor() and velocity.y >= 0:
+		$Timers/Coyote.start()
+		
+func check_pos():
+	if $FloorRays/Right.get_collider() and $FloorRays/Left.get_collider() and is_on_floor():
+		last_pos = global_position
+
+		
+func slash():
+	var pos = position + aim_direction if not ducking else position + aim_direction + Vector2(0, 8)
+	if current_weapon == 0 or current_weapon == 1:
+		pass
+	elif reloded:
+		$PlayerGraphics.shoot()
+		reloded = false
+		shoot.emit(pos, aim_direction, current_weapon)
+		
+func block_movement():
+	can_move = false
+	velocity = Vector2.ZERO
+	$PlayerGraphics/Legs.stop()
+	
+func back():
+	position = last_pos
+	
+func collect(item):
+	var emptyslot = inv.slots.filter(func(slot): return slot.item == null)
+	if emptyslot.size() > 0:
+		inv.insert(item)
+		free_inv_slot = true
+	else:
+		free_inv_slot = false
+		flash_text()
+		
+func flash_text():
+	var tween = create_tween()
+	tween.tween_property($Label, "material:shader_parameter/alpha", 1.0, 0.0)
+	tween.tween_property($Label, "material:shader_parameter/alpha", 0.0, 1.0)
+
+func _on_knock_back(source, force):
+	can_move = false
+	knocked_back = true
+	knockback_strength = force
+	knockback_duration = 0.1
+
+	# Calculate direction from source of impact to the character
+	var direction = (global_position - source).normalized()
+
+	# Apply force based on direction and strength
+	knockback_force.x = direction.x * knockback_strength 
+	
+	# Apply upward force (positive Y direction in Godot is down, so subtract to go up)
+	knockback_force.y -= 4000.0

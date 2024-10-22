@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://0mn1316xr2ek"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_vjbcy"]
+[ext_resource type="Texture2D" uid="uid://du550kdtmoxyv" path="res://Sprites/TreeMushroomIcon.png" id="2_vpkk6"]
+
+[resource]
+script = ExtResource("1_vjbcy")
+name = "tree_mushroom"
+texture = ExtResource("2_vpkk6")
+shape = Array[Vector2i]([Vector2i(0, 0)])

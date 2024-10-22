@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://61neqdtgj6dn"]
+
+[ext_resource type="Script" path="res://inventory/inv_ui.gd" id="1_tjh5a"]
+[ext_resource type="PackedScene" uid="uid://bv6u1rmhe8lay" path="res://inventory/inv_ui_slot.tscn" id="2_27uwx"]
+[ext_resource type="Texture2D" uid="uid://crx00b155gx8g" path="res://Sprites/CauldronInv3.png" id="2_lxt8g"]
+[ext_resource type="Theme" uid="uid://b2siw8ghup514" path="res://green_button.tres" id="4_nf0kg"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_5have"]
+
+[node name="Cauldron_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_top = 77.0
+offset_right = -320.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tjh5a")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -7.0
+offset_top = -9.0
+offset_right = 236.0
+offset_bottom = 221.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 226.0
+offset_bottom = 221.0
+texture = ExtResource("2_lxt8g")
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 30.0
+offset_right = 147.0
+offset_bottom = 98.0
+columns = 2
+
+[node name="Inv_UI_Slot1" parent="NinePatchRect/GridContainer" instance=ExtResource("2_27uwx")]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+
+[node name="Inv_UI_Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_27uwx")]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+
+[node name="Inv_UI_Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_27uwx")]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+
+[node name="Inv_UI_Slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_27uwx")]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+
+[node name="Cook" type="Button" parent="."]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 146.0
+offset_right = 146.0
+offset_bottom = 170.0
+theme = ExtResource("4_nf0kg")
+theme_override_fonts/font = ExtResource("5_5have")
+text = "COOK"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Cook" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Cook" to="." method="_on_cook_pressed"]

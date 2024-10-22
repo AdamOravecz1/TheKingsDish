@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dflbh6pqufqta"]
+
+[ext_resource type="Script" path="res://Scenes/bolt.gd" id="1_cxs4c"]
+[ext_resource type="Texture2D" uid="uid://bb4dm06k85d85" path="res://Sprites/Bolt4.png" id="2_8rrvn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n4drh"]
+radius = 1.0
+height = 18.6667
+
+[node name="Bolt" type="Area2D"]
+position = Vector2(0, -1)
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_cxs4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.5)
+texture = ExtResource("2_8rrvn")
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.666667)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n4drh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="KillTimer" to="." method="_on_kill_timer_timeout"]
