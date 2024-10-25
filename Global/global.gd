@@ -19,7 +19,7 @@ var vega_data: Dictionary
 
 var chest_inv: Dictionary
 
-var recipes: Dictionary = {
+const recipes: Dictionary = {
 	preload("res://inventory/Items/tomato sauce.tres"): ["tomato", "tomato"],
 	preload("res://inventory/Items/rabbit, with pumpkin.tres"): ["rabbit", "pumpkin"]
 }

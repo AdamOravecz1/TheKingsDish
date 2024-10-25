@@ -4,6 +4,13 @@ extends CharacterBody2D
 signal shoot(pos, dir, bullet_type)
 signal knock_back(pos, force)
 
+const animals: Dictionary = {
+	"Player": "res://Scenes/player.tscn",
+	"Rabbit": "res://Scenes/rabbit.tscn",
+	"Boar": "res://Scenes/boar.tscn",
+	"Entity": "res://Scenes/entity.tscn"
+}
+
 var alive := true
 var health := 0:
 	set(value):
@@ -23,14 +30,18 @@ func remove():
 	# Load and instance the scene dynamically
 	var entity_scene = load("res://Scenes/entity.tscn")  # Load the scene
 	var entity_instance = entity_scene.instantiate()  # Create an instance of the scene
-
+	var index = get_index()
+	entity_instance.health = -10000
 	# Add the new entity instance to the parent
 	get_parent().add_child(entity_instance)
+	get_parent().move_child(entity_instance, index)
+	
 	queue_free()
 	
 func setup(data): 
-	if data[2] == 0:
+	if data[2] == -10000:
 		remove()
+
 	if self.is_in_group("Animal"):
 		if data[0][1] > 9000:
 			position.x = data[0][0]

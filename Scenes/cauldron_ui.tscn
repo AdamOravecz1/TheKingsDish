@@ -68,5 +68,5 @@ theme_override_fonts/font = ExtResource("5_5have")
 text = "COOK"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Cook" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Cook" to="." method="_on_cook_pressed"]
+[connection signal="pressed" from="Cook" to="." method="_on_button_2_pressed"]

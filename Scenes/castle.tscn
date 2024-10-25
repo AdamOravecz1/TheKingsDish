@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcx2rpj5yumkr"]
+[gd_scene load_steps=14 format=3 uid="uid://bcx2rpj5yumkr"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_ktjp5"]
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="2_11o3y"]
@@ -6,18 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://xxiwk1u3j053" path="res://Scenes/gate.tscn" id="3_78jt2"]
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="3_cdx2i"]
 [ext_resource type="PackedScene" uid="uid://c63m3ewwfden1" path="res://Scenes/cauldron.tscn" id="4_pn5oe"]
+[ext_resource type="PackedScene" uid="uid://ba3xtfmksofnn" path="res://Scenes/dog.tscn" id="5_mingg"]
+[ext_resource type="Script" path="res://inventory/Inv_slot.gd" id="6_gts25"]
 
 [sub_resource type="Resource" id="Resource_djk16"]
 script = ExtResource("3_cdx2i")
-slots = Array[Resource("res://inventory/Inv_slot.gd")]([])
+slots = Array[ExtResource("6_gts25")]([])
 
 [sub_resource type="Resource" id="Resource_o2m3k"]
 script = ExtResource("3_cdx2i")
-slots = Array[Resource("res://inventory/Inv_slot.gd")]([])
+slots = Array[ExtResource("6_gts25")]([])
 
 [sub_resource type="Resource" id="Resource_smqa3"]
 script = ExtResource("3_cdx2i")
-slots = Array[Resource("res://inventory/Inv_slot.gd")]([])
+slots = Array[ExtResource("6_gts25")]([])
+
+[sub_resource type="Resource" id="Resource_a0p7r"]
+script = ExtResource("6_gts25")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_q65f3"]
+script = ExtResource("3_cdx2i")
+slots = Array[ExtResource("6_gts25")]([SubResource("Resource_a0p7r")])
 
 [node name="Castle" instance=ExtResource("1_ktjp5")]
 
@@ -41,6 +51,11 @@ chest_name = "Chest2"
 position = Vector2(13, 16)
 inv = SubResource("Resource_smqa3")
 chest_name = "Cauldron1"
+
+[node name="Dog" parent="Main/Objects" index="3" instance=ExtResource("5_mingg")]
+position = Vector2(221, 16)
+inv = SubResource("Resource_q65f3")
+chest_name = "Dog1"
 
 [node name="Player" parent="Main/Entities" index="0" instance=ExtResource("2_11o3y")]
 position = Vector2(118, 7)

@@ -34,6 +34,7 @@ func _pickup():
 	if player.free_inv_slot:
 		remove()
 		
+		
 func _process(delta):
 	if knockback_duration > 0 and alive:
 		# Apply knockback force
@@ -73,7 +74,7 @@ func animate():
 	
 func trigger_death():
 	if alive:
-		$Tusk/TuskHitbox.disabled = true
+		$Tusk/TuskHitbox.queue_free()
 		$BoarGraphic.death()
 		$InteractionArea.monitoring = true
 		alive = false
@@ -123,11 +124,11 @@ func _on_knock_back(source, force):
 	# Apply upward force (positive Y direction in Godot is down, so subtract to go up)
 	knockback_force.y -= 4000.0
 
-
 func _on_charge_timer_timeout():
 	charge = false
 	speed_modifier = 1
-	$Tusk/TuskHitbox.disabled = true
+	if $Tusk/TuskHitbox:
+		$Tusk/TuskHitbox.disabled = true
 	
 func _on_tusk_body_entered(body):
 	if body != self and "hit" in body:

@@ -60,7 +60,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_uk3hp"]
 radius = 16.0312
 
-[node name="Rabbit" groups=["Animal"] instance=ExtResource("1_gn3r3")]
+[node name="Rabbit" instance=ExtResource("1_gn3r3")]
 collision_layer = 4
 collision_mask = 21
 script = ExtResource("2_pnegx")

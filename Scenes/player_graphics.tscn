@@ -140,6 +140,32 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcx2e"]
 size = Vector2(14, 8)
 
+[sub_resource type="Animation" id="Animation_6obyc"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-9, -12), Vector2(-2, -15), Vector2(12, -12), Vector2(20, -3), Vector2(17, 21)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Knife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.773351, 0.774311, 0.814462, 1.57115, 3.14171]
+}
+
 [sub_resource type="Animation" id="Animation_dqv0b"]
 resource_name = "hit"
 tracks/0/type = "value"
@@ -167,63 +193,10 @@ tracks/1/keys = {
 "values": [0.76592, -0.689632, -0.762884, -1.56993, -3.14098]
 }
 
-[sub_resource type="Animation" id="Animation_6obyc"]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Knife:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-9, -12), Vector2(-2, -15), Vector2(12, -12), Vector2(20, -3), Vector2(17, 21)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Knife:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [-0.773351, 0.774311, 0.814462, 1.57115, 3.14171]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wsj8w"]
 _data = {
 "RESET": SubResource("Animation_6obyc"),
 "hit": SubResource("Animation_dqv0b")
-}
-
-[sub_resource type="Animation" id="Animation_0nnbi"]
-resource_name = "hitright"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-7, -11), Vector2(-1, -13), Vector2(12, -10), Vector2(20, -4), Vector2(18, 20)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [-3.92746, -2.54888, -2.12927, -1.57107, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_j3qum"]
@@ -253,6 +226,33 @@ tracks/1/keys = {
 "values": [-3.92746]
 }
 
+[sub_resource type="Animation" id="Animation_0nnbi"]
+resource_name = "hitright"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7, -11), Vector2(-1, -13), Vector2(12, -10), Vector2(20, -4), Vector2(18, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-3.92746, -2.54888, -2.12927, -1.57107, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yu7rs"]
 _data = {
 "RESET": SubResource("Animation_j3qum"),
@@ -261,21 +261,6 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6k3o3"]
 radius = 8.0
-
-[sub_resource type="Animation" id="Animation_41p1n"]
-resource_name = "hit"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(14, -20), Vector2(6, -22), Vector2(-4, -20), Vector2(-21, -16), Vector2(-26, 20)]
-}
 
 [sub_resource type="Animation" id="Animation_4dlti"]
 length = 0.001
@@ -292,25 +277,25 @@ tracks/0/keys = {
 "values": [Vector2(14, -20)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqppo"]
-_data = {
-"RESET": SubResource("Animation_4dlti"),
-"hit": SubResource("Animation_41p1n")
-}
-
-[sub_resource type="Animation" id="Animation_bhida"]
-resource_name = "hitright"
+[sub_resource type="Animation" id="Animation_41p1n"]
+resource_name = "hit"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-12, -20), Vector2(-6, -22), Vector2(2, -20), Vector2(20, -16), Vector2(26, 20)]
+"values": [Vector2(14, -20), Vector2(6, -22), Vector2(-4, -20), Vector2(-21, -16), Vector2(-26, 20)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqppo"]
+_data = {
+"RESET": SubResource("Animation_4dlti"),
+"hit": SubResource("Animation_41p1n")
 }
 
 [sub_resource type="Animation" id="Animation_u7d6t"]
@@ -326,6 +311,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-12, -20)]
+}
+
+[sub_resource type="Animation" id="Animation_bhida"]
+resource_name = "hitright"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-12, -20), Vector2(-6, -22), Vector2(2, -20), Vector2(20, -16), Vector2(26, 20)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_isbo1"]

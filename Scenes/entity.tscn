@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/entity.gd" id="1_i6hnx"]
 
-[node name="Entity" type="CharacterBody2D"]
+[node name="Entity" type="CharacterBody2D" groups=["Animal"]]
 script = ExtResource("1_i6hnx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

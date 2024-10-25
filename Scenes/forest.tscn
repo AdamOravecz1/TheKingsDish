@@ -131,7 +131,7 @@ position = Vector2(-222, -46)
 type = 2
 
 [node name="Player" parent="Main/Entities" index="0" instance=ExtResource("2_5uack")]
-position = Vector2(-252, -58)
+position = Vector2(-354, -58)
 
 [node name="Boar" parent="Main/Entities" index="1" instance=ExtResource("11_m5di3")]
 position = Vector2(-15, -19)

@@ -12,14 +12,16 @@ var is_open = false
 
 func _ready():
 	var scene_name = get_tree().current_scene.name
+	var entity_names: Array
 	print(scene_name)
 	print(Global.animal_data)
 	for i in $Main/Entities.get_child_count():
-		var entity = $Main/Entities.get_child(i)
-		if entity.has_signal("shoot"):
-			entity.connect("shoot", create_bolt)
+		entity_names.append($Main/Entities.get_child(i))
+	for i in $Main/Entities.get_child_count():
 		if scene_name in Global.animal_data:
-			entity.setup(Global.animal_data[scene_name][i])
+			entity_names[i].setup(Global.animal_data[scene_name][i])
+		if entity_names[i].has_signal("shoot"):
+			entity_names[i].connect("shoot", create_bolt)
 	for i in $Main/Vega.get_child_count():
 		var vega = $Main/Vega.get_child(i)
 		if scene_name in Global.vega_data:
@@ -35,7 +37,7 @@ func create_bolt(pos, dir, bolt_type):
 func _exit_tree():
 	var current_animal_data: Array
 	for entity in $Main/Entities.get_children():
-		current_animal_data.append([entity.position, entity.velocity, entity.health])
+		current_animal_data.append([entity.position, entity.velocity, entity.health, entity.name])
 	var current_vega_data: Array
 	for vega in $Main/Vega.get_children():
 		current_vega_data.append(vega.harvested)
