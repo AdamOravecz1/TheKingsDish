@@ -6,6 +6,7 @@ var x_direction := 1
 var speed = Global.animal_parameters["boar"]["speed"]
 var speed_modifier := 1
 var can_move := true
+var current_pos := Vector2(0, 0)
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 var knockback_force: Vector2 = Vector2.ZERO
@@ -101,7 +102,6 @@ func check_player():
 	if charge:
 		speed_modifier = 4
 		$BoarGraphic.run()
-
 
 func _on_timer_timeout():
 	if alive and not charge:

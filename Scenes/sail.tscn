@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://crtixvoj76ldd"]
+
+[ext_resource type="Texture2D" uid="uid://dlca2xoysmbxi" path="res://Sprites/WindMillTileSet2.png" id="2_5omvx"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k6ul1"]
+texture = ExtResource("2_5omvx")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e742k"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_k6ul1")
+
+[sub_resource type="Animation" id="Animation_djbop"]
+resource_name = "rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_50i2b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0qe0k"]
+_data = {
+"RESET": SubResource("Animation_50i2b"),
+"rotate": SubResource("Animation_djbop")
+}
+
+[node name="Sail" type="Marker2D"]
+position = Vector2(16, 16)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-16, -16)
+tile_set = SubResource("TileSet_e742k")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 262145, 0, 65536, 262145, 1, 131072, 262145, 2, 196608, 262145, 3, 262144, 262145, 4, 1, 262145, 1610612737, 2, 262145, 1610612738, 3, 262145, 1610612739, 4, 262145, 1610612740, -262144, 262145, 805306372, -196608, 262145, 805306371, -131072, 262145, 805306370, -65536, 262145, 805306369, 65532, 262145, 1342177284, 65533, 262145, 1342177283, 65534, 262145, 1342177282, 65535, 262145, 1342177281)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0qe0k")
+}
+autoplay = "rotate"
+movie_quit_on_finish = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
