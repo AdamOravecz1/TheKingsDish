@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4na5r3j212hu"]
+
+[ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_tkdda"]
+[ext_resource type="Texture2D" uid="uid://c7o3w21ptie3l" path="res://Sprites/DogBowl.png" id="2_didgl"]
+[ext_resource type="PackedScene" uid="uid://bv6u1rmhe8lay" path="res://inventory/inv_ui_slot.tscn" id="3_63wsm"]
+
+[node name="DogInv" instance=ExtResource("1_tkdda")]
+offset_left = 685.0
+offset_top = 63.0
+offset_right = -256.0
+offset_bottom = -382.0
+
+[node name="Button" type="Button" parent="." index="0"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 212.0
+offset_bottom = 202.0
+
+[node name="NinePatchRect" parent="." index="1"]
+offset_right = 209.0
+offset_bottom = 200.0
+texture = ExtResource("2_didgl")
+
+[node name="GridContainer" parent="NinePatchRect" index="0"]
+offset_left = 88.0
+offset_top = 87.0
+offset_right = 128.0
+offset_bottom = 127.0
+
+[node name="Inv_UI_Slot" parent="NinePatchRect/GridContainer" index="0" instance=ExtResource("3_63wsm")]
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

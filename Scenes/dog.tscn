@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="1_fk67m"]
 [ext_resource type="Script" path="res://Scenes/dog.gd" id="1_ok3hn"]
 [ext_resource type="Texture2D" uid="uid://db52fplqiaw7b" path="res://Sprites/Dog3.png" id="2_wwthl"]
-[ext_resource type="PackedScene" uid="uid://btvyfgy15e8nn" path="res://Scenes/dog_ui.tscn" id="3_m25ik"]
+[ext_resource type="PackedScene" uid="uid://b4na5r3j212hu" path="res://inventory/dog_inv.tscn" id="3_i7kgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tp6ql"]
 radius = 32.0156
@@ -106,7 +106,7 @@ shape = SubResource("CircleShape2D_6wljd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Dog_UI" parent="CanvasLayer" instance=ExtResource("3_m25ik")]
+[node name="DogInv" parent="CanvasLayer" instance=ExtResource("3_i7kgy")]
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tf4xp")

@@ -5,7 +5,7 @@ extends Area2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var playerinv = get_tree().get_first_node_in_group("PlayerInv")
-@onready var dogInv = $CanvasLayer/Dog_UI
+@onready var dogInv = $CanvasLayer/GenInv
 @onready var player = get_tree().get_first_node_in_group("Player") 
 @onready var main = get_tree().current_scene
 var is_open := false
