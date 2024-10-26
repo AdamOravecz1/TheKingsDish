@@ -185,3 +185,4 @@ func _on_knock_back(source, force):
 	
 	# Apply upward force (positive Y direction in Godot is down, so subtract to go up)
 	knockback_force.y -= 4000.0
+

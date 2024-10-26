@@ -4,13 +4,6 @@ extends CharacterBody2D
 signal shoot(pos, dir, bullet_type)
 signal knock_back(pos, force)
 
-const animals: Dictionary = {
-	"Player": "res://Scenes/player.tscn",
-	"Rabbit": "res://Scenes/rabbit.tscn",
-	"Boar": "res://Scenes/boar.tscn",
-	"Entity": "res://Scenes/entity.tscn"
-}
-
 var alive := true
 var health := 0:
 	set(value):
@@ -22,10 +15,11 @@ func trigger_death():
 	print("death")
 	
 func hit(damage, pos, force):
-	print("hit")
 	health -= damage
 	knock_back.emit(pos, force)
-	
+	if self.name == "Player":
+		get_tree().get_first_node_in_group("Level").update_health(health)
+		
 func remove():
 	# Load and instance the scene dynamically
 	var entity_scene = load("res://Scenes/entity.tscn")  # Load the scene

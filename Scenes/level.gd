@@ -81,3 +81,6 @@ func get_inv(i):
 	
 func get_dragging(i: bool):
 	dragging = i
+	
+func update_health(health):
+	$CanvasLayer/PlayerHealthBar.value = health
