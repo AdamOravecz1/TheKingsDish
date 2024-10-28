@@ -24,6 +24,14 @@ terminal_velocity = 500
 position = Vector2(-3, 4.25)
 shape = SubResource("RectangleShape2D_l2dco")
 
+[node name="DigTimer" type="Timer" parent="Timers" index="0"]
+wait_time = 5.0
+autostart = true
+
+[node name="ChargeTimer" type="Timer" parent="Timers" index="1"]
+wait_time = 2.0
+one_shot = true
+
 [node name="BoarGraphic" parent="." index="2" instance=ExtResource("2_5tv31")]
 scale = Vector2(-1, 1)
 
@@ -65,15 +73,7 @@ action_name = "pick up"
 position = Vector2(-13.5, 5.5)
 shape = SubResource("RectangleShape2D_i3myn")
 
-[node name="Timer" type="Timer" parent="." index="7"]
-wait_time = 5.0
-autostart = true
-
-[node name="ChargeTimer" type="Timer" parent="." index="8"]
-wait_time = 2.0
-one_shot = true
-
-[node name="Tusk" type="Area2D" parent="." index="9"]
+[node name="Tusk" type="Area2D" parent="." index="7"]
 position = Vector2(-23, 2)
 collision_layer = 0
 collision_mask = 6
@@ -83,6 +83,6 @@ shape = SubResource("CircleShape2D_8rumn")
 disabled = true
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
+[connection signal="timeout" from="Timers/DigTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/ChargeTimer" to="." method="_on_charge_timer_timeout"]
 [connection signal="body_entered" from="Tusk" to="." method="_on_tusk_body_entered"]

@@ -41,7 +41,6 @@ func _on_tree_exited():
 	if inv != null:
 		# Save the Inv instance to the global dictionary
 		Global.chest_inv[chest_name] = inv
-		print("Inventory saved to global dictionary with key: ", chest_name)
 		
 func open():
 	cauldroninv.visible = true

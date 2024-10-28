@@ -33,13 +33,24 @@ var reloded := true
 @onready var playerinv = get_tree().get_first_node_in_group("PlayerInv")
 var free_inv_slot := true
 
+@onready var level = get_tree().get_first_node_in_group("Level")
+
+var coin := 0
+
 func _ready():
+	health = Global.player_data["health"]
+	coin = Global.player_data["coin"]
+	if get_tree().current_scene.name in Global.player_data:
+		position = Global.player_data[get_tree().current_scene.name][0]
+		velocity = Global.player_data[get_tree().current_scene.name][1]
 	$Label.material.set_shader_parameter("alpha", 0.0)
-	health = 100
 	if inv == null:
 		inv = load("res://inventory/playerinv.tres") as Inv
 	playerinv.inv = inv
 	playerinv._ready()
+	level.update_health(health)
+	level.update_coin(str(coin))
+	
 
 func _process(delta):
 	if knockback_duration > 0 and alive:
@@ -158,6 +169,8 @@ func back():
 	position = last_pos
 	
 func collect(item):
+	coin += 1
+	level.update_coin(str(coin))
 	var emptyslot = inv.slots.filter(func(slot): return slot.item == null)
 	if emptyslot.size() > 0:
 		inv.insert(item)

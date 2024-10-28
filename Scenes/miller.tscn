@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://5exerwvsy41d"]
+
+[ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_8jmtg"]
+[ext_resource type="Script" path="res://Scenes/miller.gd" id="2_gkufe"]
+[ext_resource type="Texture2D" uid="uid://cvve3iaapqk5w" path="res://Sprites/Miller.png" id="2_lv85u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_la1yi"]
+size = Vector2(20, 39)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1bic"]
+atlas = ExtResource("2_lv85u")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8uku"]
+atlas = ExtResource("2_lv85u")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bownk"]
+atlas = ExtResource("2_lv85u")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ovtw"]
+atlas = ExtResource("2_lv85u")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2nyv"]
+atlas = ExtResource("2_lv85u")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isylq"]
+atlas = ExtResource("2_lv85u")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71mke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1bic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8uku")
+}],
+"loop": true,
+"name": &"after_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bownk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ovtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2nyv")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isylq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Miller" instance=ExtResource("1_8jmtg")]
+collision_layer = 4
+collision_mask = 21
+script = ExtResource("2_gkufe")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_la1yi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_71mke")
+autoplay = "default"

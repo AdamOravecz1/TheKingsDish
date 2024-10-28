@@ -5,7 +5,7 @@ extends Area2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var playerinv = get_tree().get_first_node_in_group("PlayerInv")
-@onready var dogInv = $CanvasLayer/GenInv
+@onready var dogInv = $CanvasLayer/DogInv
 @onready var player = get_tree().get_first_node_in_group("Player") 
 @onready var main = get_tree().current_scene
 var is_open := false
@@ -40,12 +40,6 @@ func _opened():
 		playerinv.position.x = 300
 		main.open()
 		open()
-	
-func _on_tree_exited():
-	if inv != null:
-		# Save the Inv instance to the global dictionary
-		Global.chest_inv[chest_name] = inv
-		print("Inventory saved to global dictionary with key: ", chest_name)
 		
 func open():
 	dogInv.visible = true
@@ -53,7 +47,7 @@ func open():
 	is_open = true
 	
 func close():
-	dogInv.visible = false	
+	dogInv.visible = false
 	playerinv.visible = false
 	is_open = false
 	

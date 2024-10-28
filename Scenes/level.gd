@@ -10,7 +10,10 @@ var current_slot := 100
 var dragging := false
 var is_open = false
 
+@onready var player = get_tree().get_first_node_in_group("Player")
+
 func _ready():
+	
 	var scene_name = get_tree().current_scene.name
 	var entity_names: Array
 	print(scene_name)
@@ -37,12 +40,16 @@ func create_bolt(pos, dir, bolt_type):
 func _exit_tree():
 	var current_animal_data: Array
 	for entity in $Main/Entities.get_children():
-		current_animal_data.append([entity.position, entity.velocity, entity.health, entity.name])
+		current_animal_data.append([entity.position, entity.velocity, entity.health])
 	var current_vega_data: Array
 	for vega in $Main/Vega.get_children():
 		current_vega_data.append(vega.harvested)
+	var current_player_data = [player.position, player.velocity]
 	Global.animal_data[get_tree().current_scene.name] = current_animal_data
 	Global.vega_data[get_tree().current_scene.name] = current_vega_data
+	Global.player_data["health"] = player.health
+	Global.player_data["coin"] = player.coin
+	Global.player_data[get_tree().current_scene.name] = current_player_data
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -84,3 +91,6 @@ func get_dragging(i: bool):
 	
 func update_health(health):
 	$CanvasLayer/PlayerHealthBar.value = health
+	
+func update_coin(coin):
+	$CanvasLayer/CoinAmount.text = coin

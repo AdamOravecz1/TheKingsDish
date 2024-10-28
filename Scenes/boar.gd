@@ -95,8 +95,8 @@ func check_wall():
 		
 func check_player():
 	if $Agro/AgroRay.is_colliding():
-		$Timer.start()
-		$ChargeTimer.start()
+		$Timers/DigTimer.start()
+		$Timers/ChargeTimer.start()
 		charge = true
 		$Tusk/TuskHitbox.disabled = false
 	if charge:

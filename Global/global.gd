@@ -12,6 +12,10 @@ const weapon_data = {
 	weapons.AXE: {'damage': 60, 'knockback': 15000.0},
 	weapons.CROSSBOW: {'damage': 30, 'knockback': 1000.0, 'speed': 300, 'texture': preload("res://Sprites/Bolt4.png")}
 }
+var player_data: Dictionary = {
+	"health": 100,
+	"coin": 0
+}
 
 var animal_data: Dictionary
 
