@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://5exerwvsy41d"]
+[gd_scene load_steps=15 format=3 uid="uid://5exerwvsy41d"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_8jmtg"]
 [ext_resource type="Script" path="res://Scenes/miller.gd" id="2_gkufe"]
 [ext_resource type="Texture2D" uid="uid://cvve3iaapqk5w" path="res://Sprites/Miller.png" id="2_lv85u"]
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_yeb36"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la1yi"]
 size = Vector2(20, 39)
@@ -67,6 +68,12 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmykt"]
+radius = 23.0217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqvsg"]
+radius = 23.0217
+
 [node name="Miller" instance=ExtResource("1_8jmtg")]
 collision_layer = 4
 collision_mask = 21
@@ -79,3 +86,17 @@ shape = SubResource("RectangleShape2D_la1yi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_71mke")
 autoplay = "default"
+
+[node name="InteractionAreaShop" parent="." index="3" instance=ExtResource("4_yeb36")]
+action_name = "talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionAreaShop" index="0"]
+shape = SubResource("CircleShape2D_dmykt")
+
+[node name="InteractionArea" parent="." index="4" instance=ExtResource("4_yeb36")]
+action_name = "pick up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+shape = SubResource("CircleShape2D_fqvsg")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -23,19 +23,18 @@ func _ready():
 	for i in $Main/Entities.get_child_count():
 		if scene_name in Global.animal_data:
 			entity_names[i].setup(Global.animal_data[scene_name][i])
-		if entity_names[i].has_signal("shoot"):
-			entity_names[i].connect("shoot", create_bolt)
 	for i in $Main/Vega.get_child_count():
 		var vega = $Main/Vega.get_child(i)
 		if scene_name in Global.vega_data:
 			if Global.vega_data[scene_name][i]:
 				vega.harvest()
+	if player.has_signal("shoot"):
+		player.connect("shoot", create_bolt)
 
 func create_bolt(pos, dir, bolt_type):
 	var bolt := bolt_scene.instantiate()
 	$Main/Projectiles.add_child(bolt)
 	bolt.setup(pos, dir, bolt_type)
-
 
 func _exit_tree():
 	var current_animal_data: Array

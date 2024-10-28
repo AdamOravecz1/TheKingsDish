@@ -72,7 +72,6 @@ func relode():
 func _on_knife_body_entered(body):
 	if "hit" in body:
 		body.hit(Global.weapon_data[0]["damage"], global_position, Global.weapon_data[0]["knockback"])
-	$Knife/KnifeHitbox.disabled = true
 
 func _on_knife_hitbox_animation_left_animation_finished(anim_name):
 	$Knife/KnifeHitbox.disabled = true
@@ -84,7 +83,6 @@ func _on_knife_hitbox_animation_right_animation_finished(anim_name):
 func _on_axe_body_entered(body):
 	if "hit" in body:
 		body.hit(Global.weapon_data[1]["damage"], global_position, Global.weapon_data[1]["knockback"])
-	$Axe/AxeHitbox.disabled = true
 
 
 func _on_axe_hitbox_animation_left_animation_finished(anim_name):

@@ -111,7 +111,7 @@ func _on_timer_timeout():
 func _on_knock_back(source, force):
 	can_move = false
 	knocked_back = true
-	$Timer.start()
+	$Timers/DigTimer.start()
 	knockback_strength = force
 	knockback_duration = 0.1
 
