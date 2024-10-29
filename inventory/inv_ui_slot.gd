@@ -1,5 +1,7 @@
 extends Panel
 
+@export var slot_sprite: Texture
+
 @onready var item_visual: Sprite2D = $CenterContainer/Panel/ItemDisplay
 @onready var drag_sprite: Sprite2D = $CanvasLayer/DragSprite  # A Sprite2D to display the texture that follows the mouse
 @onready var drag_label: Label = $CanvasLayer/Label
@@ -13,6 +15,7 @@ var drag_across: bool = false
 
 
 func _ready():
+	$SlotBG.texture = slot_sprite
 	# Hide the drag sprite initially
 	drag_sprite.visible = false
 	drag_label.visible = false

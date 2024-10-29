@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfuyhkeyeusun"]
+[gd_scene load_steps=7 format=3 uid="uid://cfuyhkeyeusun"]
 
 [ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_3u7gd"]
 [ext_resource type="Texture2D" uid="uid://crx00b155gx8g" path="res://Sprites/CauldronInv3.png" id="2_dpokx"]
 [ext_resource type="PackedScene" uid="uid://bv6u1rmhe8lay" path="res://inventory/inv_ui_slot.tscn" id="3_1l7cy"]
 [ext_resource type="Theme" uid="uid://b2siw8ghup514" path="res://green_button.tres" id="4_6ojvt"]
+[ext_resource type="Texture2D" uid="uid://by6jpitc2ypru" path="res://Sprites/InvSlotCouldron.png" id="4_22vys"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_cpgt4"]
 
 [node name="CauldronInv" instance=ExtResource("1_3u7gd")]
@@ -33,15 +34,19 @@ columns = 2
 
 [node name="Inv_UI_Slot1" parent="NinePatchRect/GridContainer" index="0" instance=ExtResource("3_1l7cy")]
 layout_mode = 2
+slot_sprite = ExtResource("4_22vys")
 
 [node name="Inv_UI_Slot2" parent="NinePatchRect/GridContainer" index="1" instance=ExtResource("3_1l7cy")]
 layout_mode = 2
+slot_sprite = ExtResource("4_22vys")
 
 [node name="Inv_UI_Slot3" parent="NinePatchRect/GridContainer" index="2" instance=ExtResource("3_1l7cy")]
 layout_mode = 2
+slot_sprite = ExtResource("4_22vys")
 
 [node name="Inv_UI_Slot4" parent="NinePatchRect/GridContainer" index="3" instance=ExtResource("3_1l7cy")]
 layout_mode = 2
+slot_sprite = ExtResource("4_22vys")
 
 [node name="Cook" type="Button" parent="." index="2"]
 layout_mode = 0

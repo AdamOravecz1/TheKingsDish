@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://0x5cu4ubv00b"]
+[gd_scene load_steps=5 format=3 uid="uid://0x5cu4ubv00b"]
 
 [ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_giwyk"]
 [ext_resource type="Texture2D" uid="uid://bg365rfuelfkc" path="res://Sprites/ChestInv.png" id="2_em45e"]
 [ext_resource type="PackedScene" uid="uid://bv6u1rmhe8lay" path="res://inventory/inv_ui_slot.tscn" id="3_vpm1j"]
+[ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="4_ds8p2"]
 
 [node name="ChestInv" groups=["ChestInv"] instance=ExtResource("1_giwyk")]
 anchors_preset = 8
@@ -33,40 +34,52 @@ offset_right = 196.0
 offset_bottom = 231.0
 columns = 4
 
-[node name="Inv_UI_Slot" parent="NinePatchRect/GridContainer" index="0" instance=ExtResource("3_vpm1j")]
+[node name="Inv_UI_Slot1" parent="NinePatchRect/GridContainer" index="0" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot2" parent="NinePatchRect/GridContainer" index="1" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot3" parent="NinePatchRect/GridContainer" index="2" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot4" parent="NinePatchRect/GridContainer" index="3" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot5" parent="NinePatchRect/GridContainer" index="4" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot6" parent="NinePatchRect/GridContainer" index="5" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot7" parent="NinePatchRect/GridContainer" index="6" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot8" parent="NinePatchRect/GridContainer" index="7" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot9" parent="NinePatchRect/GridContainer" index="8" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot10" parent="NinePatchRect/GridContainer" index="9" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot11" parent="NinePatchRect/GridContainer" index="10" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [node name="Inv_UI_Slot12" parent="NinePatchRect/GridContainer" index="11" instance=ExtResource("3_vpm1j")]
 layout_mode = 2
+slot_sprite = ExtResource("4_ds8p2")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

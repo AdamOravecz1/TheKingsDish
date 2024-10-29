@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4na5r3j212hu"]
+[gd_scene load_steps=5 format=3 uid="uid://b4na5r3j212hu"]
 
 [ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_tkdda"]
 [ext_resource type="Texture2D" uid="uid://c7o3w21ptie3l" path="res://Sprites/DogBowl.png" id="2_didgl"]
 [ext_resource type="PackedScene" uid="uid://bv6u1rmhe8lay" path="res://inventory/inv_ui_slot.tscn" id="3_63wsm"]
+[ext_resource type="Texture2D" uid="uid://kkxf87nksj5q" path="res://Sprites/InvSlotBowl.png" id="4_fq36w"]
 
 [node name="DogInv" instance=ExtResource("1_tkdda")]
 offset_left = 685.0
@@ -29,5 +30,6 @@ offset_bottom = 127.0
 
 [node name="Inv_UI_Slot" parent="NinePatchRect/GridContainer" index="0" instance=ExtResource("3_63wsm")]
 layout_mode = 2
+slot_sprite = ExtResource("4_fq36w")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

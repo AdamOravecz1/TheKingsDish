@@ -140,7 +140,7 @@ type = 2
 position = Vector2(-15, -19)
 
 [node name="Rabbit" parent="Main/Entities" index="1" instance=ExtResource("3_dwt3r")]
-position = Vector2(-223, -58)
+position = Vector2(507, -151)
 
 [node name="Miller" parent="Main/Entities" index="2" instance=ExtResource("14_vk6b8")]
 position = Vector2(685, -148)
