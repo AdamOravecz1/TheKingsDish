@@ -8,6 +8,6 @@ func remove_item():
 	main.current_slot = 100
 	
 func _on_button_pressed():
-	if not main.buying:
-		main.get_dragging(false)
-		remove_item()
+	main.get_dragging(false)
+	main.buying = false
+	remove_item()

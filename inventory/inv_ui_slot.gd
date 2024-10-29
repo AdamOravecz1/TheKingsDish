@@ -38,7 +38,7 @@ func _process(delta):
 		drag_label.global_position = get_global_mouse_position() + Vector2(8, 8)
 
 func _on_button_pressed():
-	if shop_ui.size() >= main.shop_slot and main.buying:
+	if shop_ui.size() >= main.shop_slot and main.buying and main.current_item:
 		if slot_out.item:
 			shop_ui[main.shop_slot].stop_dragging()
 		else:

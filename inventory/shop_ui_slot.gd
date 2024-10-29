@@ -31,6 +31,11 @@ func start_dragging(item_texture: Texture2D):
 	drag_sprite.visible = true  # Show the sprite when dragging starts
 	drag_label.visible = true
 	
+func _input(event):
+	# Stop dragging when the mouse button is released
+	if dragging and event is InputEventMouseButton and not event.pressed:
+		stop_dragging()
+	
 # Stop dragging the item
 func stop_dragging():
 	dragging = false
