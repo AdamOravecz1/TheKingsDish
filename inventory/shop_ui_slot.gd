@@ -43,6 +43,9 @@ func stop_dragging():
 	drag_label.visible = false
 
 func _on_button_pressed():
+	if main.dragging:
+		main.dragging = false
+		main.buying = false
 	if not main.dragging and player.coin >= price:
 		main.shop_slot = get_index()
 		start_dragging(item.texture)

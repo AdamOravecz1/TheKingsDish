@@ -42,6 +42,7 @@ func remove_item():
 		#remove_item()
 	
 func _on_button_pressed():
+	pass
 	main.get_dragging(false)
 	main.buying = false
 	remove_item()

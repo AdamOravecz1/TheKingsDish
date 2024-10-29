@@ -32,6 +32,7 @@ offset_left = 56.0
 offset_top = 127.0
 offset_right = 196.0
 offset_bottom = 231.0
+mouse_default_cursor_shape = 1
 columns = 4
 
 [node name="Inv_UI_Slot1" parent="NinePatchRect/GridContainer" index="0" instance=ExtResource("3_vpm1j")]
