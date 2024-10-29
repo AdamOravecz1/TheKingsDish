@@ -7,6 +7,7 @@ extends Panel
 @onready var drag_label: Label = $CanvasLayer/Label
 @onready var inv_ui = get_parent().get_parent().get_parent()
 @onready var main = get_tree().current_scene
+@onready var shop_ui = get_tree().get_nodes_in_group("ShopUI")
 
 var slot_out: InvSlot
 var dragged_item: InvItem
@@ -27,8 +28,6 @@ func update(slot: InvSlot):
 	else:
 		item_visual.visible = true
 		item_visual.texture = slot.item.texture
-
-
 	slot_out = slot
 
 func _process(delta):
@@ -39,6 +38,13 @@ func _process(delta):
 		drag_label.global_position = get_global_mouse_position() + Vector2(8, 8)
 
 func _on_button_pressed():
+	if shop_ui.size() >= main.shop_slot and main.buying:
+		if slot_out.item:
+			shop_ui[main.shop_slot].stop_dragging()
+		else:
+			shop_ui[main.shop_slot].stop_dragging()
+			shop_ui[main.shop_slot].buy()
+		main.buying = false
 	if slot_out.item:
 		if get_index() == main.current_slot and main.inv_type == inv_ui:
 			drag_across = true
@@ -75,7 +81,6 @@ func _input(event):
 	# Stop dragging when the mouse button is released
 	if dragging and event is InputEventMouseButton and not event.pressed:
 		stop_dragging()
-
 		
 
 # Stop dragging the item
@@ -85,12 +90,9 @@ func stop_dragging():
 	drag_label.visible = false
 	item_visual.visible = true
 
-
-	
 func send_item():
 	inv_ui.get_item(dragged_item, get_index())
 
-	
 func change_item():
 	inv_ui.change_item(get_index())
 	inv_ui.remove_item()

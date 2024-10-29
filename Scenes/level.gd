@@ -7,7 +7,9 @@ const bolt_scene := preload("res://Scenes/bolt.tscn")
 var paused = false
 var current_item: InvItem
 var current_slot := 100
+var shop_slot := 100
 var dragging := false
+var buying := false
 var is_open = false
 
 @onready var player = get_tree().get_first_node_in_group("Player")
@@ -60,12 +62,13 @@ func _process(_delta):
 		else:
 			open()
 
-			
 func open():
+	player.can_attack = false
 	playerinv.visible = true
 	is_open = true
 	
 func close():
+	player.can_attack = true
 	playerinv.visible = false
 	is_open = false
 

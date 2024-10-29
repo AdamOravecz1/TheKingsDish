@@ -26,8 +26,8 @@ metadata/_edit_horizontal_guides_ = [-206.0]
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="BG/ParallaxBackground" index="0"]
 
 [node name="Sprite2D" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer6" index="0"]
-position = Vector2(135, -185.5)
-scale = Vector2(2.99194, 1.94485)
+position = Vector2(381.999, -185.5)
+scale = Vector2(3.98791, 1.94485)
 texture = ExtResource("2_t6cmg")
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="BG/ParallaxBackground" index="1"]
@@ -45,6 +45,10 @@ texture = ExtResource("3_erif5")
 position = Vector2(629, -216)
 texture = ExtResource("3_erif5")
 
+[node name="Sprite2D4" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer5" index="3"]
+position = Vector2(1125, -220)
+texture = ExtResource("3_erif5")
+
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="BG/ParallaxBackground" index="2"]
 motion_scale = Vector2(0.8, 1)
 
@@ -58,6 +62,10 @@ texture = ExtResource("2_rvyf3")
 
 [node name="Sprite2D3" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer4" index="2"]
 position = Vector2(628, -208)
+texture = ExtResource("2_rvyf3")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer4" index="3"]
+position = Vector2(1124, -208)
 texture = ExtResource("2_rvyf3")
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="BG/ParallaxBackground" index="3"]
@@ -75,6 +83,10 @@ texture = ExtResource("2_fpvc7")
 position = Vector2(628, -141)
 texture = ExtResource("2_fpvc7")
 
+[node name="Sprite2D4" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer3" index="3"]
+position = Vector2(1122, -146)
+texture = ExtResource("2_fpvc7")
+
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="BG/ParallaxBackground" index="4"]
 motion_scale = Vector2(0.9, 1)
 
@@ -88,6 +100,10 @@ texture = ExtResource("2_31f24")
 
 [node name="Sprite2D3" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer2" index="2"]
 position = Vector2(630, -82)
+texture = ExtResource("2_31f24")
+
+[node name="Sprite2D4" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer2" index="3"]
+position = Vector2(1122, -87)
 texture = ExtResource("2_31f24")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BG/ParallaxBackground" index="5"]
@@ -106,7 +122,11 @@ position = Vector2(627, -36)
 texture = ExtResource("3_oby0v")
 
 [node name="Sprite2D4" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer" index="3"]
-position = Vector2(423, 73)
+position = Vector2(427, 90)
+texture = ExtResource("3_oby0v")
+
+[node name="Sprite2D5" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer" index="4"]
+position = Vector2(1107, -18)
 texture = ExtResource("3_oby0v")
 
 [node name="BG" parent="BG" index="1"]

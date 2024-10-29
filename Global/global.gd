@@ -15,7 +15,7 @@ const weapon_data = {
 }
 var player_data: Dictionary = {
 	"health": 100,
-	"coin": 0
+	"coin": 10
 }
 
 var animal_data: Dictionary

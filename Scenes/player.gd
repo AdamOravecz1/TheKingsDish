@@ -8,6 +8,7 @@ extends Entity
 @export var friction := 900
 var direction := Vector2.ZERO
 var can_move := true
+var can_attack := true
 var ducking := false
 
 @export_group('jump')
@@ -104,7 +105,7 @@ func get_input():
 
 		
 	#hit
-	if Input.is_action_just_pressed("hit"):
+	if Input.is_action_just_pressed("hit") and can_attack:
 		$PlayerGraphics.hit()
 		slash()
 		
@@ -198,4 +199,8 @@ func _on_knock_back(source, force):
 	
 	# Apply upward force (positive Y direction in Godot is down, so subtract to go up)
 	knockback_force.y -= 4000.0
+	
+func pay(price):
+	coin -= price
+	level.update_coin(str(coin))
 

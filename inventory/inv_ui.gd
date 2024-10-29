@@ -36,8 +36,9 @@ func remove_item():
 	main.current_slot = 100
 	
 func _on_button_pressed():
-	main.get_dragging(false)
-	remove_item()
+	if not main.buying:
+		main.get_dragging(false)
+		remove_item()
 	
 func send_inv():
 	main.get_inv(self)

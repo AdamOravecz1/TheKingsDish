@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://lo3gbgkcknvx"]
+
+[ext_resource type="Texture2D" uid="uid://bfo3u8onb4n5r" path="res://Sprites/MillersShopUI.png" id="1_j0anm"]
+[ext_resource type="Script" path="res://inventory/millers_shop_ui.gd" id="1_tug4p"]
+[ext_resource type="PackedScene" uid="uid://bjwaf68ya2yel" path="res://inventory/shop_ui_slot.tscn" id="2_h5hr6"]
+[ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="3_c2bhb"]
+[ext_resource type="Resource" uid="uid://b7k1d4upmupa4" path="res://inventory/Items/flour.tres" id="4_6dvin"]
+[ext_resource type="Resource" uid="uid://b6db8uf3ug8kq" path="res://inventory/Items/pasta.tres" id="5_c4ga4"]
+[ext_resource type="Resource" uid="uid://brhwj8gopn3ab" path="res://inventory/Items/bread.tres" id="6_vtdh5"]
+
+[node name="MillersShop_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 607.0
+offset_top = 62.0
+offset_right = -263.0
+offset_bottom = -364.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tug4p")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 317.0
+offset_bottom = 235.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 232.0
+texture = ExtResource("1_j0anm")
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 93.0
+offset_right = 190.0
+offset_bottom = 136.0
+columns = 3
+
+[node name="Shop_UI_Slot1" parent="NinePatchRect/GridContainer" instance=ExtResource("2_h5hr6")]
+layout_mode = 2
+slot_sprite = ExtResource("3_c2bhb")
+item = ExtResource("4_6dvin")
+price = 2
+
+[node name="Shop_UI_Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_h5hr6")]
+layout_mode = 2
+slot_sprite = ExtResource("3_c2bhb")
+item = ExtResource("5_c4ga4")
+price = 4
+
+[node name="Shop_UI_Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_h5hr6")]
+layout_mode = 2
+slot_sprite = ExtResource("3_c2bhb")
+item = ExtResource("6_vtdh5")
+price = 5
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

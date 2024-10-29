@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://5exerwvsy41d"]
+[gd_scene load_steps=17 format=3 uid="uid://5exerwvsy41d"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_8jmtg"]
 [ext_resource type="Script" path="res://Scenes/miller.gd" id="2_gkufe"]
 [ext_resource type="Texture2D" uid="uid://cvve3iaapqk5w" path="res://Sprites/Miller.png" id="2_lv85u"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_yeb36"]
+[ext_resource type="PackedScene" uid="uid://lo3gbgkcknvx" path="res://inventory/millers_shop_ui.tscn" id="5_pc6q5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la1yi"]
 size = Vector2(20, 39)
@@ -74,6 +75,9 @@ radius = 23.0217
 [sub_resource type="CircleShape2D" id="CircleShape2D_fqvsg"]
 radius = 23.0217
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yu8sm"]
+radius = 23.0
+
 [node name="Miller" instance=ExtResource("1_8jmtg")]
 collision_layer = 4
 collision_mask = 21
@@ -99,4 +103,16 @@ action_name = "pick up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
 shape = SubResource("CircleShape2D_fqvsg")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+
+[node name="MillersShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_pc6q5")]
+
+[node name="PlayerLeft" type="Area2D" parent="." index="6"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft" index="0"]
+shape = SubResource("CircleShape2D_yu8sm")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]
