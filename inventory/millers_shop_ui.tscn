@@ -21,12 +21,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tug4p")
 
-[node name="Button" type="Button" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_right = 317.0
-offset_bottom = 235.0
-
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
 offset_right = 280.0
@@ -40,6 +34,23 @@ offset_top = 93.0
 offset_right = 190.0
 offset_bottom = 136.0
 columns = 3
+
+[node name="Control" type="Control" parent="NinePatchRect/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="NinePatchRect/GridContainer/Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -85.0
+offset_top = -93.0
+offset_right = 232.0
+offset_bottom = 142.0
+
+[node name="Control2" type="Control" parent="NinePatchRect/GridContainer"]
+layout_mode = 2
+
+[node name="Control3" type="Control" parent="NinePatchRect/GridContainer"]
+layout_mode = 2
 
 [node name="Shop_UI_Slot1" parent="NinePatchRect/GridContainer" instance=ExtResource("2_h5hr6")]
 layout_mode = 2
@@ -59,4 +70,4 @@ slot_sprite = ExtResource("3_c2bhb")
 item = ExtResource("6_vtdh5")
 price = 5
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]

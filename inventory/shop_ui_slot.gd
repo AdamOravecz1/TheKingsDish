@@ -8,6 +8,7 @@ extends Panel
 @onready var drag_label: Label = $CanvasLayer/Label
 @onready var main = get_tree().current_scene
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var inv_ui = get_parent().get_parent().get_parent()
 
 var dragged_item: InvItem
 var dragging: bool = false  # To check if an item is being dragged
@@ -43,11 +44,14 @@ func stop_dragging():
 	drag_label.visible = false
 
 func _on_button_pressed():
+	main.get_dragging(false)
+	main.buying = false
+	inv_ui.remove_item()
 	if main.dragging:
 		main.dragging = false
 		main.buying = false
 	if not main.dragging and player.coin >= price:
-		main.shop_slot = get_index()
+		main.shop_slot = get_index() - inv_ui.controls
 		start_dragging(item.texture)
 		main.current_item = item
 		main.dragging = true
