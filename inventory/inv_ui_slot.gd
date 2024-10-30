@@ -46,7 +46,7 @@ func _on_button_pressed():
 			shop_ui[main.shop_slot].buy()
 		main.buying = false
 	if slot_out.item:
-		if get_index() == main.current_slot and main.inv_type == inv_ui:
+		if get_index() - inv_ui.controls == main.current_slot and main.inv_type == inv_ui:
 			drag_across = true
 		inv_ui.send_inv()
 		main.get_dragging(true)
@@ -62,12 +62,13 @@ func _on_button_pressed():
 			if main.inv_type == inv_ui:
 				change_item()
 			else:
-				inv_ui.inv.insert_to_place(main.current_item, get_index())
+				inv_ui.inv.insert_to_place(main.current_item, get_index() - inv_ui.controls)
 				main.inv_type.inv.remove_from_place(main.current_slot)
 				inv_ui.remove_item()
 		main.get_dragging(false)
 		inv_ui.send_inv()
 	drag_across = false
+	print(inv_ui.controls, "itt")
 
 # Start dragging the item (make the texture follow the mouse)
 func start_dragging(item_texture: Texture2D):
@@ -91,10 +92,10 @@ func stop_dragging():
 	item_visual.visible = true
 
 func send_item():
-	inv_ui.get_item(dragged_item, get_index())
+	inv_ui.get_item(dragged_item, get_index() - inv_ui.controls)
 
 func change_item():
-	inv_ui.change_item(get_index())
+	inv_ui.change_item(get_index() - inv_ui.controls)
 	inv_ui.remove_item()
 
 

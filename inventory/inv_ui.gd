@@ -1,14 +1,22 @@
 extends Control
 
 @onready var inv: Inv
-@onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 @onready var main = get_tree().current_scene
+
+var slots: Array
+var controls := 0.0
+var inv_ui_slot_scene = preload("res://inventory/inv_ui_slot.tscn")
 
 var is_open := false
 
 func _ready():
+	for i in $NinePatchRect/GridContainer.get_children():
+		if "Inv_UI_Slot" in i.name:
+			slots.append(i)
+		else:
+			controls += 0.5
 	if inv:
-		print(self)
+		print(slots)
 		inv.update.connect(update_slots)
 		update_slots()
 	
@@ -42,7 +50,6 @@ func remove_item():
 		#remove_item()
 	
 func _on_button_pressed():
-	pass
 	main.get_dragging(false)
 	main.buying = false
 	remove_item()
@@ -52,7 +59,7 @@ func send_inv():
 
 func _on_cook_pressed():
 	var cauldron_content: Array = []  # Initialize the array properly
-	for i in range($NinePatchRect/GridContainer.get_children().size()):
+	for i in range(4):
 		if inv.slots[i].item:
 			cauldron_content.append(inv.slots[i].item.name)
 
