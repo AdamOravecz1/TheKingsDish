@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="3_c2bhb"]
 [ext_resource type="Resource" uid="uid://b7k1d4upmupa4" path="res://inventory/Items/flour.tres" id="4_6dvin"]
 [ext_resource type="Resource" uid="uid://b6db8uf3ug8kq" path="res://inventory/Items/pasta.tres" id="5_c4ga4"]
-[ext_resource type="Resource" uid="uid://brhwj8gopn3ab" path="res://inventory/Items/bread.tres" id="6_vtdh5"]
+[ext_resource type="Resource" uid="uid://d2oygi20soi0c" path="res://inventory/Items/bread.tres" id="6_vtdh5"]
 
 [node name="MillersShop_UI" type="Control"]
 layout_mode = 3

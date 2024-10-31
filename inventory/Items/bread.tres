@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://brhwj8gopn3ab"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://d2oygi20soi0c"]
 
 [ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_spy8s"]
-[ext_resource type="Texture2D" uid="uid://cp8h0bkga7rhy" path="res://Sprites/BreadIcon.png" id="2_sxevd"]
+[ext_resource type="Texture2D" uid="uid://cy35x2rtqbwix" path="res://Sprites/BreadIcon2.png" id="2_ued6a"]
 
 [resource]
 script = ExtResource("1_spy8s")
 name = "Bread"
-texture = ExtResource("2_sxevd")
+texture = ExtResource("2_ued6a")

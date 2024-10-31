@@ -68,7 +68,6 @@ func _on_button_pressed():
 		main.get_dragging(false)
 		inv_ui.send_inv()
 	drag_across = false
-	print(inv_ui.controls, "itt")
 
 # Start dragging the item (make the texture follow the mouse)
 func start_dragging(item_texture: Texture2D):
