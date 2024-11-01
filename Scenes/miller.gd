@@ -13,6 +13,10 @@ var item = load("res://inventory/Items/miller.tres") as InvItem
 
 var is_open := false
 
+func _process(delta):
+	if Input.is_action_just_pressed("inventory") and is_open:
+		_talk()
+
 func _ready():
 	close()
 	health = Global.animal_parameters["miller"]["health"]
@@ -30,7 +34,7 @@ func _talk():
 		main.close()
 		close()
 	else:
-		playerinv.position.x = 300
+		playerinv.position.x = 450
 		main.open()
 		open()
 

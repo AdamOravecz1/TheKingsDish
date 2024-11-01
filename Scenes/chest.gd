@@ -33,19 +33,16 @@ func _opened():
 		main.close()
 		close()
 	else:
-		playerinv.position.x = 300
+		playerinv.position.x = 450
 		main.open()
 		open()
 	$Sprite2D.frame = is_open
-
-
 
 func _on_body_exited(body):
 	close()
 	$Sprite2D.frame = is_open
 	main.close()
 	
-
 func _on_tree_exited():
 	if inv != null:
 		# Save the Inv instance to the global dictionary

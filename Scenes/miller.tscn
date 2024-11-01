@@ -106,6 +106,10 @@ shape = SubResource("CircleShape2D_fqvsg")
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
 [node name="MillersShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_pc6q5")]
+offset_left = 809.0
+offset_top = 146.0
+offset_right = -61.0
+offset_bottom = -280.0
 
 [node name="PlayerLeft" type="Area2D" parent="." index="6"]
 collision_layer = 0

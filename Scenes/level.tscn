@@ -533,15 +533,11 @@ script = ExtResource("1_1boid")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_nes4q")]
-visible = false
-
 [node name="PlayerInv" parent="CanvasLayer" instance=ExtResource("3_44yk1")]
-visible = false
-offset_left = 14.0
-offset_top = -209.0
-offset_right = 14.0
-offset_bottom = -209.0
+offset_left = 606.0
+offset_top = 204.0
+offset_right = -274.0
+offset_bottom = -306.0
 
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
 offset_left = 10.0
@@ -564,6 +560,12 @@ offset_bottom = 73.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("4_pqmal")
 text = "000"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
+layer = 100
+
+[node name="PauseMenu" parent="CanvasLayer/CanvasLayer" instance=ExtResource("2_nes4q")]
+visible = false
 
 [node name="BG" type="Node2D" parent="."]
 

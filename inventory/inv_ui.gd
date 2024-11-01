@@ -42,12 +42,6 @@ func remove_item():
 	main.current_item = null
 	main.current_slot = 100
 	
-#func _input(event):
-	#if main.dragging and event is InputEventMouseButton and not event.pressed:
-		#main.get_dragging(false)
-		#main.buying = false
-		#remove_item()
-	
 func _on_button_pressed():
 	main.get_dragging(false)
 	main.buying = false

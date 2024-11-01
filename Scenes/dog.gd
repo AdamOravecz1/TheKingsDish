@@ -37,7 +37,7 @@ func _opened():
 		main.close()
 		close()
 	else:
-		playerinv.position.x = 300
+		playerinv.position.x = 450
 		main.open()
 		open()
 		

@@ -2,7 +2,7 @@ extends Node2D
 
 const bolt_scene := preload("res://Scenes/bolt.tscn")
 @onready var playerinv = $CanvasLayer/PlayerInv
-@onready var pause_menu = $CanvasLayer/PauseMenu
+@onready var pause_menu = $CanvasLayer/CanvasLayer/PauseMenu
 @onready var inv_type = $CanvasLayer/PlayerInv
 var paused = false
 var current_item: InvItem
@@ -18,8 +18,6 @@ func _ready():
 	
 	var scene_name = get_tree().current_scene.name
 	var entity_names: Array
-	print(scene_name)
-	print(Global.animal_data)
 	for i in $Main/Entities.get_child_count():
 		entity_names.append($Main/Entities.get_child(i))
 	for i in $Main/Entities.get_child_count():
@@ -56,7 +54,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
 	if Input.is_action_just_pressed("inventory"):
-		playerinv.position.x = 444.5
+		playerinv.position.x = 625
 		if is_open:
 			close()
 		else:
@@ -76,10 +74,11 @@ func pauseMenu():
 	if paused:
 		pause_menu.hide()
 		Engine.time_scale = 1
+		player.can_move = true
 	else:
 		pause_menu.show()
 		Engine.time_scale = 0
-		
+		player.can_move = false
 	paused = !paused
 	
 func get_inv(i):

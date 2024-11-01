@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cpojoq47dln4s"
-path="res://.godot/imported/PixelOperator.ttf-96db80298d65bbb9798b25992775783a.fontdata"
+uid="uid://bxlw5f7s0xfqy"
+path="res://.godot/imported/alagard.ttf-c1b576e01565606c2037056a85f30e1b.fontdata"
 
 [deps]
 
-source_file="res://Fonts/PixelOperator.ttf"
-dest_files=["res://.godot/imported/PixelOperator.ttf-96db80298d65bbb9798b25992775783a.fontdata"]
+source_file="res://Fonts/alagard.ttf"
+dest_files=["res://.godot/imported/alagard.ttf-c1b576e01565606c2037056a85f30e1b.fontdata"]
 
 [params]
 
@@ -20,20 +20,14 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
-hinting=2
+hinting=1
 subpixel_positioning=1
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0),
-"variation_embolden": 0.0
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}
