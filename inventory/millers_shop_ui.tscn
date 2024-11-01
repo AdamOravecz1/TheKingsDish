@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://lo3gbgkcknvx"]
+[gd_scene load_steps=11 format=3 uid="uid://lo3gbgkcknvx"]
 
 [ext_resource type="Texture2D" uid="uid://bfo3u8onb4n5r" path="res://Sprites/MillersShopUI.png" id="1_j0anm"]
 [ext_resource type="Script" path="res://inventory/millers_shop_ui.gd" id="1_tug4p"]
@@ -7,6 +7,12 @@
 [ext_resource type="Resource" uid="uid://b7k1d4upmupa4" path="res://inventory/Items/flour.tres" id="4_6dvin"]
 [ext_resource type="Resource" uid="uid://b6db8uf3ug8kq" path="res://inventory/Items/pasta.tres" id="5_c4ga4"]
 [ext_resource type="Resource" uid="uid://d2oygi20soi0c" path="res://inventory/Items/bread.tres" id="6_vtdh5"]
+[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="8_mm8vm"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="9_bf15i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ghm3q"]
+shader = ExtResource("8_mm8vm")
+shader_parameter/alpha = 1.0
 
 [node name="MillersShop_UI" type="Control"]
 layout_mode = 3
@@ -69,5 +75,17 @@ layout_mode = 2
 slot_sprite = ExtResource("3_c2bhb")
 item = ExtResource("6_vtdh5")
 price = 5
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(1, 0.0117647, 0, 1)
+material = SubResource("ShaderMaterial_ghm3q")
+layout_mode = 0
+offset_left = 71.0
+offset_top = 81.0
+offset_right = 239.0
+offset_bottom = 104.0
+theme_override_fonts/font = ExtResource("9_bf15i")
+theme_override_font_sizes/font_size = 8
+text = "Not enough coins"
 
 [connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]

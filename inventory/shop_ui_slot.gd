@@ -56,6 +56,8 @@ func _on_button_pressed():
 		main.current_item = item
 		main.dragging = true
 		main.buying = true
+	else:
+		inv_ui.flash_text()
 		
 func buy():
 	player.pay(price)

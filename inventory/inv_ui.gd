@@ -16,7 +16,6 @@ func _ready():
 		else:
 			controls += 0.5
 	if inv:
-		print(slots)
 		inv.update.connect(update_slots)
 		update_slots()
 	
