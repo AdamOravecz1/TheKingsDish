@@ -13,6 +13,8 @@ func update_legs(direction, on_floor):
 	var state := "idle"
 	if on_floor and direction.x:
 		state = "run"
+	if not on_floor:
+		state = "jump"
 	$Legs.animation = state
 	
 func update_torso(direction, current_weapon, ducking):

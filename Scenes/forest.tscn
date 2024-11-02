@@ -23,6 +23,15 @@ size = Vector2(956, 20)
 [node name="Forest" instance=ExtResource("1_g5d53")]
 metadata/_edit_horizontal_guides_ = [-206.0]
 
+[node name="PlayerInv" parent="CanvasLayer" index="0"]
+visible = false
+
+[node name="PlayerHealthBar" parent="CanvasLayer" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinAmount" parent="CanvasLayer" index="3"]
+metadata/_edit_use_anchors_ = true
+
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="BG/ParallaxBackground" index="0"]
 
 [node name="Sprite2D" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer6" index="0"]
@@ -142,7 +151,7 @@ position = Vector2(-144, -16)
 position = Vector2(159, -115)
 
 [node name="Vega2" parent="Main/Vega" index="1" instance=ExtResource("4_i2tbe")]
-position = Vector2(-108, -16)
+position = Vector2(169, -16)
 type = 1
 
 [node name="Vega3" parent="Main/Vega" index="2" instance=ExtResource("4_i2tbe")]
