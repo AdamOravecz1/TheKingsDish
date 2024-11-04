@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ccwk7w66e4lvx"]
+[gd_scene load_steps=22 format=3 uid="uid://ccwk7w66e4lvx"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_g5d53"]
 [ext_resource type="PackedScene" uid="uid://dkx5yg0jopxs1" path="res://Scenes/rabbit_hole.tscn" id="2_0i8ep"]
@@ -16,9 +16,18 @@
 [ext_resource type="PackedScene" uid="uid://ctq5ggr4k6mtl" path="res://Scenes/boar.tscn" id="11_m5di3"]
 [ext_resource type="PackedScene" uid="uid://crtixvoj76ldd" path="res://Scenes/sail.tscn" id="13_bt8r2"]
 [ext_resource type="PackedScene" uid="uid://5exerwvsy41d" path="res://Scenes/miller.tscn" id="14_vk6b8"]
+[ext_resource type="PackedScene" uid="uid://cltiy4x2vlf6m" path="res://Scenes/curtain.tscn" id="17_gjd7y"]
+[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="18_n3gay"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuw42"]
 size = Vector2(956, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3nu3"]
+shader = ExtResource("18_n3gay")
+shader_parameter/alpha = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4naqm"]
+size = Vector2(160, 96)
 
 [node name="Forest" instance=ExtResource("1_g5d53")]
 metadata/_edit_horizontal_guides_ = [-206.0]
@@ -183,6 +192,7 @@ layer_0/tile_data = PackedInt32Array(-65535, 196608, 7, -65534, 262144, 7, -6553
 [node name="DirectionalLight2D" parent="." index="4"]
 color = Color(0, 0, 0, 1)
 blend_mode = 1
+shadow_enabled = true
 
 [node name="Gate" parent="TransitionGates" index="0" instance=ExtResource("3_i7lx2")]
 position = Vector2(-319, -46)
@@ -194,3 +204,16 @@ position = Vector2(210, 7)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Catchers/Catcher" index="0"]
 position = Vector2(428, 113)
 shape = SubResource("RectangleShape2D_tuw42")
+
+[node name="Curtain" parent="Curtains" index="0" instance=ExtResource("17_gjd7y")]
+position = Vector2(320, -64)
+
+[node name="ColorRect" type="ColorRect" parent="Curtains/Curtain" index="0"]
+material = SubResource("ShaderMaterial_o3nu3")
+offset_right = 160.0
+offset_bottom = 96.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Curtains/Curtain" index="1"]
+position = Vector2(80, 48)
+shape = SubResource("RectangleShape2D_4naqm")

@@ -840,3 +840,5 @@ format = 2
 [node name="TransitionGates" type="Node2D" parent="."]
 
 [node name="Catchers" type="Node2D" parent="."]
+
+[node name="Curtains" type="Node2D" parent="."]
