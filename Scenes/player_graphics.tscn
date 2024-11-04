@@ -366,6 +366,7 @@ visible = false
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_dccy4")
 animation = &"hit"
+frame = 5
 frame_progress = 1.0
 
 [node name="AxeHit" type="AnimatedSprite2D" parent="."]
