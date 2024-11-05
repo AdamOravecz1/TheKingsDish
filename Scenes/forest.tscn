@@ -198,6 +198,10 @@ shadow_enabled = true
 position = Vector2(-319, -46)
 level = "castle"
 
+[node name="Gate2" parent="TransitionGates" index="1" instance=ExtResource("3_i7lx2")]
+position = Vector2(449, 12)
+level = "dungeon"
+
 [node name="Catcher" parent="Catchers" index="0" instance=ExtResource("7_kicbo")]
 position = Vector2(210, 7)
 
