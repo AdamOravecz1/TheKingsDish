@@ -23,7 +23,6 @@ slots = Array[ExtResource("6_gts25")]([])
 
 [sub_resource type="Resource" id="Resource_a0p7r"]
 script = ExtResource("6_gts25")
-amount = 0
 
 [sub_resource type="Resource" id="Resource_q65f3"]
 script = ExtResource("3_cdx2i")

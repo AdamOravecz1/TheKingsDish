@@ -21,7 +21,7 @@ func _ready():
 		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
 		var inv_resource_path = Global.chest_inv[chest_name]
 		inv = inv_resource_path
-	else:
+	elif !inv.slots:
 		inv.initialize_inv(12)
 	chestinv.inv = inv
 	chestinv._ready()

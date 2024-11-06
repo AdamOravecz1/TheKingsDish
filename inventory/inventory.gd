@@ -24,7 +24,6 @@ func insert_to_place(item: InvItem, place: int):
 	if place >= 0 and place < slots.size():
 		var slot = slots[place]
 		slot.item = item
-		slot.amount = 1
 		update.emit()
 
 		
@@ -32,7 +31,6 @@ func remove_from_place(place: int):
 	if place >= 0 and place < slots.size():
 		var slot = slots[place]
 		slot.item = null
-		slot.amount = 0  # Optional: Reset the amount to 0
 		update.emit()
 
 
