@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://jbyv8t20osmu"]
+
+[ext_resource type="Script" path="res://inventory/gen_shop.gd" id="1_y4vck"]
+[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="2_182mq"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="3_mj7ax"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yubb6"]
+shader = ExtResource("2_182mq")
+shader_parameter/alpha = 1.0
+
+[node name="GenShop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y4vck")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 280.0
+offset_bottom = 232.0
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 93.0
+offset_right = 190.0
+offset_bottom = 136.0
+columns = 3
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(1, 0.0117647, 0, 1)
+material = SubResource("ShaderMaterial_yubb6")
+offset_left = 86.0
+offset_top = 82.0
+offset_right = 254.0
+offset_bottom = 105.0
+theme_override_fonts/font = ExtResource("3_mj7ax")
+theme_override_font_sizes/font_size = 8
+text = "Not enough coins"

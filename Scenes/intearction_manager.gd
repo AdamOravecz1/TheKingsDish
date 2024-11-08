@@ -20,7 +20,7 @@ func unregister_area(area: InteractionArea):
 func _process(_delta):
 	if active_areas.size() > 0 && can_interact:
 		# Ha kivszem akkor működik. Nem tudom mit keresett ott
-		#active_areas.sort_custom(_sort_by_distance_to_player)
+		active_areas.sort_custom(_sort_by_distance_to_player)
 		label.text = base_text + active_areas[0].action_name
 		label.global_position = active_areas[0].global_position
 		label.global_position.y += 25

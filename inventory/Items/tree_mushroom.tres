@@ -7,4 +7,3 @@
 script = ExtResource("1_vjbcy")
 name = "tree_mushroom"
 texture = ExtResource("2_vpkk6")
-shape = Array[Vector2i]([Vector2i(0, 0)])

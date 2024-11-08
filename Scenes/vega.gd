@@ -13,11 +13,11 @@ var harvested := false
 			type = value
 			$Sprite2D.frame = type * 2
 			
-			
 @onready var interaction_area: InteractionArea = $InteractionArea
 
 func _ready():
-	interaction_area.interact = Callable(self, "_pickup")
+	if not Engine.is_editor_hint():
+		interaction_area.interact = Callable(self, "_pickup")
 	$Sprite2D.frame = type * 2
 	item = load(items[type]) as InvItem
 

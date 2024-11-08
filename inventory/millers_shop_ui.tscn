@@ -1,91 +1,61 @@
-[gd_scene load_steps=11 format=3 uid="uid://lo3gbgkcknvx"]
+[gd_scene load_steps=8 format=3 uid="uid://dsknoen4552s4"]
 
 [ext_resource type="Texture2D" uid="uid://bfo3u8onb4n5r" path="res://Sprites/MillersShopUI.png" id="1_j0anm"]
-[ext_resource type="Script" path="res://inventory/millers_shop_ui.gd" id="1_tug4p"]
+[ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_kklfn"]
 [ext_resource type="PackedScene" uid="uid://bjwaf68ya2yel" path="res://inventory/shop_ui_slot.tscn" id="2_h5hr6"]
 [ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="3_c2bhb"]
 [ext_resource type="Resource" uid="uid://b7k1d4upmupa4" path="res://inventory/Items/flour.tres" id="4_6dvin"]
 [ext_resource type="Resource" uid="uid://b6db8uf3ug8kq" path="res://inventory/Items/pasta.tres" id="5_c4ga4"]
 [ext_resource type="Resource" uid="uid://d2oygi20soi0c" path="res://inventory/Items/bread.tres" id="6_vtdh5"]
-[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="8_mm8vm"]
-[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="9_bf15i"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ghm3q"]
-shader = ExtResource("8_mm8vm")
-shader_parameter/alpha = 1.0
+[node name="MillersShop_UI" instance=ExtResource("1_kklfn")]
+offset_left = 808.0
+offset_top = 133.0
+offset_right = -43.0
+offset_bottom = -271.0
 
-[node name="MillersShop_UI" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 857.0
-offset_top = 147.0
-offset_right = -13.0
-offset_bottom = -279.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_tug4p")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" parent="." index="0"]
 layout_mode = 0
-offset_right = 280.0
-offset_bottom = 232.0
 texture = ExtResource("1_j0anm")
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 93.0
-offset_right = 190.0
-offset_bottom = 136.0
-columns = 3
-
-[node name="Control" type="Control" parent="NinePatchRect/GridContainer"]
+[node name="Control" type="Control" parent="NinePatchRect/GridContainer" index="0"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="NinePatchRect/GridContainer/Control"]
+[node name="Button" type="Button" parent="NinePatchRect/GridContainer/Control" index="0"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = -85.0
-offset_top = -93.0
-offset_right = 232.0
-offset_bottom = 142.0
+offset_left = -84.0
+offset_top = -97.0
+offset_right = 202.0
+offset_bottom = 137.0
 
-[node name="Control2" type="Control" parent="NinePatchRect/GridContainer"]
+[node name="Control2" type="Control" parent="NinePatchRect/GridContainer" index="1"]
 layout_mode = 2
 
-[node name="Control3" type="Control" parent="NinePatchRect/GridContainer"]
+[node name="Control3" type="Control" parent="NinePatchRect/GridContainer" index="2"]
 layout_mode = 2
 
-[node name="Shop_UI_Slot1" parent="NinePatchRect/GridContainer" instance=ExtResource("2_h5hr6")]
+[node name="Shop_UI_Slot" parent="NinePatchRect/GridContainer" index="3" instance=ExtResource("2_h5hr6")]
 layout_mode = 2
 slot_sprite = ExtResource("3_c2bhb")
 item = ExtResource("4_6dvin")
 price = 2
 
-[node name="Shop_UI_Slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_h5hr6")]
+[node name="Shop_UI_Slot2" parent="NinePatchRect/GridContainer" index="4" instance=ExtResource("2_h5hr6")]
 layout_mode = 2
 slot_sprite = ExtResource("3_c2bhb")
 item = ExtResource("5_c4ga4")
 price = 4
 
-[node name="Shop_UI_Slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_h5hr6")]
+[node name="Shop_UI_Slot3" parent="NinePatchRect/GridContainer" index="5" instance=ExtResource("2_h5hr6")]
 layout_mode = 2
 slot_sprite = ExtResource("3_c2bhb")
 item = ExtResource("6_vtdh5")
 price = 5
 
-[node name="Label" type="Label" parent="."]
-self_modulate = Color(1, 0.0117647, 0, 1)
-material = SubResource("ShaderMaterial_ghm3q")
+[node name="Label" parent="." index="1"]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 82.0
-offset_right = 254.0
-offset_bottom = 105.0
-theme_override_fonts/font = ExtResource("9_bf15i")
-theme_override_font_sizes/font_size = 8
-text = "Not enough coins"
-
-[connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]
+offset_left = 87.0
+offset_top = 81.0
+offset_right = 255.0
+offset_bottom = 104.0

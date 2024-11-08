@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/miller.gd" id="2_gkufe"]
 [ext_resource type="Texture2D" uid="uid://cvve3iaapqk5w" path="res://Sprites/Miller.png" id="2_lv85u"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_yeb36"]
-[ext_resource type="PackedScene" uid="uid://lo3gbgkcknvx" path="res://inventory/millers_shop_ui.tscn" id="5_pc6q5"]
+[ext_resource type="PackedScene" uid="uid://dsknoen4552s4" path="res://inventory/millers_shop_ui.tscn" id="5_pc6q5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la1yi"]
 size = Vector2(20, 39)
@@ -106,10 +106,6 @@ shape = SubResource("CircleShape2D_fqvsg")
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
 [node name="MillersShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_pc6q5")]
-offset_left = 809.0
-offset_top = 146.0
-offset_right = -61.0
-offset_bottom = -280.0
 
 [node name="PlayerLeft" type="Area2D" parent="." index="6"]
 collision_layer = 0

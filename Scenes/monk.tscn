@@ -1,0 +1,103 @@
+[gd_scene load_steps=16 format=3 uid="uid://pwiv6a2ykvfy"]
+
+[ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_sheib"]
+[ext_resource type="Texture2D" uid="uid://d2gmeke3ti37b" path="res://Sprites/Monk.png" id="2_or7is"]
+[ext_resource type="Script" path="res://Scenes/monk.gd" id="2_qha56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rt1xw"]
+size = Vector2(20, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi58s"]
+atlas = ExtResource("2_or7is")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewj2x"]
+atlas = ExtResource("2_or7is")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2dwv"]
+atlas = ExtResource("2_or7is")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg83d"]
+atlas = ExtResource("2_or7is")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ntxv"]
+atlas = ExtResource("2_or7is")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wmcv"]
+atlas = ExtResource("2_or7is")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ixpb"]
+atlas = ExtResource("2_or7is")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce6wj"]
+atlas = ExtResource("2_or7is")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjt0q"]
+atlas = ExtResource("2_or7is")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0v27"]
+atlas = ExtResource("2_or7is")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jnsx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oi58s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewj2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2dwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg83d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ntxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wmcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ixpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce6wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjt0q")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0v27")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Monk" instance=ExtResource("1_sheib")]
+collision_layer = 4
+collision_mask = 21
+script = ExtResource("2_qha56")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_rt1xw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_4jnsx")
+autoplay = "default"
