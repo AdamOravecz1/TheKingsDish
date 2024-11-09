@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://pwiv6a2ykvfy"]
+[gd_scene load_steps=20 format=3 uid="uid://pwiv6a2ykvfy"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_sheib"]
 [ext_resource type="Texture2D" uid="uid://d2gmeke3ti37b" path="res://Sprites/Monk.png" id="2_or7is"]
 [ext_resource type="Script" path="res://Scenes/monk.gd" id="2_qha56"]
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_wa6hh"]
+[ext_resource type="PackedScene" uid="uid://cmy7x8ep8iyag" path="res://inventory/monks_shop_ui.tscn" id="5_e36xh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt1xw"]
 size = Vector2(20, 36)
@@ -90,6 +92,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hwv27"]
+radius = 21.0238
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v551h"]
+radius = 21.0
+
 [node name="Monk" instance=ExtResource("1_sheib")]
 collision_layer = 4
 collision_mask = 21
@@ -101,3 +109,23 @@ shape = SubResource("RectangleShape2D_rt1xw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_4jnsx")
 autoplay = "default"
+
+[node name="InteractionAreaShop" parent="." index="3" instance=ExtResource("4_wa6hh")]
+action_name = "talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionAreaShop" index="0"]
+shape = SubResource("CircleShape2D_hwv27")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+
+[node name="MonksShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_e36xh")]
+
+[node name="PlayerLeft" type="Area2D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft" index="0"]
+shape = SubResource("CircleShape2D_v551h")
+
+[connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]
+[connection signal="body_exited" from="PlayerLeft" to="." method="_on_players_left_body_exited"]

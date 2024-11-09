@@ -90,6 +90,7 @@ shape = SubResource("RectangleShape2D_la1yi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_71mke")
 autoplay = "default"
+frame_progress = 0.295219
 
 [node name="InteractionAreaShop" parent="." index="3" instance=ExtResource("4_yeb36")]
 action_name = "talk"

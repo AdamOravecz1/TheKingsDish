@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmy7x8ep8iyag"]
+
+[ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_vgfi4"]
+[ext_resource type="Texture2D" uid="uid://cm74o62yk8bqp" path="res://Sprites/MonkShopUI.png" id="2_bpxfc"]
+[ext_resource type="PackedScene" uid="uid://bjwaf68ya2yel" path="res://inventory/shop_ui_slot.tscn" id="3_7hkq4"]
+[ext_resource type="Texture2D" uid="uid://kkxf87nksj5q" path="res://Sprites/InvSlotBowl.png" id="4_epbkr"]
+[ext_resource type="Resource" uid="uid://cwhph8cqxjgx5" path="res://inventory/Items/poison.tres" id="5_c7gwx"]
+
+[node name="MonksShop_UI" instance=ExtResource("1_vgfi4")]
+offset_left = 796.0
+offset_top = 139.0
+offset_right = -64.0
+offset_bottom = -269.0
+
+[node name="NinePatchRect" parent="." index="0"]
+layout_mode = 0
+texture = ExtResource("2_bpxfc")
+
+[node name="GridContainer" parent="NinePatchRect" index="0"]
+offset_left = 119.0
+offset_top = 94.0
+offset_right = 224.0
+offset_bottom = 138.0
+columns = 1
+
+[node name="Control" type="Control" parent="NinePatchRect/GridContainer" index="0"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="NinePatchRect/GridContainer/Control" index="0"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -120.0
+offset_top = -83.0
+offset_right = 158.0
+offset_bottom = 123.0
+
+[node name="Shop_UI_Slot" parent="NinePatchRect/GridContainer" index="1" instance=ExtResource("3_7hkq4")]
+layout_mode = 2
+slot_sprite = ExtResource("4_epbkr")
+item = ExtResource("5_c7gwx")
+price = 10
+
+[node name="Label" parent="." index="1"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 80.0
+offset_right = 258.0
+offset_bottom = 103.0
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]
