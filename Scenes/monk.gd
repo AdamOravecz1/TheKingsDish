@@ -31,6 +31,7 @@ func _talk():
 
 func trigger_death():
 	if alive:
+		$InteractionAreaShop.monitoring = false
 		$AnimatedSprite2D.play("death")
 		set_collision_layer_value(3, false)
 		
