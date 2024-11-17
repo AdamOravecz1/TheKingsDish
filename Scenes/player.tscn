@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6s62hkkab772"]
+[gd_scene load_steps=20 format=3 uid="uid://6s62hkkab772"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_3nr38"]
 [ext_resource type="PackedScene" uid="uid://cirs61t03la8g" path="res://Scenes/player_graphics.tscn" id="2_ao26x"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://b3g3hfv6rvlbq" path="res://inventory/playerinv.tres" id="3_uqs1c"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_je0pj"]
 [ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="5_t73gr"]
+[ext_resource type="Texture2D" uid="uid://bvqlk5kocb0a3" path="res://Sprites/Bubble.png" id="7_p5sey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don8d"]
 size = Vector2(19, 42)
@@ -13,6 +14,82 @@ size = Vector2(19, 42)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c2q4f"]
 shader = ExtResource("5_t73gr")
 shader_parameter/alpha = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3xpu"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5oei"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7yhk"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unm1v"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to34m"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdvo4"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coai3"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8sxh"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsaud"]
+atlas = ExtResource("7_p5sey")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vlux2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3xpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5oei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i7yhk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unm1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_to34m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdvo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_coai3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8sxh")
+}],
+"loop": false,
+"name": &"burst",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsaud")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" groups=["Player"] instance=ExtResource("1_3nr38")]
 collision_layer = 2
@@ -22,7 +99,6 @@ speed = 200
 acceleration = 700
 friction = 900
 jump_strength = 300
-gun_jump_strength = 180
 gravity = 600
 terminal_velocity = 500
 
@@ -43,6 +119,8 @@ one_shot = true
 [node name="JumpBuffer" type="Timer" parent="Timers" index="1"]
 wait_time = 0.25
 one_shot = true
+
+[node name="DrowningTimer" type="Timer" parent="Timers" index="2"]
 
 [node name="FloorRays" type="Node2D" parent="." index="4"]
 
@@ -70,4 +148,32 @@ theme_override_fonts/font = ExtResource("5_je0pj")
 theme_override_font_sizes/font_size = 8
 text = "No space in inventory"
 
+[node name="Bubbles" type="HBoxContainer" parent="." index="6"]
+offset_left = -38.0
+offset_top = -67.0
+offset_right = 37.0
+offset_bottom = -47.0
+alignment = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bubbles" index="0"]
+position = Vector2(66, 10)
+sprite_frames = SubResource("SpriteFrames_vlux2")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Bubbles" index="1"]
+position = Vector2(52, 10)
+sprite_frames = SubResource("SpriteFrames_vlux2")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Bubbles" index="2"]
+position = Vector2(38, 10)
+sprite_frames = SubResource("SpriteFrames_vlux2")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Bubbles" index="3"]
+position = Vector2(24, 10)
+sprite_frames = SubResource("SpriteFrames_vlux2")
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Bubbles" index="4"]
+position = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_vlux2")
+
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
+[connection signal="timeout" from="Timers/DrowningTimer" to="." method="_on_drowning_timer_timeout"]

@@ -13,14 +13,14 @@ var ducking := false
 
 @export_group('jump')
 @export var jump_strength := 300
-@export var gun_jump_strength := 180
 @export var gravity := 600
 @export var terminal_velocity := 500
 var jump := false
 var faster_fall := false
 var gravity_multiplier := 1
+var in_water := false
+var current_animation_index := 0  # Tracks which animation to play next
 var last_pos := Vector2.ZERO 
-var time_elapsed := 0.0
 
 var knockback_force: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.0
@@ -45,12 +45,16 @@ func _ready():
 		position = Global.player_data[get_tree().current_scene.name][0]
 		velocity = Global.player_data[get_tree().current_scene.name][1]
 	$Label.material.set_shader_parameter("alpha", 0.0)
+	$Bubbles.visible = false
 	if inv == null:
 		inv = load("res://inventory/playerinv.tres") as Inv
 	playerinv.inv = inv
 	playerinv._ready()
 	level.update_health(health)
 	level.update_coin(str(coin))
+	# Connect `animation_finished` signals for all children AnimationPlayer2D nodes
+	for child in $Bubbles.get_children():
+		child.animation_finished.connect(_on_animation_finished)
 	
 
 func _process(delta):
@@ -134,7 +138,7 @@ func apply_movement(delta):
 	if ducking:
 		speed = 50
 		jump = false
-	else:
+	elif not in_water:
 		speed = 200
 	
 	# jump 
@@ -146,6 +150,50 @@ func apply_movement(delta):
 	var on_floor = is_on_floor()
 	if on_floor and not is_on_floor() and velocity.y >= 0:
 		$Timers/Coyote.start()
+		
+func swim():
+	in_water = true
+	speed = 100
+	acceleration = 200
+	terminal_velocity = 100
+	friction = 1500
+	faster_fall = false
+	gravity = 300
+	jump_strength = 200
+	$Bubbles.visible = true
+	bubble_animation()
+	
+func not_swim():
+	$Timers/DrowningTimer.stop()
+	in_water = false
+	speed = 200
+	acceleration = 700
+	terminal_velocity = 500
+	friction = 900
+	faster_fall = true
+	gravity = 600
+	jump_strength = 300
+	$Bubbles.visible = false
+	current_animation_index = 0
+	for child in $Bubbles.get_children():
+		child.play("default")
+	
+func bubble_animation():
+	if current_animation_index < $Bubbles.get_child_count():
+		var animplayer = $Bubbles.get_child(current_animation_index)
+		if animplayer:
+			animplayer.play("burst")
+		else:
+			current_animation_index += 1  # Skip invalid players or animations
+			bubble_animation()  # Try the next animation
+	else:
+		print("All animations have been played.")
+		$Timers/DrowningTimer.start()
+		
+func _on_animation_finished():
+	# Called when an animation finishes
+	current_animation_index += 1
+	bubble_animation()
 		
 func check_pos():
 	if $FloorRays/Right.get_collider() and $FloorRays/Left.get_collider() and is_on_floor():
@@ -203,4 +251,8 @@ func _on_knock_back(source, force):
 func pay(price):
 	coin -= price
 	level.update_coin(str(coin))
+	
 
+func _on_drowning_timer_timeout():
+	health -= 10
+	get_tree().get_first_node_in_group("Level").update_health(health)

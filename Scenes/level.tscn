@@ -990,3 +990,5 @@ format = 2
 [node name="Catchers" type="Node2D" parent="."]
 
 [node name="Curtains" type="Node2D" parent="."]
+
+[node name="Water" type="Node2D" parent="."]
