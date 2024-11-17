@@ -5,6 +5,7 @@ enum weapons {KNIFE, AXE, CROSSBOW}
 const animal_parameters = {
 	"rabbit": {"speed": 110, "health": 20},
 	"boar": {"speed": 50, "health": 100},
+	"fish": {"speed": 0.1, "health": 20},
 	"miller": {"health": 50},
 	"monk": {"health": 20}
 }
