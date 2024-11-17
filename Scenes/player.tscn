@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://6s62hkkab772"]
+[gd_scene load_steps=21 format=3 uid="uid://6s62hkkab772"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_3nr38"]
 [ext_resource type="PackedScene" uid="uid://cirs61t03la8g" path="res://Scenes/player_graphics.tscn" id="2_ao26x"]
@@ -91,6 +91,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wuxko"]
+size = Vector2(20, 6)
+
 [node name="Player" groups=["Player"] instance=ExtResource("1_3nr38")]
 collision_layer = 2
 script = ExtResource("2_f0v6a")
@@ -149,6 +152,7 @@ theme_override_font_sizes/font_size = 8
 text = "No space in inventory"
 
 [node name="Bubbles" type="HBoxContainer" parent="." index="6"]
+z_index = 10
 offset_left = -38.0
 offset_top = -67.0
 offset_right = 37.0
@@ -174,6 +178,14 @@ sprite_frames = SubResource("SpriteFrames_vlux2")
 [node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Bubbles" index="4"]
 position = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_vlux2")
+
+[node name="Nose" type="Area2D" parent="." index="7"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nose" index="0"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_wuxko")
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
 [connection signal="timeout" from="Timers/DrowningTimer" to="." method="_on_drowning_timer_timeout"]

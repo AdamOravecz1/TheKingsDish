@@ -160,8 +160,6 @@ func swim():
 	faster_fall = false
 	gravity = 300
 	jump_strength = 200
-	$Bubbles.visible = true
-	bubble_animation()
 	
 func not_swim():
 	$Timers/DrowningTimer.stop()
@@ -173,12 +171,15 @@ func not_swim():
 	faster_fall = true
 	gravity = 600
 	jump_strength = 300
+	
+func bubble_stop():
 	$Bubbles.visible = false
 	current_animation_index = 0
 	for child in $Bubbles.get_children():
 		child.play("default")
 	
 func bubble_animation():
+	$Bubbles.visible = true
 	if current_animation_index < $Bubbles.get_child_count():
 		var animplayer = $Bubbles.get_child(current_animation_index)
 		if animplayer:
