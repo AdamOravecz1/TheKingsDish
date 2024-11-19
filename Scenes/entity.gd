@@ -12,7 +12,7 @@ var health := 0:
 			trigger_death()
 			
 func trigger_death():
-	print("death")
+	pass
 	
 func hit(damage, pos, force):
 	health -= damage

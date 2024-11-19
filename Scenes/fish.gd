@@ -24,9 +24,9 @@ func _pickup():
 func _process(delta):
 	pos.progress_ratio += delta*speed*speed_modifier
 	if alive:
-		$AnimatedSprite2D.global_position = pos.global_position
-		$CollisionShape2D.global_position = pos.global_position
-		$InteractionArea.global_position = pos.global_position
+		$AnimatedSprite2D.position = pos.position
+		$CollisionShape2D.position = pos.position
+		$InteractionArea.position = pos.position
 
 	if pos.progress_ratio <= 0.5:
 		$AnimatedSprite2D.flip_h = true
@@ -40,7 +40,7 @@ func trigger_death():
 	if alive:
 		speed_modifier = 0
 		$AnimatedSprite2D.play("death")
-		$AnimatedSprite2D.position.y = 5
+		$AnimatedSprite2D.position.y = 3
 		$InteractionArea.monitoring = true
 		alive = false
 		floating = true

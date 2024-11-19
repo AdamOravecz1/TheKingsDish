@@ -296,7 +296,7 @@ position = Vector2(-222, -46)
 type = 2
 
 [node name="Boar" parent="Main/Entities" index="0" instance=ExtResource("11_m5di3")]
-position = Vector2(470, -146)
+position = Vector2(855, -90)
 
 [node name="Rabbit" parent="Main/Entities" index="1" instance=ExtResource("3_dwt3r")]
 position = Vector2(108, -17)

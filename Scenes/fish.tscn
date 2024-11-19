@@ -88,6 +88,7 @@ curve = SubResource("Curve2D_8s3f2")
 position = Vector2(-6, -4)
 
 [node name="InteractionArea" parent="." index="4" instance=ExtResource("4_vm3ce")]
+action_name = "pick up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
 shape = SubResource("CircleShape2D_dtpq5")

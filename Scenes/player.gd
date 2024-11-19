@@ -152,6 +152,7 @@ func apply_movement(delta):
 		$Timers/Coyote.start()
 		
 func swim():
+	can_move = true
 	in_water = true
 	speed = 100
 	acceleration = 200
@@ -188,7 +189,7 @@ func bubble_animation():
 			current_animation_index += 1  # Skip invalid players or animations
 			bubble_animation()  # Try the next animation
 	else:
-		print("All animations have been played.")
+		
 		$Timers/DrowningTimer.start()
 		
 func _on_animation_finished():
