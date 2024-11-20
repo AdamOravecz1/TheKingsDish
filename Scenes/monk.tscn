@@ -127,5 +127,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft" index="0"]
 shape = SubResource("CircleShape2D_v551h")
 
-[connection signal="body_exited" from="PlayerLeft" to="." method="_on_players_left_body_exited"]
 [connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]
+[connection signal="body_exited" from="PlayerLeft" to="." method="_on_players_left_body_exited"]

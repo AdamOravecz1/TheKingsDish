@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Global/global.gd"
-IntearctionManager="*res://Scenes/intearction_manager.tscn"
+InteractionManager="*res://Scenes/interaction_manager.tscn"
 TransitionLayer="*res://Scenes/transition_layer.tscn"
 
 [display]

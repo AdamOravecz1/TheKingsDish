@@ -15,7 +15,7 @@ var is_open = false
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
-	
+	InteractionManager.set_player()
 	var scene_name = get_tree().current_scene.name
 	var entity_names: Array
 	for i in $Main/Entities.get_child_count():
