@@ -1,0 +1,143 @@
+[gd_scene load_steps=18 format=3 uid="uid://rfrpoyevsod4"]
+
+[ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_l6gpp"]
+[ext_resource type="Texture2D" uid="uid://d2fal4l0b2yfh" path="res://Sprites/DuckMale2.png" id="2_tfmkd"]
+[ext_resource type="Texture2D" uid="uid://dojeve322ld2f" path="res://Sprites/DuckFemale2.png" id="3_n03nj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4oai"]
+atlas = ExtResource("2_tfmkd")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o5nh"]
+atlas = ExtResource("2_tfmkd")
+region = Rect2(0, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iebc2"]
+atlas = ExtResource("2_tfmkd")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p0x4"]
+atlas = ExtResource("2_tfmkd")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeqjt"]
+atlas = ExtResource("2_tfmkd")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nocsd"]
+atlas = ExtResource("2_tfmkd")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ldlm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4oai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o5nh")
+}],
+"loop": true,
+"name": &"flight",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iebc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p0x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeqjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nocsd")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxbfh"]
+atlas = ExtResource("3_n03nj")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wubnf"]
+atlas = ExtResource("3_n03nj")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_godjf"]
+atlas = ExtResource("3_n03nj")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raw82"]
+atlas = ExtResource("3_n03nj")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n631r"]
+atlas = ExtResource("3_n03nj")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3xd3"]
+atlas = ExtResource("3_n03nj")
+region = Rect2(0, 64, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yodj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxbfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wubnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_godjf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raw82")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n631r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3xd3")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 3.0
+}]
+
+[node name="Duck" instance=ExtResource("1_l6gpp")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_2ldlm")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.53449
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(50, -1)
+sprite_frames = SubResource("SpriteFrames_2ldlm")
+animation = &"flight"
+autoplay = "walk"
+frame_progress = 0.937314
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="." index="4"]
+position = Vector2(53, 38)
+sprite_frames = SubResource("SpriteFrames_yodj3")
+animation = &"new_animation"
+autoplay = "default"
+frame_progress = 0.379749
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="." index="5"]
+position = Vector2(-1, 38)
+sprite_frames = SubResource("SpriteFrames_yodj3")
+autoplay = "default"
+frame_progress = 0.656808

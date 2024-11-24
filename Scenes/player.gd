@@ -163,7 +163,6 @@ func swim():
 	jump_strength = 200
 	
 func not_swim():
-	$Timers/DrowningTimer.stop()
 	in_water = false
 	speed = 200
 	acceleration = 700
@@ -174,6 +173,7 @@ func not_swim():
 	jump_strength = 300
 	
 func bubble_stop():
+	$Timers/DrowningTimer.stop()
 	$Bubbles.visible = false
 	current_animation_index = 0
 	for child in $Bubbles.get_children():
