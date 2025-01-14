@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ccwk7w66e4lvx"]
+[gd_scene load_steps=29 format=3 uid="uid://ccwk7w66e4lvx"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_g5d53"]
 [ext_resource type="PackedScene" uid="uid://dkx5yg0jopxs1" path="res://Scenes/rabbit_hole.tscn" id="2_0i8ep"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://ctq5ggr4k6mtl" path="res://Scenes/boar.tscn" id="11_m5di3"]
 [ext_resource type="PackedScene" uid="uid://bat86q3fbxx8g" path="res://Scenes/fish.tscn" id="13_asdxj"]
 [ext_resource type="PackedScene" uid="uid://crtixvoj76ldd" path="res://Scenes/sail.tscn" id="13_bt8r2"]
+[ext_resource type="PackedScene" uid="uid://rfrpoyevsod4" path="res://Scenes/duck.tscn" id="14_ntito"]
 [ext_resource type="PackedScene" uid="uid://5exerwvsy41d" path="res://Scenes/miller.tscn" id="14_vk6b8"]
 [ext_resource type="PackedScene" uid="uid://cltiy4x2vlf6m" path="res://Scenes/curtain.tscn" id="17_gjd7y"]
 [ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="18_n3gay"]
@@ -296,22 +297,29 @@ position = Vector2(-222, -46)
 type = 2
 
 [node name="Boar" parent="Main/Entities" index="0" instance=ExtResource("11_m5di3")]
-position = Vector2(855, -90)
+position = Vector2(863, -92)
 
 [node name="Rabbit" parent="Main/Entities" index="1" instance=ExtResource("3_dwt3r")]
-position = Vector2(108, -17)
+position = Vector2(383, -149)
 
 [node name="Miller" parent="Main/Entities" index="2" instance=ExtResource("14_vk6b8")]
 position = Vector2(685, -148)
 
 [node name="Fish" parent="Main/Entities" index="3" instance=ExtResource("13_asdxj")]
-position = Vector2(1397, -26)
+position = Vector2(1389, -34)
 
 [node name="Fish2" parent="Main/Entities" index="4" instance=ExtResource("13_asdxj")]
 position = Vector2(1475, 26)
 
 [node name="Fish3" parent="Main/Entities" index="5" instance=ExtResource("13_asdxj")]
 position = Vector2(1307, 1)
+
+[node name="Duck" parent="Main/Entities" index="6" instance=ExtResource("14_ntito")]
+position = Vector2(-61, -20)
+
+[node name="Duck2" parent="Main/Entities" index="7" instance=ExtResource("14_ntito")]
+position = Vector2(5, -22)
+type = 1
 
 [node name="Player" parent="Main/Players" index="0" instance=ExtResource("2_5uack")]
 position = Vector2(-257, -90)
