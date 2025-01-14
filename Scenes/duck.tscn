@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://rfrpoyevsod4"]
+[gd_scene load_steps=30 format=3 uid="uid://rfrpoyevsod4"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_l6gpp"]
 [ext_resource type="Script" path="res://Scenes/duck.gd" id="2_k6775"]
@@ -28,6 +28,10 @@ region = Rect2(96, 24, 48, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_8hike"]
 atlas = ExtResource("3_y12w3")
 region = Rect2(0, 48, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axdny"]
+atlas = ExtResource("3_y12w3")
+region = Rect2(48, 24, 48, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxdha"]
 atlas = ExtResource("3_y12w3")
@@ -74,6 +78,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_axdny")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vxdha")
 }, {
 "duration": 1.0,
@@ -109,6 +121,10 @@ region = Rect2(48, 24, 48, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_s560c"]
 atlas = ExtResource("2_wdeip")
 region = Rect2(96, 24, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdauh"]
+atlas = ExtResource("2_wdeip")
+region = Rect2(0, 72, 48, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ck4oe"]
 atlas = ExtResource("2_wdeip")
@@ -155,6 +171,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wdauh")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ck4oe")
 }, {
 "duration": 1.0,
@@ -192,14 +216,14 @@ wait_time = 2.0
 [node name="DuckMale" type="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_2ldlm")
-animation = &"flight"
+animation = &"swim"
 autoplay = "walk"
 
-[node name="DucFemale" type="AnimatedSprite2D" parent="." index="3"]
+[node name="DuckFemale" type="AnimatedSprite2D" parent="." index="3"]
 visible = false
 position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_wi4b1")
-animation = &"flight"
+animation = &"swim"
 autoplay = "walk"
 
 [node name="InteractionArea" parent="." index="4" instance=ExtResource("5_2k3kj")]
@@ -218,6 +242,7 @@ target_position = Vector2(20, 20)
 target_position = Vector2(-20, 20)
 
 [node name="WallRays" type="Node2D" parent="." index="6"]
+position = Vector2(0, 11)
 
 [node name="Right" type="RayCast2D" parent="WallRays" index="0"]
 target_position = Vector2(15, 0)

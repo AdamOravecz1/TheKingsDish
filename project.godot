@@ -89,6 +89,7 @@ duck={
 2d_physics/layer_3="Aniamals"
 2d_physics/layer_4="Transition"
 2d_physics/layer_5="Projectiles"
+2d_physics/layer_6="Carcas"
 
 [rendering]
 

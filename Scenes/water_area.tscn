@@ -4,7 +4,7 @@
 
 [node name="WaterArea" type="Area2D"]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 38
 script = ExtResource("1_b0q2x")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
