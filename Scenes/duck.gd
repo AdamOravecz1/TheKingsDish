@@ -1,6 +1,6 @@
 extends Entity
 
-var item = load("res://inventory/Items/rabbit.tres") as InvItem
+var item = load("res://inventory/Items/duck.tres") as InvItem
 
 var x_direction := 1
 var speed = Global.animal_parameters["duck"]["speed"]

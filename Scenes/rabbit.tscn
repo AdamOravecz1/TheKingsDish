@@ -73,7 +73,7 @@ shape = SubResource("RectangleShape2D_eev5y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_jgetm")
-animation = &"run"
+animation = &"death"
 autoplay = "run"
 
 [node name="FloorRays" type="Node2D" parent="." index="3"]
