@@ -169,7 +169,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_f20tl")
 }],
 "loop": true,
-"name": &"fight",
+"name": &"flight",
 "speed": 4.0
 }, {
 "frames": [{
@@ -249,7 +249,7 @@ autoplay = "walk"
 visible = false
 position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_b3q0i")
-animation = &"walk"
+animation = &"flight"
 autoplay = "walk"
 
 [connection signal="timeout" from="Timers/Flight" to="." method="_on_flight_timeout"]

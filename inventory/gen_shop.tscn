@@ -18,8 +18,14 @@ grow_vertical = 2
 script = ExtResource("1_y4vck")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
 offset_right = 280.0
 offset_bottom = 232.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
 layout_mode = 0
@@ -32,6 +38,7 @@ columns = 3
 [node name="Label" type="Label" parent="."]
 self_modulate = Color(1, 0.0117647, 0, 1)
 material = SubResource("ShaderMaterial_yubb6")
+layout_mode = 0
 offset_left = 86.0
 offset_top = 82.0
 offset_right = 254.0

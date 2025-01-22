@@ -1,3 +1,4 @@
+class_name gen_shop
 extends Control
 
 @onready var main = get_tree().current_scene
@@ -22,3 +23,5 @@ func flash_text():
 	var tween = create_tween()
 	tween.tween_property($Label, "material:shader_parameter/alpha", 1.0, 0.0)
 	tween.tween_property($Label, "material:shader_parameter/alpha", 0.0, 1.0)
+
+
