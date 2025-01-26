@@ -8,7 +8,15 @@ const animal_parameters = {
 	"fish": {"speed": 0.1, "health": 20},
 	"duck": {"speed": 30, "health": 20},
 	"miller": {"health": 50},
+	"black_smith": {"health": 60},
 	"monk": {"health": 20}
+}
+
+var unlocked_weapons = [weapons.KNIFE]
+
+const weapon_price = {
+	"AXE" : 5,
+	"CROSSBOW" : 10 
 }
 
 const weapon_data = {

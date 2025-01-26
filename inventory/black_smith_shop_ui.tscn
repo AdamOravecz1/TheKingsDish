@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0nl3udli1hxh"]
+
+[ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_l2mot"]
+[ext_resource type="Script" path="res://inventory/black_smith_shop_ui.gd" id="2_8ovqv"]
+[ext_resource type="Texture2D" uid="uid://chmaxigx64a5h" path="res://Sprites/BlackSmithShopUI.png" id="2_trvg8"]
+
+[node name="BlackSmithShop_UI" instance=ExtResource("1_l2mot")]
+offset_left = 428.0
+offset_top = 160.0
+offset_right = -321.0
+offset_bottom = -249.0
+script = ExtResource("2_8ovqv")
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = -1.0
+offset_right = 422.0
+offset_bottom = 310.0
+texture = ExtResource("2_trvg8")
+
+[node name="GridContainer" parent="NinePatchRect" index="1"]
+offset_left = 126.0
+offset_top = 141.0
+offset_right = 231.0
+offset_bottom = 184.0
+
+[node name="Axe" type="Button" parent="NinePatchRect/GridContainer" index="0"]
+layout_mode = 2
+text = "AXE"
+
+[node name="Crossbow" type="Button" parent="NinePatchRect/GridContainer" index="1"]
+layout_mode = 2
+text = "BOW
+"
+
+[node name="Label" parent="." index="1"]
+offset_left = 120.0
+offset_top = 113.0
+offset_right = 288.0
+offset_bottom = 136.0
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Axe" to="." method="_on_axe_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Crossbow" to="." method="_on_crossbow_pressed"]

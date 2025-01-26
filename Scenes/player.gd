@@ -28,6 +28,7 @@ var knockback_strength: float = 15000.0
 var knocked_back: bool = false
 
 var current_weapon = Global.weapons.KNIFE
+var current_weapon_index = 0
 var aim_direction := Vector2.LEFT
 var reloded := true
 
@@ -105,7 +106,8 @@ func get_input():
 		
 	#switch
 	if Input.is_action_just_pressed("switch"):
-		current_weapon = Global.weapons[Global.weapons.keys()[(current_weapon + 1) % len(Global.weapons)]]
+		current_weapon_index = (current_weapon_index + 1) % Global.unlocked_weapons.size()
+		current_weapon = Global.unlocked_weapons[current_weapon_index]
 
 		
 	#hit

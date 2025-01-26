@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=3 uid="uid://4t4c08uevyg8"]
+
+[ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_77oxg"]
+[ext_resource type="Texture2D" uid="uid://ddqpmsa4vl8je" path="res://Sprites/BlackSmith.png" id="2_d4h64"]
+[ext_resource type="Script" path="res://Scenes/black_smith.gd" id="2_eudv8"]
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_f1qyb"]
+[ext_resource type="PackedScene" uid="uid://c0nl3udli1hxh" path="res://inventory/black_smith_shop_ui.tscn" id="5_j8jd0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpqtu"]
+size = Vector2(20, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xet1u"]
+atlas = ExtResource("2_d4h64")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbivq"]
+atlas = ExtResource("2_d4h64")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47ikc"]
+atlas = ExtResource("2_d4h64")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5ecx"]
+atlas = ExtResource("2_d4h64")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqrdv"]
+atlas = ExtResource("2_d4h64")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaavs"]
+atlas = ExtResource("2_d4h64")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nx1os"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xet1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbivq")
+}],
+"loop": true,
+"name": &"after_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47ikc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5ecx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqrdv")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaavs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbvi0"]
+radius = 23.0217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f1gkg"]
+radius = 23.0217
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b1k0b"]
+radius = 23.0
+
+[node name="BlackSmith" instance=ExtResource("1_77oxg")]
+collision_layer = 4
+collision_mask = 21
+script = ExtResource("2_eudv8")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_hpqtu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_nx1os")
+autoplay = "default"
+
+[node name="InteractionAreaShop" parent="." index="3" instance=ExtResource("4_f1qyb")]
+action_name = "talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionAreaShop" index="0"]
+shape = SubResource("CircleShape2D_mbvi0")
+
+[node name="InteractionArea" parent="." index="4" instance=ExtResource("4_f1qyb")]
+action_name = "pick up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+shape = SubResource("CircleShape2D_f1gkg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+
+[node name="BlackSmithShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_j8jd0")]
+offset_left = 561.0
+offset_top = 150.0
+offset_right = -204.0
+offset_bottom = -259.0
+
+[node name="PlayerLeft" type="Area2D" parent="." index="6"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft" index="0"]
+shape = SubResource("CircleShape2D_b1k0b")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]
