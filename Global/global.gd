@@ -4,7 +4,7 @@ enum weapons {KNIFE, AXE, CROSSBOW}
 
 const animal_parameters = {
 	"rabbit": {"speed": 110, "health": 20},
-	"boar": {"speed": 50, "health": 100},
+	"boar": {"speed": 50, "health": 1000},
 	"fish": {"speed": 0.1, "health": 20},
 	"duck": {"speed": 30, "health": 20},
 	"miller": {"health": 50},
@@ -22,7 +22,7 @@ const weapon_price = {
 
 const weapon_data = {
 	weapons.KNIFE: {'damage': 20, 'knockback': 10000.0},
-	weapons.AXE: {'damage': 60, 'knockback': 15000.0},
+	weapons.AXE: {'damage': 400, 'knockback': 15000.0},
 	weapons.CROSSBOW: {'damage': 30, 'knockback': 1000.0, 'speed': 300, 'texture': preload("res://Sprites/Bolt4.png")}
 }
 var player_data: Dictionary = {

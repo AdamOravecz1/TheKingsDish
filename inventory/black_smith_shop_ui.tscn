@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0nl3udli1hxh"]
+[gd_scene load_steps=10 format=3 uid="uid://c0nl3udli1hxh"]
 
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_l2mot"]
 [ext_resource type="Script" path="res://inventory/black_smith_shop_ui.gd" id="2_8ovqv"]
 [ext_resource type="Texture2D" uid="uid://chmaxigx64a5h" path="res://Sprites/BlackSmithShopUI.png" id="2_trvg8"]
+[ext_resource type="Theme" uid="uid://dsmecbmxtrduq" path="res://anvil_button.tres" id="4_fi1si"]
+[ext_resource type="Texture2D" uid="uid://tvfdk7redmv8" path="res://Sprites/AxeIcon2.png" id="5_wknox"]
+[ext_resource type="Texture2D" uid="uid://c4k7k47exhmjp" path="res://Sprites/CrossbowIcon2.png" id="6_4pjdn"]
+[ext_resource type="Texture2D" uid="uid://cyqm8p541lly2" path="res://Sprites/BoltIcon.png" id="6_38vvg"]
+[ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="8_2xh88"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="8_54wi1"]
 
 [node name="BlackSmithShop_UI" instance=ExtResource("1_l2mot")]
 offset_left = 428.0
@@ -25,34 +31,66 @@ offset_bottom = 184.0
 
 [node name="Axe" type="Button" parent="NinePatchRect/GridContainer" index="0"]
 layout_mode = 2
-text = "AXE"
+theme = ExtResource("4_fi1si")
+icon = ExtResource("5_wknox")
 
 [node name="Crossbow" type="Button" parent="NinePatchRect/GridContainer" index="1"]
 layout_mode = 2
-text = "BOW
+theme = ExtResource("4_fi1si")
+text = "
 "
+icon = ExtResource("6_4pjdn")
+icon_alignment = 1
 
 [node name="Bolt" type="Button" parent="NinePatchRect/GridContainer" index="2"]
 layout_mode = 2
-text = "BOLT"
+theme = ExtResource("4_fi1si")
+icon = ExtResource("6_38vvg")
 
 [node name="AxeLabel" type="Label" parent="NinePatchRect/GridContainer" index="3"]
 layout_mode = 2
-text = "000"
+theme_override_fonts/font = ExtResource("8_54wi1")
+theme_override_font_sizes/font_size = 8
+text = "  000"
 
 [node name="CrossbowLabel" type="Label" parent="NinePatchRect/GridContainer" index="4"]
 layout_mode = 2
-text = "000"
+theme_override_fonts/font = ExtResource("8_54wi1")
+theme_override_font_sizes/font_size = 8
+text = "  000"
 
 [node name="BoltLabel" type="Label" parent="NinePatchRect/GridContainer" index="5"]
 layout_mode = 2
-text = "000"
+theme_override_fonts/font = ExtResource("8_54wi1")
+theme_override_font_sizes/font_size = 8
+text = "  000"
 
 [node name="Label" parent="." index="1"]
-offset_left = 120.0
-offset_top = 113.0
-offset_right = 288.0
-offset_bottom = 136.0
+offset_left = 125.0
+offset_top = 125.0
+offset_right = 293.0
+offset_bottom = 148.0
+
+[node name="OwnedLabel" parent="." index="2"]
+offset_left = 124.0
+offset_top = 125.0
+offset_right = 243.0
+offset_bottom = 148.0
+
+[node name="CoinIcon" type="Sprite2D" parent="." index="3"]
+position = Vector2(131, 186)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_2xh88")
+
+[node name="CoinIcon2" type="Sprite2D" parent="." index="4"]
+position = Vector2(165, 186)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_2xh88")
+
+[node name="CoinIcon3" type="Sprite2D" parent="." index="5"]
+position = Vector2(201, 186)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_2xh88")
 
 [connection signal="pressed" from="NinePatchRect/GridContainer/Axe" to="." method="_on_axe_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Crossbow" to="." method="_on_crossbow_pressed"]

@@ -6,6 +6,7 @@ var controls := 0.0
 
 func _ready():
 	$Label.material.set_shader_parameter("alpha", 0.0)
+	$OwnedLabel.material.set_shader_parameter("alpha", 0.0)
 	for i in $NinePatchRect/GridContainer.get_children():
 		if "Control" in i.name:
 			controls += 1
@@ -23,5 +24,10 @@ func flash_text():
 	var tween = create_tween()
 	tween.tween_property($Label, "material:shader_parameter/alpha", 1.0, 0.0)
 	tween.tween_property($Label, "material:shader_parameter/alpha", 0.0, 1.0)
+	
+func flash_owned():
+	var tween = create_tween()
+	tween.tween_property($OwnedLabel, "material:shader_parameter/alpha", 1.0, 0.0)
+	tween.tween_property($OwnedLabel, "material:shader_parameter/alpha", 0.0, 1.0)
 
 
