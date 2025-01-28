@@ -323,7 +323,7 @@ position = Vector2(535, -180)
 type = 1
 
 [node name="BlackSmith" parent="Main/Entities" index="8" instance=ExtResource("15_jo0xj")]
-position = Vector2(1114, -274)
+position = Vector2(1010, -145)
 
 [node name="Player" parent="Main/Players" index="0" instance=ExtResource("2_5uack")]
 position = Vector2(1174, -311)

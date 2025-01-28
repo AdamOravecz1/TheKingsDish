@@ -32,6 +32,22 @@ layout_mode = 2
 text = "BOW
 "
 
+[node name="Bolt" type="Button" parent="NinePatchRect/GridContainer" index="2"]
+layout_mode = 2
+text = "BOLT"
+
+[node name="AxeLabel" type="Label" parent="NinePatchRect/GridContainer" index="3"]
+layout_mode = 2
+text = "000"
+
+[node name="CrossbowLabel" type="Label" parent="NinePatchRect/GridContainer" index="4"]
+layout_mode = 2
+text = "000"
+
+[node name="BoltLabel" type="Label" parent="NinePatchRect/GridContainer" index="5"]
+layout_mode = 2
+text = "000"
+
 [node name="Label" parent="." index="1"]
 offset_left = 120.0
 offset_top = 113.0
@@ -40,3 +56,4 @@ offset_bottom = 136.0
 
 [connection signal="pressed" from="NinePatchRect/GridContainer/Axe" to="." method="_on_axe_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Crossbow" to="." method="_on_crossbow_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Bolt" to="." method="_on_bolt_pressed"]

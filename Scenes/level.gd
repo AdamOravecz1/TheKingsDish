@@ -95,3 +95,6 @@ func update_health(health):
 	
 func update_coin(coin):
 	$CanvasLayer/CoinAmount.text = coin
+	
+func update_bolt(bolt):
+	$CanvasLayer/BoltAmount.text = bolt
