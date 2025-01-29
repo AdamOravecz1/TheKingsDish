@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccjwjbse7pi5l"]
+
+[ext_resource type="Texture2D" uid="uid://co7oyxg47fhad" path="res://Sprites/BlackSmithTileSet.png" id="1_73dnb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci66g"]
+atlas = ExtResource("1_73dnb")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqbpr"]
+atlas = ExtResource("1_73dnb")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux3wj"]
+atlas = ExtResource("1_73dnb")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j5thd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ci66g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqbpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux3wj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Furnace" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_j5thd")
+autoplay = "default"
+frame_progress = 0.546008
