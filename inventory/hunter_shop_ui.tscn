@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7s1vk77gtw2u"]
+
+[ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_iorqm"]
+[ext_resource type="Texture2D" uid="uid://doi3myltp0tqj" path="res://Sprites/HunterShopUI.png" id="2_xy7cc"]
+
+[node name="HunterShop_UI" instance=ExtResource("1_iorqm")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = 714.0
+offset_top = 175.0
+offset_right = 754.0
+offset_bottom = 215.0
+scale = Vector2(6, 6)
+texture = ExtResource("2_xy7cc")

@@ -1,0 +1,119 @@
+[gd_scene load_steps=17 format=3 uid="uid://dhiiu8buon4ad"]
+
+[ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_h33kr"]
+[ext_resource type="Script" path="res://Scenes/hunter.gd" id="2_4lm6s"]
+[ext_resource type="Texture2D" uid="uid://ccmumca4t41dc" path="res://Sprites/Hunter.png" id="2_4nxku"]
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="3_k381m"]
+[ext_resource type="PackedScene" uid="uid://c7s1vk77gtw2u" path="res://inventory/hunter_shop_ui.tscn" id="4_vtel2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xljol"]
+size = Vector2(20, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aafxv"]
+atlas = ExtResource("2_4nxku")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryh04"]
+atlas = ExtResource("2_4nxku")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixy1q"]
+atlas = ExtResource("2_4nxku")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rrn8"]
+atlas = ExtResource("2_4nxku")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctflv"]
+atlas = ExtResource("2_4nxku")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7i6x"]
+atlas = ExtResource("2_4nxku")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6vr6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aafxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ryh04")
+}],
+"loop": true,
+"name": &"after_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixy1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rrn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctflv")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7i6x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2r3oy"]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sb81t"]
+radius = 23.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3aquy"]
+radius = 23.0
+
+[node name="Hunter" instance=ExtResource("1_h33kr")]
+collision_layer = 4
+collision_mask = 21
+script = ExtResource("2_4lm6s")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_xljol")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_b6vr6")
+animation = &"death"
+autoplay = "default"
+
+[node name="InteractionAreaShop" parent="." index="3" instance=ExtResource("3_k381m")]
+action_name = "talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionAreaShop" index="0"]
+shape = SubResource("CircleShape2D_2r3oy")
+
+[node name="InteractionArea" parent="." index="4" instance=ExtResource("3_k381m")]
+action_name = "pick up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+shape = SubResource("CircleShape2D_sb81t")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+
+[node name="HunterShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("4_vtel2")]
+
+[node name="PlayerLeft" type="Area2D" parent="." index="6"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft" index="0"]
+shape = SubResource("CircleShape2D_3aquy")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]

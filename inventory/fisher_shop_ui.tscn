@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://lppknedoiao4"]
+
+[ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_8lv3c"]
+[ext_resource type="Texture2D" uid="uid://burutfkmbdmk1" path="res://Sprites/FisherShopUI.png" id="2_nxckm"]
+
+[node name="FisherShop_UI" instance=ExtResource("1_8lv3c")]
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_left = 665.0
+offset_top = 169.0
+offset_right = 715.0
+offset_bottom = 209.0
+scale = Vector2(6, 6)
+texture = ExtResource("2_nxckm")

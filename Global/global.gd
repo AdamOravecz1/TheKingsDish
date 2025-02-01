@@ -9,6 +9,8 @@ const animal_parameters = {
 	"duck": {"speed": 30, "health": 20},
 	"miller": {"health": 50},
 	"black_smith": {"health": 60},
+	"hunter": {"health": 50},
+	"fisher": {"health": 50},
 	"monk": {"health": 20}
 }
 
