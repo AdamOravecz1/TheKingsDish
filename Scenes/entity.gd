@@ -2,6 +2,7 @@ class_name Entity
 extends CharacterBody2D
 
 signal shoot(pos, dir, bullet_type)
+signal place_trap(pos, caught)
 signal knock_back(pos, force)
 
 var alive := true

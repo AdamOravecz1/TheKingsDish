@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5v8wbcm7obq"]
+[gd_scene load_steps=25 format=3 uid="uid://c5v8wbcm7obq"]
 
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_1boid"]
 [ext_resource type="Texture2D" uid="uid://6v8gvrdhahkr" path="res://Sprites/ForestTileSet.png" id="1_41cn5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dlca2xoysmbxi" path="res://Sprites/WindMillTileSet2.png" id="5_h50d3"]
 [ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="6_0ytjr"]
 [ext_resource type="Texture2D" uid="uid://cyqm8p541lly2" path="res://Sprites/BoltIcon.png" id="7_kxy6s"]
+[ext_resource type="Texture2D" uid="uid://bri0365pivtbf" path="res://Sprites/TrapIcon.png" id="8_x7dut"]
 [ext_resource type="Texture2D" uid="uid://fn4u8iyu3xmv" path="res://Sprites/LakeTileSet.png" id="9_mubqa"]
 [ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="10_i8y0w"]
 [ext_resource type="Texture2D" uid="uid://d2jvxo5k4qs8r" path="res://Sprites/JailTileSet.png" id="12_hf56y"]
@@ -1048,6 +1049,19 @@ offset_left = 40.0
 offset_top = 89.0
 offset_right = 82.0
 offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
+theme_override_fonts/font = ExtResource("4_pqmal")
+text = "000"
+
+[node name="TrapIcon" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(22, 129)
+texture = ExtResource("8_x7dut")
+
+[node name="TrapAmount" type="Label" parent="CanvasLayer"]
+offset_left = 41.0
+offset_top = 120.0
+offset_right = 83.0
+offset_bottom = 143.0
 theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
 theme_override_fonts/font = ExtResource("4_pqmal")
 text = "000"

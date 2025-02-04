@@ -19,7 +19,8 @@ var unlocked_weapons = [weapons.KNIFE]
 const weapon_price = {
 	"AXE" : 5,
 	"CROSSBOW" : 10 ,
-	"BOLT" : 1
+	"BOLT" : 1,
+	"TRAP" : 1
 }
 
 const weapon_data = {
@@ -30,12 +31,15 @@ const weapon_data = {
 var player_data: Dictionary = {
 	"health": 100,
 	"coin": 10,
-	"bolt": 2
+	"bolt": 2,
+	"trap": 1
 }
 
 var animal_data: Dictionary
 
 var vega_data: Dictionary
+
+var trap_data: Dictionary
 
 var chest_inv: Dictionary
 

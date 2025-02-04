@@ -39,11 +39,13 @@ var free_inv_slot := true
 
 var coin := 0
 var bolt := 0
+var trap := 0
 
 func _ready():
 	health = Global.player_data["health"]
 	coin = Global.player_data["coin"]
 	bolt = Global.player_data["bolt"]
+	trap = Global.player_data["trap"]	
 	if get_tree().current_scene.name in Global.player_data:
 		position = Global.player_data[get_tree().current_scene.name][0]
 		velocity = Global.player_data[get_tree().current_scene.name][1]
@@ -55,7 +57,8 @@ func _ready():
 	playerinv._ready()
 	level.update_health(health)
 	level.update_coin(str(coin))
-	level.update_bolt(str(bolt))	
+	level.update_bolt(str(bolt))
+	level.update_trap(str(trap))
 	# Connect `animation_finished` signals for all children AnimationPlayer2D nodes
 	for child in $Bubbles.get_children():
 		child.animation_finished.connect(_on_animation_finished)
@@ -130,6 +133,11 @@ func get_input():
 	# ducking
 	ducking = Input.is_action_pressed("duck") and is_on_floor()
 	
+	#trap
+	if Input.is_action_just_pressed("trap"):
+		if trap > 0:
+			place_trap.emit(position, false)
+			trap_calculate(-1)
 
 func apply_gravity(delta):
 	velocity.y += gravity * delta
@@ -267,6 +275,10 @@ func pay(price):
 func bolt_calculate(amount):
 	bolt += amount
 	level.update_bolt(str(bolt))
+	
+func trap_calculate(amount):
+	trap += amount
+	level.update_trap(str(trap))
 	
 
 func _on_drowning_timer_timeout():
