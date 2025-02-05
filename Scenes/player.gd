@@ -45,7 +45,7 @@ func _ready():
 	health = Global.player_data["health"]
 	coin = Global.player_data["coin"]
 	bolt = Global.player_data["bolt"]
-	trap = Global.player_data["trap"]	
+	trap = Global.player_data["trap"]
 	if get_tree().current_scene.name in Global.player_data:
 		position = Global.player_data[get_tree().current_scene.name][0]
 		velocity = Global.player_data[get_tree().current_scene.name][1]
