@@ -7,6 +7,7 @@ const animal_parameters = {
 	"boar": {"speed": 50, "health": 1000},
 	"fish": {"speed": 0.1, "health": 20},
 	"duck": {"speed": 30, "health": 20},
+	"dragon": {"health": 2000},
 	"miller": {"health": 50},
 	"black_smith": {"health": 60},
 	"hunter": {"health": 50},
@@ -14,7 +15,7 @@ const animal_parameters = {
 	"monk": {"health": 20}
 }
 
-var unlocked_weapons = [weapons.KNIFE]
+var unlocked_weapons = [weapons.KNIFE, weapons.CROSSBOW, weapons.AXE]
 
 const weapon_price = {
 	"AXE" : 5,
@@ -31,7 +32,7 @@ const weapon_data = {
 var player_data: Dictionary = {
 	"health": 100,
 	"coin": 10,
-	"bolt": 2,
+	"bolt": 100,
 	"trap": 1
 }
 

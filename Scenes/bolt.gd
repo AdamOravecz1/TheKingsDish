@@ -28,6 +28,9 @@ func _on_body_entered(body):
 	if "hit" in body:
 		body.hit(damage, global_position, force)
 		queue_free()
+	if "stagger" in body:
+		body.stagger()
+		queue_free()
 		
 
 func _on_kill_timer_timeout():

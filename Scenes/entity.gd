@@ -17,6 +17,7 @@ func trigger_death():
 	
 func hit(damage, pos, force):
 	health -= damage
+	print(health)
 	knock_back.emit(pos, force)
 	if self.name == "Player":
 		get_tree().get_first_node_in_group("Level").update_health(health)
