@@ -138,6 +138,10 @@ func get_input():
 		if trap > 0:
 			place_trap.emit(position, false)
 			trap_calculate(-1)
+			
+	#recipes
+	if Input.is_action_just_pressed("recipes"):
+		level.openRecipes()
 
 func apply_gravity(delta):
 	velocity.y += gravity * delta

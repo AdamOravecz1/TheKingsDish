@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://lppknedoiao4"]
+[gd_scene load_steps=8 format=3 uid="uid://lppknedoiao4"]
 
 [ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_8lv3c"]
 [ext_resource type="Texture2D" uid="uid://burutfkmbdmk1" path="res://Sprites/FisherShopUI.png" id="2_nxckm"]
+[ext_resource type="Script" path="res://inventory/fisher_shop_ui.gd" id="2_q1ffr"]
+[ext_resource type="Theme" uid="uid://dsmecbmxtrduq" path="res://anvil_button.tres" id="4_t4l0c"]
+[ext_resource type="Texture2D" uid="uid://cpjwbw534voe1" path="res://Sprites/PumpkinIcon.png" id="5_i6pfi"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="6_s251q"]
+[ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="7_j1dv8"]
 
 [node name="FisherShop_UI" instance=ExtResource("1_8lv3c")]
+script = ExtResource("2_q1ffr")
 
 [node name="NinePatchRect" parent="." index="0"]
 offset_left = 665.0
@@ -12,3 +18,27 @@ offset_right = 715.0
 offset_bottom = 209.0
 scale = Vector2(6, 6)
 texture = ExtResource("2_nxckm")
+
+[node name="GridContainer" parent="NinePatchRect" index="0"]
+offset_left = 19.1667
+offset_top = 9.16667
+offset_right = 59.1667
+offset_bottom = 58.1667
+scale = Vector2(0.25, 0.25)
+
+[node name="Recipe" type="Button" parent="NinePatchRect/GridContainer" index="0"]
+layout_mode = 2
+theme = ExtResource("4_t4l0c")
+icon = ExtResource("5_i6pfi")
+
+[node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer" index="1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_s251q")
+theme_override_font_sizes/font_size = 8
+text = "  000"
+
+[node name="CoinIcon" type="Sprite2D" parent="." index="1"]
+position = Vector2(784, 290)
+texture = ExtResource("7_j1dv8")
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Recipe" to="." method="_on_recipe_pressed"]

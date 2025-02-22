@@ -44,7 +44,11 @@ var trap_data: Dictionary
 
 var chest_inv: Dictionary
 
+var found_recipes: Dictionary = {
+	"res://Sprites/TomatoSauceIcon.png" : ["res://Sprites/TomatoIcon.png", "res://Sprites/TomatoIcon.png"]
+}
+
 const recipes: Dictionary = {
-	preload("res://inventory/Items/tomato sauce.tres"): ["tomato", "tomato"],
-	preload("res://inventory/Items/rabbit, with pumpkin.tres"): ["rabbit", "pumpkin"]
+	preload("res://inventory/Items/tomato sauce.tres"): [preload("res://inventory/Items/tomato.tres"), preload("res://inventory/Items/tomato.tres")],
+	preload("res://inventory/Items/rabbit, with pumpkin.tres"): [preload("res://inventory/Items/pumpkin.tres"), preload("res://inventory/Items/rabbit.tres")]
 }

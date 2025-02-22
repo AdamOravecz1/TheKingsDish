@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c5v8wbcm7obq"]
+[gd_scene load_steps=28 format=3 uid="uid://c5v8wbcm7obq"]
 
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_1boid"]
 [ext_resource type="Texture2D" uid="uid://6v8gvrdhahkr" path="res://Sprites/ForestTileSet.png" id="1_41cn5"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="6_0ytjr"]
 [ext_resource type="Texture2D" uid="uid://cyqm8p541lly2" path="res://Sprites/BoltIcon.png" id="7_kxy6s"]
 [ext_resource type="Texture2D" uid="uid://bri0365pivtbf" path="res://Sprites/TrapIcon.png" id="8_x7dut"]
+[ext_resource type="PackedScene" uid="uid://bmlnx1xtp0pji" path="res://inventory/recipes.tscn" id="9_bqhox"]
 [ext_resource type="Texture2D" uid="uid://fn4u8iyu3xmv" path="res://Sprites/LakeTileSet.png" id="9_mubqa"]
 [ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="10_i8y0w"]
 [ext_resource type="Texture2D" uid="uid://d2jvxo5k4qs8r" path="res://Sprites/JailTileSet.png" id="12_hf56y"]
@@ -317,9 +318,11 @@ texture_region_size = Vector2i(32, 32)
 2:2/0 = 0
 2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -9.75, -16, -9.75)
 3:2/0 = 0
 3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -9.75, -16, -9.75)
 4:2/0 = 0
 4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:2/0/physics_layer_0/angular_velocity = 0.0
@@ -1073,15 +1076,15 @@ texture_region_size = Vector2i(32, 32)
 0:3/0 = 0
 0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:3/0/physics_layer_0/angular_velocity = 0.0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.75, -12.75, 16, -12.75, 16, 11.75, -13.5, 11.5)
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -14, 16, -14, 16, 14, -14, 14)
 1:3/0 = 0
 1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:3/0/physics_layer_0/angular_velocity = 0.0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -13, 16, -12.75, 16, 11.75, -16, 11.75)
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14, 16, -14, 16, 14, -16, 14)
 2:3/0 = 0
 2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:3/0/physics_layer_0/angular_velocity = 0.0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -13, 13.75, -13.25, 13, 12.25, -16, 11.75)
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -14, 14, -14, 14, 14, -16, 14)
 3:3/0 = 0
 3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_0/angular_velocity = 0.0
@@ -1207,6 +1210,11 @@ offset_bottom = 143.0
 theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
 theme_override_fonts/font = ExtResource("4_pqmal")
 text = "000"
+
+[node name="Recipes" parent="CanvasLayer" instance=ExtResource("9_bqhox")]
+visible = false
+offset_left = 1110.0
+offset_right = 136.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
 layer = 100

@@ -60,9 +60,13 @@ func _on_cook_pressed():
 
 	for recipe_name in Global.recipes.keys():
 		var ingredients = Global.recipes[recipe_name].duplicate()
-		ingredients.sort()  # Sort the ingredients from the recipe
+		var ingredients_name = []
+		print(ingredients)
+		for i in ingredients:
+			ingredients_name.append(i.name)
+		ingredients_name.sort()  # Sort the ingredients_name from the recipe
 
-		if ingredients == cauldron_content:
+		if ingredients_name == cauldron_content:
 			inv.initialize_inv(4)
 			inv.insert_to_place(recipe_name, 0)
 			return  # Exit once the match is found

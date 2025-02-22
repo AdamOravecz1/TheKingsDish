@@ -16,7 +16,6 @@ var caught = false
 func setup(pos, c):
 	position = pos
 	caught = c
-	print("Spawned at:", pos)
 	interaction_area.interact = Callable(self, "_pickup")
 	if caught:
 		$Trap.frame = 1

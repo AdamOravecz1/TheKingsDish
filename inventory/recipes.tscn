@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmlnx1xtp0pji"]
+
+[ext_resource type="Script" path="res://inventory/recipes.gd" id="1_eggwu"]
+
+[node name="Recipes" type="Control" groups=["Recipes"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eggwu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 283.0
+offset_bottom = 155.0
+theme_override_constants/separation = 100

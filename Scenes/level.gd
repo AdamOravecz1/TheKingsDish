@@ -12,6 +12,7 @@ var shop_slot := 100
 var dragging := false
 var buying := false
 var is_open = false
+var is_recipes_open = false
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -89,6 +90,11 @@ func close():
 	player.can_attack = true
 	playerinv.visible = false
 	is_open = false
+
+func openRecipes():
+	is_recipes_open = !is_recipes_open
+	$CanvasLayer/Recipes.visible = is_recipes_open
+
 
 func pauseMenu():
 	if paused:
