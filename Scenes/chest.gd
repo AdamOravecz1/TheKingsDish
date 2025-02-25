@@ -9,6 +9,7 @@ extends Area2D
 @onready var player = get_tree().get_first_node_in_group("Player") 
 @onready var main = get_tree().current_scene
 var is_open := false
+var should_close := false
 
 func _process(delta):
 	if Input.is_action_just_pressed("inventory") and is_open:
@@ -16,7 +17,6 @@ func _process(delta):
 		
 
 func _ready():
-	close()
 	if Global.chest_inv.has(chest_name):
 		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
 		var inv_resource_path = Global.chest_inv[chest_name]
@@ -30,18 +30,21 @@ func _ready():
 	
 func _opened():
 	if is_open:
+		should_close = false
 		main.close()
 		close()
 	else:
+		should_close = true
 		playerinv.position.x = 450
 		main.open()
 		open()
 	$Sprite2D.frame = is_open
 
 func _on_body_exited(body):
-	close()
+	if should_close:
+		close()
 	$Sprite2D.frame = is_open
-	main.close()
+	
 	
 func _on_tree_exited():
 	if inv != null:
@@ -51,10 +54,11 @@ func _on_tree_exited():
 		
 func open():
 	chestinv.visible = true
-	playerinv.visible = true
+	main.open()
 	is_open = true
 	
 func close():
-	chestinv.visible = false	
-	playerinv.visible = false
+	should_close = false
+	chestinv.visible = false
+	main.close()
 	is_open = false

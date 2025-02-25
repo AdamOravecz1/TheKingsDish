@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cbql56lnjyyae"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_hk6dr"]
+[ext_resource type="Texture2D" uid="uid://bk7ibash8nouv" path="res://Sprites/TentacleIcon.png" id="2_63bf8"]
+
+[resource]
+script = ExtResource("1_hk6dr")
+name = "tentacle"
+texture = ExtResource("2_63bf8")

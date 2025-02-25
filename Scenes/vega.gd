@@ -2,7 +2,23 @@
 extends Node2D
 
 var item = InvItem
-var items := ["res://inventory/Items/tree_mushroom.tres", "res://inventory/Items/tomato.tres", "res://inventory/Items/pumpkin.tres"]
+var items := ["res://inventory/Items/tree_mushroom.tres",
+			  "res://inventory/Items/tomato.tres",
+			  "res://inventory/Items/pumpkin.tres",
+			  "res://inventory/Items/mushroom.tres",
+			  "res://inventory/Items/bad_mushroom.tres",
+			  "res://inventory/Items/blue_berry.tres",
+			  "res://inventory/Items/carrot.tres",
+			  "res://inventory/Items/lettuce.tres",
+			  "res://inventory/Items/pair.tres",
+			  "res://inventory/Items/onion.tres",
+			  "res://inventory/Items/bell_pepper.tres",
+			  "res://inventory/Items/chilli_pepper.tres",
+			  "res://inventory/Items/potato.tres",
+			  "res://inventory/Items/plum.tres",
+			  "res://inventory/Items/vegan_lamb.tres",
+			  "res://inventory/Items/tentacle.tres"
+]
 var harvested := false
 
 @onready var player = get_tree().get_first_node_in_group("Player")

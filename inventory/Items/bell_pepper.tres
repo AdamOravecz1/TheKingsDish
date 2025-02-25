@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://c16nm2xpulkwk"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_g4rtx"]
+[ext_resource type="Texture2D" uid="uid://xe7qq28tuena" path="res://Sprites/BellPapperIcon.png" id="2_1ut2m"]
+
+[resource]
+script = ExtResource("1_g4rtx")
+name = "BellPepper"
+texture = ExtResource("2_1ut2m")

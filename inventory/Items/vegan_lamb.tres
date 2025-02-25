@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bmcd6esehegxu"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_mtrsc"]
+[ext_resource type="Texture2D" uid="uid://ds3oarh00fo0e" path="res://Sprites/VegaLambIcon.png" id="2_l8l7j"]
+
+[resource]
+script = ExtResource("1_mtrsc")
+name = "VeganLamb"
+texture = ExtResource("2_l8l7j")

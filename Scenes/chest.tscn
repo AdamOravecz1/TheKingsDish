@@ -32,6 +32,7 @@ vframes = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ChestInv" parent="CanvasLayer" instance=ExtResource("4_t4hjm")]
+visible = false
 offset_left = 16.0
 offset_top = -332.0
 offset_right = 16.0

@@ -107,6 +107,7 @@ shape = SubResource("CircleShape2D_6wljd")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DogInv" parent="CanvasLayer" instance=ExtResource("3_i7kgy")]
+visible = false
 
 [node name="Head" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tf4xp")

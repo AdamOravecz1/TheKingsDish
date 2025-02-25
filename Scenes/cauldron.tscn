@@ -70,6 +70,7 @@ frame_progress = 0.504392
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CauldronInv" parent="CanvasLayer" instance=ExtResource("4_x5b8l")]
+visible = false
 offset_left = 19.0
 offset_top = -244.0
 offset_right = 19.0

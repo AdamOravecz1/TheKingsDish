@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dhba3hfo6ufpo"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_24ome"]
+[ext_resource type="Texture2D" uid="uid://tr8xvduobki" path="res://Sprites/LettuceIcon.png" id="2_xhpwe"]
+
+[resource]
+script = ExtResource("1_24ome")
+name = "Lettuce"
+texture = ExtResource("2_xhpwe")

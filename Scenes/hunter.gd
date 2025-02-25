@@ -12,6 +12,7 @@ var item = load("res://inventory/Items/hunter.tres") as InvItem
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 var is_open := false
+var should_close := false
 
 func _process(delta):
 	if Input.is_action_just_pressed("inventory") and is_open:
@@ -31,9 +32,11 @@ func _pickup():
 		
 func _talk():
 	if is_open:
+		should_close = false
 		main.close()
 		close()
 	else:
+		should_close = true
 		playerinv.position.x = 450
 		main.open()
 		open()
@@ -55,11 +58,13 @@ func open():
 	is_open = true
 	
 func close():
+	should_close = false
 	shop.visible = false
 	playerinv.visible = false
 	is_open = false
 
 func _on_player_left_body_exited(body):
-	close()
-	main.close()
+	if should_close:
+		close()
+		main.close()
 

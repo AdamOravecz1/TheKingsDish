@@ -54,6 +54,7 @@ func _on_animated_sprite_2d_animation_finished():
 func open():
 	shop.visible = true
 	is_open = true
+	main.close()
 	
 func close():
 	shop.visible = false
@@ -61,5 +62,5 @@ func close():
 
 func _on_player_left_body_exited(body):
 	close()
-	main.close()
+	
 
