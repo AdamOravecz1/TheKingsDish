@@ -108,6 +108,7 @@ shape = SubResource("CircleShape2D_5jie7")
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
 [node name="FisherShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("4_wm2ko")]
+visible = false
 
 [node name="PlayerLeft" type="Area2D" parent="." index="6"]
 collision_layer = 0

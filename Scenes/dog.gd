@@ -9,7 +9,6 @@ extends Area2D
 @onready var player = get_tree().get_first_node_in_group("Player") 
 @onready var main = get_tree().current_scene
 var is_open := false
-var should_close := false
 
 func _process(delta):
 	if Input.is_action_just_pressed("inventory") and is_open:
@@ -21,6 +20,7 @@ func _process(delta):
 		
 
 func _ready():
+	monitoring = false
 	if Global.chest_inv.has(chest_name):
 		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
 		var inv_resource_path = Global.chest_inv[chest_name]
@@ -34,25 +34,24 @@ func _ready():
 	
 func _opened():
 	if is_open:
-		should_close = false
 		main.close()
 		close()
 	else:
-		should_close = true
 		playerinv.position.x = 450
 		main.open()
 		open()
 		
 func open():
+	monitoring = true
 	dogInv.visible = true
 	main.open()
 	is_open = true
 	
 func close():
-	should_close = false
 	dogInv.visible = false
 	main.close()
 	is_open = false
+	set_deferred("monitoring", false)
 	
 func play_animation():
 	$Head.play("eat")
@@ -61,9 +60,8 @@ func play_animation():
 
 
 func _on_body_exited(body):
-	if should_close:
-		close()
-		main.close()
+	close()
+
 
 
 func _on_head_animation_finished():

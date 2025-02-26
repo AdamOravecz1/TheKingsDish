@@ -25,8 +25,8 @@ const weapon_price = {
 }
 
 const weapon_data = {
-	weapons.KNIFE: {'damage': 20, 'knockback': 10000.0},
-	weapons.AXE: {'damage': 400, 'knockback': 15000.0},
+	weapons.KNIFE: {'damage': 20, 'knockback': 5000.0},
+	weapons.AXE: {'damage': 400, 'knockback': 10000.0},
 	weapons.CROSSBOW: {'damage': 30, 'knockback': 1000.0, 'speed': 300, 'texture': preload("res://Sprites/Bolt4.png")}
 }
 var player_data: Dictionary = {

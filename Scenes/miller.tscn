@@ -106,6 +106,7 @@ shape = SubResource("CircleShape2D_fqvsg")
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
 [node name="MillersShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_pc6q5")]
+visible = false
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerLeft" type="Area2D" parent="." index="6"]
