@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://burutfkmbdmk1" path="res://Sprites/FisherShopUI.png" id="2_nxckm"]
 [ext_resource type="Script" path="res://inventory/fisher_shop_ui.gd" id="2_q1ffr"]
 [ext_resource type="Theme" uid="uid://dsmecbmxtrduq" path="res://anvil_button.tres" id="4_t4l0c"]
-[ext_resource type="Texture2D" uid="uid://cpjwbw534voe1" path="res://Sprites/PumpkinIcon.png" id="5_i6pfi"]
+[ext_resource type="Texture2D" uid="uid://bxxyeyfs4kfrw" path="res://Sprites/RecipeIcon.png" id="5_h071w"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="6_s251q"]
 [ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="7_j1dv8"]
 
@@ -29,7 +29,7 @@ scale = Vector2(0.25, 0.25)
 [node name="Recipe" type="Button" parent="NinePatchRect/GridContainer" index="0"]
 layout_mode = 2
 theme = ExtResource("4_t4l0c")
-icon = ExtResource("5_i6pfi")
+icon = ExtResource("5_h071w")
 
 [node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer" index="1"]
 layout_mode = 2

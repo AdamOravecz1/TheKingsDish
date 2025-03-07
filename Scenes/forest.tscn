@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://ccwk7w66e4lvx"]
+[gd_scene load_steps=41 format=3 uid="uid://ccwk7w66e4lvx"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_g5d53"]
 [ext_resource type="PackedScene" uid="uid://dkx5yg0jopxs1" path="res://Scenes/rabbit_hole.tscn" id="2_0i8ep"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://vfkyyhlhcoyy" path="res://Scenes/fisher.tscn" id="18_xk3b5"]
 [ext_resource type="PackedScene" uid="uid://dvscf6o0kan3f" path="res://Scenes/water_area.tscn" id="19_almka"]
 [ext_resource type="PackedScene" uid="uid://duxtisrfwv0me" path="res://Scenes/dragon.tscn" id="19_o7rdm"]
+[ext_resource type="PackedScene" uid="uid://b7vsf2p2ttxsp" path="res://Scenes/zombie.tscn" id="20_y56gi"]
 [ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="28_w3vrm"]
 [ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="32_058fl"]
 
@@ -459,7 +460,7 @@ type = 14
 position = Vector2(1029, -278)
 
 [node name="Rabbit" parent="Main/Entities" index="1" instance=ExtResource("3_dwt3r")]
-position = Vector2(-114, -16)
+position = Vector2(-5, -84)
 
 [node name="Miller" parent="Main/Entities" index="2" instance=ExtResource("14_vk6b8")]
 position = Vector2(685, -148)
@@ -491,6 +492,9 @@ position = Vector2(1695, -84)
 
 [node name="Dragon" parent="Main/Entities" index="11" instance=ExtResource("19_o7rdm")]
 position = Vector2(-224, -564)
+
+[node name="Zombie" parent="Main/Entities" index="12" instance=ExtResource("20_y56gi")]
+position = Vector2(-115, -27)
 
 [node name="Player" parent="Main/Players" index="0" instance=ExtResource("2_5uack")]
 position = Vector2(370, -12)
