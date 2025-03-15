@@ -12,7 +12,8 @@ const animal_parameters = {
 	"black_smith": {"health": 60},
 	"hunter": {"health": 50},
 	"fisher": {"health": 50},
-	"monk": {"health": 20}
+	"monk": {"health": 20},
+	"zombie": {"speed": 20, "health": 500}
 }
 
 var unlocked_weapons = [weapons.KNIFE, weapons.CROSSBOW, weapons.AXE]
