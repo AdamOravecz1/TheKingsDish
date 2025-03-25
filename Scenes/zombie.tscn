@@ -122,12 +122,12 @@ target_position = Vector2(-26, 38)
 position = Vector2(4, 0)
 
 [node name="Right" type="RayCast2D" parent="WallRays" index="0"]
-position = Vector2(6, 5)
+position = Vector2(7, 5)
 target_position = Vector2(8, 0)
 collision_mask = 5
 
 [node name="Left" type="RayCast2D" parent="WallRays" index="1"]
-position = Vector2(-14, 5)
+position = Vector2(-15, 5)
 target_position = Vector2(-8, 0)
 collision_mask = 5
 

@@ -9,7 +9,7 @@ var speed_modifier := 0
 var faster_fall := false
 var gravity_multiplier := 1
 
-var item = load("res://inventory/Items/hunter.tres") as InvItem
+var item = load("res://inventory/Items/butler.tres") as InvItem
 
 @onready var interaction_area_shop: InteractionArea = $InteractionAreaShop
 @onready var interaction_area: InteractionArea = $InteractionArea
