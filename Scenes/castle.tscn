@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bcx2rpj5yumkr"]
+[gd_scene load_steps=21 format=3 uid="uid://bcx2rpj5yumkr"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_ktjp5"]
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="2_11o3y"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://inventory/Inv_slot.gd" id="6_gts25"]
 [ext_resource type="Texture2D" uid="uid://cowxy3pmmhyfr" path="res://Sprites/BG2Tree3.png" id="6_lrfc4"]
 [ext_resource type="Texture2D" uid="uid://m7nh0rasedc8" path="res://Sprites/BG1Tree2.png" id="7_8jci6"]
+[ext_resource type="PackedScene" uid="uid://dsqjc76hcoo3d" path="res://Scenes/butler.tscn" id="13_6eyrm"]
 
 [sub_resource type="Resource" id="Resource_djk16"]
 script = ExtResource("3_cdx2i")
@@ -170,6 +171,11 @@ chest_name = "Cauldron1"
 position = Vector2(221, 16)
 inv = SubResource("Resource_q65f3")
 chest_name = "Dog1"
+
+[node name="Butler" parent="Main/Entities" index="0" instance=ExtResource("13_6eyrm")]
+position = Vector2(-165, 12)
+gravity = 600
+terminal_velocity = 500
 
 [node name="Player" parent="Main/Players" index="0" instance=ExtResource("2_11o3y")]
 position = Vector2(118, 7)
