@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bcx2rpj5yumkr"]
+[gd_scene load_steps=23 format=3 uid="uid://bcx2rpj5yumkr"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_ktjp5"]
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="2_11o3y"]
@@ -34,6 +34,13 @@ script = ExtResource("6_gts25")
 [sub_resource type="Resource" id="Resource_q65f3"]
 script = ExtResource("3_cdx2i")
 slots = Array[ExtResource("6_gts25")]([SubResource("Resource_a0p7r")])
+
+[sub_resource type="Resource" id="Resource_6m1bu"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_xmdd8"]
+script = ExtResource("3_cdx2i")
+slots = Array[ExtResource("6_gts25")]([SubResource("Resource_6m1bu")])
 
 [node name="Castle" instance=ExtResource("1_ktjp5")]
 
@@ -174,8 +181,8 @@ chest_name = "Dog1"
 
 [node name="Butler" parent="Main/Entities" index="0" instance=ExtResource("13_6eyrm")]
 position = Vector2(-165, 12)
-gravity = 600
-terminal_velocity = 500
+inv = SubResource("Resource_xmdd8")
+chest_name = "Butler1"
 
 [node name="Player" parent="Main/Players" index="0" instance=ExtResource("2_11o3y")]
 position = Vector2(118, 7)

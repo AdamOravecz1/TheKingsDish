@@ -56,13 +56,8 @@ func close():
 func play_animation():
 	$Head.play("eat")
 	
-
-
-
 func _on_body_exited(body):
 	close()
-
-
 
 func _on_head_animation_finished():
 	$Head.play("sleep")

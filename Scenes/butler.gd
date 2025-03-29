@@ -1,5 +1,8 @@
 extends Entity
 
+@export var inv: Inv 
+@export var chest_name: String  # A unique identifier for this chest
+
 var x_direction := -1
 var speed = 100
 var speed_modifier := 0
@@ -14,7 +17,7 @@ var item = load("res://inventory/Items/butler.tres") as InvItem
 @onready var interaction_area_shop: InteractionArea = $InteractionAreaShop
 @onready var interaction_area: InteractionArea = $InteractionArea
 
-#@onready var shop = $CanvasLayer/HunterShop_UI
+@onready var shop = $CanvasLayer/ButlerInv
 @onready var playerinv = get_tree().get_first_node_in_group("PlayerInv")
 @onready var main = get_tree().current_scene
 
@@ -36,6 +39,14 @@ func apply_gravity(delta):
 	velocity.y = min(velocity.y, terminal_velocity)
 
 func _ready():
+	if Global.chest_inv.has(chest_name):
+		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
+		var inv_resource_path = Global.chest_inv[chest_name]
+		inv = inv_resource_path
+	else:
+		inv.initialize_inv(1)
+	shop.inv = inv
+	shop._ready()
 	$PlayerLeft.set_deferred("monitoring", false)
 	health = Global.animal_parameters["butler"]["health"]
 	interaction_area_shop.interact = Callable(self, "_talk")
@@ -48,20 +59,14 @@ func _pickup():
 		remove()
 		
 func _talk():
-	speed_modifier = 1
-	$AnimatedSprite2D.play("walk")
-	$AnimatedSprite2D.flip_h = false
-	x_direction = -1
-	#if is_open:
-		#main.close()
-		#close()
-	#else:
-		#playerinv.position.x = 450
-		#main.open()
-		#open()
+	if is_open:
+		main.close()
+		close()
+	else:
+		playerinv.position.x = 450
+		main.open()
+		open()
 		
-	
-
 func trigger_death():
 	if alive:
 		$AnimatedSprite2D.play("death")
@@ -74,17 +79,32 @@ func trigger_death():
 func _on_animated_sprite_2d_animation_finished():
 	$AnimatedSprite2D.play("after_death")
 	
-#func open():
-	#$PlayerLeft.monitoring = true
-	#shop.visible = true
-	#main.open()
-	#is_open = true
-	#
-#func close():
-	#shop.visible = false
-	#main.close()
-	#is_open = false
-	#$PlayerLeft.set_deferred("monitoring", false)
-#
-#func _on_player_left_body_exited(body):
-	#close()
+func open():
+	$PlayerLeft.monitoring = true
+	shop.visible = true
+	main.open()
+	is_open = true
+	
+func close():
+	shop.visible = false
+	main.close()
+	is_open = false
+	$PlayerLeft.set_deferred("monitoring", false)
+
+func _on_player_left_body_exited(body):
+	close()
+	
+func _on_tree_exited():
+	if inv != null:
+		# Save the Inv instance to the global dictionary
+		Global.chest_inv[chest_name] = inv
+		print("Inventory saved to global dictionary with key: ", chest_name)
+
+
+func _on_butler_inv_send_food(food):
+	$Food.texture = food
+	if food:
+		speed_modifier = 1
+		$AnimatedSprite2D.play("walk")
+		$AnimatedSprite2D.flip_h = false
+		x_direction = -1

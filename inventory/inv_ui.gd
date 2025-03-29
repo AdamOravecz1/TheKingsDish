@@ -3,6 +3,8 @@ extends Control
 @onready var inv: Inv
 @onready var main = get_tree().current_scene
 
+signal send_food(food)
+
 var slots: Array
 var controls := 0.0
 var inv_ui_slot_scene = preload("res://inventory/inv_ui_slot.tscn")
@@ -22,6 +24,10 @@ func _ready():
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
+		if inv.slots[i].item:
+			send_food.emit(inv.slots[i].item.texture)
+		else:
+			send_food.emit(null)
 
 func get_item(item: InvItem, i):
 	main.current_item = item

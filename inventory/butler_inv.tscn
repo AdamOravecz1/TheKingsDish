@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dybwmp1py4err"]
+
+[ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_otmb6"]
+[ext_resource type="Texture2D" uid="uid://cwc305cyupuix" path="res://Sprites/Plate.png" id="2_t0xn0"]
+[ext_resource type="PackedScene" uid="uid://bv6u1rmhe8lay" path="res://inventory/inv_ui_slot.tscn" id="3_pcw1p"]
+[ext_resource type="Texture2D" uid="uid://kkxf87nksj5q" path="res://Sprites/InvSlotBowl.png" id="4_j15m1"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_3hvlq"]
+
+[node name="ButlerInv" instance=ExtResource("1_otmb6")]
+offset_left = 760.0
+offset_top = 151.0
+offset_right = -147.0
+offset_bottom = -252.0
+size_flags_horizontal = 6
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_right = 245.0
+offset_bottom = 245.0
+texture = ExtResource("2_t0xn0")
+
+[node name="GridContainer" parent="NinePatchRect" index="0"]
+offset_left = 107.0
+offset_top = 103.0
+offset_right = 147.0
+offset_bottom = 143.0
+
+[node name="Control" type="Control" parent="NinePatchRect/GridContainer" index="0"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="NinePatchRect/GridContainer/Control" index="0"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = -107.0
+offset_top = -144.0
+offset_right = 139.0
+offset_bottom = 104.0
+
+[node name="Inv_UI_Slot" parent="NinePatchRect/GridContainer" index="1" instance=ExtResource("3_pcw1p")]
+layout_mode = 2
+slot_sprite = ExtResource("4_j15m1")
+
+[node name="Label" type="Label" parent="." index="1"]
+layout_mode = 0
+offset_left = -183.0
+offset_top = -60.0
+offset_right = 430.0
+offset_bottom = -6.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_3hvlq")
+text = "I am the kings butler. 
+You can give me the food 
+you want to serv to his majesty"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]
