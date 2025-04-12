@@ -9,7 +9,6 @@ radius = 16.0312
 
 [node name="Vega" type="Node2D"]
 script = ExtResource("1_mstei")
-type = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_umg2l")
