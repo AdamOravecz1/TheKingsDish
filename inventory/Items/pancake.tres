@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dlrn6isv5u4js"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_dkh40"]
+[ext_resource type="Texture2D" uid="uid://b5lq6qijr8pbr" path="res://Sprites/PanCakeIcon.png" id="2_uvbsv"]
+
+[resource]
+script = ExtResource("1_dkh40")
+name = "Pancake"
+texture = ExtResource("2_uvbsv")

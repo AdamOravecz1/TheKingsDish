@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://b7k1d4upmupa4" path="res://inventory/Items/flour.tres" id="4_6dvin"]
 [ext_resource type="Resource" uid="uid://b6db8uf3ug8kq" path="res://inventory/Items/pasta.tres" id="5_c4ga4"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_jfj2f"]
-[ext_resource type="Resource" uid="uid://d2oygi20soi0c" path="res://inventory/Items/bread.tres" id="6_vtdh5"]
+[ext_resource type="Resource" uid="uid://56s4c8t8aip1" path="res://inventory/Items/oil.tres" id="10_ndidg"]
 
 [node name="MillersShop_UI" instance=ExtResource("1_kklfn")]
 offset_left = 808.0
@@ -76,7 +76,7 @@ price = 4
 [node name="Shop_UI_Slot3" parent="NinePatchRect/GridContainer" index="5" instance=ExtResource("2_h5hr6")]
 layout_mode = 2
 slot_sprite = ExtResource("3_c2bhb")
-item = ExtResource("6_vtdh5")
+item = ExtResource("10_ndidg")
 price = 5
 
 [node name="Back" type="Button" parent="NinePatchRect" index="2"]

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dwq5ne2dkplf5"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_sedpu"]
+[ext_resource type="Texture2D" uid="uid://dqqxv4jt2d4la" path="res://Sprites/FisherSoupIcon.png" id="2_wxshg"]
+
+[resource]
+script = ExtResource("1_sedpu")
+name = "Fisher Soup"
+texture = ExtResource("2_wxshg")

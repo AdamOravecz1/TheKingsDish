@@ -21,9 +21,10 @@ func _update_animation():
 			animation.play("torch")
 		1:
 			animation.play("candle")
-			light.color = Color(1, 1, 1)
+			light.color = Color(0.75, 0.75, 0.75)
 		2:
 			animation.play("chandelier")
-			light.color = Color(1, 1, 1)
+			light.color = Color(0.75, 0.75, 0.75)
+			animation.scale = Vector2(2, 2)
 			
 

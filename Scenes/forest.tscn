@@ -448,11 +448,11 @@ type = 5
 
 [node name="Vega3" parent="Main/Vega" index="2" instance=ExtResource("4_i2tbe")]
 position = Vector2(-183, -48)
-type = 1
+type = 12
 
 [node name="Vega4" parent="Main/Vega" index="3" instance=ExtResource("4_i2tbe")]
 position = Vector2(-221, -48)
-type = 14
+type = 1
 
 [node name="Boar" parent="Main/Entities" index="0" instance=ExtResource("11_m5di3")]
 position = Vector2(1029, -278)

@@ -69,11 +69,12 @@ func _on_cook_pressed():
 		var ingredients_name = []
 		print(ingredients)
 		for i in ingredients:
-			ingredients_name.append(i.name)
+				var item_res = load(i)
+				ingredients_name.append(item_res.name)
 		ingredients_name.sort()  # Sort the ingredients_name from the recipe
 
 		if ingredients_name == cauldron_content:
 			inv.initialize_inv(4)
-			inv.insert_to_place(recipe_name, 0)
+			inv.insert_to_place(load(recipe_name), 0)
 			return  # Exit once the match is found
 

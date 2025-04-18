@@ -112,7 +112,7 @@ script = ExtResource("1_0hscr")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 0
 sprite_frames = SubResource("SpriteFrames_sqxp3")
-animation = &"candle"
+animation = &"torch"
 autoplay = "torch"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
