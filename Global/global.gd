@@ -47,7 +47,8 @@ var trap_data: Dictionary
 var chest_inv: Dictionary
 
 var found_recipes: Dictionary = {
-	"res://Sprites/TomatoSauceIcon.png" : ["res://Sprites/TomatoIcon.png", "res://Sprites/TomatoIcon.png"]
+	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
+	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"]
 }
 
 const recipes: Dictionary = {

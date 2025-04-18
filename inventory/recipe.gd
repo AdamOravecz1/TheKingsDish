@@ -12,7 +12,7 @@ func setup(recipe_name):
 	for ingredient_path in ingredients:
 		print("Ingredient texture path:", ingredient_path)
 		
-		var texture = load(ingredient_path)
+		var texture = load(ingredient_path).texture
 		if texture:
 			var texture_rect = TextureRect.new()
 			texture_rect.texture = texture
@@ -23,7 +23,7 @@ func setup(recipe_name):
 			print("⚠️ Failed to load texture from:", ingredient_path)
 	
 	#Add recipe icon and name to the second HBox
-	var recipe_texture = load(recipe_name)  # recipe_name is the path to the recipe icon
+	var recipe_texture = load(recipe_name).texture  # recipe_name is the path to the recipe icon
 	if recipe_texture:
 		var recipe_icon = TextureRect.new()
 		recipe_icon.texture = recipe_texture
