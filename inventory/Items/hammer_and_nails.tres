@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cxwuckb4q3g7n"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_ktlu2"]
+[ext_resource type="Texture2D" uid="uid://cokk6v7bajxy6" path="res://Sprites/HammerAndNailsIcon.png" id="2_54ftm"]
+
+[resource]
+script = ExtResource("1_ktlu2")
+name = "Hammer and Nails"
+texture = ExtResource("2_54ftm")

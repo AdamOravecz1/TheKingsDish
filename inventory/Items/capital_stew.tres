@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dbr4nxlh63tr4"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_810e6"]
+[ext_resource type="Texture2D" uid="uid://cimtk1usl4y0m" path="res://Sprites/CapitalStewIcon.png" id="2_2f6wc"]
+
+[resource]
+script = ExtResource("1_810e6")
+name = "Capital Stew"
+texture = ExtResource("2_2f6wc")
