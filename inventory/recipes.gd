@@ -2,6 +2,7 @@ extends Control
 
 const recipe_scene := preload("res://inventory/recipe.tscn")
 var added_recipes = []
+@onready var vbox = $ScrollContainer/VBoxContainer
 
 func _ready():
 	setup()
@@ -18,7 +19,7 @@ func create_recipe(recipe_name):
 		
 		# Ensure recipe is a Control node
 		if recipe is Control:
-			$VBoxContainer.add_child(recipe)
+			vbox.add_child(recipe)
 			if recipe.has_method("setup"):
 				recipe.setup(recipe_name)
 			else:

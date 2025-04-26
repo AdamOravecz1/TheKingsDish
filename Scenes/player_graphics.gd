@@ -3,6 +3,7 @@ extends Node2D
 @onready var weapon = get_parent().current_weapon
 var fired := 0
 var dir := 1
+var can_hit := true
 
 func update_legs(direction, on_floor):
 	#flip
@@ -33,7 +34,8 @@ func update_torso(direction, current_weapon, ducking):
 	weapon = current_weapon
 	
 func hit():
-	if weapon == 0:
+	if weapon == 0 and can_hit:
+		can_hit = false
 		$Torso.visible = false
 		$KnifeHit.show()
 		$KnifeHit.play("hit")
@@ -43,7 +45,8 @@ func hit():
 			$Knife/KnifeHitboxAnimationRight.play("hitright")
 		await get_tree().create_timer(0.1).timeout
 		$Knife/KnifeHitbox.disabled = false
-	elif weapon == 1:
+	elif weapon == 1 and can_hit:
+		can_hit = false
 		$Torso.visible = false
 		$AxeHit.show()
 		$AxeHit.play("hit")
@@ -77,9 +80,11 @@ func _on_knife_body_entered(body):
 
 func _on_knife_hitbox_animation_left_animation_finished(anim_name):
 	$Knife/KnifeHitbox.disabled = true
+	can_hit = true
 
 func _on_knife_hitbox_animation_right_animation_finished(anim_name):
 	$Knife/KnifeHitbox.disabled = true
+	can_hit = true
 
 
 func _on_axe_body_entered(body):
@@ -89,6 +94,8 @@ func _on_axe_body_entered(body):
 
 func _on_axe_hitbox_animation_left_animation_finished(anim_name):
 	$Axe/AxeHitbox.disabled = true
+	can_hit = true
 
 func _on_axe_hitbox_ainamation_right_animation_finished(anim_name):
 	$Axe/AxeHitbox.disabled = true
+	can_hit = true
