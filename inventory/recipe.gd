@@ -6,11 +6,11 @@ func setup(recipe_name):
 	
 	# Get the ingredient textures
 	var ingredients = Global.found_recipes[recipe_name]
-	print("Recipe:", recipe_name)
+	#print("Recipe:", recipe_name)
 	
 	#Add ingredients to the first HBox
 	for ingredient_path in ingredients:
-		print("Ingredient texture path:", ingredient_path)
+		#print("Ingredient texture path:", ingredient_path)
 		
 		var texture = load(ingredient_path).texture
 		if texture:

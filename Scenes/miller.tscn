@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://5exerwvsy41d"]
+[gd_scene load_steps=18 format=3 uid="uid://5exerwvsy41d"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_8jmtg"]
 [ext_resource type="Script" path="res://Scenes/miller.gd" id="2_gkufe"]
 [ext_resource type="Texture2D" uid="uid://cvve3iaapqk5w" path="res://Sprites/Miller.png" id="2_lv85u"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_yeb36"]
 [ext_resource type="PackedScene" uid="uid://dsknoen4552s4" path="res://inventory/millers_shop_ui.tscn" id="5_pc6q5"]
+[ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="6_x7lk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la1yi"]
 size = Vector2(20, 39)
@@ -104,10 +105,17 @@ action_name = "pick up"
 shape = SubResource("CircleShape2D_fqvsg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
+visible = false
 
 [node name="MillersShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_pc6q5")]
-visible = false
 metadata/_edit_use_anchors_ = true
+
+[node name="Speech" parent="CanvasLayer" index="1" instance=ExtResource("6_x7lk4")]
+offset_left = 145.0
+offset_top = 228.0
+offset_right = 145.0
+offset_bottom = 228.0
+sprite_sheet = ExtResource("2_lv85u")
 
 [node name="PlayerLeft" type="Area2D" parent="." index="6"]
 collision_layer = 0

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://duap7i25qidv2"]
+
+[ext_resource type="Texture2D" uid="uid://cxjg5kafuvhxk" path="res://Sprites/SpeechBubble.png" id="1_8pl2g"]
+[ext_resource type="Script" path="res://Scenes/speech.gd" id="1_owdrf"]
+
+[node name="Speech" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_owdrf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576.5, 503.5)
+scale = Vector2(1.113, 0.435)
+texture = ExtResource("1_8pl2g")
+
+[node name="Head" type="Sprite2D" parent="."]
+position = Vector2(929, 685)
+scale = Vector2(11, 11)

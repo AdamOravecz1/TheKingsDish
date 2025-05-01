@@ -5,7 +5,7 @@ var item = load("res://inventory/Items/hunter.tres") as InvItem
 @onready var interaction_area_shop: InteractionArea = $InteractionAreaShop
 @onready var interaction_area: InteractionArea = $InteractionArea
 
-@onready var shop = $CanvasLayer/HunterShop_UI
+@onready var shop = $CanvasLayer
 @onready var playerinv = get_tree().get_first_node_in_group("PlayerInv")
 @onready var main = get_tree().current_scene
 
