@@ -1,5 +1,43 @@
 extends Node
 
+const hunter_dialogue: Dictionary = {
+	"start": {
+		"text": "Hey there, traveler!",
+		"options": [
+			{"text": "Hi!", "next": "greeting"},
+			{"text": "Leave me alone.", "next": "rude", "action": "reduce_rep"}
+		]
+	},
+	"greeting": {
+		"text": "Nice to meet you. Need something?",
+		"options": [
+			{"text": "Show me your wares.", "next": "shop"},
+			{"text": "Just passing by.", "next": "good_by"}
+		]
+	},
+	"rude": {
+		"text": "...Suit yourself.",
+		"options": [
+			{"text": "Sorry...", "next": "greeting"}
+		]
+	},
+	"shop": {
+		"text": "Here are my goods.",
+		"action": "open_shop",
+		"options": [
+			{"text": "Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "Have a nice day.",
+		"action": "close_shop",
+		"options": [
+			{"text": "Show me your wares.", "next": "shop"}
+		]
+	}
+}
+
+
 enum weapons {KNIFE, AXE, CROSSBOW}
 
 const animal_parameters = {

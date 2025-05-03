@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://duap7i25qidv2"]
+[gd_scene load_steps=4 format=3 uid="uid://duap7i25qidv2"]
 
 [ext_resource type="Texture2D" uid="uid://cxjg5kafuvhxk" path="res://Sprites/SpeechBubble.png" id="1_8pl2g"]
 [ext_resource type="Script" path="res://Scenes/speech.gd" id="1_owdrf"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="3_q2wnq"]
 
 [node name="Speech" type="Control"]
 layout_mode = 3
@@ -12,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_owdrf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SpeechBox" type="Sprite2D" parent="."]
 position = Vector2(576.5, 503.5)
 scale = Vector2(1.113, 0.435)
 texture = ExtResource("1_8pl2g")
@@ -20,3 +21,38 @@ texture = ExtResource("1_8pl2g")
 [node name="Head" type="Sprite2D" parent="."]
 position = Vector2(929, 685)
 scale = Vector2(11, 11)
+
+[node name="Dialogue" type="Label" parent="."]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 430.0
+offset_right = 153.0
+offset_bottom = 453.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q2wnq")
+
+[node name="Option1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 500.0
+offset_right = 153.0
+offset_bottom = 523.0
+mouse_filter = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q2wnq")
+text = ">"
+
+[node name="Option2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 540.0
+offset_right = 153.0
+offset_bottom = 563.0
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q2wnq")
+text = ">"
+
+[connection signal="gui_input" from="Option1" to="." method="_on_option_1_gui_input"]
+[connection signal="gui_input" from="Option2" to="." method="_on_option_2_gui_input"]

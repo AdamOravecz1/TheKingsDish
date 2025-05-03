@@ -26,4 +26,31 @@ func get_frame_texture() -> Texture2D:
 	atlas.atlas = sprite_sheet
 	atlas.region = region
 	return atlas
+	
+func wrap_text(text: String, max_line_length: int) -> String:
+	var words = text.split(" ")
+	var lines := []
+	var current_line := ""
 
+	for word in words:
+		if current_line.length() + word.length() + 1 <= max_line_length:
+			if current_line != "":
+				current_line += " "
+			current_line += word
+		else:
+			lines.append(current_line)
+			current_line = word
+
+	if current_line != "":
+		lines.append(current_line)
+
+	return "\n".join(lines)
+
+func _on_option_1_gui_input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		get_parent().get_parent().select_option(0)
+
+
+func _on_option_2_gui_input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		get_parent().get_parent().select_option(1)
