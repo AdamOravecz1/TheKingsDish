@@ -55,4 +55,6 @@ theme_override_fonts/font = ExtResource("3_q2wnq")
 text = ">"
 
 [connection signal="gui_input" from="Option1" to="." method="_on_option_1_gui_input"]
+[connection signal="mouse_exited" from="Option1" to="." method="_on_option_1_mouse_exited"]
 [connection signal="gui_input" from="Option2" to="." method="_on_option_2_gui_input"]
+[connection signal="mouse_exited" from="Option2" to="." method="_on_option_2_mouse_exited"]

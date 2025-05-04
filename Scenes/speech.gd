@@ -110,10 +110,23 @@ func wrap_text(text: String, max_line_length: int) -> String:
 	return "\n".join(lines)
 
 func _on_option_1_gui_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseMotion:
+		$Option1.add_theme_color_override("font_color", Color.RED)  
+
+	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		select_option(0)
+
+func _on_option_1_mouse_exited():
+	$Option1.add_theme_color_override("font_color", Color.BLACK)  
+
 
 
 func _on_option_2_gui_input(event):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseMotion:
+		$Option2.add_theme_color_override("font_color", Color.RED)  
+
+	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		select_option(1)
+
+func _on_option_2_mouse_exited():
+	$Option2.add_theme_color_override("font_color", Color.BLACK) 
