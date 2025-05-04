@@ -162,6 +162,7 @@ alignment = 2
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bubbles" index="0"]
 position = Vector2(66, 10)
 sprite_frames = SubResource("SpriteFrames_vlux2")
+animation = &"burst"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Bubbles" index="1"]
 position = Vector2(52, 10)

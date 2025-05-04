@@ -13,6 +13,7 @@ var item = load("res://inventory/Items/hunter.tres") as InvItem
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 var is_open := false
+var is_shop_visible := false
 
 func _process(delta):
 	if Input.is_action_just_pressed("inventory") and is_open:
@@ -27,11 +28,11 @@ func _ready():
 	$InteractionArea.monitoring = false
 
 func open_shop():
-	print("Opening shop UI...")
+	is_shop_visible = true
 	shop.visible = true
 	
 func close_shop():
-	print("Closing shop UI...")
+	is_shop_visible = false
 	shop.visible = false
 	
 	
@@ -61,6 +62,7 @@ func open():
 	player.can_attack = false
 	$PlayerLeft.monitoring = true
 	talk.visible = true
+	shop.visible = is_shop_visible
 	is_open = true
 	
 func close():
