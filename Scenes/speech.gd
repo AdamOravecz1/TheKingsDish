@@ -11,6 +11,8 @@ var current_node = "start"
 @onready var npc_label = $Dialogue
 @onready var option_buttons = [$Option1, $Option2] 
 
+var hovering_option1 := false
+var hovering_option2 := false
 
 func _ready():
 	$Head.texture = get_frame_texture()
@@ -109,24 +111,28 @@ func wrap_text(text: String, max_line_length: int) -> String:
 
 	return "\n".join(lines)
 
-func _on_option_1_gui_input(event):
-	if event is InputEventMouseMotion:
-		$Option1.add_theme_color_override("font_color", Color.RED)  
-
-	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		select_option(0)
+func _on_option_1_mouse_entered():
+	hovering_option1 = true
+	$Option1.add_theme_color_override("font_color", Color.RED)
 
 func _on_option_1_mouse_exited():
-	$Option1.add_theme_color_override("font_color", Color.BLACK)  
+	hovering_option1 = false
+	$Option1.add_theme_color_override("font_color", Color.BLACK)
 
+func _on_option_1_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed and hovering_option1:
+		select_option(0)
 
-
-func _on_option_2_gui_input(event):
-	if event is InputEventMouseMotion:
-		$Option2.add_theme_color_override("font_color", Color.RED)  
-
-	elif event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		select_option(1)
+func _on_option_2_mouse_entered():
+	hovering_option2 = true
+	$Option2.add_theme_color_override("font_color", Color.RED)
 
 func _on_option_2_mouse_exited():
-	$Option2.add_theme_color_override("font_color", Color.BLACK) 
+	hovering_option2 = false
+	$Option2.add_theme_color_override("font_color", Color.BLACK)
+
+func _on_option_2_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed and hovering_option2:
+		select_option(1)
+
+

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://daesa2el2206t"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_4tq5w"]
+[ext_resource type="Texture2D" uid="uid://o70qfsaobqtt" path="res://Sprites/MushroomSoupIcon.png" id="2_ri0xg"]
+
+[resource]
+script = ExtResource("1_4tq5w")
+name = "Mushroom Soup"
+texture = ExtResource("2_ri0xg")
