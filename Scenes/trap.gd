@@ -19,6 +19,7 @@ func setup(pos, c):
 	interaction_area.interact = Callable(self, "_pickup")
 	if caught:
 		$Trap.frame = 1
+		$AnimationPlayer.play("cought")
 		
 func _pickup():
 	if caught:
@@ -45,3 +46,6 @@ func _on_catcher_body_entered(body):
 			body.remove()
 			$Trap.frame = 1
 			caught = true
+			$AnimationPlayer.play("cought")
+			
+
