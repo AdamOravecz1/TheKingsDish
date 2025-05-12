@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://duap7i25qidv2"]
 
-[ext_resource type="Texture2D" uid="uid://cxjg5kafuvhxk" path="res://Sprites/SpeechBubble.png" id="1_8pl2g"]
 [ext_resource type="Script" path="res://Scenes/speech.gd" id="1_owdrf"]
+[ext_resource type="Texture2D" uid="uid://b7wqecfelt16u" path="res://Sprites/SpeechBubble2.png" id="2_vheax"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="3_q2wnq"]
 
 [node name="Speech" type="Control"]
@@ -17,10 +17,10 @@ script = ExtResource("1_owdrf")
 [node name="SpeechBox" type="Sprite2D" parent="."]
 position = Vector2(576.5, 119.5)
 scale = Vector2(1.113, 0.435)
-texture = ExtResource("1_8pl2g")
+texture = ExtResource("2_vheax")
 
 [node name="Head" type="Sprite2D" parent="."]
-position = Vector2(929, 301)
+position = Vector2(1008, 133)
 scale = Vector2(11, 11)
 
 [node name="Dialogue" type="Label" parent="."]

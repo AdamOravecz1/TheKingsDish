@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://pwiv6a2ykvfy"]
+[gd_scene load_steps=21 format=3 uid="uid://pwiv6a2ykvfy"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_sheib"]
 [ext_resource type="Texture2D" uid="uid://d2gmeke3ti37b" path="res://Sprites/Monk.png" id="2_or7is"]
 [ext_resource type="Script" path="res://Scenes/monk.gd" id="2_qha56"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_wa6hh"]
 [ext_resource type="PackedScene" uid="uid://cmy7x8ep8iyag" path="res://inventory/monks_shop_ui.tscn" id="5_e36xh"]
+[ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="5_yxqxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt1xw"]
 size = Vector2(20, 36)
@@ -118,7 +119,18 @@ shape = SubResource("CircleShape2D_hwv27")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
 
-[node name="MonksShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_e36xh")]
+[node name="Speech" parent="CanvasLayer" index="0" instance=ExtResource("5_yxqxe")]
+visible = false
+offset_left = 147.0
+offset_top = 597.0
+offset_right = 147.0
+offset_bottom = 357.0
+sprite_sheet = ExtResource("2_or7is")
+hframes = 3
+vframes = 4
+flip = true
+
+[node name="MonksShop_UI" parent="CanvasLayer" index="1" instance=ExtResource("5_e36xh")]
 visible = false
 
 [node name="PlayerLeft" type="Area2D" parent="." index="5"]
@@ -128,5 +140,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft" index="0"]
 shape = SubResource("CircleShape2D_v551h")
 
-[connection signal="body_exited" from="PlayerLeft" to="." method="_on_players_left_body_exited"]
 [connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]
+[connection signal="body_exited" from="PlayerLeft" to="." method="_on_players_left_body_exited"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsqjc76hcoo3d"]
+[gd_scene load_steps=20 format=3 uid="uid://dsqjc76hcoo3d"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_8agaq"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="2_66e00"]
 [ext_resource type="Script" path="res://Scenes/butler.gd" id="2_81p06"]
 [ext_resource type="Texture2D" uid="uid://cc16r1ln6o8gd" path="res://Sprites/Butler.png" id="3_upehp"]
+[ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="5_4t6m3"]
 [ext_resource type="PackedScene" uid="uid://dybwmp1py4err" path="res://inventory/butler_inv.tscn" id="5_u2qf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsrik"]
@@ -133,7 +134,16 @@ flip_h = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="6"]
 
-[node name="ButlerInv" parent="CanvasLayer" index="0" instance=ExtResource("5_u2qf3")]
+[node name="Speech" parent="CanvasLayer" index="0" instance=ExtResource("5_4t6m3")]
+visible = false
+offset_left = 147.0
+offset_top = 597.0
+offset_right = 147.0
+offset_bottom = 213.0
+sprite_sheet = ExtResource("3_upehp")
+hframes = 3
+
+[node name="ButlerInv" parent="CanvasLayer" index="1" instance=ExtResource("5_u2qf3")]
 visible = false
 
 [node name="Food" type="Sprite2D" parent="." index="7"]

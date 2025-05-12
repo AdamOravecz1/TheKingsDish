@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://4t4c08uevyg8"]
+[gd_scene load_steps=18 format=3 uid="uid://4t4c08uevyg8"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_77oxg"]
 [ext_resource type="Texture2D" uid="uid://ddqpmsa4vl8je" path="res://Sprites/BlackSmith.png" id="2_d4h64"]
 [ext_resource type="Script" path="res://Scenes/black_smith.gd" id="2_eudv8"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_f1qyb"]
 [ext_resource type="PackedScene" uid="uid://c0nl3udli1hxh" path="res://inventory/black_smith_shop_ui.tscn" id="5_j8jd0"]
+[ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="6_5bfwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpqtu"]
 size = Vector2(20, 42)
@@ -106,10 +107,19 @@ shape = SubResource("CircleShape2D_f1gkg")
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
 [node name="BlackSmithShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_j8jd0")]
+visible = false
 offset_left = 561.0
 offset_top = 150.0
 offset_right = -204.0
 offset_bottom = -259.0
+
+[node name="Speech" parent="CanvasLayer" index="1" instance=ExtResource("6_5bfwv")]
+visible = false
+offset_left = 147.0
+offset_top = 597.0
+offset_right = 147.0
+offset_bottom = 213.0
+sprite_sheet = ExtResource("2_d4h64")
 
 [node name="PlayerLeft" type="Area2D" parent="." index="6"]
 collision_layer = 0

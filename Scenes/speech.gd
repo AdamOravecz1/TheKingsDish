@@ -1,8 +1,9 @@
 extends Control
 
 @export var sprite_sheet: Texture2D
-@export var hframes: int = 3
-@export var vframes: int = 2
+@export var hframes: int = 2
+@export var vframes: int = 3
+@export var flip: bool = 0
 @export_range(0, 255) var frame_index: int = 0
 
 @onready var hunter := get_parent().get_parent()
@@ -16,6 +17,7 @@ var hovering_option2 := false
 
 func _ready():
 	$Head.texture = get_frame_texture()
+	$Head.flip_h = flip
 
 func get_frame_texture() -> Texture2D:
 	if not sprite_sheet:
@@ -34,7 +36,10 @@ func get_frame_texture() -> Texture2D:
 	var atlas := AtlasTexture.new()
 	atlas.atlas = sprite_sheet
 	atlas.region = region
+	atlas.filter_clip = true  # Optional: ensures clean borders
+
 	return atlas
+
 	
 func show_node(node_name: String):
 	current_node = node_name
