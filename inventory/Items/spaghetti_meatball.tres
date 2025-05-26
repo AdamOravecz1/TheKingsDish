@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dro3jfbs5jroe"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_rbxsw"]
+[ext_resource type="Texture2D" uid="uid://cvqfs4mc7rkbm" path="res://Sprites/SpaghettiMeatballIcon.png" id="2_gynrv"]
+
+[resource]
+script = ExtResource("1_rbxsw")
+name = "Spaghetti Meatball"
+texture = ExtResource("2_gynrv")
