@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dj07suhxjaojr"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_ahf2d"]
+[ext_resource type="Texture2D" uid="uid://1tb0ubgvpi1t" path="res://Sprites/MushroomStirFryIcon.png" id="2_57qlc"]
+
+[resource]
+script = ExtResource("1_ahf2d")
+name = "Mushroom Stir Fry"
+texture = ExtResource("2_57qlc")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cy7iej545vwp2"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_r4l6y"]
+[ext_resource type="Texture2D" uid="uid://bbny2oise6gp8" path="res://Sprites/ButterChopsWithMashedPotatoesIcon.png" id="2_g7cl2"]
+
+[resource]
+script = ExtResource("1_r4l6y")
+name = "Butter Chops with Mashed Potatoes"
+texture = ExtResource("2_g7cl2")
