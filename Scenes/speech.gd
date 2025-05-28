@@ -6,7 +6,7 @@ extends Control
 @export var flip: bool = 0
 @export_range(0, 255) var frame_index: int = 0
 
-@onready var hunter := get_parent().get_parent()
+@onready var npc := get_parent().get_parent()
 
 var current_node = "start"
 @onready var npc_label = $Dialogue
@@ -43,7 +43,7 @@ func get_frame_texture() -> Texture2D:
 	
 func show_node(node_name: String):
 	current_node = node_name
-	var node = Global.hunter_dialogue.get(node_name, null)
+	var node = npc.dialogue.get(node_name, null)
 	if node == null:
 		end_dialogue()
 		return
@@ -69,7 +69,7 @@ func show_node(node_name: String):
 			option_buttons[i].hide()
 
 func select_option(index: int):
-	var options = Global.hunter_dialogue[current_node].get("options", [])
+	var options = npc.dialogue[current_node].get("options", [])
 	if index >= options.size():
 		return
 
@@ -84,8 +84,8 @@ func select_option(index: int):
 		end_dialogue()
 
 func call_action(action_name: String):
-	if hunter.has_method(action_name):
-		hunter.call(action_name)
+	if npc.has_method(action_name):
+		npc.call(action_name)
 	else:
 		print("Unknown action:", action_name)
 

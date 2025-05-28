@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bw2l53ovua5qy"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_bal6b"]
+[ext_resource type="Texture2D" uid="uid://drup2nhehf3se" path="res://Sprites/TheGodsDishIcon.png" id="2_baikt"]
+
+[resource]
+script = ExtResource("1_bal6b")
+name = "The Gods Dish"
+texture = ExtResource("2_baikt")

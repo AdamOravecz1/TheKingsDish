@@ -37,6 +37,15 @@ const hunter_dialogue: Dictionary = {
 	}
 }
 
+const monk_dialogue: Dictionary = {
+	"start":{
+		"text": "Fuck you want",
+		"options": [
+			{"text": ">Poison", "action": "open_shop"}
+		]
+	}
+}
+
 
 enum weapons {KNIFE, AXE, CROSSBOW}
 
@@ -140,6 +149,10 @@ const recipes: Dictionary = {
 	"res://inventory/Items/lamb_chops_with_mashed_potatoes.tres": ["res://inventory/Items/mashed_potatoes.tres", "res://inventory/Items/oil.tres", "res://inventory/Items/vegan_lamb.tres"],
 	"res://inventory/Items/butter_chops_with_mashed_potatoes.tres": ["res://inventory/Items/mashed_potatoes.tres", "res://inventory/Items/oil.tres", "res://inventory/Items/butler.tres"],
 	"res://inventory/Items/pumpkin_pie.tres": ["res://inventory/Items/pumpkin.tres", "res://inventory/Items/flour.tres", "res://inventory/Items/milk.tres"],
-	"res://inventory/Items/mushroom_stir_fry.tres": ["res://inventory/Items/mushroom.tres", "res://inventory/Items/bad_mushroom.tres", "res://inventory/Items/tree_mushroom.tres", "res://inventory/Items/oil.tres"]
+	"res://inventory/Items/mushroom_stir_fry.tres": ["res://inventory/Items/mushroom.tres", "res://inventory/Items/bad_mushroom.tres", "res://inventory/Items/tree_mushroom.tres", "res://inventory/Items/oil.tres"],
+	"res://inventory/Items/the_kings_dish.tres": ["res://inventory/Items/dragon.tres", "res://inventory/Items/potato.tres", "res://inventory/Items/onion.tres", "res://inventory/Items/carrot.tres"],
+	"res://inventory/Items/the_gods_dish.tres": ["res://inventory/Items/the_kings_dish.tres", "res://inventory/Items/king.tres"],
+	"res://inventory/Items/death_wish.tres": ["res://inventory/Items/tentacle.tres", "res://inventory/Items/zombie.tres"]
+	
 
 }

@@ -12,12 +12,15 @@ extends Entity
 var is_open := false
 var is_shop_visible := false
 
+var dialogue := Global.monk_dialogue
+
 
 func _process(delta):
 	if Input.is_action_just_pressed("inventory") and is_open:
 		_talk()
 
 func _ready():
+	talk.show_node("start")
 	$PlayerLeft.set_deferred("monitoring", false)
 	health = Global.animal_parameters["monk"]["health"]
 	interaction_area_shop.interact = Callable(self, "_talk")
@@ -39,6 +42,9 @@ func open():
 	$PlayerLeft.monitoring = true
 	talk.visible = true
 	shop.visible = is_shop_visible
+	if is_shop_visible:
+		main.playerinv.position.x = 400
+		main.open()
 	is_open = true
 	
 func close():
@@ -51,12 +57,18 @@ func close():
 func open_shop():
 	is_shop_visible = true
 	shop.visible = true
+	main.playerinv.position.x = 400
+	main.open()
 	
 func close_shop():
 	is_shop_visible = false
 	shop.visible = false
+	main.playerinv.position.x = 606
+	main.close()
 
 func _on_player_left_body_exited(body):
 	close()
+	main.playerinv.position.x = 606	
+	main.close()
 
 

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cgis2byjdqjyk"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_bbf73"]
+[ext_resource type="Texture2D" uid="uid://bbpq8tna3eorl" path="res://Sprites/TheKingsDishIcon.png" id="2_nnpys"]
+
+[resource]
+script = ExtResource("1_bbf73")
+name = "The Kings Dish"
+texture = ExtResource("2_nnpys")

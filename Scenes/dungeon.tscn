@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cqu13molxip4y"]
+[gd_scene load_steps=27 format=3 uid="uid://cqu13molxip4y"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_0xwow"]
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="2_tvoxp"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://co1yo8ykcr4de" path="res://inventory/Items/cheese.tres" id="7_utknj"]
 [ext_resource type="PackedScene" uid="uid://b7vsf2p2ttxsp" path="res://Scenes/zombie.tscn" id="8_4xrob"]
 [ext_resource type="Resource" uid="uid://cqhd0iguvc4t1" path="res://inventory/Items/milk.tres" id="8_766i2"]
+[ext_resource type="Resource" uid="uid://cwhph8cqxjgx5" path="res://inventory/Items/poison.tres" id="9_ia01c"]
 
 [sub_resource type="Resource" id="Resource_bm6y3"]
 script = ExtResource("5_pviqq")
@@ -42,6 +43,7 @@ item = ExtResource("8_766i2")
 
 [sub_resource type="Resource" id="Resource_mcyoh"]
 script = ExtResource("5_pviqq")
+item = ExtResource("9_ia01c")
 
 [sub_resource type="Resource" id="Resource_0ju12"]
 script = ExtResource("5_pviqq")

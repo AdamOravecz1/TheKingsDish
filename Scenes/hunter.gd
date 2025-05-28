@@ -15,6 +15,8 @@ var item = load("res://inventory/Items/hunter.tres") as InvItem
 var is_open := false
 var is_shop_visible := false
 
+var dialogue := Global.hunter_dialogue
+
 func _process(delta):
 	if Input.is_action_just_pressed("inventory") and is_open:
 		_talk()

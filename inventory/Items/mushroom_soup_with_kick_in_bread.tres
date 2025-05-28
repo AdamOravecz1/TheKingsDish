@@ -7,3 +7,5 @@
 script = ExtResource("1_0au0o")
 name = "Mushroom Soup With Kick In Bread"
 texture = ExtResource("2_t38jb")
+value = 0
+types = Array[String](["sick"])
