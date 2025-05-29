@@ -6,14 +6,18 @@ var damage: int
 var force: float
 
 func setup(pos, dir, type):
+	type = int(type)  # biztosítsuk, hogy int típusú
+
 	position = pos + Vector2(0, -4)
 	direction = dir.normalized()
+
 	if type == Global.weapons.CROSSBOW:
-		$Sprite2D.texture = Global.weapon_data[type]["texture"]
-		speed = Global.weapon_data[type]["speed"]
-		damage = Global.weapon_data[type]["damage"]
-		force = Global.weapon_data[type]["knockback"]
-		
+		var weapon_info = Global.weapon_data[type]
+		$Sprite2D.texture = weapon_info["texture"]
+		speed = weapon_info["speed"]
+		damage = weapon_info["damage"]
+		force = weapon_info["knockback"]
+
 	if dir.x < 0:
 		$Sprite2D.flip_h = true
 	

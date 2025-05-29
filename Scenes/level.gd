@@ -13,6 +13,7 @@ var dragging := false
 var buying := false
 var is_open = false
 var is_recipes_open = false
+var can_save := true
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -39,6 +40,7 @@ func _ready():
 		player.connect("shoot", create_bolt)
 	if player.has_signal("place_trap"):
 		player.connect("place_trap", create_trap)
+	_exit_tree()
 
 func create_bolt(pos, dir, bolt_type):
 	var bolt := bolt_scene.instantiate()
@@ -51,25 +53,29 @@ func create_trap(pos, caught):
 	trap.setup(pos, caught)
 
 func _exit_tree():
-	var current_animal_data: Array
-	for entity in $Main/Entities.get_children():
-		current_animal_data.append([entity.position, entity.velocity, entity.health])
-	var current_vega_data: Array
-	for vega in $Main/Vega.get_children():
-		current_vega_data.append(vega.harvested)
-	var current_trap_data: Array
-	for trap in $Main/Projectiles.get_children():
-		if trap is CharacterBody2D:
-			current_trap_data.append([trap.position, trap.caught])
-	var current_player_data = [player.position, player.velocity]
-	Global.animal_data[get_tree().current_scene.name] = current_animal_data
-	Global.vega_data[get_tree().current_scene.name] = current_vega_data
-	Global.trap_data[get_tree().current_scene.name] = current_trap_data
-	Global.player_data["health"] = player.health
-	Global.player_data["coin"] = player.coin
-	Global.player_data["bolt"] = player.bolt
-	Global.player_data["trap"] = player.trap
-	Global.player_data[get_tree().current_scene.name] = current_player_data
+	if can_save:
+		var current_animal_data: Array
+		for entity in $Main/Entities.get_children():
+			current_animal_data.append([entity.position, entity.velocity, entity.health])
+		var current_vega_data: Array
+		for vega in $Main/Vega.get_children():
+			current_vega_data.append(vega.harvested)
+		var current_trap_data: Array
+		for trap in $Main/Projectiles.get_children():
+			if trap is CharacterBody2D:
+				current_trap_data.append([trap.position, trap.caught])
+		var current_player_data = [player.position, player.velocity]
+		Global.animal_data[get_tree().current_scene.name] = current_animal_data
+		Global.vega_data[get_tree().current_scene.name] = current_vega_data
+		Global.trap_data[get_tree().current_scene.name] = current_trap_data
+		Global.player_data["health"] = player.health
+		Global.player_data["coin"] = player.coin
+		Global.player_data["bolt"] = player.bolt
+		Global.player_data["trap"] = player.trap
+		Global.player_data[get_tree().current_scene.name] = current_player_data
+		Global.scene = get_tree().current_scene.name
+	else:
+		can_save = true
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):

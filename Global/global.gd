@@ -46,6 +46,14 @@ const monk_dialogue: Dictionary = {
 	}
 }
 
+const blacksmit_dialogue: Dictionary = {
+	"start":{
+		"text": "Fuck you want",
+		"options": [
+			{"text": ">weapon", "action": "open_shop"}
+		]
+	}
+}
 
 enum weapons {KNIFE, AXE, CROSSBOW}
 
@@ -64,8 +72,6 @@ const animal_parameters = {
 	"zombie": {"speed": 20, "health": 500}
 }
 
-var unlocked_weapons = [weapons.KNIFE, weapons.CROSSBOW, weapons.AXE]
-
 const weapon_price = {
 	"AXE" : 5,
 	"CROSSBOW" : 10 ,
@@ -78,6 +84,9 @@ const weapon_data = {
 	weapons.AXE: {'damage': 400, 'knockback': 10000.0},
 	weapons.CROSSBOW: {'damage': 30, 'knockback': 1000.0, 'speed': 300, 'texture': preload("res://Sprites/Bolt4.png")}
 }
+
+var unlocked_weapons = [weapons.KNIFE, weapons.AXE, weapons.CROSSBOW]
+
 var player_data: Dictionary = {
 	"health": 100,
 	"coin": 10,
@@ -93,6 +102,8 @@ var trap_data: Dictionary
 
 var chest_inv: Dictionary
 
+var scene: String
+
 var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
 	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
@@ -104,7 +115,6 @@ var found_recipes: Dictionary = {
 	"res://inventory/Items/salad.tres": ["res://inventory/Items/lettuce.tres", "res://inventory/Items/tomato.tres", "res://inventory/Items/bell_pepper.tres"],
 	"res://inventory/Items/fries.tres": ["res://inventory/Items/oil.tres", "res://inventory/Items/potato.tres"],
 	"res://inventory/Items/arabiata.tres": ["res://inventory/Items/pasta.tres", "res://inventory/Items/tomato sauce.tres", "res://inventory/Items/chilli_pepper.tres"]
-
 }
 
 const recipes: Dictionary = {
@@ -153,6 +163,88 @@ const recipes: Dictionary = {
 	"res://inventory/Items/the_kings_dish.tres": ["res://inventory/Items/dragon.tres", "res://inventory/Items/potato.tres", "res://inventory/Items/onion.tres", "res://inventory/Items/carrot.tres"],
 	"res://inventory/Items/the_gods_dish.tres": ["res://inventory/Items/the_kings_dish.tres", "res://inventory/Items/king.tres"],
 	"res://inventory/Items/death_wish.tres": ["res://inventory/Items/tentacle.tres", "res://inventory/Items/zombie.tres"]
-	
-
 }
+
+func _convert_vectors(data):
+	if typeof(data) == TYPE_DICTIONARY:
+		for key in data.keys():
+			data[key] = _convert_vectors(data[key])
+	elif typeof(data) == TYPE_ARRAY:
+		for i in data.size():
+			data[i] = _convert_vectors(data[i])
+	elif typeof(data) == TYPE_STRING:
+		var vector = _string_to_vector2(data)
+		if vector != null:
+			return vector
+	return data
+
+func _string_to_vector2(s: String) -> Variant:
+	# Match pattern like "(123, -456)"
+	var regex = RegEx.new()
+	regex.compile("^\\((-?\\d+(?:\\.\\d+)?),\\s*(-?\\d+(?:\\.\\d+)?)\\)$")
+	var result = regex.search(s)
+	if result:
+		var x = result.get_string(1).to_float()
+		var y = result.get_string(2).to_float()
+		return Vector2(x, y)
+	return null
+
+var save_path := "user://save_data.json"
+
+#Mentés funkció
+func save_game():
+	get_tree().get_first_node_in_group("Level")._exit_tree()
+	var save_data: Dictionary = {
+		"unlocked_weapons": unlocked_weapons,
+		"player_data": player_data,
+		"animal_data": animal_data,
+		"vega_data": vega_data,
+		"trap_data": trap_data,
+		"chest_inv": chest_inv,
+		"found_recipes": found_recipes,
+		"scene": scene
+	}
+
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	if file:
+		file.store_string(JSON.stringify(save_data, "\t"))
+		file.close()
+		print("Mentés sikeres.")
+
+
+#Betöltés funkció
+func load_game():
+	if not FileAccess.file_exists(save_path):
+		print("Nincs mentési fájl.")
+		return
+
+	var file = FileAccess.open(save_path, FileAccess.READ)
+	if file:
+		var content = file.get_as_text()
+		var result = JSON.parse_string(content)
+		_convert_vectors(result)
+		print(result)
+		if result:
+			unlocked_weapons = result["unlocked_weapons"]
+			player_data = result["player_data"]
+			animal_data = result["animal_data"]
+			vega_data = result["vega_data"]
+			trap_data = result["trap_data"]
+			chest_inv = result["chest_inv"]
+			found_recipes = result["found_recipes"]
+			scene = result["scene"]
+			print("Mentés betöltve.")
+			get_tree().get_first_node_in_group("Level").pauseMenu()
+			get_tree().get_first_node_in_group("Level").can_save = false
+			if scene == "Forest":
+				TransitionLayer.change_scene("res://Scenes/forest.tscn")
+			elif scene == "Castle":
+				TransitionLayer.change_scene("res://Scenes/castle.tscn")
+			elif scene == "Dungeon":
+				TransitionLayer.change_scene("res://Scenes/dungeon.tscn")
+			#get_tree().get_first_node_in_group("Level")._ready()
+			#get_tree().get_first_node_in_group("Player")._ready()
+
+		else:
+			print("Hiba a mentési fájl feldolgozásakor.")
+		file.close()

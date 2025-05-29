@@ -38,12 +38,13 @@ func setup(data):
 		remove()
 
 	if self.is_in_group("Animal"):
-		if data[0][1] > 9000:
+		print(data)
+		if int(data[0][1]) > 9000:
 			position.x = data[0][0]
 			position.y = data[0][1] - 10000
 		else:
-			position = data[0]
-		velocity = data[1]
+			position = Vector2(float(data[0][0]), float(data[0][1]))
+		velocity = Vector2(float(data[1][0]), float(data[1][1]))
 		health = data[2]
 		
 
