@@ -41,12 +41,13 @@ func apply_gravity(delta):
 	velocity.y = min(velocity.y, terminal_velocity)
 
 func _ready():
-	if Global.chest_inv.has(chest_name):
-		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
-		var inv_resource_path = Global.chest_inv[chest_name]
-		inv = inv_resource_path
-	else:
-		inv.initialize_inv(1)
+	if Global.chests_load:
+		if Global.chest_inv.has(chest_name):
+			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
+			var inv_resource_path = Global.chest_inv[chest_name]
+			inv = inv_resource_path
+		else:
+			inv.initialize_inv(1)
 	shop.inv = inv
 	shop._ready()
 	$PlayerLeft.set_deferred("monitoring", false)
@@ -54,6 +55,9 @@ func _ready():
 	interaction_area_shop.interact = Callable(self, "_talk")
 	interaction_area.interact = Callable(self, "_pickup")
 	$InteractionArea.monitoring = false
+	
+func initialize():
+	inv.initialize_inv(1)
 	
 func _pickup():
 	player.collect(item)

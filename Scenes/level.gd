@@ -31,16 +31,39 @@ func _ready():
 		if scene_name in Global.vega_data:
 			if Global.vega_data[scene_name][i]:
 				vega.harvest()
+	for chest in $Main/Objects.get_children():
+		if "inv" in chest and chest.inv != null and chest.chest_name in Global.chest_inv and not Global.chests_load:
+			var inv_data = Global.chest_inv[chest.chest_name]
+			chest.initialize()
+			for entry in inv_data:
+				var item_path = entry["item"]
+				var index = entry["index"]
+				var item = load(item_path)
+				if item:
+					chest.inv.insert_to_place(item, index)
+	if not Global.chests_load:
+		player.inv.initialize_inv(12)
+		var inv_data = Global.player_inv
+		for entry in inv_data:
+			var item_path = entry["item"]
+			var index = entry["index"]
+			var item = load(item_path)
+			if item:
+				player.inv.insert_to_place(item, index)
+		
+
 	if scene_name in Global.trap_data:
 		for i in range(Global.trap_data[scene_name].size()):
 			var pos = Global.trap_data[scene_name][i][0]
 			var caught = Global.trap_data[scene_name][i][1]
 			create_trap(pos, caught)
+	
 	if player.has_signal("shoot"):
 		player.connect("shoot", create_bolt)
 	if player.has_signal("place_trap"):
 		player.connect("place_trap", create_trap)
 	_exit_tree()
+	Global.chests_load = true
 
 func create_bolt(pos, dir, bolt_type):
 	var bolt := bolt_scene.instantiate()
@@ -60,6 +83,9 @@ func _exit_tree():
 		var current_vega_data: Array
 		for vega in $Main/Vega.get_children():
 			current_vega_data.append(vega.harvested)
+		for chest in $Main/Objects.get_children():
+			if "inv" in chest and chest.inv != null:
+				Global.chest_inv[chest.chest_name] = chest.inv
 		var current_trap_data: Array
 		for trap in $Main/Projectiles.get_children():
 			if trap is CharacterBody2D:
@@ -73,6 +99,8 @@ func _exit_tree():
 		Global.player_data["bolt"] = player.bolt
 		Global.player_data["trap"] = player.trap
 		Global.player_data[get_tree().current_scene.name] = current_player_data
+		Global.get_items_from_player(player.inv)
+
 		Global.scene = get_tree().current_scene.name
 	else:
 		can_save = true

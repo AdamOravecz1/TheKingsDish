@@ -10,6 +10,7 @@ extends Area2D
 @onready var main = get_tree().current_scene
 var is_open := false
 
+
 func _process(delta):
 	if Input.is_action_just_pressed("inventory") and is_open:
 		_opened()
@@ -17,16 +18,19 @@ func _process(delta):
 
 func _ready():
 	monitoring = false
-	if Global.chest_inv.has(chest_name):
-		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
-		var inv_resource_path = Global.chest_inv[chest_name]
-		inv = inv_resource_path
-	else:
-		inv.initialize_inv(4)
+	if Global.chests_load:
+		if Global.chest_inv.has(chest_name):
+			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
+			var inv_resource_path = Global.chest_inv[chest_name]
+			inv = inv_resource_path
+		else:
+			inv.initialize_inv(4)
 	cauldroninv.inv = inv
 	cauldroninv._ready()
 	interaction_area.interact = Callable(self, "_opened")
 	
+func initialize():
+	inv.initialize_inv(4)
 	
 func _opened():
 	if is_open:
@@ -36,11 +40,6 @@ func _opened():
 		playerinv.position.x = 450
 		main.open()
 		open()
-	
-func _on_tree_exited():
-	if inv != null:
-		# Save the Inv instance to the global dictionary
-		Global.chest_inv[chest_name] = inv
 		
 func open():
 	monitoring = true

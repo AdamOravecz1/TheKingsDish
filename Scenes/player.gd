@@ -42,17 +42,13 @@ var bolt := 0
 var trap := 0
 
 func _ready():
-	print(position)
 	health = Global.player_data["health"]
 	coin = Global.player_data["coin"]
 	bolt = Global.player_data["bolt"]
 	trap = Global.player_data["trap"]
 	if get_tree().current_scene.name in Global.player_data:
-		print("itt")
-		print(Global.player_data[get_tree().current_scene.name][0])
 		position = Global.player_data[get_tree().current_scene.name][0]
 		velocity = Global.player_data[get_tree().current_scene.name][1]
-		print(position)
 	$Label.material.set_shader_parameter("alpha", 0.0)
 	$Bubbles.visible = false
 	if inv == null:

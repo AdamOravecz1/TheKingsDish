@@ -10,6 +10,7 @@ extends Area2D
 @onready var main = get_tree().current_scene
 var is_open := false
 
+
 func _process(delta):
 	if Input.is_action_just_pressed("inventory") and is_open:
 		_opened()
@@ -21,17 +22,20 @@ func _process(delta):
 
 func _ready():
 	monitoring = false
-	if Global.chest_inv.has(chest_name):
-		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
-		var inv_resource_path = Global.chest_inv[chest_name]
-		inv = inv_resource_path
-	else:
-		inv.initialize_inv(1)
+	if Global.chests_load:
+		if Global.chest_inv.has(chest_name):
+			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
+			var inv_resource_path = Global.chest_inv[chest_name]
+			inv = inv_resource_path
+		else:
+			inv.initialize_inv(1)
 	dogInv.inv = inv
 	dogInv._ready()
 	interaction_area.interact = Callable(self, "_opened")
 	
-	
+func initialize():
+	inv.initialize_inv(1)
+
 func _opened():
 	if is_open:
 		main.close()

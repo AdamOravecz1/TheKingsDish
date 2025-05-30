@@ -94,6 +94,8 @@ var player_data: Dictionary = {
 	"trap": 1
 }
 
+var player_inv: Array
+
 var animal_data: Dictionary
 
 var vega_data: Dictionary
@@ -165,6 +167,8 @@ const recipes: Dictionary = {
 	"res://inventory/Items/death_wish.tres": ["res://inventory/Items/tentacle.tres", "res://inventory/Items/zombie.tres"]
 }
 
+var chests_load := true
+
 func _convert_vectors(data):
 	if typeof(data) == TYPE_DICTIONARY:
 		for key in data.keys():
@@ -191,16 +195,45 @@ func _string_to_vector2(s: String) -> Variant:
 
 var save_path := "user://save_data.json"
 
+func get_items(chest_inv: Dictionary) -> Dictionary:
+	var items: Dictionary = {}
+	for key in chest_inv.keys():
+		var chest = chest_inv[key]
+		var chest_items: Array = []
+		for index in chest.slots.size():
+			var slot = chest.slots[index]
+			if slot.item != null and slot.item.resource_path != "":
+				chest_items.append({
+					"index": index,
+					"item": slot.item.resource_path
+				})
+		items[key] = chest_items
+	return items
+	
+func get_items_from_player(inv: Inv):
+	var result: Array = []
+	for index in inv.slots.size():
+		var slot = inv.slots[index]
+		if slot.item != null and slot.item.resource_path != "":
+			result.append({
+				"index": index,
+				"item": slot.item.resource_path
+			})
+	player_inv = result
+
+
+
 #Mentés funkció
 func save_game():
 	get_tree().get_first_node_in_group("Level")._exit_tree()
 	var save_data: Dictionary = {
 		"unlocked_weapons": unlocked_weapons,
 		"player_data": player_data,
+		"player_inv": player_inv,
 		"animal_data": animal_data,
 		"vega_data": vega_data,
 		"trap_data": trap_data,
-		"chest_inv": chest_inv,
+		"chest_inv": get_items(chest_inv),
 		"found_recipes": found_recipes,
 		"scene": scene
 	}
@@ -214,6 +247,7 @@ func save_game():
 
 #Betöltés funkció
 func load_game():
+	chests_load = false
 	if not FileAccess.file_exists(save_path):
 		print("Nincs mentési fájl.")
 		return
@@ -223,10 +257,10 @@ func load_game():
 		var content = file.get_as_text()
 		var result = JSON.parse_string(content)
 		_convert_vectors(result)
-		print(result)
 		if result:
 			unlocked_weapons = result["unlocked_weapons"]
 			player_data = result["player_data"]
+			player_inv = result["player_inv"]
 			animal_data = result["animal_data"]
 			vega_data = result["vega_data"]
 			trap_data = result["trap_data"]

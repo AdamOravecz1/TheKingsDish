@@ -17,16 +17,19 @@ func _process(delta):
 
 func _ready():
 	monitoring = false
-	if Global.chest_inv.has(chest_name):
-		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
-		var inv_resource_path = Global.chest_inv[chest_name]
-		inv = inv_resource_path
-	elif !inv.slots:
-		inv.initialize_inv(12)
+	if Global.chests_load:
+		if Global.chest_inv.has(chest_name):
+			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
+			var inv_resource_path = Global.chest_inv[chest_name]
+			inv = inv_resource_path
+		elif !inv.slots:
+			inv.initialize_inv(12)
 	chestinv.inv = inv
 	chestinv._ready()
 	interaction_area.interact = Callable(self, "_opened")
 	
+func initialize():
+	inv.initialize_inv(12)
 	
 func _opened():
 	if is_open:
@@ -42,12 +45,6 @@ func _on_body_exited(body):
 	close()
 	$Sprite2D.frame = is_open
 	
-	
-func _on_tree_exited():
-	if inv != null:
-		# Save the Inv instance to the global dictionary
-		Global.chest_inv[chest_name] = inv
-		print("Inventory saved to global dictionary with key: ", chest_name)
 		
 func open():
 	monitoring = true
