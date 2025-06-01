@@ -73,9 +73,9 @@ func check_player_distance():
 	var delta_x = global_position.x - player.global_position.x
 
 
-	if distance_to_player < 60:
+	if distance_to_player < 120:
 		$Timers/Flight.start()
-		speed_modifier = 3
+		speed_modifier = 4
 		fly = true
 		if (delta_x > 0 and x_direction < 0) or (delta_x < 0 and x_direction > 0):
 			x_direction *= -1
@@ -138,7 +138,7 @@ func snap_to_surface(water_surface_y):
 		return  # Avoid redundant snapping if already swimming
 
 	# Snap the duck to the water surface
-	global_position.y = water_surface_y + 60
+	global_position.y = water_surface_y + 50
 	velocity.y = 0  # Ensure no vertical movement
 	
 func top_of_water():

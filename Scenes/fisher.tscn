@@ -90,7 +90,6 @@ shape = SubResource("RectangleShape2D_1k0xk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_tgdja")
-animation = &"after_death"
 autoplay = "default"
 
 [node name="InteractionAreaShop" parent="." index="3" instance=ExtResource("3_77v1w")]
