@@ -138,7 +138,7 @@ func snap_to_surface(water_surface_y):
 		return  # Avoid redundant snapping if already swimming
 
 	# Snap the duck to the water surface
-	global_position.y = water_surface_y + 50
+	global_position.y = water_surface_y + 11
 	velocity.y = 0  # Ensure no vertical movement
 	
 func top_of_water():

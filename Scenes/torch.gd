@@ -19,9 +19,12 @@ func _update_animation():
 	match type:
 		0:
 			animation.play("torch")
+			light.color = Color(0.99, 0.55, 0.57)
+			animation.scale = Vector2(1, 1)
 		1:
 			animation.play("candle")
 			light.color = Color(0.75, 0.75, 0.75)
+			animation.scale = Vector2(1, 1)
 		2:
 			animation.play("chandelier")
 			light.color = Color(0.75, 0.75, 0.75)
