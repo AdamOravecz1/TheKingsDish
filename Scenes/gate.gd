@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
 @export_enum("forest", "castle", "dungeon") var level := "forest"
+@export var index: int
 var levels = {}
 
 func _ready():
@@ -15,3 +16,7 @@ func _ready():
 	
 func _enterr():
 	TransitionLayer.change_scene(levels[level])
+	Global.gate_index = index
+	Global.can_gate = true
+
+

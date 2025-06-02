@@ -94,6 +94,9 @@ var player_data: Dictionary = {
 	"trap": 1
 }
 
+var gate_index: int
+var can_gate := false 
+
 var player_inv: Array
 
 var animal_data: Dictionary

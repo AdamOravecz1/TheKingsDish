@@ -18,6 +18,9 @@ var can_save := true
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
+	for gate in $TransitionGates.get_children():
+		if gate.index == Global.gate_index and Global.can_gate:
+			player.position = gate.global_position
 	InteractionManager.set_player()
 	var scene_name = get_tree().current_scene.name
 	var entity_names: Array
