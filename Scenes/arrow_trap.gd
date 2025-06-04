@@ -23,6 +23,7 @@ func _shoot_bolts():
 
 			bolt.setup(spawn_pos, direction, Global.weapons.CROSSBOW)
 			bolt.rotation = rotation_angle
+			bolt.set_collision_mask_value(2, true)
 
 			var projectiles = get_tree().current_scene.get_node("Main/Projectiles")
 			projectiles.add_child(bolt)
