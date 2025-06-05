@@ -69,9 +69,6 @@ func _ready():
 	# Connect `animation_finished` signals for all children AnimationPlayer2D nodes
 	for child in $Bubbles.get_children():
 		child.animation_finished.connect(_on_animation_finished)
-		
-	$Timers/WalkingTimer.wait_time = 0.25  # or tune for step speed
-	$Timers/WalkingTimer.connect("timeout", _on_walking_timer_timeout)
 	
 
 func _process(delta):

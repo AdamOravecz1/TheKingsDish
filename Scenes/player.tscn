@@ -129,7 +129,7 @@ one_shot = true
 [node name="DrowningTimer" type="Timer" parent="Timers" index="2"]
 
 [node name="WalkingTimer" type="Timer" parent="Timers" index="3"]
-wait_time = 0.15
+wait_time = 0.3
 one_shot = true
 
 [node name="FloorRays" type="Node2D" parent="." index="4"]
