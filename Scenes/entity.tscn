@@ -8,3 +8,5 @@ script = ExtResource("1_i6hnx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="Timers" type="Node" parent="."]
+
+[node name="Sound" type="Node2D" parent="."]
