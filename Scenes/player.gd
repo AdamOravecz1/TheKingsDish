@@ -32,10 +32,11 @@ var current_weapon_index = 0
 var aim_direction := Vector2.LEFT
 var reloded := true
 
-@onready var walk_sounds = [
-	$Sound/WalkingLeft,
-	$Sound/WalkingRight
+@onready var walking_sounds = [
+	$Sound/WalkingLeftGrass,
+	$Sound/WalkingRightGrass
 ]
+
 var current_step = 0
 var landing_sound = false
 
@@ -93,18 +94,19 @@ func _process(delta):
 		knocked_back = false
 		
 	#walking sound
-	if is_on_floor() and abs(velocity.x) > 0.1:
+	if is_on_floor():
 		if not $Timers/WalkingTimer.is_stopped():
 			return  # already running
 		$Timers/WalkingTimer.start()
 	else:
 		$Timers/WalkingTimer.stop()
-		walk_sounds[0].stop()
-		walk_sounds[1].stop()
 		
 	if is_on_floor() and landing_sound:
+		$Sound/Land.pitch_scale = randf_range(0.85, 1.15)
 		$Sound/Land.play()
 		landing_sound = false
+		if not $Sound/Land.playing:
+			_on_walking_timer_timeout()
 	elif not is_on_floor():
 		landing_sound = true
 
@@ -312,16 +314,27 @@ func _on_drowning_timer_timeout():
 	health -= 10
 	get_tree().get_first_node_in_group("Level").update_health(health)
 
-
 func _on_walking_timer_timeout():
-	var sound = walk_sounds[current_step % 2]
-	if not sound.playing:
-		if not in_water:
-			sound.volume_db = 0
-			sound.pitch_scale = randf_range(0.85, 1.15)
-		else:
-			sound.volume_db = -10
-			sound.pitch_scale = randf_range(0.45, 0.75)
-		sound.play()
-		current_step += 1
+	if walking_sounds.size() > 0:
+		var sound = walking_sounds[current_step % 2]
+		if not sound.playing:
+			if not in_water:
+				sound.volume_db = 0
+				sound.pitch_scale = randf_range(0.85, 1.15)
+			else:
+				sound.volume_db = -10
+				sound.pitch_scale = randf_range(0.45, 0.75)
+			if abs(velocity.x) > 0.1:
+				sound.play()
+				current_step += 1
 	
+func set_walk_surface(type: String):
+	match type:
+		"grass":
+			walking_sounds = [$Sound/WalkingLeftGrass, $Sound/WalkingRightGrass]
+		"stone":
+			walking_sounds = [$Sound/WalkingLeftStone, $Sound/WalknigRightStone]
+		"wood":
+			walking_sounds = [$Sound/WalkingLeftWood, $Sound/WalkingRightWood]
+		"none":
+			walking_sounds = []

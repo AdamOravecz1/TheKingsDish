@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfhmkqoyahvtg"]
+[gd_scene load_steps=15 format=3 uid="uid://cfhmkqoyahvtg"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_mtov2"]
 [ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="2_00fch"]
@@ -11,6 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="8_p7kqa"]
 [ext_resource type="PackedScene" uid="uid://bwy1ktwdxqcyu" path="res://Scenes/torch.tscn" id="8_ptwol"]
 [ext_resource type="PackedScene" uid="uid://bfoiusp2s4ytu" path="res://Scenes/king.tscn" id="9_05o3f"]
+[ext_resource type="PackedScene" uid="uid://jwggbtfx4827" path="res://Scenes/walking_material.tscn" id="12_mw6s3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8llk2"]
+size = Vector2(1217, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76sst"]
+size = Vector2(699, 20)
 
 [node name="ThroneRoom" instance=ExtResource("1_mtov2")]
 
@@ -173,3 +180,17 @@ blend_mode = 2
 position = Vector2(320, 47)
 level = "castle"
 index = 3
+
+[node name="WalkingMaterial" parent="GroundSound" index="0" instance=ExtResource("12_mw6s3")]
+ground = "stone"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="0"]
+position = Vector2(-159.5, 66)
+shape = SubResource("RectangleShape2D_8llk2")
+
+[node name="WalkingMaterial2" parent="GroundSound" index="1" instance=ExtResource("12_mw6s3")]
+ground = "wood"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSound/WalkingMaterial2" index="0"]
+position = Vector2(-192, -10)
+shape = SubResource("RectangleShape2D_76sst")

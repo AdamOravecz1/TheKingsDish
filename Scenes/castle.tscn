@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bcx2rpj5yumkr"]
+[gd_scene load_steps=30 format=3 uid="uid://bcx2rpj5yumkr"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_ktjp5"]
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="2_11o3y"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://m7nh0rasedc8" path="res://Sprites/BG1Tree2.png" id="7_8jci6"]
 [ext_resource type="PackedScene" uid="uid://bwy1ktwdxqcyu" path="res://Scenes/torch.tscn" id="8_ye7v2"]
 [ext_resource type="PackedScene" uid="uid://dsqjc76hcoo3d" path="res://Scenes/butler.tscn" id="13_6eyrm"]
+[ext_resource type="PackedScene" uid="uid://jwggbtfx4827" path="res://Scenes/walking_material.tscn" id="17_77yx2"]
 
 [sub_resource type="Resource" id="Resource_djk16"]
 script = ExtResource("3_cdx2i")
@@ -42,6 +43,21 @@ script = ExtResource("6_gts25")
 [sub_resource type="Resource" id="Resource_xmdd8"]
 script = ExtResource("3_cdx2i")
 slots = Array[ExtResource("6_gts25")]([SubResource("Resource_6m1bu")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8p8r"]
+size = Vector2(642, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cuw0"]
+size = Vector2(197, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ic41"]
+size = Vector2(286.095, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f04m"]
+size = Vector2(187, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csg3q"]
+size = Vector2(53, 20)
 
 [node name="Castle" instance=ExtResource("1_ktjp5")]
 
@@ -213,3 +229,32 @@ position = Vector2(160, 14)
 position = Vector2(-512, -175)
 level = "throne_room"
 index = 3
+
+[node name="WalkingMaterial" parent="GroundSound" index="0" instance=ExtResource("17_77yx2")]
+position = Vector2(-201, 88)
+ground = "stone"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="0"]
+position = Vector2(297, -56)
+shape = SubResource("RectangleShape2D_w8p8r")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="1"]
+position = Vector2(-308.5, -248)
+shape = SubResource("RectangleShape2D_6cuw0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="2"]
+position = Vector2(-118.734, -150.551)
+rotation = 0.806342
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3ic41")
+
+[node name="WalkingMaterial2" parent="GroundSound" index="1" instance=ExtResource("17_77yx2")]
+ground = "wood"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSound/WalkingMaterial2" index="0"]
+position = Vector2(32, -22)
+shape = SubResource("RectangleShape2D_4f04m")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundSound/WalkingMaterial2" index="1"]
+position = Vector2(-34, -67)
+shape = SubResource("RectangleShape2D_csg3q")

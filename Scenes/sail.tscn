@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://crtixvoj76ldd"]
+[gd_scene load_steps=8 format=3 uid="uid://crtixvoj76ldd"]
 
 [ext_resource type="Texture2D" uid="uid://dlca2xoysmbxi" path="res://Sprites/WindMillTileSet2.png" id="2_5omvx"]
 
@@ -82,6 +82,8 @@ _data = {
 "rotate": SubResource("Animation_djbop")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v2bvc"]
+
 [node name="Sail" type="Marker2D"]
 position = Vector2(16, 16)
 
@@ -97,5 +99,10 @@ libraries = {
 }
 autoplay = "rotate"
 movie_quit_on_finish = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_v2bvc")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

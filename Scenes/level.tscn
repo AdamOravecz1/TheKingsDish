@@ -1363,3 +1363,5 @@ format = 2
 [node name="Curtains" type="Node2D" parent="."]
 
 [node name="Water" type="Node2D" parent="."]
+
+[node name="GroundSound" type="Node2D" parent="."]

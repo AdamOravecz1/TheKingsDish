@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://ccwk7w66e4lvx"]
+[gd_scene load_steps=72 format=3 uid="uid://ccwk7w66e4lvx"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_g5d53"]
 [ext_resource type="PackedScene" uid="uid://dkx5yg0jopxs1" path="res://Scenes/rabbit_hole.tscn" id="2_0i8ep"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dvscf6o0kan3f" path="res://Scenes/water_area.tscn" id="19_almka"]
 [ext_resource type="PackedScene" uid="uid://duxtisrfwv0me" path="res://Scenes/dragon.tscn" id="19_o7rdm"]
 [ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="28_w3vrm"]
+[ext_resource type="PackedScene" uid="uid://jwggbtfx4827" path="res://Scenes/walking_material.tscn" id="30_a4v2g"]
 [ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="32_058fl"]
 
 [sub_resource type="Animation" id="Animation_bj8ul"]
@@ -273,6 +274,78 @@ size = Vector2(96, 182)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2rem8"]
 size = Vector2(85, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2n3b"]
+size = Vector2(352, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4x3f"]
+size = Vector2(612, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svyns"]
+size = Vector2(2385, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lmgb5"]
+size = Vector2(288, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8ovl"]
+size = Vector2(320, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bowo"]
+size = Vector2(383.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j11gw"]
+size = Vector2(96, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxr2c"]
+size = Vector2(192, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ejq2"]
+size = Vector2(352, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lv1j6"]
+size = Vector2(519, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brera"]
+size = Vector2(95, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f54ho"]
+size = Vector2(224, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm85n"]
+size = Vector2(320, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_klmtv"]
+size = Vector2(28, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kwtt6"]
+size = Vector2(58, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgdx4"]
+size = Vector2(35, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k6lo6"]
+size = Vector2(35, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h28y4"]
+size = Vector2(66, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m07as"]
+size = Vector2(36, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5kq8"]
+size = Vector2(159, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ru0ed"]
+size = Vector2(63, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkk08"]
+size = Vector2(35, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iceq7"]
+size = Vector2(32, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00mcf"]
+size = Vector2(66, 20)
 
 [node name="Forest" instance=ExtResource("1_g5d53")]
 metadata/_edit_horizontal_guides_ = [-206.0]
@@ -815,3 +888,116 @@ shape = SubResource("RectangleShape2D_pv56k")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Water/WaterArea" index="2"]
 position = Vector2(685.5, 251)
 shape = SubResource("RectangleShape2D_2rem8")
+
+[node name="WalkingMaterial" parent="GroundSound" index="0" instance=ExtResource("30_a4v2g")]
+visible = false
+position = Vector2(2122, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="0"]
+position = Vector2(166, 0)
+shape = SubResource("RectangleShape2D_q2n3b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="1"]
+position = Vector2(648, 31)
+shape = SubResource("RectangleShape2D_y4x3f")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="2"]
+position = Vector2(1854.5, 193)
+shape = SubResource("RectangleShape2D_svyns")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="3"]
+position = Vector2(-602, 64)
+shape = SubResource("RectangleShape2D_lmgb5")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="4"]
+position = Vector2(-906, 96)
+shape = SubResource("RectangleShape2D_v8ovl")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="5"]
+position = Vector2(-1322.25, 0)
+shape = SubResource("RectangleShape2D_3bowo")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="6"]
+position = Vector2(-1626, 32)
+shape = SubResource("RectangleShape2D_j11gw")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="7"]
+position = Vector2(-1802, -32)
+shape = SubResource("RectangleShape2D_rxr2c")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="8"]
+position = Vector2(-2074, 0)
+shape = SubResource("RectangleShape2D_2ejq2")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="9"]
+position = Vector2(-2509.5, -31)
+shape = SubResource("RectangleShape2D_lv1j6")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="10"]
+position = Vector2(-1562.5, -479)
+shape = SubResource("RectangleShape2D_brera")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="11"]
+position = Vector2(-1242, 160)
+shape = SubResource("RectangleShape2D_f54ho")
+
+[node name="WalkingMaterial2" parent="GroundSound" index="1" instance=ExtResource("30_a4v2g")]
+visible = false
+position = Vector2(1738, 34)
+ground = "stone"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSound/WalkingMaterial2" index="0"]
+position = Vector2(150, 0)
+shape = SubResource("RectangleShape2D_pm85n")
+
+[node name="WalkingMaterial3" parent="GroundSound" index="2" instance=ExtResource("30_a4v2g")]
+position = Vector2(598, -244)
+ground = "none"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSound/WalkingMaterial3" index="0"]
+position = Vector2(-70, -10)
+shape = SubResource("RectangleShape2D_klmtv")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundSound/WalkingMaterial3" index="1"]
+position = Vector2(74, -9)
+shape = SubResource("RectangleShape2D_kwtt6")
+
+[node name="WalkingMaterial4" parent="GroundSound" index="3" instance=ExtResource("30_a4v2g")]
+position = Vector2(2474, -61)
+ground = "wood"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="0"]
+position = Vector2(7.5, 0)
+shape = SubResource("RectangleShape2D_rgdx4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="1"]
+position = Vector2(-1276.5, 97)
+shape = SubResource("RectangleShape2D_k6lo6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="2"]
+position = Vector2(-1384, 65)
+shape = SubResource("RectangleShape2D_h28y4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="3"]
+position = Vector2(-1627, -193)
+shape = SubResource("RectangleShape2D_m07as")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="4"]
+position = Vector2(-1625.5, -99)
+shape = SubResource("RectangleShape2D_s5kq8")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="5"]
+position = Vector2(-2059.5, -256)
+shape = SubResource("RectangleShape2D_ru0ed")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="6"]
+position = Vector2(-2137.5, -320)
+shape = SubResource("RectangleShape2D_nkk08")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="7"]
+position = Vector2(-2076, -384)
+shape = SubResource("RectangleShape2D_iceq7")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="GroundSound/WalkingMaterial4" index="8"]
+position = Vector2(-2604, -66)
+shape = SubResource("RectangleShape2D_00mcf")

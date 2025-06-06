@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://6s62hkkab772"]
+[gd_scene load_steps=28 format=3 uid="uid://6s62hkkab772"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_3nr38"]
 [ext_resource type="PackedScene" uid="uid://cirs61t03la8g" path="res://Scenes/player_graphics.tscn" id="2_ao26x"]
@@ -9,7 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bvqlk5kocb0a3" path="res://Sprites/Bubble.png" id="7_p5sey"]
 [ext_resource type="AudioStream" uid="uid://cednyeutbushg" path="res://Sounds/sfx_step_grass_l.wav" id="8_t37qx"]
 [ext_resource type="AudioStream" uid="uid://dhmxqtilpen1h" path="res://Sounds/sfx_step_grass_r.wav" id="9_iypdp"]
-[ext_resource type="AudioStream" uid="uid://cfvokg60sxcw7" path="res://Sounds/jumpland.wav" id="10_148ky"]
+[ext_resource type="AudioStream" uid="uid://fdw1qmqodlvf" path="res://Sounds/FootstepsonStoneLeft.wav" id="10_mblby"]
+[ext_resource type="AudioStream" uid="uid://brgetcfb7fcbw" path="res://Sounds/FootstepsonStoneRight.wav" id="11_haksa"]
+[ext_resource type="AudioStream" uid="uid://diqbc01m08euq" path="res://Sounds/jumpland2.wav" id="12_h2ywl"]
+[ext_resource type="AudioStream" uid="uid://cru1nxo4i6m4a" path="res://Sounds/WalkingonWoodLeft2.wav" id="12_pd3ek"]
+[ext_resource type="AudioStream" uid="uid://b8l6gn7x3k13u" path="res://Sounds/WalkingonWoodRight2.wav" id="13_btyn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don8d"]
 size = Vector2(19, 42)
@@ -195,14 +199,26 @@ collision_mask = 0
 position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_wuxko")
 
-[node name="WalkingLeft" type="AudioStreamPlayer2D" parent="Sound" index="0"]
+[node name="WalkingLeftGrass" type="AudioStreamPlayer2D" parent="Sound" index="0"]
 stream = ExtResource("8_t37qx")
 
-[node name="WalkingRight" type="AudioStreamPlayer2D" parent="Sound" index="1"]
+[node name="WalkingRightGrass" type="AudioStreamPlayer2D" parent="Sound" index="1"]
 stream = ExtResource("9_iypdp")
 
-[node name="Land" type="AudioStreamPlayer2D" parent="Sound" index="2"]
-stream = ExtResource("10_148ky")
+[node name="WalkingLeftStone" type="AudioStreamPlayer2D" parent="Sound" index="2"]
+stream = ExtResource("10_mblby")
+
+[node name="WalknigRightStone" type="AudioStreamPlayer2D" parent="Sound" index="3"]
+stream = ExtResource("11_haksa")
+
+[node name="WalkingLeftWood" type="AudioStreamPlayer2D" parent="Sound" index="4"]
+stream = ExtResource("12_pd3ek")
+
+[node name="WalkingRightWood" type="AudioStreamPlayer2D" parent="Sound" index="5"]
+stream = ExtResource("13_btyn1")
+
+[node name="Land" type="AudioStreamPlayer2D" parent="Sound" index="6"]
+stream = ExtResource("12_h2ywl")
 volume_db = -10.0
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
