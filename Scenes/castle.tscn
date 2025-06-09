@@ -245,7 +245,6 @@ shape = SubResource("RectangleShape2D_6cuw0")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GroundSound/WalkingMaterial" index="2"]
 position = Vector2(-118.734, -150.551)
 rotation = 0.806342
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3ic41")
 
 [node name="WalkingMaterial2" parent="GroundSound" index="1" instance=ExtResource("17_77yx2")]

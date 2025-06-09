@@ -102,7 +102,10 @@ func _process(delta):
 		$Timers/WalkingTimer.stop()
 		
 	if is_on_floor() and landing_sound:
-		$Sound/Land.pitch_scale = randf_range(0.85, 1.15)
+		if in_water:
+			$Sound/Land.pitch_scale = randf_range(0.35, 0.65)
+		else:
+			$Sound/Land.pitch_scale = randf_range(0.85, 1.15)
 		$Sound/Land.play()
 		landing_sound = false
 		if not $Sound/Land.playing:
@@ -152,6 +155,8 @@ func get_input():
 	#relode
 	if Input.is_action_just_pressed("relode"):
 		if bolt > 0:
+			if not reloded:
+				$Sound/CrossbowReload.play()
 			reloded = true
 			$PlayerGraphics.relode()
 		
@@ -198,6 +203,13 @@ func apply_movement(delta):
 		$Timers/Coyote.start()
 		
 func swim():
+	$Sound/WaterDive.play()
+	$Sound/Land.volume_db = -20
+	$Sound/CrossbowShoot.volume_db = -20
+	$Sound/CrossbowReload.volume_db = -20
+	$Sound/CrossbowShoot.pitch_scale = 0.6
+	$Sound/CrossbowReload.pitch_scale = 0.6
+	$PlayerGraphics.wetSlashSound()
 	can_move = true
 	in_water = true
 	speed = 100
@@ -209,6 +221,12 @@ func swim():
 	jump_strength = 200
 	
 func not_swim():
+	$Sound/Land.volume_db = -10
+	$Sound/CrossbowShoot.volume_db = 0
+	$Sound/CrossbowReload.volume_db = 0
+	$Sound/CrossbowShoot.pitch_scale = 1
+	$Sound/CrossbowReload.pitch_scale = 1
+	$PlayerGraphics.drySlashSound()
 	in_water = false
 	speed = 200
 	acceleration = 700
@@ -253,6 +271,7 @@ func slash():
 	if current_weapon == 0 or current_weapon == 1:
 		pass
 	elif reloded:
+		$Sound/CrossbowShoot.play()
 		$PlayerGraphics.shoot()
 		reloded = false
 		shoot.emit(pos, aim_direction, current_weapon)

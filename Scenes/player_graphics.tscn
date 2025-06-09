@@ -1,7 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://cirs61t03la8g"]
+[gd_scene load_steps=38 format=3 uid="uid://cirs61t03la8g"]
 
 [ext_resource type="Script" path="res://Scenes/player_graphics.gd" id="1_nikel"]
+[ext_resource type="AudioStream" uid="uid://b24eonoh0kedb" path="res://Sounds/KnifeSlash.wav" id="3_rp7p2"]
 [ext_resource type="Texture2D" uid="uid://dgi02gp5mhbhh" path="res://Sprites/Player_8.png" id="3_rw6fq"]
+[ext_resource type="AudioStream" uid="uid://q81hoplevrvq" path="res://Sounds/AxeSlash.wav" id="4_ruyb5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bl4wo"]
 atlas = ExtResource("3_rw6fq")
@@ -419,6 +421,12 @@ libraries = {
 "": SubResource("AnimationLibrary_isbo1")
 }
 speed_scale = 2.0
+
+[node name="KnifeSlash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_rp7p2")
+
+[node name="AxeSlash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ruyb5")
 
 [connection signal="animation_finished" from="KnifeHit" to="." method="_on_knife_hit_animation_finished"]
 [connection signal="animation_finished" from="AxeHit" to="." method="_on_axe_hit_animation_finished"]

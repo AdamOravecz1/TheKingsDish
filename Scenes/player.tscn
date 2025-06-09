@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://6s62hkkab772"]
+[gd_scene load_steps=31 format=3 uid="uid://6s62hkkab772"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_3nr38"]
 [ext_resource type="PackedScene" uid="uid://cirs61t03la8g" path="res://Scenes/player_graphics.tscn" id="2_ao26x"]
@@ -14,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://diqbc01m08euq" path="res://Sounds/jumpland2.wav" id="12_h2ywl"]
 [ext_resource type="AudioStream" uid="uid://cru1nxo4i6m4a" path="res://Sounds/WalkingonWoodLeft2.wav" id="12_pd3ek"]
 [ext_resource type="AudioStream" uid="uid://b8l6gn7x3k13u" path="res://Sounds/WalkingonWoodRight2.wav" id="13_btyn1"]
+[ext_resource type="AudioStream" uid="uid://bjvp0nqf6mang" path="res://Sounds/WaterDive.wav" id="14_8ghc2"]
+[ext_resource type="AudioStream" uid="uid://byw3a52geem42" path="res://Sounds/CrossbowShot.wav" id="16_pn7cm"]
+[ext_resource type="AudioStream" uid="uid://cisy8u0nj546n" path="res://Sounds/CrossbowReloading.wav" id="17_iuf4v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don8d"]
 size = Vector2(19, 42)
@@ -217,9 +220,18 @@ stream = ExtResource("12_pd3ek")
 [node name="WalkingRightWood" type="AudioStreamPlayer2D" parent="Sound" index="5"]
 stream = ExtResource("13_btyn1")
 
-[node name="Land" type="AudioStreamPlayer2D" parent="Sound" index="6"]
+[node name="WaterDive" type="AudioStreamPlayer2D" parent="Sound" index="6"]
+stream = ExtResource("14_8ghc2")
+
+[node name="Land" type="AudioStreamPlayer2D" parent="Sound" index="7"]
 stream = ExtResource("12_h2ywl")
 volume_db = -10.0
+
+[node name="CrossbowShoot" type="AudioStreamPlayer2D" parent="Sound" index="8"]
+stream = ExtResource("16_pn7cm")
+
+[node name="CrossbowReload" type="AudioStreamPlayer2D" parent="Sound" index="9"]
+stream = ExtResource("17_iuf4v")
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
 [connection signal="timeout" from="Timers/DrowningTimer" to="." method="_on_drowning_timer_timeout"]

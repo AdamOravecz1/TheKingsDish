@@ -38,6 +38,7 @@ func hit():
 		can_hit = false
 		$Torso.visible = false
 		$KnifeHit.show()
+		$KnifeSlash.play()
 		$KnifeHit.play("hit")
 		if dir < 0:
 			$Knife/KnifeHitboxAnimationLeft.play("hit")
@@ -49,6 +50,7 @@ func hit():
 		can_hit = false
 		$Torso.visible = false
 		$AxeHit.show()
+		$AxeSlash.play()
 		$AxeHit.play("hit")
 		if dir < 0:
 			$Axe/AxeHitboxAnimationLeft.play("hit")
@@ -57,15 +59,18 @@ func hit():
 		await get_tree().create_timer(0.1).timeout
 		$Axe/AxeHitbox.disabled = false
 	elif weapon == 2:
-		pass
+		print("Srtrybbtrd")
 	
 func _on_knife_hit_animation_finished():
 	$KnifeHit.hide()
 	$Torso.show()
+	can_hit = true
 
 func _on_axe_hit_animation_finished():
 	$AxeHit.hide()
 	$Torso.show()
+	can_hit = true
+	
 
 func shoot():
 	fired = 1
@@ -80,11 +85,9 @@ func _on_knife_body_entered(body):
 
 func _on_knife_hitbox_animation_left_animation_finished(anim_name):
 	$Knife/KnifeHitbox.disabled = true
-	can_hit = true
 
 func _on_knife_hitbox_animation_right_animation_finished(anim_name):
 	$Knife/KnifeHitbox.disabled = true
-	can_hit = true
 
 
 func _on_axe_body_entered(body):
@@ -94,8 +97,18 @@ func _on_axe_body_entered(body):
 
 func _on_axe_hitbox_animation_left_animation_finished(anim_name):
 	$Axe/AxeHitbox.disabled = true
-	can_hit = true
 
 func _on_axe_hitbox_ainamation_right_animation_finished(anim_name):
 	$Axe/AxeHitbox.disabled = true
-	can_hit = true
+	
+func wetSlashSound():
+	$KnifeSlash.volume_db = -20
+	$KnifeSlash.pitch_scale = 0.6
+	$AxeSlash.volume_db = -20
+	$AxeSlash.pitch_scale = 0.6
+	
+func drySlashSound():
+	$KnifeSlash.volume_db = 0
+	$KnifeSlash.pitch_scale = 1
+	$AxeSlash.volume_db = 0
+	$AxeSlash.pitch_scale = 1

@@ -11,7 +11,7 @@ func _shoot_bolts():
 	if bolt_scene:
 		var direction = _get_direction_vector(shoot_direction)
 		var rotation_angle = direction.angle()
-		var offset = 10
+		var offset = 8
 
 		for x_offset in [-offset, offset]:
 			var bolt = bolt_scene.instantiate()
