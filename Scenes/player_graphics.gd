@@ -112,3 +112,5 @@ func drySlashSound():
 	$KnifeSlash.pitch_scale = 1
 	$AxeSlash.volume_db = 0
 	$AxeSlash.pitch_scale = 1
+	
+#dtryhu
