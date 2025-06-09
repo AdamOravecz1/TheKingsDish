@@ -59,7 +59,7 @@ func hit():
 		await get_tree().create_timer(0.1).timeout
 		$Axe/AxeHitbox.disabled = false
 	elif weapon == 2:
-		print("Srtrybbtrd")
+		pass
 	
 func _on_knife_hit_animation_finished():
 	$KnifeHit.hide()
@@ -112,4 +112,3 @@ func drySlashSound():
 	$KnifeSlash.pitch_scale = 1
 	$AxeSlash.volume_db = 0
 	$AxeSlash.pitch_scale = 1
- #dfetgbyhu

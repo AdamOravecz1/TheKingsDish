@@ -75,7 +75,7 @@ func animate():
 	
 func trigger_death():
 	if alive:
-		$Tusk/TuskHitbox.queue_free()
+		$Tusk/TuskHitbox.set_deferred("disabled", true)
 		$BoarGraphic.death()
 		$InteractionArea.monitoring = true
 		alive = false
