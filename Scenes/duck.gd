@@ -107,6 +107,7 @@ func trigger_death():
 	fly = false
 	descend = false
 	if alive:
+		$Sound/Death.play()
 		animation.position.y += 5
 		animation.play("death")
 		$InteractionArea.monitoring = true

@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7n5dl1juxu7t"]
+[gd_scene load_steps=14 format=3 uid="uid://b7n5dl1juxu7t"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_gn3r3"]
 [ext_resource type="Script" path="res://Scenes/rabbit.gd" id="2_pnegx"]
 [ext_resource type="Texture2D" uid="uid://hhink6swwtu1" path="res://Sprites/Rabbit3.png" id="3_lvk3f"]
+[ext_resource type="AudioStream" uid="uid://bwtt7bxnsll3j" path="res://Sounds/RabbitDies.wav" id="5_ihyya"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="5_kb7ra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eev5y"]
@@ -100,5 +101,8 @@ action_name = "pick up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_uk3hp")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Sound" index="1"]
+stream = ExtResource("5_ihyya")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

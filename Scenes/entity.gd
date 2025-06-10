@@ -16,6 +16,7 @@ func trigger_death():
 	pass
 	
 func hit(damage, pos, force):
+	$Sound/Hit.play()
 	health -= damage
 	knock_back.emit(pos, force)
 	if self.name == "Player":

@@ -18,6 +18,7 @@ func _process(delta):
 		if inv.slots[0].item:
 			inv.initialize_inv(1)
 			play_animation()
+			$Eating.play()
 		
 
 func _ready():
@@ -32,9 +33,6 @@ func _ready():
 	dogInv.inv = inv
 	dogInv._ready()
 	interaction_area.interact = Callable(self, "_opened")
-	
-func initialize():
-	inv.initialize_inv(1)
 
 func _opened():
 	if is_open:

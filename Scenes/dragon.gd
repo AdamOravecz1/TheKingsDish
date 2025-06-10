@@ -28,6 +28,7 @@ func _process(delta):
 		
 func trigger_death():
 	if alive:
+		$Sound/Death.play()
 		$AnimatedSprite2D.play("death")
 		$PlayerDetect.queue_free()
 		$DamageZone.queue_free()
@@ -38,12 +39,13 @@ func trigger_death():
 func _on_player_detect_body_entered(body):
 	$Fire.play("fire")
 	$AnimatedSprite2D.play("fire")
+	$Sound/Fire.play()
 	
 func _on_player_detect_body_exited(body):
 	$Fire.play("default")
 	$AnimatedSprite2D.play("default")
+	$Sound/Fire.stop()
 	
-
 func _on_damage_zone_body_entered(body):
 	if body != self and "hit" in body:
 		if can_damage:  # Only hit if not in stagger mode
@@ -56,8 +58,9 @@ func _on_damage_zone_body_exited(body):
 
 func _on_damage_timer_timeout():
 	if alive:
-		if player in $DamageZone.get_overlapping_bodies() and can_damage:
-			player.hit(fire_damage, global_position - Vector2(1000, 0), fire_knockback)
+		if $DamageZone.monitoring:
+			if player in $DamageZone.get_overlapping_bodies() and can_damage:
+				player.hit(fire_damage, global_position - Vector2(1000, 0), fire_knockback)
 
 func stagger():
 	can_damage = false  # Disable damage

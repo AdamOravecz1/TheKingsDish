@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://rfrpoyevsod4"]
+[gd_scene load_steps=31 format=3 uid="uid://rfrpoyevsod4"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_l6gpp"]
 [ext_resource type="Script" path="res://Scenes/duck.gd" id="2_k6775"]
 [ext_resource type="Texture2D" uid="uid://cri7engmd20qm" path="res://Sprites/DuckMale6.png" id="4_q4wam"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="5_2k3kj"]
 [ext_resource type="Texture2D" uid="uid://nk8n8f0vk6p8" path="res://Sprites/DuckFemale4.png" id="5_eba7h"]
+[ext_resource type="AudioStream" uid="uid://q43bl6q5qb55" path="res://Sounds/DuckDies.wav" id="6_kqu16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cld3"]
 size = Vector2(20, 23)
@@ -251,5 +252,8 @@ position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_b3q0i")
 animation = &"flight"
 autoplay = "walk"
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Sound" index="1"]
+stream = ExtResource("6_kqu16")
 
 [connection signal="timeout" from="Timers/Flight" to="." method="_on_flight_timeout"]

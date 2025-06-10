@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctq5ggr4k6mtl"]
+[gd_scene load_steps=9 format=3 uid="uid://ctq5ggr4k6mtl"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_nlrho"]
 [ext_resource type="PackedScene" uid="uid://baaslto0vly86" path="res://Scenes/boar_graphic.tscn" id="2_5tv31"]
 [ext_resource type="Script" path="res://Scenes/boar.gd" id="2_bkvjh"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_iaebd"]
+[ext_resource type="AudioStream" uid="uid://c0xnt4ynopbtl" path="res://Sounds/BoarDies.wav" id="5_tjjlr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2dco"]
 size = Vector2(49, 23.5)
@@ -81,6 +82,9 @@ collision_mask = 6
 [node name="TuskHitbox" type="CollisionShape2D" parent="Tusk" index="0"]
 shape = SubResource("CircleShape2D_8rumn")
 disabled = true
+
+[node name="Death" type="AudioStreamPlayer2D" parent="Sound" index="1"]
+stream = ExtResource("5_tjjlr")
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
 [connection signal="timeout" from="Timers/DigTimer" to="." method="_on_timer_timeout"]

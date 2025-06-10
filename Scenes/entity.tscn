@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://blorwsk7msxwu"]
+[gd_scene load_steps=3 format=3 uid="uid://blorwsk7msxwu"]
 
 [ext_resource type="Script" path="res://Scenes/entity.gd" id="1_i6hnx"]
+[ext_resource type="AudioStream" uid="uid://c4icjerdwahxl" path="res://Sounds/Hit.wav" id="2_cmed8"]
 
 [node name="Entity" type="CharacterBody2D" groups=["Animal"]]
 script = ExtResource("1_i6hnx")
@@ -10,3 +11,6 @@ script = ExtResource("1_i6hnx")
 [node name="Timers" type="Node" parent="."]
 
 [node name="Sound" type="Node2D" parent="."]
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("2_cmed8")

@@ -75,6 +75,7 @@ func animate():
 	
 func trigger_death():
 	if alive:
+		$Sound/Death.play()
 		$Tusk/TuskHitbox.set_deferred("disabled", true)
 		$BoarGraphic.death()
 		$InteractionArea.monitoring = true

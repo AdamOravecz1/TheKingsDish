@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://duxtisrfwv0me"]
+[gd_scene load_steps=29 format=3 uid="uid://duxtisrfwv0me"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_4shj2"]
 [ext_resource type="Texture2D" uid="uid://dpkud41ejafbk" path="res://Sprites/Dragon2.png" id="2_80eqw"]
 [ext_resource type="Script" path="res://Scenes/dragon.gd" id="2_omlxc"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="3_xoj67"]
+[ext_resource type="AudioStream" uid="uid://c34pf3c0xdici" path="res://Sounds/DragonDies.wav" id="5_7kmdp"]
+[ext_resource type="AudioStream" uid="uid://cpkr7wnis1ecl" path="res://Sounds/FireBreath.wav" id="6_7krll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rc88l"]
 size = Vector2(119, 56)
@@ -212,8 +214,14 @@ collision_mask = 22
 position = Vector2(-74, -5.5)
 shape = SubResource("RectangleShape2D_n3kq6")
 
-[connection signal="timeout" from="Timers/DamageTimer" to="." method="_on_damage_timer_timeout"]
+[node name="Death" type="AudioStreamPlayer2D" parent="Sound" index="1"]
+stream = ExtResource("5_7kmdp")
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="Sound" index="2"]
+stream = ExtResource("6_7krll")
+
 [connection signal="timeout" from="Timers/DamageTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timers/DamageTimer" to="." method="_on_damage_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

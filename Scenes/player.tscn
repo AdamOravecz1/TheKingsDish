@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://6s62hkkab772"]
+[gd_scene load_steps=32 format=3 uid="uid://6s62hkkab772"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_3nr38"]
 [ext_resource type="PackedScene" uid="uid://cirs61t03la8g" path="res://Scenes/player_graphics.tscn" id="2_ao26x"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bjvp0nqf6mang" path="res://Sounds/WaterDive.wav" id="14_8ghc2"]
 [ext_resource type="AudioStream" uid="uid://byw3a52geem42" path="res://Sounds/CrossbowShot.wav" id="16_pn7cm"]
 [ext_resource type="AudioStream" uid="uid://cisy8u0nj546n" path="res://Sounds/CrossbowReloading.wav" id="17_iuf4v"]
+[ext_resource type="AudioStream" uid="uid://6fsi67rfam47" path="res://Sounds/PickUp.wav" id="18_4785m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don8d"]
 size = Vector2(19, 42)
@@ -232,6 +233,9 @@ stream = ExtResource("16_pn7cm")
 
 [node name="CrossbowReload" type="AudioStreamPlayer2D" parent="Sound" index="9"]
 stream = ExtResource("17_iuf4v")
+
+[node name="PickUp" type="AudioStreamPlayer2D" parent="Sound" index="11"]
+stream = ExtResource("18_4785m")
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
 [connection signal="timeout" from="Timers/DrowningTimer" to="." method="_on_drowning_timer_timeout"]

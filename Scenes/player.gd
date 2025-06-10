@@ -290,6 +290,7 @@ func collect(item):
 	level.update_coin(str(coin))
 	var emptyslot = inv.slots.filter(func(slot): return slot.item == null)
 	if emptyslot.size() > 0:
+		$Sound/PickUp.play()
 		inv.insert(item)
 		free_inv_slot = true
 	else:
