@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://do1a1hvs432v5"]
+[gd_scene load_steps=8 format=3 uid="uid://do1a1hvs432v5"]
 
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="1_dwb31"]
 [ext_resource type="Script" path="res://Scenes/chest.gd" id="1_sd17e"]
 [ext_resource type="Texture2D" uid="uid://c3s25rbtjykmp" path="res://Sprites/Chest.png" id="2_p2liw"]
 [ext_resource type="PackedScene" uid="uid://0x5cu4ubv00b" path="res://inventory/chest_inv.tscn" id="4_t4hjm"]
+[ext_resource type="AudioStream" uid="uid://bnrjnjhpobaog" path="res://Sounds/Chest.wav" id="5_esrni"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ay6e"]
 radius = 35.3553
@@ -37,6 +38,9 @@ offset_left = 16.0
 offset_top = -332.0
 offset_right = 16.0
 offset_bottom = -332.0
+
+[node name="Open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_esrni")
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

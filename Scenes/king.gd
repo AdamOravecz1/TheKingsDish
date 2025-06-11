@@ -16,9 +16,6 @@ var is_open := false
 
 #var dialogue := Global.king_dialogue
 
-func _process(delta):
-	if Input.is_action_just_pressed("inventory") and is_open:
-		_talk()
 
 func _ready():
 	#talk.show_node("start")

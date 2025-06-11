@@ -72,8 +72,9 @@ func check_player_distance():
 	var distance_to_player = position.distance_to(player.global_position)
 	var delta_x = global_position.x - player.global_position.x
 
-
 	if distance_to_player < 120:
+		if not fly:
+			$Sound/Flight.play()
 		$Timers/Flight.start()
 		speed_modifier = 4
 		fly = true
@@ -115,8 +116,6 @@ func trigger_death():
 		set_collision_layer_value(3, false)
 		set_collision_layer_value(6, true)
 
-
-
 func _on_flight_timeout():
 	if alive:
 		fly = false
@@ -134,7 +133,6 @@ func not_swim():
 	swimming = false
 
 func snap_to_surface(water_surface_y):
-
 	if not swimming:
 		return  # Avoid redundant snapping if already swimming
 

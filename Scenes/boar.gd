@@ -75,6 +75,7 @@ func animate():
 	
 func trigger_death():
 	if alive:
+		$Sound/Death.pitch_scale = 1.2
 		$Sound/Death.play()
 		$Tusk/TuskHitbox.set_deferred("disabled", true)
 		$BoarGraphic.death()
@@ -96,6 +97,8 @@ func check_wall():
 		
 func check_player():
 	if $Agro/AgroRay.is_colliding():
+		if not charge:
+			$Sound/Death.play()
 		$Timers/DigTimer.start()
 		$Timers/ChargeTimer.start()
 		charge = true

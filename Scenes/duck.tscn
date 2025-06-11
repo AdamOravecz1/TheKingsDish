@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://rfrpoyevsod4"]
+[gd_scene load_steps=32 format=3 uid="uid://rfrpoyevsod4"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_l6gpp"]
 [ext_resource type="Script" path="res://Scenes/duck.gd" id="2_k6775"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="5_2k3kj"]
 [ext_resource type="Texture2D" uid="uid://nk8n8f0vk6p8" path="res://Sprites/DuckFemale4.png" id="5_eba7h"]
 [ext_resource type="AudioStream" uid="uid://q43bl6q5qb55" path="res://Sounds/DuckDies.wav" id="6_kqu16"]
+[ext_resource type="AudioStream" uid="uid://it52frdp1obo" path="res://Sounds/DuckFlight.wav" id="7_bf45w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8cld3"]
 size = Vector2(20, 23)
@@ -255,5 +256,9 @@ autoplay = "walk"
 
 [node name="Death" type="AudioStreamPlayer2D" parent="Sound" index="1"]
 stream = ExtResource("6_kqu16")
+
+[node name="Flight" type="AudioStreamPlayer2D" parent="Sound" index="2"]
+stream = ExtResource("7_bf45w")
+volume_db = 10.0
 
 [connection signal="timeout" from="Timers/Flight" to="." method="_on_flight_timeout"]

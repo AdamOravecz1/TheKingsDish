@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://xxiwk1u3j053"]
+[gd_scene load_steps=5 format=3 uid="uid://xxiwk1u3j053"]
 
 [ext_resource type="Script" path="res://Scenes/gate.gd" id="1_oht1t"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="1_qgc4g"]
+[ext_resource type="AudioStream" uid="uid://baxf8olrahrqg" path="res://Sounds/Door.wav" id="3_evv4q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5a0x0"]
 height = 62.0
@@ -14,3 +15,6 @@ action_name = "enter"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CapsuleShape2D_5a0x0")
+
+[node name="Door" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_evv4q")

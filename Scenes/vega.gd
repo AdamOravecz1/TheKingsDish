@@ -36,7 +36,6 @@ func _ready():
 		interaction_area.interact = Callable(self, "_pickup")
 	$Sprite2D.frame = type * 2
 	item = load(items[type]) as InvItem
-
 	
 func harvest():
 	$Sprite2D.frame = type * 2 + 1

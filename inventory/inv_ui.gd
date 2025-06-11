@@ -84,12 +84,16 @@ func _on_cook_pressed():
 		ingredients_name.sort()
 
 		if ingredients_name == cauldron_content:
+			$Success.play()
 			inv.initialize_inv(4)
 			inv.insert_to_place(load(recipe_name), 0)
 			return
+		else:
+			$Fail.play()
 
 	# Special case: 2 items, one poisoned and one not
 	if cauldron_content.size() == 2 and poisoned_item and target_item:
+		$Success.play()
 		# Clone the item to preserve its resource (optional)
 		var new_item := target_item.duplicate()
 		

@@ -12,8 +12,6 @@ var is_open := false
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("inventory") and is_open:
-		_opened()
 	if is_open:
 		if inv.slots[0].item:
 			inv.initialize_inv(1)

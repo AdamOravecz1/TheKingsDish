@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://wfi60b4cqpn5"]
+[gd_scene load_steps=5 format=3 uid="uid://wfi60b4cqpn5"]
 
 [ext_resource type="Texture2D" uid="uid://bom3l5oig3hy3" path="res://Sprites/ArrowTrap.png" id="1_5f6vl"]
 [ext_resource type="Script" path="res://Scenes/arrow_trap.gd" id="1_a6f45"]
 [ext_resource type="PackedScene" uid="uid://dflbh6pqufqta" path="res://Scenes/bolt.tscn" id="2_3u0ub"]
+[ext_resource type="AudioStream" uid="uid://byw3a52geem42" path="res://Sounds/CrossbowShot.wav" id="4_mofeb"]
 
 [node name="ArrowTrap" type="Area2D"]
 collision_layer = 0
@@ -12,5 +13,8 @@ bolt_scene = ExtResource("2_3u0ub")
 
 [node name="ArrowTrap" type="Sprite2D" parent="."]
 texture = ExtResource("1_5f6vl")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mofeb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

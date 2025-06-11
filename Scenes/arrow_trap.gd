@@ -9,6 +9,7 @@ func _on_body_entered(body):
 
 func _shoot_bolts():
 	if bolt_scene:
+		$Shoot.play()
 		var direction = _get_direction_vector(shoot_direction)
 		var rotation_angle = direction.angle()
 		var offset = 8

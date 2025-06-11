@@ -79,6 +79,8 @@ func animate():
 	
 func trigger_death():
 	if alive:
+		$Sound/Death.pitch_scale = 1.5
+		$Sound/Death.play()
 		$AnimatedSprite2D.play("death")
 		$Teeth/TeethHitbox.queue_free()
 		$InteractionArea.monitoring = true
@@ -99,6 +101,8 @@ func check_wall():
 		
 func check_player():
 	if $Agro/AgroRay.is_colliding():
+		if not charge:
+			$Sound/Death.play()
 		$Timers/ChargeTimer.start()
 		charge = true
 		$Teeth/TeethHitbox.disabled = false

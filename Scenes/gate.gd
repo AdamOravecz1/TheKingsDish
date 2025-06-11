@@ -14,8 +14,8 @@ func _ready():
 
 	interaction_area.interact = Callable(self, "_enterr")
 	
-	
 func _enterr():
+	$Door.play()
 	TransitionLayer.change_scene(levels[level])
 	Global.gate_index = index
 	Global.can_gate = true

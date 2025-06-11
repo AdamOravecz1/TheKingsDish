@@ -17,10 +17,6 @@ var is_shop_visible := false
 
 var dialogue := Global.blacksmit_dialogue
 
-func _process(delta):
-	if Input.is_action_just_pressed("inventory") and is_open:
-		_talk()
-
 func _ready():
 	close()
 	talk.show_node("start")

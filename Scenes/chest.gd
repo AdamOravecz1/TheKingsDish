@@ -10,11 +10,6 @@ extends Area2D
 @onready var main = get_tree().current_scene
 var is_open := false
 
-func _process(delta):
-	if Input.is_action_just_pressed("inventory") and is_open:
-		_opened()
-		
-
 func _ready():
 	monitoring = false
 	if Global.chests_load:
@@ -36,6 +31,7 @@ func _opened():
 		main.close()
 		close()
 	else:
+		$Open.play()
 		playerinv.position.x = 450
 		main.open()
 		open()

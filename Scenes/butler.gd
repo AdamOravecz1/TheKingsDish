@@ -31,8 +31,6 @@ func _process(delta):
 	velocity.x = x_direction * speed * speed_modifier
 	apply_gravity(delta)
 	move_and_slide()
-	if Input.is_action_just_pressed("inventory") and is_open:
-		_talk()
 		
 func apply_gravity(delta):
 	velocity.y += gravity * delta
