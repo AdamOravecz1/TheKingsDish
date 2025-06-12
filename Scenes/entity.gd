@@ -16,6 +16,9 @@ func trigger_death():
 	pass
 	
 func hit(damage, pos, force):
+	if self.name.begins_with("Fish"):
+		$Sound/Hit.pitch_scale = 0.6
+		$Sound/Hit.volume_db = -20
 	$Sound/Hit.play()
 	health -= damage
 	knock_back.emit(pos, force)

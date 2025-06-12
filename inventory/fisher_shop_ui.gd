@@ -2,17 +2,6 @@ extends gen_shop
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var recipes = get_tree().get_first_node_in_group("Recipes")
-
-
-func _ready():
-	$NinePatchRect/GridContainer/RecipeLabel.text = "  " + str(Global.weapon_price["TRAP"])
-
-func _on_trap_pressed():
-	if player.coin >= Global.weapon_price["TRAP"]:
-		player.trap_calculate(1)
-		player.pay( Global.weapon_price["TRAP"])
-	else:
-		flash_text()
 		
 func add_recipe_to_found(recipe_key: Resource) -> void:
 	# Check if the recipe exists in the 'recipes' dictionary

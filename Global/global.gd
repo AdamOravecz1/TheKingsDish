@@ -79,6 +79,10 @@ const weapon_price = {
 	"TRAP" : 1
 }
 
+const recipe_price = {
+	"Rabbit stew": 2
+}
+
 const weapon_data = {
 	weapons.KNIFE: {'damage': 20, 'knockback': 5000.0},
 	weapons.AXE: {'damage': 400, 'knockback': 10000.0},
@@ -111,15 +115,7 @@ var scene: String
 
 var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
-	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
-	"res://inventory/Items/fishers_soup.tres": ["res://inventory/Items/fish.tres", "res://inventory/Items/water.tres", "res://inventory/Items/onion.tres", "res://inventory/Items/bell_pepper.tres"],
-	"res://inventory/Items/fisher_soup.tres": ["res://inventory/Items/fisher.tres", "res://inventory/Items/water.tres", "res://inventory/Items/onion.tres", "res://inventory/Items/bell_pepper.tres"],
-	"res://inventory/Items/mac_n_cheese.tres": ["res://inventory/Items/pasta.tres", "res://inventory/Items/milk.tres", "res://inventory/Items/cheese.tres"],
-	"res://inventory/Items/pancake.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/milk.tres", "res://inventory/Items/oil.tres", "res://inventory/Items/sugar.tres"],
-	"res://inventory/Items/blueberry_pancake.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/milk.tres", "res://inventory/Items/oil.tres", "res://inventory/Items/blue_berry.tres"],
-	"res://inventory/Items/salad.tres": ["res://inventory/Items/lettuce.tres", "res://inventory/Items/tomato.tres", "res://inventory/Items/bell_pepper.tres"],
-	"res://inventory/Items/fries.tres": ["res://inventory/Items/oil.tres", "res://inventory/Items/potato.tres"],
-	"res://inventory/Items/arabiata.tres": ["res://inventory/Items/pasta.tres", "res://inventory/Items/tomato sauce.tres", "res://inventory/Items/chilli_pepper.tres"]
+	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"]
 }
 
 const recipes: Dictionary = {
@@ -236,7 +232,7 @@ func save_game():
 		"animal_data": animal_data,
 		"vega_data": vega_data,
 		"trap_data": trap_data,
-		"chest_inv": get_items(chest_inv),
+		"chest_inv": get_items(chest_inv) if chests_load else chest_inv,
 		"found_recipes": found_recipes,
 		"scene": scene
 	}
@@ -250,7 +246,9 @@ func save_game():
 
 #Betöltés funkció
 func load_game():
+	can_gate = false
 	chests_load = false
+	print("itten e: ", chests_load)
 	if not FileAccess.file_exists(save_path):
 		print("Nincs mentési fájl.")
 		return
@@ -260,6 +258,7 @@ func load_game():
 		var content = file.get_as_text()
 		var result = JSON.parse_string(content)
 		_convert_vectors(result)
+		print(result)
 		if result:
 			unlocked_weapons = result["unlocked_weapons"]
 			player_data = result["player_data"]
@@ -279,8 +278,11 @@ func load_game():
 				TransitionLayer.change_scene("res://Scenes/castle.tscn")
 			elif scene == "Dungeon":
 				TransitionLayer.change_scene("res://Scenes/dungeon.tscn")
+			elif scene == "ThroneRoom":
+				TransitionLayer.change_scene("res://Scenes/throne_room.tscn")
 			#get_tree().get_first_node_in_group("Level")._ready()
 			#get_tree().get_first_node_in_group("Player")._ready()
+			print("emittene:", chests_load)
 
 		else:
 			print("Hiba a mentési fájl feldolgozásakor.")

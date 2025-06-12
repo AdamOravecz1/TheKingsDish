@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://d2vuoitb3v0qd"]
+
+[ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_5jmxq"]
+[ext_resource type="Script" path="res://inventory/hunter_shop_ui2.gd" id="2_nkwmj"]
+[ext_resource type="Texture2D" uid="uid://doi3myltp0tqj" path="res://Sprites/HunterShopUI.png" id="3_ulilm"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="4_2wlh1"]
+[ext_resource type="Theme" uid="uid://75yorankngkb" path="res://red_button.tres" id="5_w5u66"]
+[ext_resource type="Texture2D" uid="uid://bri0365pivtbf" path="res://Sprites/TrapIcon.png" id="6_qenvn"]
+[ext_resource type="Theme" uid="uid://dsmecbmxtrduq" path="res://anvil_button.tres" id="7_lbad8"]
+[ext_resource type="Texture2D" uid="uid://kw5sgon0rx2m" path="res://Sprites/RabbitStewIcon.png" id="8_vgv26"]
+
+[node name="HunterShopUI" instance=ExtResource("1_5jmxq")]
+offset_left = 424.0
+offset_top = 183.0
+offset_right = -425.0
+offset_bottom = -231.0
+script = ExtResource("2_nkwmj")
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_right = 296.0
+offset_bottom = 245.0
+texture = ExtResource("3_ulilm")
+
+[node name="GridContainer" parent="NinePatchRect" index="1"]
+offset_left = 101.0
+offset_right = 206.0
+offset_bottom = 154.0
+columns = 2
+
+[node name="TrapName" type="Label" parent="NinePatchRect/GridContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2wlh1")
+theme_override_font_sizes/font_size = 8
+text = "Trap   "
+
+[node name="RecipeName" type="Label" parent="NinePatchRect/GridContainer" index="1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2wlh1")
+theme_override_font_sizes/font_size = 8
+text = "Recipe"
+
+[node name="Trap" type="Button" parent="NinePatchRect/GridContainer" index="2"]
+layout_mode = 2
+theme = ExtResource("5_w5u66")
+icon = ExtResource("6_qenvn")
+icon_alignment = 1
+
+[node name="Recipe" type="Button" parent="NinePatchRect/GridContainer" index="3"]
+layout_mode = 2
+theme = ExtResource("7_lbad8")
+icon = ExtResource("8_vgv26")
+icon_alignment = 1
+
+[node name="TrapLabel" type="Label" parent="NinePatchRect/GridContainer" index="4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2wlh1")
+theme_override_font_sizes/font_size = 8
+text = "  000"
+
+[node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer" index="5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2wlh1")
+theme_override_font_sizes/font_size = 8
+text = "  000"
+
+[node name="Label" parent="." index="1"]
+offset_left = 91.0
+offset_top = 77.0
+offset_right = 259.0
+offset_bottom = 100.0
+
+[node name="OwnedLabel" parent="." index="2"]
+offset_left = 85.0
+offset_top = 77.0
+offset_right = 204.0
+offset_bottom = 100.0
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Trap" to="." method="_on_trap_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Recipe" to="." method="_on_recipe_pressed"]

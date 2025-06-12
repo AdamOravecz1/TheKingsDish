@@ -12,7 +12,6 @@ func _ready():
 
 func setup():
 	clear_recipes()
-
 	for recipe_name in Global.found_recipes.keys():
 		if recipe_name not in added_recipes:
 			create_recipe(recipe_name)

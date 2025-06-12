@@ -1,44 +1,106 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7s1vk77gtw2u"]
+[gd_scene load_steps=10 format=3 uid="uid://do7xqa6evoti6"]
 
 [ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_iorqm"]
-[ext_resource type="Script" path="res://inventory/hunter_shop_ui.gd" id="2_csbab"]
 [ext_resource type="Texture2D" uid="uid://doi3myltp0tqj" path="res://Sprites/HunterShopUI.png" id="2_xy7cc"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="3_7d4ae"]
 [ext_resource type="Theme" uid="uid://75yorankngkb" path="res://red_button.tres" id="3_x5svg"]
 [ext_resource type="Texture2D" uid="uid://bri0365pivtbf" path="res://Sprites/TrapIcon.png" id="4_j4os5"]
 [ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="6_aexx2"]
+[ext_resource type="Theme" uid="uid://dsmecbmxtrduq" path="res://anvil_button.tres" id="7_qcpx6"]
+[ext_resource type="Texture2D" uid="uid://kw5sgon0rx2m" path="res://Sprites/RabbitStewIcon.png" id="8_v7rwe"]
+
+[sub_resource type="GDScript" id="GDScript_4ikys"]
+script/source = "extends gen_shop
+
+@onready var player = get_tree().get_first_node_in_group(\"Player\")
+@onready var recipes = get_tree().get_first_node_in_group(\"Recipes\")
+
+func _ready():
+	$NinePatchRect/GridContainer/TrapLabel.text = \"  \" + str(Global.weapon_price[\"TRAP\"])
+
+func _on_trap_pressed():
+	if player.coin >= Global.weapon_price[\"TRAP\"]:
+		player.trap_calculate(1)
+		player.pay( Global.weapon_price[\"TRAP\"])
+	else:
+		flash_text()
+
+func _on_recipe_pressed():
+	var key := \"res://inventory/Items/rabbit_stew.tres\"
+	if Global.recipes.has(key):
+		Global.found_recipes[key] = Global.recipes[key]
+	recipes.setup()
+
+"
 
 [node name="HunterShop_UI" instance=ExtResource("1_iorqm")]
-script = ExtResource("2_csbab")
+script = SubResource("GDScript_4ikys")
 
 [node name="NinePatchRect" parent="." index="0"]
 offset_left = 714.0
 offset_top = 175.0
-offset_right = 754.0
-offset_bottom = 215.0
+offset_right = 772.0
+offset_bottom = 226.0
 scale = Vector2(6, 6)
 texture = ExtResource("2_xy7cc")
 
 [node name="GridContainer" parent="NinePatchRect" index="0"]
-offset_left = 14.6667
-offset_top = 13.3333
-offset_right = 54.6667
-offset_bottom = 65.3333
+offset_left = 18.0
+offset_top = 16.1667
+offset_right = 158.0
+offset_bottom = 77.1667
 scale = Vector2(0.25, 0.25)
+columns = 2
 
-[node name="Trap" type="Button" parent="NinePatchRect/GridContainer" index="0"]
+[node name="TrapName" type="Label" parent="NinePatchRect/GridContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7d4ae")
+theme_override_font_sizes/font_size = 8
+text = "Trap   "
+
+[node name="RecipeName" type="Label" parent="NinePatchRect/GridContainer" index="1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7d4ae")
+theme_override_font_sizes/font_size = 8
+text = "Recipe"
+
+[node name="Trap" type="Button" parent="NinePatchRect/GridContainer" index="2"]
 layout_mode = 2
 theme = ExtResource("3_x5svg")
 icon = ExtResource("4_j4os5")
+icon_alignment = 1
 
-[node name="TrapLabel" type="Label" parent="NinePatchRect/GridContainer" index="1"]
+[node name="Recipe" type="Button" parent="NinePatchRect/GridContainer" index="3"]
+layout_mode = 2
+theme = ExtResource("7_qcpx6")
+icon = ExtResource("8_v7rwe")
+icon_alignment = 1
+
+[node name="TrapLabel" type="Label" parent="NinePatchRect/GridContainer" index="4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7d4ae")
+theme_override_font_sizes/font_size = 8
+text = "  000"
+
+[node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer" index="5"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_7d4ae")
 theme_override_font_sizes/font_size = 8
 text = "  000"
 
 [node name="CoinIcon" type="Sprite2D" parent="." index="1"]
-position = Vector2(810, 321)
+position = Vector2(828, 356)
 texture = ExtResource("6_aexx2")
 
+[node name="CoinIcon2" type="Sprite2D" parent="." index="2"]
+position = Vector2(894, 356)
+texture = ExtResource("6_aexx2")
+
+[node name="Label" parent="." index="5"]
+layout_mode = 0
+
+[node name="OwnedLabel" parent="." index="6"]
+layout_mode = 0
+
 [connection signal="pressed" from="NinePatchRect/GridContainer/Trap" to="." method="_on_trap_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Recipe" to="." method="_on_recipe_pressed"]

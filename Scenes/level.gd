@@ -18,9 +18,15 @@ var can_save := true
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
-	for gate in $TransitionGates.get_children():
-		if gate.index == Global.gate_index and Global.can_gate:
-			player.position = gate.global_position
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	print("5: ", Global.chests_load)
+	if Global.can_gate:
+		for gate in $TransitionGates.get_children():
+			if gate.index == Global.gate_index and Global.can_gate:
+				player.position = gate.global_position
+	elif get_tree().current_scene.name in Global.player_data:
+		player.position = Global.player_data[get_tree().current_scene.name][0]
+
 	InteractionManager.set_player()
 	var scene_name = get_tree().current_scene.name
 	var entity_names: Array
@@ -36,6 +42,7 @@ func _ready():
 				vega.harvest()
 	for chest in $Main/Objects.get_children():
 		if "inv" in chest and chest.inv != null and chest.chest_name in Global.chest_inv and not Global.chests_load:
+			print("3: ", Global.chests_load)
 			var inv_data = Global.chest_inv[chest.chest_name]
 			chest.initialize()
 			for entry in inv_data:
@@ -66,7 +73,6 @@ func _ready():
 	if player.has_signal("place_trap"):
 		player.connect("place_trap", create_trap)
 	_exit_tree()
-	Global.chests_load = true
 
 func create_bolt(pos, dir, bolt_type):
 	var bolt := bolt_scene.instantiate()
@@ -103,7 +109,6 @@ func _exit_tree():
 		Global.player_data["trap"] = player.trap
 		Global.player_data[get_tree().current_scene.name] = current_player_data
 		Global.get_items_from_player(player.inv)
-
 		Global.scene = get_tree().current_scene.name
 	else:
 		can_save = true

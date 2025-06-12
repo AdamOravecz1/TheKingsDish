@@ -1,3 +1,4 @@
+class_name gen_inv
 extends Control
 
 @onready var inv: Inv

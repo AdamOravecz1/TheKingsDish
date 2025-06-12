@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/hunter.gd" id="2_4lm6s"]
 [ext_resource type="Texture2D" uid="uid://ccmumca4t41dc" path="res://Sprites/Hunter.png" id="2_4nxku"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="3_k381m"]
-[ext_resource type="PackedScene" uid="uid://c7s1vk77gtw2u" path="res://inventory/hunter_shop_ui.tscn" id="4_vtel2"]
+[ext_resource type="PackedScene" uid="uid://d2vuoitb3v0qd" path="res://inventory/hunter_shop_ui2.tscn" id="5_fyfqk"]
 [ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="6_3yy4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xljol"]
@@ -106,12 +106,12 @@ shape = SubResource("CircleShape2D_sb81t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
-[node name="HunterShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("4_vtel2")]
+[node name="HunterShopUI" parent="CanvasLayer" index="0" instance=ExtResource("5_fyfqk")]
 visible = false
-offset_left = -60.0
-offset_top = -50.0
-offset_right = -1212.0
-offset_bottom = -698.0
+offset_left = 653.0
+offset_top = 160.0
+offset_right = -196.0
+offset_bottom = -254.0
 
 [node name="Speech" parent="CanvasLayer" index="1" instance=ExtResource("6_3yy4c")]
 visible = false

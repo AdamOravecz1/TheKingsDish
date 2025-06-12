@@ -5,6 +5,10 @@ var fired := 0
 var dir := 1
 var can_hit := true
 
+func _ready():
+	$Knife/KnifeHitbox.disabled = true
+	$Axe/AxeHitbox.disabled = true
+	
 func update_legs(direction, on_floor):
 	#flip
 	if direction.x:
@@ -40,24 +44,20 @@ func hit():
 		$KnifeHit.show()
 		$KnifeSlash.play()
 		$KnifeHit.play("hit")
-		if dir < 0:
+		if dir < 0 and not $Knife/KnifeHitboxAnimationLeft.is_playing():
 			$Knife/KnifeHitboxAnimationLeft.play("hit")
-		else:
-			$Knife/KnifeHitboxAnimationRight.play("hitright")
-		await get_tree().create_timer(0.1).timeout
-		$Knife/KnifeHitbox.disabled = false
+		elif not $Knife/KnifeHitboxAnimationRight.is_playing():
+				$Knife/KnifeHitboxAnimationRight.play("hitright")
 	elif weapon == 1 and can_hit:
 		can_hit = false
 		$Torso.visible = false
 		$AxeHit.show()
 		$AxeSlash.play()
 		$AxeHit.play("hit")
-		if dir < 0:
+		if dir < 0 and not $Axe/AxeHitboxAnimationLeft.is_playing():
 			$Axe/AxeHitboxAnimationLeft.play("hit")
-		else:
+		elif not $Axe/AxeHitboxAinamationRight.is_playing():
 			$Axe/AxeHitboxAinamationRight.play("hitright")
-		await get_tree().create_timer(0.1).timeout
-		$Axe/AxeHitbox.disabled = false
 	elif weapon == 2:
 		pass
 	
@@ -71,35 +71,19 @@ func _on_axe_hit_animation_finished():
 	$Torso.show()
 	can_hit = true
 	
-
 func shoot():
 	fired = 1
 	
 func relode():
 	fired = 0
 	
-
 func _on_knife_body_entered(body):
 	if "hit" in body:
 		body.hit(Global.weapon_data[0]["damage"], global_position, Global.weapon_data[0]["knockback"])
 
-func _on_knife_hitbox_animation_left_animation_finished(anim_name):
-	$Knife/KnifeHitbox.disabled = true
-
-func _on_knife_hitbox_animation_right_animation_finished(anim_name):
-	$Knife/KnifeHitbox.disabled = true
-
-
 func _on_axe_body_entered(body):
 	if "hit" in body:
 		body.hit(Global.weapon_data[1]["damage"], global_position, Global.weapon_data[1]["knockback"])
-
-
-func _on_axe_hitbox_animation_left_animation_finished(anim_name):
-	$Axe/AxeHitbox.disabled = true
-
-func _on_axe_hitbox_ainamation_right_animation_finished(anim_name):
-	$Axe/AxeHitbox.disabled = true
 	
 func wetSlashSound():
 	$KnifeSlash.volume_db = -20

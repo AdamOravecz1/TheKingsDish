@@ -179,6 +179,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [-0.773351, 0.774311, 0.814462, 1.57115, 3.14171]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Knife/KnifeHitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_dqv0b"]
 resource_name = "hit"
@@ -205,6 +217,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.76592, -0.689632, -0.762884, -1.56993, -3.14098]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Knife/KnifeHitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wsj8w"]
@@ -239,6 +263,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [-3.92746]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KnifeHitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0nnbi"]
 resource_name = "hitright"
@@ -266,6 +302,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [-3.92746, -2.54888, -2.12927, -1.57107, 0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KnifeHitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yu7rs"]
 _data = {
@@ -281,14 +329,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
+tracks/0/path = NodePath(".:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(14, -20)]
+"values": [Vector2(13, -19)]
 }
 
 [sub_resource type="Animation" id="Animation_41p1n"]
@@ -296,14 +356,26 @@ resource_name = "hit"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:position")
+tracks/0/path = NodePath(".:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(14, -20), Vector2(6, -22), Vector2(-4, -20), Vector2(-21, -16), Vector2(-26, 20)]
+"values": [Vector2(13, -19), Vector2(6, -22), Vector2(-3, -19), Vector2(-20, -15), Vector2(-26, 22)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqppo"]
@@ -326,6 +398,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-12, -20)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AxeHitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bhida"]
 resource_name = "hitright"
@@ -340,6 +424,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-12, -20), Vector2(-6, -22), Vector2(2, -20), Vector2(20, -16), Vector2(26, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AxeHitbox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_isbo1"]
@@ -362,6 +458,7 @@ position = Vector2(0, 1)
 texture = ExtResource("3_rw6fq")
 hframes = 6
 vframes = 3
+frame = 11
 
 [node name="KnifeHit" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -385,7 +482,6 @@ collision_mask = 4
 
 [node name="KnifeHitbox" type="CollisionShape2D" parent="Knife"]
 shape = SubResource("RectangleShape2D_jcx2e")
-disabled = true
 
 [node name="KnifeHitboxAnimationLeft" type="AnimationPlayer" parent="Knife"]
 root_node = NodePath("../..")
@@ -407,7 +503,6 @@ collision_mask = 4
 
 [node name="AxeHitbox" type="CollisionShape2D" parent="Axe"]
 shape = SubResource("CircleShape2D_6k3o3")
-disabled = true
 
 [node name="AxeHitboxAnimationLeft" type="AnimationPlayer" parent="Axe"]
 root_node = NodePath("../AxeHitbox")
