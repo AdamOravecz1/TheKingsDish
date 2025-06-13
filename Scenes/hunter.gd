@@ -18,7 +18,11 @@ var is_shop_visible := false
 var dialogue := Global.hunter_dialogue
 
 func _ready():
-	talk.show_node("start")
+	if self.name in Global.dialogue_progress:
+		print(Global.dialogue_progress[self.name])
+		talk.show_node(Global.dialogue_progress[self.name])
+	else:
+		talk.show_node("start")
 	$PlayerLeft.set_deferred("monitoring", false)
 	health = Global.animal_parameters["hunter"]["health"]
 	interaction_area_shop.interact = Callable(self, "_talk")

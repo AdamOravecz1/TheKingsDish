@@ -1,38 +1,87 @@
 extends Node
 
+var dialogue_progress: Dictionary = {}
+
 const hunter_dialogue: Dictionary = {
 	"start": {
-		"text": "Hey there, traveler!",
+		"text": "Hey! You are the new new cook. Have you seen this rabbit? Realy hard to catch it with just your hand.",
 		"options": [
-			{"text": ">Hi!", "next": "greeting"},
-			{"text": ">Leave me alone.", "next": "rude", "action": "reduce_rep"}
+			{"text": ">Can you catch it?", "next": "catch"},
+			{"text": ">Whats your favorite food?.", "next": "food"}
 		]
 	},
-	"greeting": {
-		"text": "Nice to meet you. Need something?",
+	"catch": {
+		"text": "Of course I can. I can sell you some traps so youu can catch some too. I also sell the recipe for my dish, it would be much apriciated if you can meke it for me.",
 		"options": [
-			{"text": ">Show me your wares.", "next": "shop"},
-			{"text": ">Just passing by.", "next": "good_bye"}
+			{"text": ">Buy", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
 		]
 	},
-	"rude": {
-		"text": "...Suit yourself.",
+	"food": {
+		"text": "I realy like rabbit stew. Loved it you could make some for me. You can buy some traps to help you catch that rabbit to.",
 		"options": [
-			{"text": ">Sorry...", "next": "greeting"}
+			{"text": ">Buy", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
 		]
 	},
 	"shop": {
-		"text": "Here are my goods.",
+		"text": "Here it is.",
 		"action": "open_shop",
 		"options": [
-			{"text": ">Good bye.", "next": "good_bye"}
+			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
 		]
 	},
 	"good_bye": {
 		"text": "Have a nice day.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Show me your wares.", "next": "shop"}
+			{"text": ">Buy", "next": "shop"}
+		]
+	}
+}
+
+const miller_dialogue: Dictionary = {
+	"start":{
+		"text": "Greatings. Haven't seen you yet.",
+		"options":[
+			{"text": ">I'm the cook.", "next": "the_cook"}
+		]
+	},
+	"the_cook":{
+		"text": "So you can make me some duck confit? Sorry. I just love duck so much and I dont have time to make it myself. I can sell you some ingredients.",
+		"options":[
+			{"text": ">How do I make it?", "next": "recipe"},
+			{"text": ">Buy", "next": "shop_not_recipe"}
+		]
+	},
+	"recipe": {
+		"text": "Oh yes totaly forgot, here is the recipe.",
+		"action": "add_recipe",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"},
+			{"text": ">Buy", "next": "shop"}
+		]
+	},
+	"shop_not_recipe": {
+		"text": "It's all fresh, locally sourced.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"},
+			{"text": ">How do I make that duck confit?", "next": "recipe"}
+		]
+	},
+	"shop": {
+		"text": "It's all fresh, locally sourced.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"}
 		]
 	}
 }
@@ -248,7 +297,6 @@ func save_game():
 func load_game():
 	can_gate = false
 	chests_load = false
-	print("itten e: ", chests_load)
 	if not FileAccess.file_exists(save_path):
 		print("Nincs mentési fájl.")
 		return
@@ -258,7 +306,6 @@ func load_game():
 		var content = file.get_as_text()
 		var result = JSON.parse_string(content)
 		_convert_vectors(result)
-		print(result)
 		if result:
 			unlocked_weapons = result["unlocked_weapons"]
 			player_data = result["player_data"]
@@ -282,7 +329,6 @@ func load_game():
 				TransitionLayer.change_scene("res://Scenes/throne_room.tscn")
 			#get_tree().get_first_node_in_group("Level")._ready()
 			#get_tree().get_first_node_in_group("Player")._ready()
-			print("emittene:", chests_load)
 
 		else:
 			print("Hiba a mentési fájl feldolgozásakor.")

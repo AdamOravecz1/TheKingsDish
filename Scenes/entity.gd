@@ -49,5 +49,4 @@ func setup(data):
 			position = Vector2(float(data[0][0]), float(data[0][1]))
 		velocity = Vector2(float(data[1][0]), float(data[1][1]))
 		health = data[2]
-		
 

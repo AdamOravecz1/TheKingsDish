@@ -19,7 +19,6 @@ var can_save := true
 
 func _ready():
 	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	print("5: ", Global.chests_load)
 	if Global.can_gate:
 		for gate in $TransitionGates.get_children():
 			if gate.index == Global.gate_index and Global.can_gate:
@@ -42,7 +41,6 @@ func _ready():
 				vega.harvest()
 	for chest in $Main/Objects.get_children():
 		if "inv" in chest and chest.inv != null and chest.chest_name in Global.chest_inv and not Global.chests_load:
-			print("3: ", Global.chests_load)
 			var inv_data = Global.chest_inv[chest.chest_name]
 			chest.initialize()
 			for entry in inv_data:

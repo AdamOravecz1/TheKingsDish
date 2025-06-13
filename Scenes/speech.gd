@@ -48,7 +48,7 @@ func show_node(node_name: String):
 		end_dialogue()
 		return
 
-	npc_label.text = node.get("text", "")
+	npc_label.text = wrap_text(node.get("text", ""), 60)  
 
 	# Optional function call
 	if node.has("action"):
@@ -80,6 +80,8 @@ func select_option(index: int):
 
 	if selected.has("next"):
 		show_node(selected["next"])
+		Global.dialogue_progress[npc.name] = selected["next"]
+		print(Global.dialogue_progress)
 	elif selected.get("end", false):
 		end_dialogue()
 
@@ -139,5 +141,6 @@ func _on_option_2_mouse_exited():
 func _on_option_2_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed and hovering_option2:
 		select_option(1)
+		
 
 

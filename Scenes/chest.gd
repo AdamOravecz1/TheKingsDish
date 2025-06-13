@@ -14,13 +14,10 @@ var all_strings := true
 
 func _ready():
 	monitoring = false
-	print("4: ", Global.chests_load)
 	if Global.chests_load:
-		print("chest load: ", Global.chests_load)
 		if Global.chest_inv.has(chest_name):
 			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
 			var inv_resource_path = Global.chest_inv[chest_name]
-			print(inv_resource_path)
 			if typeof(inv_resource_path) == TYPE_ARRAY:
 				var all_strings = inv_resource_path.all(func(item): return typeof(item) == TYPE_STRING)
 			if not all_strings:
@@ -28,7 +25,6 @@ func _ready():
 		elif !inv.slots:
 			inv.initialize_inv(12)
 	elif !inv.slots:
-		print("thiiiis")
 		inv.initialize_inv(12)
 	chestinv.inv = inv
 	chestinv._ready()

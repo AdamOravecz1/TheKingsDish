@@ -1,6 +1,7 @@
 extends Entity
 
 var item = load("res://inventory/Items/miller.tres") as InvItem
+@onready var recipes = get_tree().get_first_node_in_group("Recipes")
 
 @onready var interaction_area_shop: InteractionArea = $InteractionAreaShop
 @onready var interaction_area: InteractionArea = $InteractionArea
@@ -15,8 +16,14 @@ var item = load("res://inventory/Items/miller.tres") as InvItem
 var is_open := false
 var is_shop_visible := false
 
+var dialogue := Global.miller_dialogue
+
 func _ready():
-	#talk.show_node("start")
+	if self.name in Global.dialogue_progress:
+		print(Global.dialogue_progress[self.name])
+		talk.show_node(Global.dialogue_progress[self.name])
+	else:
+		talk.show_node("start")
 	$PlayerLeft.set_deferred("monitoring", false)
 	health = Global.animal_parameters["miller"]["health"]
 	interaction_area_shop.interact = Callable(self, "_talk")
@@ -49,7 +56,8 @@ func open():
 	player.can_attack = false
 	$PlayerLeft.monitoring = true
 	talk.visible = true
-	shop.visible = is_shop_visible
+	if is_shop_visible:
+		open_shop()
 	is_open = true
 	
 func close():
@@ -62,13 +70,25 @@ func close():
 func open_shop():
 	is_shop_visible = true
 	shop.visible = true
+	playerinv.position.x = 450
+	main.open()
 	
 func close_shop():
 	is_shop_visible = false
 	shop.visible = false
+	main.close()
+	
+func add_recipe():
+	var key := "res://inventory/Items/duck_confit_with_side_of_bread.tres"
+	if key not in Global.found_recipes:
+		if Global.recipes.has(key):
+			Global.found_recipes[key] = Global.recipes[key]
+		recipes.setup()
+
 
 func _on_player_left_body_exited(body):
 	close()
+	main.close()
 
 
 

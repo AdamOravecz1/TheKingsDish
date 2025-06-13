@@ -1,14 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsknoen4552s4"]
+[gd_scene load_steps=9 format=3 uid="uid://dsknoen4552s4"]
 
 [ext_resource type="Texture2D" uid="uid://bfo3u8onb4n5r" path="res://Sprites/MillersShopUI.png" id="1_j0anm"]
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_kklfn"]
 [ext_resource type="PackedScene" uid="uid://bjwaf68ya2yel" path="res://inventory/shop_ui_slot.tscn" id="2_h5hr6"]
 [ext_resource type="Script" path="res://inventory/millers_shop_ui.gd" id="2_udhim"]
 [ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="3_c2bhb"]
-[ext_resource type="Theme" uid="uid://b0n8l87dehvwg" path="res://default.tres" id="4_1tpnh"]
 [ext_resource type="Resource" uid="uid://b7k1d4upmupa4" path="res://inventory/Items/flour.tres" id="4_6dvin"]
 [ext_resource type="Resource" uid="uid://b6db8uf3ug8kq" path="res://inventory/Items/pasta.tres" id="5_c4ga4"]
-[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_jfj2f"]
 [ext_resource type="Resource" uid="uid://56s4c8t8aip1" path="res://inventory/Items/oil.tres" id="10_ndidg"]
 
 [node name="MillersShop_UI" instance=ExtResource("1_kklfn")]
@@ -26,23 +24,6 @@ offset_left = 89.0
 offset_top = 99.0
 offset_right = 187.0
 offset_bottom = 135.0
-
-[node name="DialogeButton1" type="Button" parent="NinePatchRect/VBoxContainer" index="0"]
-custom_minimum_size = Vector2(110, 25)
-layout_mode = 2
-theme = ExtResource("4_1tpnh")
-theme_override_fonts/font = ExtResource("5_jfj2f")
-text = "Morning"
-
-[node name="ShopButton" type="Button" parent="NinePatchRect/VBoxContainer" index="1"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 2
-theme = ExtResource("4_1tpnh")
-theme_override_fonts/font = ExtResource("5_jfj2f")
-text = "Shop"
-
-[node name="GridContainer" parent="NinePatchRect" index="1"]
-visible = false
 
 [node name="Control" type="Control" parent="NinePatchRect/GridContainer" index="0"]
 layout_mode = 2
@@ -79,36 +60,8 @@ slot_sprite = ExtResource("3_c2bhb")
 item = ExtResource("10_ndidg")
 price = 5
 
-[node name="Back" type="Button" parent="NinePatchRect" index="2"]
-visible = false
-layout_mode = 0
-offset_left = 111.0
-offset_top = 154.0
-offset_right = 175.0
-offset_bottom = 185.0
-theme = ExtResource("4_1tpnh")
-theme_override_fonts/font = ExtResource("5_jfj2f")
-text = "Back
-"
-
-[node name="Dialoge" type="Label" parent="NinePatchRect" index="3"]
-layout_mode = 0
-offset_left = -9.0
-offset_top = 59.0
-offset_right = 295.0
-offset_bottom = 94.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_jfj2f")
-text = "Hello. 
-How can I help you"
-horizontal_alignment = 1
-
 [node name="Label" parent="." index="1"]
 offset_left = 87.0
 offset_top = 81.0
 offset_right = 255.0
 offset_bottom = 104.0
-
-[connection signal="pressed" from="NinePatchRect/VBoxContainer/DialogeButton1" to="." method="_on_dialoge_button_1_pressed"]
-[connection signal="pressed" from="NinePatchRect/VBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]
-[connection signal="pressed" from="NinePatchRect/Back" to="." method="_on_back_pressed"]
