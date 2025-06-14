@@ -65,3 +65,9 @@ offset_left = 87.0
 offset_top = 81.0
 offset_right = 255.0
 offset_bottom = 104.0
+
+[node name="OwnedLabel" parent="." index="2"]
+offset_left = 80.0
+offset_top = 81.0
+offset_right = 199.0
+offset_bottom = 104.0

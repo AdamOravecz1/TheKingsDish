@@ -4,8 +4,8 @@ extends gen_shop
 @onready var recipes = get_tree().get_first_node_in_group("Recipes")
 
 func _ready():
-	$NinePatchRect/GridContainer/TrapLabel.text = "  " + str(Global.weapon_price["TRAP"])
-	$NinePatchRect/GridContainer/RecipeLabel.text = "  " + str(Global.recipe_price["Rabbit stew"])
+	$NinePatchRect/GridContainer/TrapLabel.text = "   " + str(Global.weapon_price["TRAP"])
+	$NinePatchRect/GridContainer/RecipeLabel.text = "   " + str(Global.recipe_price["Rabbit stew"])
 
 func _on_trap_pressed():
 	if player.coin >= Global.weapon_price["TRAP"]:

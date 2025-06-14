@@ -12,6 +12,3 @@ func _on_back_pressed():
 	$NinePatchRect/GridContainer.hide()
 	$NinePatchRect/Back.hide()
 
-
-func _on_dialoge_button_1_pressed():
-	$NinePatchRect/Dialoge.text = "Good morning"

@@ -97,4 +97,10 @@ slot_sprite = ExtResource("4_wwdgr")
 layout_mode = 2
 slot_sprite = ExtResource("4_wwdgr")
 
+[node name="Label" parent="." index="3"]
+visible = false
+
+[node name="OwnedLabel" parent="." index="4"]
+visible = false
+
 [connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]

@@ -1,6 +1,7 @@
 extends Entity
 
 var item = load("res://inventory/Items/black_smith.tres") as InvItem
+@onready var recipes = get_tree().get_first_node_in_group("Recipes")
 
 @onready var interaction_area_shop: InteractionArea = $InteractionAreaShop
 @onready var interaction_area: InteractionArea = $InteractionArea
@@ -19,7 +20,11 @@ var dialogue := Global.blacksmit_dialogue
 
 func _ready():
 	close()
-	talk.show_node("start")
+	if self.name in Global.dialogue_progress:
+		print(Global.dialogue_progress[self.name])
+		talk.show_node(Global.dialogue_progress[self.name])
+	else:
+		talk.show_node("start")
 	health = Global.animal_parameters["black_smith"]["health"]
 	interaction_area_shop.interact = Callable(self, "_talk")
 	interaction_area.interact = Callable(self, "_pickup")
@@ -77,4 +82,10 @@ func close_shop():
 func _on_player_left_body_exited(body):
 	close()
 	
+func add_recipe():
+	var key := "res://inventory/Items/boar_steak.tres"
+	if key not in Global.found_recipes:
+		if Global.recipes.has(key):
+			Global.found_recipes[key] = Global.recipes[key]
+		recipes.setup()
 

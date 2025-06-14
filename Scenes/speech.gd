@@ -9,7 +9,7 @@ extends Control
 @onready var npc := get_parent().get_parent()
 
 var current_node = "start"
-@onready var npc_label = $Dialogue
+@onready var npc_label = $DialogueRich
 @onready var option_buttons = [$Option1, $Option2] 
 
 var hovering_option1 := false
@@ -48,7 +48,8 @@ func show_node(node_name: String):
 		end_dialogue()
 		return
 
-	npc_label.text = wrap_text(node.get("text", ""), 60)  
+	npc_label.clear()
+	npc_label.append_text(node.get("text", ""))
 
 	# Optional function call
 	if node.has("action"):
@@ -99,24 +100,24 @@ func hide_options():
 	for button in option_buttons:
 		button.hide()
 	
-func wrap_text(text: String, max_line_length: int) -> String:
-	var words = text.split(" ")
-	var lines := []
-	var current_line := ""
-
-	for word in words:
-		if current_line.length() + word.length() + 1 <= max_line_length:
-			if current_line != "":
-				current_line += " "
-			current_line += word
-		else:
-			lines.append(current_line)
-			current_line = word
-
-	if current_line != "":
-		lines.append(current_line)
-
-	return "\n".join(lines)
+#func wrap_text(text: String, max_line_length: int) -> String:
+	#var words = text.split(" ")
+	#var lines := []
+	#var current_line := ""
+#
+	#for word in words:
+		#if current_line.length() + word.length() + 1 <= max_line_length:
+			#if current_line != "":
+				#current_line += " "
+			#current_line += word
+		#else:
+			#lines.append(current_line)
+			#current_line = word
+#
+	#if current_line != "":
+		#lines.append(current_line)
+#
+	#return "\n".join(lines)
 
 func _on_option_1_mouse_entered():
 	hovering_option1 = true

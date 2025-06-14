@@ -1,11 +1,12 @@
 extends Entity
 
 var item = load("res://inventory/Items/fisher.tres") as InvItem
+@onready var recipes = get_tree().get_first_node_in_group("Recipes")
 
 @onready var interaction_area_shop: InteractionArea = $InteractionAreaShop
 @onready var interaction_area: InteractionArea = $InteractionArea
 
-@onready var shop = $CanvasLayer/FisherShop_UI
+@onready var shop = $CanvasLayer/FisherShopUI
 @onready var talk = $CanvasLayer/Speech
 @onready var playerinv = get_tree().get_first_node_in_group("PlayerInv")
 @onready var main = get_tree().current_scene
@@ -15,7 +16,14 @@ var item = load("res://inventory/Items/fisher.tres") as InvItem
 var is_open := false
 var is_shop_visible := false
 
+var dialogue := Global.fisher_dialogue
+
 func _ready():
+	if self.name in Global.dialogue_progress:
+		print(Global.dialogue_progress[self.name])
+		talk.show_node(Global.dialogue_progress[self.name])
+	else:
+		talk.show_node("start")
 	$PlayerLeft.set_deferred("monitoring", false)
 	health = Global.animal_parameters["fisher"]["health"]
 	interaction_area_shop.interact = Callable(self, "_talk")
@@ -65,7 +73,6 @@ func open_shop():
 func close_shop():
 	is_shop_visible = false
 	shop.visible = false
-
 
 func _on_player_left_body_exited(body):
 	close()

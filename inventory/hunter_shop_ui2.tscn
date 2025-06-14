@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2vuoitb3v0qd"]
+[gd_scene load_steps=10 format=3 uid="uid://d2vuoitb3v0qd"]
 
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_5jmxq"]
 [ext_resource type="Script" path="res://inventory/hunter_shop_ui2.gd" id="2_nkwmj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bri0365pivtbf" path="res://Sprites/TrapIcon.png" id="6_qenvn"]
 [ext_resource type="Theme" uid="uid://dsmecbmxtrduq" path="res://anvil_button.tres" id="7_lbad8"]
 [ext_resource type="Texture2D" uid="uid://kw5sgon0rx2m" path="res://Sprites/RabbitStewIcon.png" id="8_vgv26"]
+[ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="9_s0xcm"]
 
 [node name="HunterShopUI" instance=ExtResource("1_5jmxq")]
 offset_left = 424.0
@@ -55,13 +56,23 @@ icon_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
-text = "  000"
+text = "   000"
 
 [node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer" index="5"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
-text = "  000"
+text = "   000"
+
+[node name="CoinIcon" type="Sprite2D" parent="NinePatchRect" index="2"]
+position = Vector2(107, 150)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_s0xcm")
+
+[node name="CoinIcon2" type="Sprite2D" parent="NinePatchRect" index="3"]
+position = Vector2(151, 150)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_s0xcm")
 
 [node name="Label" parent="." index="1"]
 offset_left = 91.0

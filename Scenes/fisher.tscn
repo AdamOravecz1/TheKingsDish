@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_8c8vb"]
 [ext_resource type="Script" path="res://Scenes/fisher.gd" id="2_6u87j"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="3_77v1w"]
-[ext_resource type="PackedScene" uid="uid://lppknedoiao4" path="res://inventory/fisher_shop_ui.tscn" id="4_wm2ko"]
 [ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="5_s8lh8"]
 [ext_resource type="Texture2D" uid="uid://ckhdkpiot06vi" path="res://Sprites/Fisher3.png" id="6_8q7rs"]
+[ext_resource type="PackedScene" uid="uid://ck4yvougmk8yw" path="res://inventory/fisher_shop_ui2.tscn" id="6_uulha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1k0xk"]
 size = Vector2(20, 43)
@@ -118,7 +118,7 @@ sprite_sheet = ExtResource("6_8q7rs")
 hframes = 3
 frame_index = 6
 
-[node name="FisherShop_UI" parent="CanvasLayer" index="1" instance=ExtResource("4_wm2ko")]
+[node name="FisherShopUI" parent="CanvasLayer" index="1" instance=ExtResource("6_uulha")]
 visible = false
 
 [node name="PlayerLeft" type="Area2D" parent="." index="6"]

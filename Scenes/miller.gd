@@ -38,8 +38,11 @@ func _pickup():
 func _talk():
 	if is_open:
 		close()
+		player.can_attack = true
 	else:
 		open()
+		player.can_attack = false
+		
 
 func trigger_death():
 	if alive:
@@ -77,6 +80,7 @@ func close_shop():
 	is_shop_visible = false
 	shop.visible = false
 	main.close()
+	player.can_attack = false
 	
 func add_recipe():
 	var key := "res://inventory/Items/duck_confit_with_side_of_bread.tres"

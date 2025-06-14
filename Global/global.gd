@@ -4,21 +4,21 @@ var dialogue_progress: Dictionary = {}
 
 const hunter_dialogue: Dictionary = {
 	"start": {
-		"text": "Hey! You are the new new cook. Have you seen this rabbit? Realy hard to catch it with just your hand.",
+		"text": "Hey! You are the new new cook. Have you seen this [color=red]rabbit[/color]? Realy hard to catch it with just your hand.",
 		"options": [
 			{"text": ">Can you catch it?", "next": "catch"},
 			{"text": ">Whats your favorite food?.", "next": "food"}
 		]
 	},
 	"catch": {
-		"text": "Of course I can. I can sell you some traps so youu can catch some too. I also sell the recipe for my dish, it would be much apriciated if you can meke it for me.",
+		"text": "Of course I can. I can sell you some [color=red]traps[/color] so you can catch some too. I also sell the [color=red]recipe[/color] for my dish, it would be much apriciated if you can meke it for me.",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
 			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
 		]
 	},
 	"food": {
-		"text": "I realy like rabbit stew. Loved it you could make some for me. You can buy some traps to help you catch that rabbit to.",
+		"text": "I realy like [color=red]rabbit stew[/color]. Loved it you could make some for me. You can buy some [color=red]traps[/color] to help you catch that rabbit to.",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
 			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
@@ -48,17 +48,17 @@ const miller_dialogue: Dictionary = {
 		]
 	},
 	"the_cook":{
-		"text": "So you can make me some duck confit? Sorry. I just love duck so much and I dont have time to make it myself. I can sell you some ingredients.",
+		"text": "So you can make me some [color=red]duck confit[/color]? Sorry. I just love duck so much and I dont have time to make it myself. I can [color=red]sell[/color] you some ingredients.",
 		"options":[
 			{"text": ">How do I make it?", "next": "recipe"},
 			{"text": ">Buy", "next": "shop_not_recipe"}
 		]
 	},
 	"recipe": {
-		"text": "Oh yes totaly forgot, here is the recipe.",
+		"text": "Oh yes totaly forgot, here is the [color=red]recipe[/color].",
 		"action": "add_recipe",
 		"options": [
-			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"},
+			{"text": ">Good bye.", "next": "good_bye"},
 			{"text": ">Buy", "next": "shop"}
 		]
 	},
@@ -66,7 +66,7 @@ const miller_dialogue: Dictionary = {
 		"text": "It's all fresh, locally sourced.",
 		"action": "open_shop",
 		"options": [
-			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"},
+			{"text": ">Good bye.", "next": "good_bye"},
 			{"text": ">How do I make that duck confit?", "next": "recipe"}
 		]
 	},
@@ -74,7 +74,7 @@ const miller_dialogue: Dictionary = {
 		"text": "It's all fresh, locally sourced.",
 		"action": "open_shop",
 		"options": [
-			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
+			{"text": ">Good bye.", "next": "good_bye"}
 		]
 	},
 	"good_bye": {
@@ -97,9 +97,79 @@ const monk_dialogue: Dictionary = {
 
 const blacksmit_dialogue: Dictionary = {
 	"start":{
-		"text": "Fuck you want",
+		"text": "Be carefull. That [color=red]boar[/color] is dangerous.",
 		"options": [
-			{"text": ">weapon", "action": "open_shop"}
+			{"text": ">I want to cook it.", "next": "me"},
+			{"text": ">Do you want me to cook it for you?", "next": "you"}
+		]
+	},
+	"me":{
+		"text": "You won't be able to take it with just that knife of yours.",
+		"options": [
+			{"text": ">Then sell me something stronger.", "next": "shop"},
+			{"text": ">We'll see.", "next": "see"}
+		]
+	},
+	"you":{
+		"text": "Yeah I do. It's my favorite meat in this whole wide world. Here take this, best way to prepare this beast.",
+		"action": "add_recipe",
+		"options": [
+			{"text": ">How will I kill it?", "next": "shop"} 
+		]
+	},
+	"shop":{
+		"text": "Here. The [color=red]axe[/color] should do the job.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "Suit yourself.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"}
+		]
+	},
+	"see": {
+		"text": "Your choice.",
+		"options": [
+			{"text": ">Yeah... the knife doesn't work.", "next": "told_you"}
+		]
+	},
+	"told_you":{
+		"text": "Told you soo. Here, if you're ready to buy something better from me.",
+		"options": [
+			{"text": ">Ready.", "next": "shop"}
+		]
+	}
+}
+
+const fisher_dialogue: Dictionary = {
+	"start":{
+		"text": "...",
+		"options": [
+			{"text": ">Hello.", "next": "hello"}
+		]
+	},
+	"hello":{
+		"text": "Shhh... You scare the fish.",
+		"options": [
+			{"text": ">Sorry...", "next": "shop"}
+		]
+	},
+	"shop": {
+		"text": "You should apologize by buying this [color=red]recipe[/color] from me. If you make it you can bring me some.",
+		"action": "open_shop",
+		"options":[
+			{"text": ">Good bye...", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "...",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"}
 		]
 	}
 }
@@ -129,7 +199,8 @@ const weapon_price = {
 }
 
 const recipe_price = {
-	"Rabbit stew": 2
+	"Rabbit stew": 2,
+	"Fishers soup": 4
 }
 
 const weapon_data = {
@@ -164,7 +235,8 @@ var scene: String
 
 var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
-	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"]
+	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
+	"res://inventory/Items/fries.tres": ["res://inventory/Items/oil.tres", "res://inventory/Items/potato.tres"],
 }
 
 const recipes: Dictionary = {

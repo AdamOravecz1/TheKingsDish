@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck4yvougmk8yw"]
+
+[ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_stquf"]
+[ext_resource type="Script" path="res://inventory/fisher_shop_ui2.gd" id="2_w4bhb"]
+[ext_resource type="Theme" uid="uid://dsmecbmxtrduq" path="res://anvil_button.tres" id="2_x6rcy"]
+[ext_resource type="Texture2D" uid="uid://burutfkmbdmk1" path="res://Sprites/FisherShopUI.png" id="3_okt1d"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="4_fxk1m"]
+[ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="5_1isbt"]
+[ext_resource type="Texture2D" uid="uid://cbkl4cllawpdk" path="res://Sprites/FishersSoupIcon.png" id="6_cy8rx"]
+
+[node name="FisherShopUI" instance=ExtResource("1_stquf")]
+offset_left = 662.0
+offset_top = 107.0
+offset_right = -226.0
+offset_bottom = -283.0
+script = ExtResource("2_w4bhb")
+
+[node name="NinePatchRect" parent="." index="0"]
+offset_right = 331.0
+offset_bottom = 278.0
+texture = ExtResource("3_okt1d")
+
+[node name="GridContainer" parent="NinePatchRect" index="1"]
+offset_left = 137.0
+offset_top = 69.0
+offset_right = 242.0
+offset_bottom = 130.0
+columns = 1
+
+[node name="RecipeName" type="Label" parent="NinePatchRect/GridContainer" index="0"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fxk1m")
+theme_override_font_sizes/font_size = 8
+text = "Recipe"
+
+[node name="Recipe" type="Button" parent="NinePatchRect/GridContainer" index="1"]
+layout_mode = 2
+theme = ExtResource("2_x6rcy")
+icon = ExtResource("6_cy8rx")
+icon_alignment = 1
+
+[node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer" index="2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_fxk1m")
+theme_override_font_sizes/font_size = 8
+text = "   000"
+
+[node name="CoinIcon" type="Sprite2D" parent="NinePatchRect" index="2"]
+position = Vector2(144, 126)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_1isbt")
+
+[node name="Label" parent="." index="1"]
+offset_left = 105.0
+offset_top = 23.0
+offset_right = 273.0
+offset_bottom = 46.0
+
+[node name="OwnedLabel" parent="." index="2"]
+offset_left = 98.0
+offset_top = 23.0
+offset_right = 217.0
+offset_bottom = 46.0
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Recipe" to="." method="_on_recipe_pressed"]
