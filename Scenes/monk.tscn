@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://d2gmeke3ti37b" path="res://Sprites/Monk.png" id="2_or7is"]
 [ext_resource type="Script" path="res://Scenes/monk.gd" id="2_qha56"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_wa6hh"]
-[ext_resource type="PackedScene" uid="uid://cmy7x8ep8iyag" path="res://inventory/monks_shop_ui.tscn" id="5_e36xh"]
 [ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="5_yxqxe"]
+[ext_resource type="PackedScene" uid="uid://cmy7x8ep8iyag" path="res://inventory/monks_shop_ui.tscn" id="6_7430o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rt1xw"]
 size = Vector2(20, 36)
@@ -130,7 +130,7 @@ hframes = 3
 vframes = 4
 flip = true
 
-[node name="MonksShop_UI" parent="CanvasLayer" index="1" instance=ExtResource("5_e36xh")]
+[node name="MonksShop_UI" parent="CanvasLayer" index="1" instance=ExtResource("6_7430o")]
 visible = false
 
 [node name="PlayerLeft" type="Area2D" parent="." index="5"]

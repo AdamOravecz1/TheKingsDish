@@ -18,7 +18,7 @@ var can_save := true
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if Global.can_gate:
 		for gate in $TransitionGates.get_children():
 			if gate.index == Global.gate_index and Global.can_gate:

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_1boid"]
 [ext_resource type="Texture2D" uid="uid://6v8gvrdhahkr" path="res://Sprites/ForestTileSet.png" id="1_41cn5"]
+[ext_resource type="PackedScene" uid="uid://b0erdntkmx03w" path="res://inventory/player_inv.tscn" id="2_l0iat"]
 [ext_resource type="PackedScene" uid="uid://lj336g1j5mwr" path="res://Scenes/pause_menu.tscn" id="2_nes4q"]
-[ext_resource type="PackedScene" uid="uid://b0erdntkmx03w" path="res://inventory/player_inv.tscn" id="3_44yk1"]
 [ext_resource type="Texture2D" uid="uid://y7gm7f8njqll" path="res://Sprites/HealthBarOver.png" id="4_8o7jy"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="4_pqmal"]
 [ext_resource type="Texture2D" uid="uid://bkbmjicrknj2f" path="res://Sprites/HealthBarProgress.png" id="5_6nctt"]
@@ -1243,11 +1243,12 @@ script = ExtResource("1_1boid")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerInv" parent="CanvasLayer" instance=ExtResource("3_44yk1")]
-offset_left = 606.0
-offset_top = 204.0
-offset_right = -274.0
-offset_bottom = -306.0
+[node name="PlayerInv" parent="CanvasLayer" instance=ExtResource("2_l0iat")]
+visible = false
+offset_left = 640.0
+offset_top = 200.0
+offset_right = -236.0
+offset_bottom = -312.0
 
 [node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
 offset_left = 10.0

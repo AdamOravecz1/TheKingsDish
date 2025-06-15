@@ -106,17 +106,16 @@ shape = SubResource("CircleShape2D_fqvsg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
-[node name="MillersShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_pc6q5")]
-visible = false
-metadata/_edit_use_anchors_ = true
-
-[node name="Speech" parent="CanvasLayer" index="1" instance=ExtResource("6_x7lk4")]
+[node name="Speech" parent="CanvasLayer" index="0" instance=ExtResource("6_x7lk4")]
 visible = false
 offset_left = 147.0
 offset_top = 597.0
 offset_right = 147.0
 offset_bottom = 213.0
 sprite_sheet = ExtResource("2_lv85u")
+
+[node name="MillersShop_UI" parent="CanvasLayer" index="1" instance=ExtResource("5_pc6q5")]
+visible = false
 
 [node name="PlayerLeft" type="Area2D" parent="." index="6"]
 collision_layer = 0

@@ -5,7 +5,7 @@ extends Control
 var controls := 0.0
 
 func _ready():
-	$Label.material.set_shader_parameter("alpha", 0.0)
+	$NoCoinLabel.material.set_shader_parameter("alpha", 0.0)
 	$OwnedLabel.material.set_shader_parameter("alpha", 0.0)
 	for i in $NinePatchRect/GridContainer.get_children():
 		if "Control" in i.name:
@@ -14,17 +14,17 @@ func _ready():
 func remove_item():
 	main.current_item = null
 	main.current_slot = 100
-	
+
 func _on_button_pressed():
 	main.get_dragging(false)
 	main.buying = false
 	remove_item()
-	
+
 func flash_text():
 	var tween = create_tween()
-	tween.tween_property($Label, "material:shader_parameter/alpha", 1.0, 0.0)
-	tween.tween_property($Label, "material:shader_parameter/alpha", 0.0, 1.0)
-	
+	tween.tween_property($NoCoinLabel, "material:shader_parameter/alpha", 1.0, 0.0)
+	tween.tween_property($NoCoinLabel, "material:shader_parameter/alpha", 0.0, 1.0)
+
 func flash_owned():
 	var tween = create_tween()
 	tween.tween_property($OwnedLabel, "material:shader_parameter/alpha", 1.0, 0.0)

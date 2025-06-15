@@ -5,7 +5,7 @@ extends Panel
 @export var price: int
 
 @onready var drag_sprite: Sprite2D = $CanvasLayer/DragSprite  # A Sprite2D to display the texture that follows the mouse
-@onready var drag_label: Label = $CanvasLayer/Label
+@onready var drag_label: Label = $CanvasLayer/DragLabel
 @onready var main = get_tree().current_scene
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var inv_ui = get_parent().get_parent().get_parent()

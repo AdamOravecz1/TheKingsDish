@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://ccwk7w66e4lvx"]
+[gd_scene load_steps=71 format=3 uid="uid://ccwk7w66e4lvx"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_g5d53"]
 [ext_resource type="PackedScene" uid="uid://dkx5yg0jopxs1" path="res://Scenes/rabbit_hole.tscn" id="2_0i8ep"]
@@ -19,14 +19,13 @@
 [ext_resource type="PackedScene" uid="uid://bat86q3fbxx8g" path="res://Scenes/fish.tscn" id="13_asdxj"]
 [ext_resource type="PackedScene" uid="uid://crtixvoj76ldd" path="res://Scenes/sail.tscn" id="13_bt8r2"]
 [ext_resource type="PackedScene" uid="uid://rfrpoyevsod4" path="res://Scenes/duck.tscn" id="14_ntito"]
-[ext_resource type="PackedScene" uid="uid://5exerwvsy41d" path="res://Scenes/miller.tscn" id="14_vk6b8"]
-[ext_resource type="PackedScene" uid="uid://4t4c08uevyg8" path="res://Scenes/black_smith.tscn" id="15_jo0xj"]
 [ext_resource type="PackedScene" uid="uid://cltiy4x2vlf6m" path="res://Scenes/curtain.tscn" id="17_gjd7y"]
-[ext_resource type="PackedScene" uid="uid://dhiiu8buon4ad" path="res://Scenes/hunter.tscn" id="17_o7pci"]
+[ext_resource type="PackedScene" uid="uid://5exerwvsy41d" path="res://Scenes/miller.tscn" id="18_dvq3n"]
 [ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="18_n3gay"]
-[ext_resource type="PackedScene" uid="uid://vfkyyhlhcoyy" path="res://Scenes/fisher.tscn" id="18_xk3b5"]
 [ext_resource type="PackedScene" uid="uid://dvscf6o0kan3f" path="res://Scenes/water_area.tscn" id="19_almka"]
+[ext_resource type="PackedScene" uid="uid://vfkyyhlhcoyy" path="res://Scenes/fisher.tscn" id="19_lvda1"]
 [ext_resource type="PackedScene" uid="uid://duxtisrfwv0me" path="res://Scenes/dragon.tscn" id="19_o7rdm"]
+[ext_resource type="PackedScene" uid="uid://dhiiu8buon4ad" path="res://Scenes/hunter.tscn" id="20_ca2fu"]
 [ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="28_w3vrm"]
 [ext_resource type="PackedScene" uid="uid://jwggbtfx4827" path="res://Scenes/walking_material.tscn" id="30_a4v2g"]
 [ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="32_058fl"]
@@ -350,13 +349,10 @@ size = Vector2(66, 20)
 [node name="Forest" instance=ExtResource("1_g5d53")]
 metadata/_edit_horizontal_guides_ = [-206.0]
 
-[node name="PlayerInv" parent="CanvasLayer" index="0"]
-visible = false
-
-[node name="PlayerHealthBar" parent="CanvasLayer" index="1"]
+[node name="PlayerHealthBar" parent="CanvasLayer" index="0"]
 metadata/_edit_use_anchors_ = true
 
-[node name="CoinAmount" parent="CanvasLayer" index="3"]
+[node name="CoinAmount" parent="CanvasLayer" index="2"]
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="BG/ParallaxBackground" index="0"]
@@ -737,33 +733,30 @@ position = Vector2(-234, -817)
 [node name="Rabbit" parent="Main/Entities" index="1" instance=ExtResource("3_dwt3r")]
 position = Vector2(124, -14)
 
-[node name="Hunter" parent="Main/Entities" index="2" instance=ExtResource("17_o7pci")]
-position = Vector2(328, -50)
-
-[node name="Miller" parent="Main/Entities" index="3" instance=ExtResource("14_vk6b8")]
-position = Vector2(958, -20)
-
-[node name="Boar" parent="Main/Entities" index="4" instance=ExtResource("11_m5di3")]
+[node name="Boar" parent="Main/Entities" index="2" instance=ExtResource("11_m5di3")]
 position = Vector2(1590, 45)
 
-[node name="Duck" parent="Main/Entities" index="5" instance=ExtResource("14_ntito")]
+[node name="Duck" parent="Main/Entities" index="3" instance=ExtResource("14_ntito")]
 position = Vector2(1247, 81)
 type = 1
 
-[node name="Duck2" parent="Main/Entities" index="6" instance=ExtResource("14_ntito")]
+[node name="Duck2" parent="Main/Entities" index="4" instance=ExtResource("14_ntito")]
 position = Vector2(2927, 18)
 
-[node name="BlackSmith" parent="Main/Entities" index="7" instance=ExtResource("15_jo0xj")]
-position = Vector2(1908, 12)
-
-[node name="Fisher" parent="Main/Entities" index="8" instance=ExtResource("18_xk3b5")]
-position = Vector2(2650, 12)
-
-[node name="Fish" parent="Main/Entities" index="9" instance=ExtResource("13_asdxj")]
+[node name="Fish" parent="Main/Entities" index="5" instance=ExtResource("13_asdxj")]
 position = Vector2(2914, 81)
 
-[node name="Fish2" parent="Main/Entities" index="10" instance=ExtResource("13_asdxj")]
+[node name="Fish2" parent="Main/Entities" index="6" instance=ExtResource("13_asdxj")]
 position = Vector2(3175, 123)
+
+[node name="Hunter" parent="Main/Entities" index="7" instance=ExtResource("20_ca2fu")]
+position = Vector2(343, -52)
+
+[node name="Miller" parent="Main/Entities" index="8" instance=ExtResource("18_dvq3n")]
+position = Vector2(957, -20)
+
+[node name="Fisher" parent="Main/Entities" index="9" instance=ExtResource("19_lvda1")]
+position = Vector2(2653, 12)
 
 [node name="Player" parent="Main/Players" index="0" instance=ExtResource("2_5uack")]
 position = Vector2(893, -15)
@@ -807,6 +800,7 @@ level = "castle"
 position = Vector2(801, 149)
 level = "dungeon"
 index = 1
+locked = true
 
 [node name="Gate3" parent="TransitionGates" index="2" instance=ExtResource("3_i7lx2")]
 position = Vector2(4128, 310)

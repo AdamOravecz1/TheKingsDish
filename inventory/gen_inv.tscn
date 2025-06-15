@@ -1,18 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://chkskxeyqmsql"]
+[gd_scene load_steps=4 format=3 uid="uid://chkskxeyqmsql"]
 
 [ext_resource type="Script" path="res://inventory/inv_ui.gd" id="1_uia6c"]
 [ext_resource type="AudioStream" uid="uid://bak7geym8tu02" path="res://Sounds/Cauldron.wav" id="2_g0fj3"]
 [ext_resource type="AudioStream" uid="uid://bcw1c63f4fdn2" path="res://Sounds/CauldronFail2.wav" id="2_x5wuc"]
-[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="4_cjd7c"]
-[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_1iojy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mv7f8"]
-shader = ExtResource("4_cjd7c")
-shader_parameter/alpha = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cjq24"]
-shader = ExtResource("4_cjd7c")
-shader_parameter/alpha = 1.0
 
 [node name="GenInv" type="Control"]
 layout_mode = 3
@@ -38,25 +28,3 @@ stream = ExtResource("2_x5wuc")
 
 [node name="Success" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_g0fj3")
-
-[node name="Label" type="Label" parent="."]
-self_modulate = Color(1, 0.0117647, 0, 1)
-material = SubResource("ShaderMaterial_mv7f8")
-layout_mode = 0
-offset_left = 87.0
-offset_top = 81.0
-offset_right = 255.0
-offset_bottom = 104.0
-theme_override_fonts/font = ExtResource("5_1iojy")
-theme_override_font_sizes/font_size = 8
-text = "Not enough coins"
-
-[node name="OwnedLabel" type="Label" parent="."]
-self_modulate = Color(0.992157, 0, 0, 1)
-material = SubResource("ShaderMaterial_cjq24")
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("5_1iojy")
-theme_override_font_sizes/font_size = 8
-text = "Item already owned"

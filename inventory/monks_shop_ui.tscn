@@ -13,10 +13,9 @@ offset_right = -64.0
 offset_bottom = -269.0
 
 [node name="NinePatchRect" parent="." index="0"]
-layout_mode = 0
 texture = ExtResource("2_bpxfc")
 
-[node name="GridContainer" parent="NinePatchRect" index="0"]
+[node name="GridContainer" parent="NinePatchRect" index="1"]
 offset_left = 119.0
 offset_top = 94.0
 offset_right = 224.0
@@ -39,12 +38,5 @@ layout_mode = 2
 slot_sprite = ExtResource("4_epbkr")
 item = ExtResource("5_c7gwx")
 price = 10
-
-[node name="Label" parent="." index="1"]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 80.0
-offset_right = 258.0
-offset_bottom = 103.0
 
 [connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]

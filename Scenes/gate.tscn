@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://xxiwk1u3j053"]
+[gd_scene load_steps=8 format=3 uid="uid://xxiwk1u3j053"]
 
 [ext_resource type="Script" path="res://Scenes/gate.gd" id="1_oht1t"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="1_qgc4g"]
 [ext_resource type="AudioStream" uid="uid://baxf8olrahrqg" path="res://Sounds/Door.wav" id="3_evv4q"]
+[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="4_lsk1d"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_0l41s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5a0x0"]
 height = 62.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04a42"]
+shader = ExtResource("4_lsk1d")
+shader_parameter/alpha = 1.0
 
 [node name="Gate" type="Node2D"]
 script = ExtResource("1_oht1t")
@@ -18,3 +24,22 @@ shape = SubResource("CapsuleShape2D_5a0x0")
 
 [node name="Door" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_evv4q")
+
+[node name="LockedLabel" type="Label" parent="."]
+self_modulate = Color(1, 0.0117647, 0, 1)
+material = SubResource("ShaderMaterial_04a42")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 18.0
+offset_right = 59.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_0l41s")
+theme_override_font_sizes/font_size = 8
+text = "This door is locked"

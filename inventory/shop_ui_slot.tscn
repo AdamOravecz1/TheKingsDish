@@ -16,7 +16,7 @@ layer = 10
 
 [node name="DragSprite" type="Sprite2D" parent="CanvasLayer"]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="DragLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("2_3xwoo")

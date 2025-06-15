@@ -39,7 +39,7 @@ offset_right = 190.0
 offset_bottom = 136.0
 columns = 3
 
-[node name="Label" type="Label" parent="."]
+[node name="NoCoinLabel" type="Label" parent="."]
 self_modulate = Color(1, 0.0117647, 0, 1)
 material = SubResource("ShaderMaterial_yubb6")
 layout_mode = 0

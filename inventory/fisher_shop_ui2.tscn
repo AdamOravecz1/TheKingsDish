@@ -50,12 +50,6 @@ position = Vector2(144, 126)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_1isbt")
 
-[node name="Label" parent="." index="1"]
-offset_left = 105.0
-offset_top = 23.0
-offset_right = 273.0
-offset_bottom = 46.0
-
 [node name="OwnedLabel" parent="." index="2"]
 offset_left = 98.0
 offset_top = 23.0
