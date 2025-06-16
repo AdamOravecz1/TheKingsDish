@@ -283,6 +283,7 @@ type = 15
 position = Vector2(2146, 1100)
 
 [node name="Monk" parent="Main/Entities" index="1" instance=ExtResource("7_fiokh")]
+position = Vector2(2692, 1518)
 
 [node name="Player" parent="Main/Players" index="0" instance=ExtResource("2_tvoxp")]
 position = Vector2(3416, 1469)

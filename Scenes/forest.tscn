@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://ccwk7w66e4lvx"]
+[gd_scene load_steps=72 format=3 uid="uid://ccwk7w66e4lvx"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_g5d53"]
 [ext_resource type="PackedScene" uid="uid://dkx5yg0jopxs1" path="res://Scenes/rabbit_hole.tscn" id="2_0i8ep"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://vfkyyhlhcoyy" path="res://Scenes/fisher.tscn" id="19_lvda1"]
 [ext_resource type="PackedScene" uid="uid://duxtisrfwv0me" path="res://Scenes/dragon.tscn" id="19_o7rdm"]
 [ext_resource type="PackedScene" uid="uid://dhiiu8buon4ad" path="res://Scenes/hunter.tscn" id="20_ca2fu"]
+[ext_resource type="PackedScene" uid="uid://4t4c08uevyg8" path="res://Scenes/black_smith.tscn" id="20_p8bkv"]
 [ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="28_w3vrm"]
 [ext_resource type="PackedScene" uid="uid://jwggbtfx4827" path="res://Scenes/walking_material.tscn" id="30_a4v2g"]
 [ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="32_058fl"]
@@ -349,15 +350,15 @@ size = Vector2(66, 20)
 [node name="Forest" instance=ExtResource("1_g5d53")]
 metadata/_edit_horizontal_guides_ = [-206.0]
 
-[node name="PlayerHealthBar" parent="CanvasLayer" index="0"]
+[node name="PlayerHealthBar" parent="CanvasLayer" index="1"]
 metadata/_edit_use_anchors_ = true
 
-[node name="CoinAmount" parent="CanvasLayer" index="2"]
+[node name="CoinAmount" parent="CanvasLayer" index="3"]
 metadata/_edit_use_anchors_ = true
 
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="BG/ParallaxBackground" index="0"]
+[node name="Sky" type="ParallaxLayer" parent="BG/ParallaxBackground" index="0"]
 
-[node name="Sprite2D" type="Sprite2D" parent="BG/ParallaxBackground/ParallaxLayer6" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="BG/ParallaxBackground/Sky" index="0"]
 position = Vector2(2659, -426)
 scale = Vector2(13.1694, 5.36765)
 texture = ExtResource("2_t6cmg")
@@ -757,6 +758,9 @@ position = Vector2(957, -20)
 
 [node name="Fisher" parent="Main/Entities" index="9" instance=ExtResource("19_lvda1")]
 position = Vector2(2653, 12)
+
+[node name="BlackSmith" parent="Main/Entities" index="10" instance=ExtResource("20_p8bkv")]
+position = Vector2(1903, 12)
 
 [node name="Player" parent="Main/Players" index="0" instance=ExtResource("2_5uack")]
 position = Vector2(893, -15)

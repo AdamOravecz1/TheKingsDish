@@ -358,3 +358,8 @@ func set_walk_surface(type: String):
 			walking_sounds = [$Sound/WalkingLeftWood, $Sound/WalkingRightWood]
 		"none":
 			walking_sounds = []
+
+func rain_on():
+	$Rain.emitting = true
+	$Sound/Rain.play()
+

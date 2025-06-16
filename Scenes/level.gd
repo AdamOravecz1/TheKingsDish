@@ -15,9 +15,20 @@ var is_open = false
 var is_recipes_open = false
 var can_save := true
 
+@export var rain: bool = false
+
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
+	if rain:
+		if self.name == "Forest":
+			player.rain_on()
+		$DirectionalLight2D.color = Color(0.3, 0.3, 0.3)
+		for picture in $BG/ParallaxBackground.get_children():
+			if picture.name == "Sky":
+				picture.modulate = Color(0.32, 0.41, 0.4)
+			else:
+				picture.modulate = Color(0.5, 0.5, 0.5)
 	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if Global.can_gate:
 		for gate in $TransitionGates.get_children():
@@ -112,8 +123,6 @@ func _exit_tree():
 		can_save = true
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
-		pauseMenu()
 	if Input.is_action_just_pressed("inventory"):
 		playerinv.position.x = 625
 		if is_open:
@@ -139,11 +148,13 @@ func openRecipes():
 func pauseMenu():
 	if paused:
 		pause_menu.hide()
-		Engine.time_scale = 1
+		#Engine.time_scale = 1
+		get_tree().paused = false
 		player.can_move = true
 	else:
 		pause_menu.show()
-		Engine.time_scale = 0
+		#Engine.time_scale = 0
+		get_tree().paused = true
 		player.can_move = false
 	paused = !paused
 	

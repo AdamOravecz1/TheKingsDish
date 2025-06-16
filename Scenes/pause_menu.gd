@@ -3,6 +3,10 @@ extends Control
 var full_screen = false
 @onready var level = get_tree().get_first_node_in_group("Level")
 
+func _process(_delta):
+	if Input.is_action_just_pressed("pause"):
+		level.pauseMenu()
+
 func _on_resume_pressed():
 	level.pauseMenu()
 
