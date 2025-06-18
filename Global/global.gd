@@ -174,6 +174,35 @@ const fisher_dialogue: Dictionary = {
 	}
 }
 
+const butler_dialogue: Dictionary = {
+	"start": {
+		"text": "Congartulation on your new position as head (and only) chef of the King. Your job will be to find ingredients and cook for his Majesty each and every day. The better the dish is the more gold you will be payed.",
+		"options": [
+			{"text": "What can I buy with the gold?", "next": "gold"},
+			{"text": "Understood.", "next": "clear"}
+		]
+	},
+	"gold": {
+		"text": "You can buy new recipes, ingredients and tools from the villagers.",
+		"options": [
+			{"text": "Understood.", "next": "clear"}
+		]
+	},
+	"clear": {
+		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
+		"options": [
+			{"text": "Ready.", "next": "give"}
+		]
+	},
+	"give":{
+		"text": "  ",
+		"action": "open_shop",
+		"options": [
+			{"text": "Close.", "next": "clear", "action": "close_shop"}
+		]
+	}
+}
+
 enum weapons {KNIFE, AXE, CROSSBOW}
 
 const animal_parameters = {

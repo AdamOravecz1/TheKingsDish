@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dymp2isunhq2f"]
 
 [ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_vsa78"]
-[ext_resource type="Texture2D" uid="uid://bmf386myetra" path="res://Sprites/TomatoIcon.png" id="2_rugx2"]
+[ext_resource type="Texture2D" uid="uid://dfsw7ncw6rvgr" path="res://Sprites/TomatoIcon2.png" id="2_j0bkp"]
 
 [resource]
 script = ExtResource("1_vsa78")
 name = "tomato"
-texture = ExtResource("2_rugx2")
+texture = ExtResource("2_j0bkp")
+value = 0
+types = Array[String]([])

@@ -220,8 +220,8 @@ stream = ExtResource("5_7kmdp")
 [node name="Fire" type="AudioStreamPlayer2D" parent="Sound" index="2"]
 stream = ExtResource("6_7krll")
 
-[connection signal="timeout" from="Timers/DamageTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timers/DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="timeout" from="Timers/DamageTimer" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

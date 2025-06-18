@@ -1,7 +1,7 @@
 extends Control
 
-var full_screen = false
 @onready var level = get_tree().get_first_node_in_group("Level")
+@onready var full_screen = level.full_screen
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -11,7 +11,6 @@ func _on_resume_pressed():
 	level.pauseMenu()
 
 func _on_quit_pressed():
-	print("evrrgcrd")
 	get_tree().quit()
 
 func _on_full_screen_pressed():

@@ -16,6 +16,7 @@ var is_recipes_open = false
 var can_save := true
 
 @export var rain: bool = false
+@export var full_screen: bool = false
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -29,7 +30,8 @@ func _ready():
 				picture.modulate = Color(0.32, 0.41, 0.4)
 			else:
 				picture.modulate = Color(0.5, 0.5, 0.5)
-	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	if full_screen:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if Global.can_gate:
 		for gate in $TransitionGates.get_children():
 			if gate.index == Global.gate_index and Global.can_gate:

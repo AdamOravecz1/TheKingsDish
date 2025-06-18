@@ -29,7 +29,11 @@ var is_shop_visible := false
 
 var all_strings := true
 
+var dialogue := Global.butler_dialogue
+
 func _process(delta):
+	if global_position.x < -510:
+		queue_free()
 	velocity.x = x_direction * speed * speed_modifier
 	apply_gravity(delta)
 	move_and_slide()
@@ -41,6 +45,11 @@ func apply_gravity(delta):
 	velocity.y = min(velocity.y, terminal_velocity)
 
 func _ready():
+	if self.name in Global.dialogue_progress:
+		print(Global.dialogue_progress[self.name])
+		talk.show_node(Global.dialogue_progress[self.name])
+	else:
+		talk.show_node("start")
 	if Global.chests_load:
 		if Global.chest_inv.has(chest_name):
 			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
@@ -70,8 +79,10 @@ func _pickup():
 func _talk():
 	if is_open:
 		close()
+		player.can_attack = true
 	else:
 		open()
+		player.can_attack = false
 		
 func trigger_death():
 	if alive:
@@ -89,7 +100,8 @@ func open():
 	player.can_attack = false
 	$PlayerLeft.monitoring = true
 	talk.visible = true
-	shop.visible = is_shop_visible
+	if is_shop_visible:
+		open_shop()
 	is_open = true
 	
 func close():
@@ -102,13 +114,18 @@ func close():
 func open_shop():
 	is_shop_visible = true
 	shop.visible = true
+	playerinv.position.x = 450
+	main.open()
 	
 func close_shop():
 	is_shop_visible = false
 	shop.visible = false
+	main.close()
+	player.can_attack = false
 
 func _on_player_left_body_exited(body):
 	close()
+	main.close()
 	
 func _on_tree_exited():
 	if inv != null:
@@ -124,3 +141,4 @@ func _on_butler_inv_send_food(food):
 		$AnimatedSprite2D.play("walk")
 		$AnimatedSprite2D.flip_h = false
 		x_direction = -1
+

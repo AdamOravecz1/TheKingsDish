@@ -205,7 +205,7 @@ inv = SubResource("Resource_5wjkk")
 chest_name = "Cauldron"
 
 [node name="Butler" parent="Main/Entities" index="0" instance=ExtResource("13_6eyrm")]
-position = Vector2(-165, 12)
+position = Vector2(-172, 12)
 inv = SubResource("Resource_xmdd8")
 chest_name = "Butler1"
 
