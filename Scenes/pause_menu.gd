@@ -26,3 +26,7 @@ func _on_save_pressed():
 
 func _on_load_pressed():
 	Global.load_game()
+
+
+func _on_button_pressed():
+	Global.next_day()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c5v8wbcm7obq"]
+[gd_scene load_steps=31 format=3 uid="uid://c5v8wbcm7obq"]
 
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_1boid"]
 [ext_resource type="Texture2D" uid="uid://6v8gvrdhahkr" path="res://Sprites/ForestTileSet.png" id="1_41cn5"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bv4e1yhm3nshl" path="res://Sprites/ThroneRoomTileSet2.png" id="16_tt7ri"]
 [ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="17_a16g4"]
 [ext_resource type="Texture2D" uid="uid://dmp6kdxwa2tao" path="res://Sprites/CastleTileSet6.png" id="20_4jo2u"]
+[ext_resource type="AudioStream" uid="uid://c6mvidi4chqma" path="res://Sounds/Rain.wav" id="20_f1uw0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8oue2"]
 texture = ExtResource("1_41cn5")
@@ -1240,6 +1241,7 @@ sources/4 = SubResource("TileSetAtlasSource_l1ysk")
 
 [node name="Level" type="Node2D" groups=["Level"]]
 script = ExtResource("1_1boid")
+full_screen = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -1372,3 +1374,8 @@ format = 2
 [node name="Water" type="Node2D" parent="."]
 
 [node name="GroundSound" type="Node2D" parent="."]
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="Rain" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("20_f1uw0")

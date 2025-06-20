@@ -21,7 +21,11 @@ var can_save := true
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
-	if rain:
+	if Global.weather[Global.current_day] and self.name != "Dungeon":
+		$Sound/Rain.play()
+		$BG/ParallaxBackground/SheepCloud.visible = false
+		if self.name == "Castle" or self.name == "ThroneRoom":
+			$BG/Design/Rain.emitting = true
 		if self.name == "Forest":
 			player.rain_on()
 		$DirectionalLight2D.color = Color(0.3, 0.3, 0.3)

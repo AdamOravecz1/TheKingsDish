@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://gtld0mwvxdou"]
+
+[ext_resource type="Texture2D" uid="uid://cmcigrhk214wy" path="res://Sprites/Calendar.png" id="1_7kmky"]
+[ext_resource type="Script" path="res://Scenes/calendar.gd" id="2_6k2ic"]
+
+[node name="Calendar" type="Sprite2D"]
+texture = ExtResource("1_7kmky")
+vframes = 7
+script = ExtResource("2_6k2ic")

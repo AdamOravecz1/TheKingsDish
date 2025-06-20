@@ -361,5 +361,4 @@ func set_walk_surface(type: String):
 
 func rain_on():
 	$Rain.emitting = true
-	$Sound/Rain.play()
 

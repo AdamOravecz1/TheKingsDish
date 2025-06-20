@@ -1,5 +1,7 @@
 extends Node
 
+var current_day: int = 0
+
 var dialogue_progress: Dictionary = {}
 
 const hunter_dialogue: Dictionary = {
@@ -203,6 +205,8 @@ const butler_dialogue: Dictionary = {
 	}
 }
 
+const weather: Array = [false, false, true, false, false, false, false,]
+
 enum weapons {KNIFE, AXE, CROSSBOW}
 
 const animal_parameters = {
@@ -370,8 +374,6 @@ func get_items_from_player(inv: Inv):
 			})
 	player_inv = result
 
-
-
 #Mentés funkció
 func save_game():
 	get_tree().get_first_node_in_group("Level")._exit_tree()
@@ -384,7 +386,8 @@ func save_game():
 		"trap_data": trap_data,
 		"chest_inv": get_items(chest_inv) if chests_load else chest_inv,
 		"found_recipes": found_recipes,
-		"scene": scene
+		"scene": scene,
+		"current_day": current_day
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -417,6 +420,7 @@ func load_game():
 			chest_inv = result["chest_inv"]
 			found_recipes = result["found_recipes"]
 			scene = result["scene"]
+			current_day = result["current_day"]
 			print("Mentés betöltve.")
 			get_tree().get_first_node_in_group("Level").pauseMenu()
 			get_tree().get_first_node_in_group("Level").can_save = false
@@ -434,3 +438,8 @@ func load_game():
 		else:
 			print("Hiba a mentési fájl feldolgozásakor.")
 		file.close()
+		
+func next_day():
+	current_day += 1
+	save_game()
+	load_game()
