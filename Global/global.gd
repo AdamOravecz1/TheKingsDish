@@ -205,8 +205,6 @@ const butler_dialogue: Dictionary = {
 	}
 }
 
-const weather: Array = [false, false, true, false, false, false, false,]
-
 enum weapons {KNIFE, AXE, CROSSBOW}
 
 const animal_parameters = {
@@ -258,13 +256,15 @@ var player_inv: Array
 
 var animal_data: Dictionary
 
-var vega_data: Dictionary
+var vega_data: Dictionary 
 
 var trap_data: Dictionary
 
 var chest_inv: Dictionary
 
 var scene: String
+
+var perma_death: Array
 
 var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
@@ -440,6 +440,9 @@ func load_game():
 		file.close()
 		
 func next_day():
+	vega_data = {}
+	animal_data = {}
 	current_day += 1
 	save_game()
 	load_game()
+	player_data["health"] = 100

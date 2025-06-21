@@ -183,6 +183,7 @@ layer_0/tile_data = PackedInt32Array(-917524, 131081, 7, -851988, 131081, 7, -78
 
 [node name="Torch" parent="BG/Design" index="0" instance=ExtResource("8_ye7v2")]
 position = Vector2(-25, -76)
+type = 1
 
 [node name="Torch2" parent="BG/Design" index="1" instance=ExtResource("8_ye7v2")]
 position = Vector2(309, -108)

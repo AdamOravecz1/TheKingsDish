@@ -28,6 +28,8 @@ func _process(delta):
 		
 func trigger_death():
 	if alive:
+		if self.name not in Global.perma_death:
+			Global.perma_death.append(self.name)
 		$Sound/Death.play()
 		$AnimatedSprite2D.play("death")
 		$PlayerDetect.queue_free()

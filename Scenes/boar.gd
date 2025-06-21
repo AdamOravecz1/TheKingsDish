@@ -75,6 +75,8 @@ func animate():
 	
 func trigger_death():
 	if alive:
+		if self.name not in Global.perma_death:
+			Global.perma_death.append(self.name)
 		$Sound/Death.pitch_scale = 1.2
 		$Sound/Death.play()
 		$Tusk/TuskHitbox.set_deferred("disabled", true)

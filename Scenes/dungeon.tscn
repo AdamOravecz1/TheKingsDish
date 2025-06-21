@@ -263,19 +263,19 @@ position = Vector2(3333, 1536)
 [node name="PressurePlate2" parent="Main/Objects" index="5" instance=ExtResource("4_o5ntb")]
 position = Vector2(342, 960)
 
-[node name="Vega" parent="Main/Vega" index="0" instance=ExtResource("3_b3hwh")]
+[node name="VeganLamb" parent="Main/Vega" index="0" instance=ExtResource("3_b3hwh")]
 position = Vector2(706, 1616)
 type = 14
 
-[node name="Vega2" parent="Main/Vega" index="1" instance=ExtResource("3_b3hwh")]
+[node name="Mushroom" parent="Main/Vega" index="1" instance=ExtResource("3_b3hwh")]
 position = Vector2(961, 688)
 type = 3
 
-[node name="Vega3" parent="Main/Vega" index="2" instance=ExtResource("3_b3hwh")]
+[node name="BadMushroom" parent="Main/Vega" index="2" instance=ExtResource("3_b3hwh")]
 position = Vector2(3597, 1520)
 type = 4
 
-[node name="Vega4" parent="Main/Vega" index="3" instance=ExtResource("3_b3hwh")]
+[node name="Tentacle" parent="Main/Vega" index="3" instance=ExtResource("3_b3hwh")]
 position = Vector2(2588, 1520)
 type = 15
 

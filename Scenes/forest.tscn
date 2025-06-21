@@ -681,52 +681,55 @@ position = Vector2(-112, -16)
 [node name="RabbitHole2" parent="Main/Objects" index="1" instance=ExtResource("2_0i8ep")]
 position = Vector2(208, -16)
 
-[node name="Vega" parent="Main/Vega" index="0" instance=ExtResource("11_w0hrd")]
+[node name="Tomato" parent="Main/Vega" index="0" instance=ExtResource("11_w0hrd")]
 position = Vector2(-311, -48)
 type = 1
 
-[node name="Vega2" parent="Main/Vega" index="1" instance=ExtResource("11_w0hrd")]
+[node name="BlueBerry" parent="Main/Vega" index="1" instance=ExtResource("11_w0hrd")]
 position = Vector2(80, -16)
 type = 5
 
-[node name="Vega3" parent="Main/Vega" index="2" instance=ExtResource("11_w0hrd")]
+[node name="Carrot" parent="Main/Vega" index="2" instance=ExtResource("11_w0hrd")]
 position = Vector2(186, -16)
 type = 6
 
-[node name="Vega4" parent="Main/Vega" index="3" instance=ExtResource("11_w0hrd")]
+[node name="Lettuce" parent="Main/Vega" index="3" instance=ExtResource("11_w0hrd")]
 position = Vector2(1330, 80)
 type = 7
 
-[node name="Vega5" parent="Main/Vega" index="4" instance=ExtResource("11_w0hrd")]
+[node name="Pear" parent="Main/Vega" index="4" instance=ExtResource("11_w0hrd")]
 z_index = 100
 position = Vector2(2491, -217)
 type = 8
 
-[node name="Vega6" parent="Main/Vega" index="5" instance=ExtResource("11_w0hrd")]
+[node name="Onion" parent="Main/Vega" index="5" instance=ExtResource("11_w0hrd")]
 z_index = 100
 position = Vector2(-224, -48)
 type = 9
 
-[node name="Vega7" parent="Main/Vega" index="6" instance=ExtResource("11_w0hrd")]
+[node name="BellPepper" parent="Main/Vega" index="6" instance=ExtResource("11_w0hrd")]
 position = Vector2(2128, -16)
 type = 10
 
-[node name="Vega8" parent="Main/Vega" index="7" instance=ExtResource("11_w0hrd")]
+[node name="ChilliPepper" parent="Main/Vega" index="7" instance=ExtResource("11_w0hrd")]
 position = Vector2(1546, 48)
 type = 11
 
-[node name="Vega9" parent="Main/Vega" index="8" instance=ExtResource("11_w0hrd")]
+[node name="Potato" parent="Main/Vega" index="8" instance=ExtResource("11_w0hrd")]
 position = Vector2(1639, 48)
 type = 12
 
-[node name="Vega10" parent="Main/Vega" index="9" instance=ExtResource("11_w0hrd")]
+[node name="Plum" parent="Main/Vega" index="9" instance=ExtResource("11_w0hrd")]
 z_index = 100
 position = Vector2(1600, -201)
 type = 13
 
-[node name="Vega11" parent="Main/Vega" index="10" instance=ExtResource("11_w0hrd")]
+[node name="Pumpkin" parent="Main/Vega" index="10" instance=ExtResource("11_w0hrd")]
 position = Vector2(490, 19)
 type = 2
+
+[node name="TreeMushroom" parent="Main/Vega" index="11" instance=ExtResource("11_w0hrd")]
+position = Vector2(-159, -186)
 
 [node name="Dragon" parent="Main/Entities" index="0" instance=ExtResource("19_o7rdm")]
 position = Vector2(-234, -817)
@@ -804,7 +807,6 @@ level = "castle"
 position = Vector2(801, 149)
 level = "dungeon"
 index = 1
-locked = true
 
 [node name="Gate3" parent="TransitionGates" index="2" instance=ExtResource("3_i7lx2")]
 position = Vector2(4128, 310)

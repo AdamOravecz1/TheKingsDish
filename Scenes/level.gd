@@ -15,13 +15,13 @@ var is_open = false
 var is_recipes_open = false
 var can_save := true
 
-@export var rain: bool = false
 @export var full_screen: bool = false
+@export var rain_day: int = 2
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
-	if Global.weather[Global.current_day] and self.name != "Dungeon":
+	if Global.current_day == rain_day and self.name != "Dungeon":
 		$Sound/Rain.play()
 		$BG/ParallaxBackground/SheepCloud.visible = false
 		if self.name == "Castle" or self.name == "ThroneRoom":
@@ -34,6 +34,10 @@ func _ready():
 				picture.modulate = Color(0.32, 0.41, 0.4)
 			else:
 				picture.modulate = Color(0.5, 0.5, 0.5)
+	if Global.current_day != rain_day + 1 and self.name == "Forest":
+		$FG/FG.set_cell(0, Vector2i(16, -8), -1)
+		$FG/FG.set_cell(0, Vector2i(20, -8), -1)
+		$FG/FG.set_cell(0, Vector2i(21, -8), -1)
 	if full_screen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if Global.can_gate:
@@ -51,6 +55,8 @@ func _ready():
 	for i in $Main/Entities.get_child_count():
 		if scene_name in Global.animal_data:
 			entity_names[i].setup(Global.animal_data[scene_name][i])
+		if entity_names[i].name in Global.perma_death:
+			entity_names[i].remove() 
 	for i in $Main/Vega.get_child_count():
 		var vega = $Main/Vega.get_child(i)
 		if scene_name in Global.vega_data:
