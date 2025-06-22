@@ -4,33 +4,33 @@ var current_day: int = 0
 
 var dialogue_progress: Dictionary = {}
 
-const hunter_dialogue: Dictionary = {
+const hunter_dialogue1: Dictionary = {
 	"start": {
 		"text": "Hey! You are the new new cook. Have you seen this [color=red]rabbit[/color]? Realy hard to catch it with just your hand.",
 		"options": [
 			{"text": ">Can you catch it?", "next": "catch"},
-			{"text": ">Whats your favorite food?.", "next": "food"}
+			{"text": ">Whats your favorite food?", "next": "food"}
 		]
 	},
 	"catch": {
 		"text": "Of course I can. I can sell you some [color=red]traps[/color] so you can catch some too. I also sell the [color=red]recipe[/color] for my dish, it would be much apriciated if you can meke it for me.",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
+			{"text": ">Good bye.", "next": "good_bye"}
 		]
 	},
 	"food": {
 		"text": "I realy like [color=red]rabbit stew[/color]. Loved it you could make some for me. You can buy some [color=red]traps[/color] to help you catch that rabbit to.",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
+			{"text": ">Good bye.", "next": "good_bye"}
 		]
 	},
 	"shop": {
 		"text": "Here it is.",
 		"action": "open_shop",
 		"options": [
-			{"text": ">Good bye.", "next": "good_bye", "action": "finish_dialogue"}
+			{"text": ">Good bye.", "next": "good_bye"}
 		]
 	},
 	"good_bye": {
@@ -42,7 +42,45 @@ const hunter_dialogue: Dictionary = {
 	}
 }
 
-const miller_dialogue: Dictionary = {
+const hunter_dialogue2: Dictionary = {
+	"start": {
+		"text": "New day new rabbit.",
+		"options": [
+			{"text": ">Thats right.", "next": "right"},
+			{"text": ">Any new recipes?", "next": "recipes"}
+		]
+	},
+	"recipes": {
+		"text": "I found some at home I can sell you if you're intrested.",
+		"options": [
+			{"text": ">Sure.", "next": "shop"},
+			{"text": ">Not now.", "next": "good_bye"}
+		]
+	},
+	"right": {
+		"text": "Would you be intrested in some new recipes?",
+		"options": [
+			{"text": ">Sure.", "next": "shop"},
+			{"text": ">Not now.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "Take a look.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"}
+		]
+	}
+}
+
+const miller_dialogue1: Dictionary = {
 	"start":{
 		"text": "Greatings. Haven't seen you yet.",
 		"options":[
@@ -88,7 +126,7 @@ const miller_dialogue: Dictionary = {
 	}
 }
 
-const monk_dialogue: Dictionary = {
+const monk_dialogue1: Dictionary = {
 	"start":{
 		"text": "Fuck you want",
 		"options": [
@@ -97,7 +135,7 @@ const monk_dialogue: Dictionary = {
 	}
 }
 
-const blacksmit_dialogue: Dictionary = {
+const blacksmit_dialogue1: Dictionary = {
 	"start":{
 		"text": "Be carefull. That [color=red]boar[/color] is dangerous.",
 		"options": [
@@ -147,7 +185,7 @@ const blacksmit_dialogue: Dictionary = {
 	}
 }
 
-const fisher_dialogue: Dictionary = {
+const fisher_dialogue1: Dictionary = {
 	"start":{
 		"text": "...",
 		"options": [
@@ -176,7 +214,7 @@ const fisher_dialogue: Dictionary = {
 	}
 }
 
-const butler_dialogue: Dictionary = {
+const butler_dialogue1: Dictionary = {
 	"start": {
 		"text": "Congartulation on your new position as head (and only) chef of the King. Your job will be to find ingredients and cook for his Majesty each and every day. The better the dish is the more gold you will be payed.",
 		"options": [
@@ -203,6 +241,16 @@ const butler_dialogue: Dictionary = {
 			{"text": "Close.", "next": "clear", "action": "close_shop"}
 		]
 	}
+}
+
+const dialogue: Dictionary = {
+	"Hunter": [hunter_dialogue1, hunter_dialogue2],
+	"Miller": [miller_dialogue1],
+	"BlackSmith": [blacksmit_dialogue1],
+	"Fisher": [fisher_dialogue1],
+	"Butler": [butler_dialogue1],
+	"Monk": [monk_dialogue1],
+	"King": []
 }
 
 enum weapons {KNIFE, AXE, CROSSBOW}
@@ -442,6 +490,7 @@ func load_game():
 func next_day():
 	vega_data = {}
 	animal_data = {}
+	dialogue_progress = {}
 	current_day += 1
 	save_game()
 	load_game()

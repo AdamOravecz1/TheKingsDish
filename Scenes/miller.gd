@@ -16,7 +16,7 @@ var item = load("res://inventory/Items/miller.tres") as InvItem
 var is_open := false
 var is_shop_visible := false
 
-var dialogue := Global.miller_dialogue
+var dialogue := Global.miller_dialogue1
 
 func _ready():
 	if self.name in Global.dialogue_progress:

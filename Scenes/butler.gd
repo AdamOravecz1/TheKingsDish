@@ -29,7 +29,7 @@ var is_shop_visible := false
 
 var all_strings := true
 
-var dialogue := Global.butler_dialogue
+var dialogue := Global.butler_dialogue1
 
 func _process(delta):
 	if global_position.x < -510:

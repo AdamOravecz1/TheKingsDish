@@ -12,12 +12,18 @@ func _ready():
 
 func setup():
 	clear_recipes()
-	for recipe_name in Global.found_recipes.keys():
+
+	# Get and sort recipe names alphabetically
+	var sorted_recipe_names := Global.found_recipes.keys()
+	sorted_recipe_names.sort()  # Sorts in-place, alphabetical by default
+
+	for recipe_name in sorted_recipe_names:
 		if recipe_name not in added_recipes:
 			create_recipe(recipe_name)
 			added_recipes.append(recipe_name)
 
 	add_buffer()
+
 
 func create_recipe(recipe_name):
 	if recipe_scene:
