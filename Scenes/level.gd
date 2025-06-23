@@ -20,7 +20,7 @@ var can_save := true
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-func _ready():
+func _ready():	
 	if Global.current_day == rain_day and self.name != "Dungeon":
 		$Sound/Rain.play()
 		$BG/ParallaxBackground/SheepCloud.visible = false
@@ -53,6 +53,7 @@ func _ready():
 	for i in $Main/Entities.get_child_count():
 		entity_names.append($Main/Entities.get_child(i))
 	for i in $Main/Entities.get_child_count():
+		print(Global.animal_data)
 		if scene_name in Global.animal_data:
 			entity_names[i].setup(Global.animal_data[scene_name][i])
 		if entity_names[i].name in Global.perma_death:

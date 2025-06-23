@@ -4,8 +4,17 @@ extends gen_shop
 @onready var recipes = get_tree().get_first_node_in_group("Recipes")
 
 func _ready():
-	$NinePatchRect/GridContainer/TrapLabel.text = "   " + str(Global.weapon_price["TRAP"])
-	$NinePatchRect/GridContainer/RecipeLabel.text = "   " + str(Global.recipe_price["Rabbit stew"])
+	if Global.current_day == 0:
+		$NinePatchRect/GridContainer.position.x += 20
+		$NinePatchRect/GridContainer.columns = 2
+		$NinePatchRect/GridContainer/StewName2.visible = false
+		$NinePatchRect/GridContainer/Stew2.visible = false
+		$NinePatchRect/GridContainer/VBoxContainer3.visible = false
+	if Global.current_day == 1:
+		$NinePatchRect/GridContainer.columns = 3
+	$NinePatchRect/GridContainer/VBoxContainer/TrapLabel.text = "   " + str(Global.weapon_price["TRAP"])
+	$NinePatchRect/GridContainer/VBoxContainer2/StewLabel.text = "   " + str(Global.recipe_price["Rabbit stew"])
+	$NinePatchRect/GridContainer/VBoxContainer3/StewLabel2.text = "   " + str(Global.recipe_price["Rabbit stew with mushroom"])
 
 func _on_trap_pressed():
 	if player.coin >= Global.weapon_price["TRAP"]:
@@ -13,12 +22,11 @@ func _on_trap_pressed():
 		player.pay(Global.weapon_price["TRAP"])
 	else:
 		flash_text()
-
-func _on_recipe_pressed():
-	if player.coin >= Global.recipe_price["Rabbit stew"]:
-		var key := "res://inventory/Items/rabbit_stew.tres"
+		
+func give_recipe(recipe, key):
+	if player.coin >= Global.recipe_price[recipe]:
 		if key not in Global.found_recipes:
-			player.pay(Global.recipe_price["Rabbit stew"])
+			player.pay(Global.recipe_price[recipe])
 			if Global.recipes.has(key):
 				Global.found_recipes[key] = Global.recipes[key]
 			recipes.setup()
@@ -26,3 +34,10 @@ func _on_recipe_pressed():
 			flash_owned()
 	else:
 		flash_text()
+
+func _on_stew_pressed():
+	give_recipe("Rabbit stew", "res://inventory/Items/rabbit_stew.tres")
+
+
+func _on_stew_2_pressed():
+	give_recipe("Rabbit stew with mushroom", "res://inventory/Items/rabbit_stew_with_mushroom.tres")

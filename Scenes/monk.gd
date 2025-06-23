@@ -12,7 +12,7 @@ extends Entity
 var is_open := false
 var is_shop_visible := false
 
-var dialogue := Global.monk_dialogue
+var dialogue := Global.monk_dialogue1
 
 
 func _ready():

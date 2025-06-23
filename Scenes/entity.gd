@@ -38,7 +38,6 @@ func remove():
 	queue_free()
 	
 func setup(data): 
-	print(self.name)
 	if data[2] == -10000:
 		remove()
 

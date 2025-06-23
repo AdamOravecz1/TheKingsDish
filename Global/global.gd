@@ -279,7 +279,8 @@ const weapon_price = {
 
 const recipe_price = {
 	"Rabbit stew": 2,
-	"Fishers soup": 4
+	"Fishers soup": 4,
+	"Rabbit stew with mushroom": 3
 }
 
 const weapon_data = {
@@ -488,10 +489,15 @@ func load_game():
 		file.close()
 		
 func next_day():
+	current_day += 1
+
+	save_game()
+	load_game()
+
 	vega_data = {}
 	animal_data = {}
 	dialogue_progress = {}
-	current_day += 1
-	save_game()
-	load_game()
 	player_data["health"] = 100
+
+	
+

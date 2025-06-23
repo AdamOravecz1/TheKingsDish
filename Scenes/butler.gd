@@ -33,7 +33,7 @@ var dialogue := Global.butler_dialogue1
 
 func _process(delta):
 	if global_position.x < -510:
-		queue_free()
+		remove()
 	velocity.x = x_direction * speed * speed_modifier
 	apply_gravity(delta)
 	move_and_slide()
