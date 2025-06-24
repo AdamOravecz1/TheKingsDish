@@ -6,6 +6,7 @@ signal place_trap(pos, caught)
 signal knock_back(pos, force)
 
 var alive := true
+var died := false
 var health := 0:
 	set(value):
 		health = value
@@ -48,5 +49,8 @@ func setup(data):
 		else:
 			position = Vector2(float(data[0][0]), float(data[0][1]))
 		velocity = Vector2(float(data[1][0]), float(data[1][1]))
+		if data[2] < 0:
+			died = true
 		health = data[2]
+		
 

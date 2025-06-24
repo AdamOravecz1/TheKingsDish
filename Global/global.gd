@@ -436,6 +436,7 @@ func save_game():
 		"chest_inv": get_items(chest_inv) if chests_load else chest_inv,
 		"found_recipes": found_recipes,
 		"scene": scene,
+		"perma_death": perma_death,
 		"current_day": current_day
 	}
 
@@ -469,6 +470,7 @@ func load_game():
 			chest_inv = result["chest_inv"]
 			found_recipes = result["found_recipes"]
 			scene = result["scene"]
+			perma_death = result["perma_death"]
 			current_day = result["current_day"]
 			print("Mentés betöltve.")
 			get_tree().get_first_node_in_group("Level").pauseMenu()
@@ -499,5 +501,4 @@ func next_day():
 	dialogue_progress = {}
 	player_data["health"] = 100
 
-	
 

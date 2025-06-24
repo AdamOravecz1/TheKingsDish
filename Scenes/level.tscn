@@ -1,7 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://c5v8wbcm7obq"]
+[gd_scene load_steps=36 format=3 uid="uid://c5v8wbcm7obq"]
 
 [ext_resource type="Script" path="res://Scenes/level.gd" id="1_1boid"]
 [ext_resource type="Texture2D" uid="uid://6v8gvrdhahkr" path="res://Sprites/ForestTileSet.png" id="1_41cn5"]
+[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="1_ixwrm"]
 [ext_resource type="PackedScene" uid="uid://b0erdntkmx03w" path="res://inventory/player_inv.tscn" id="2_l0iat"]
 [ext_resource type="PackedScene" uid="uid://lj336g1j5mwr" path="res://Scenes/pause_menu.tscn" id="2_nes4q"]
 [ext_resource type="Texture2D" uid="uid://y7gm7f8njqll" path="res://Sprites/HealthBarOver.png" id="4_8o7jy"]
@@ -20,6 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="17_a16g4"]
 [ext_resource type="Texture2D" uid="uid://dmp6kdxwa2tao" path="res://Sprites/CastleTileSet6.png" id="20_4jo2u"]
 [ext_resource type="AudioStream" uid="uid://c6mvidi4chqma" path="res://Sounds/Rain.wav" id="20_f1uw0"]
+[ext_resource type="Texture2D" uid="uid://cmcgj2o856ilr" path="res://Sprites/Lightning.png" id="21_fqxin"]
+[ext_resource type="Texture2D" uid="uid://bhelfym6j8kjd" path="res://Sprites/light.png" id="22_gqboo"]
+[ext_resource type="AudioStream" uid="uid://byvugolxjnfra" path="res://Sounds/LightningStrike.wav" id="24_o3npl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4twb7"]
+shader = ExtResource("1_ixwrm")
+shader_parameter/alpha = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8oue2"]
 texture = ExtResource("1_41cn5")
@@ -1240,6 +1248,7 @@ sources/10 = SubResource("TileSetAtlasSource_v0dba")
 sources/4 = SubResource("TileSetAtlasSource_l1ysk")
 
 [node name="Level" type="Node2D" groups=["Level"]]
+material = SubResource("ShaderMaterial_4twb7")
 script = ExtResource("1_1boid")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -1318,6 +1327,15 @@ layer = 100
 [node name="PauseMenu" parent="CanvasLayer/CanvasLayer" instance=ExtResource("2_nes4q")]
 visible = false
 
+[node name="LightningDim" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 0)
+
 [node name="BG" type="Node2D" parent="."]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="BG"]
@@ -1332,6 +1350,21 @@ tile_set = SubResource("TileSet_68k0u")
 format = 2
 
 [node name="Design" type="Node2D" parent="BG"]
+
+[node name="Lightning" type="Sprite2D" parent="BG/Design"]
+visible = false
+z_index = -99
+position = Vector2(-4, -129)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("21_fqxin")
+
+[node name="LightningLight" type="PointLight2D" parent="BG/Design"]
+visible = false
+position = Vector2(-4, -129)
+scale = Vector2(1.5, 1.5)
+energy = 10.0
+texture = ExtResource("22_gqboo")
+texture_scale = 2.0
 
 [node name="Main" type="Node2D" parent="."]
 
@@ -1378,3 +1411,6 @@ format = 2
 
 [node name="Rain" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("20_f1uw0")
+
+[node name="LightningStrike" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("24_o3npl")

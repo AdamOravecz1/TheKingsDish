@@ -53,7 +53,6 @@ func _ready():
 	for i in $Main/Entities.get_child_count():
 		entity_names.append($Main/Entities.get_child(i))
 	for i in $Main/Entities.get_child_count():
-		print(Global.animal_data)
 		if scene_name in Global.animal_data:
 			entity_names[i].setup(Global.animal_data[scene_name][i])
 		if entity_names[i].name in Global.perma_death:
@@ -191,3 +190,45 @@ func update_bolt(bolt):
 	
 func update_trap(trap):
 	$CanvasLayer/TrapAmount.text = trap
+
+func lightning():
+	$Sound/LightningStrike.play()
+	# Set up blackout and lightning position
+	$CanvasLayer/LightningDim.color = Color(0, 0, 0, 0)
+	$CanvasLayer/LightningDim.visible = true
+
+	var lightning = $BG/Design/Lightning
+	var lightning_light = $BG/Design/LightningLight
+	if self.name == "Forest":
+		lightning.position = player.global_position
+		lightning.position.y -= 150
+		lightning_light.position = lightning.global_position
+		print(lightning_light.position)
+	lightning.visible = true
+	lightning.modulate.a = 1.0
+
+	lightning_light.visible = true
+	lightning_light.energy = 10
+
+	var tween = create_tween()
+
+	# Flash to black instantly
+	tween.tween_property($CanvasLayer/LightningDim, "color", Color(0, 0, 0, 1), 0.0001)
+
+	# Wait for a moment
+	tween.tween_interval(0.05)
+
+	# Fade out blackout, lightning sprite, and light energy in parallel
+	tween.parallel().tween_property($CanvasLayer/LightningDim, "color", Color(0, 0, 0, 0), 1.5)
+	tween.parallel().tween_property(lightning, "modulate:a", 0.0, 1.0)
+	tween.parallel().tween_property(lightning_light, "energy", 0.0, 1.0)
+
+	tween.tween_callback(Callable(self, "_end_lightning"))
+
+
+
+func _end_lightning():
+	$CanvasLayer/LightningDim.visible = false
+	$BG/Design/Lightning.visible = false
+	$BG/Design/LightningLight.visible = false
+

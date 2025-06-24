@@ -40,6 +40,8 @@ func _talk():
 func trigger_death():
 	if alive:
 		if self.name not in Global.perma_death:
+			get_tree().get_first_node_in_group("Level").lightning()
+		if self.name not in Global.perma_death:
 			Global.perma_death.append(self.name)
 		$AnimatedSprite2D.play("death")
 		$InteractionAreaShop.monitoring = false

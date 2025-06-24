@@ -71,7 +71,8 @@ func animate():
 	
 func trigger_death():
 	if alive:
-		$Sound/Death.play()
+		if not died:
+			$Sound/Death.play()
 		$AnimatedSprite2D.play("death")
 		$InteractionArea.monitoring = true
 		alive = false
