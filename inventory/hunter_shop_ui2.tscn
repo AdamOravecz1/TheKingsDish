@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2vuoitb3v0qd"]
+[gd_scene load_steps=12 format=3 uid="uid://d2vuoitb3v0qd"]
 
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_5jmxq"]
 [ext_resource type="Script" path="res://inventory/hunter_shop_ui2.gd" id="2_nkwmj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://kw5sgon0rx2m" path="res://Sprites/RabbitStewIcon.png" id="8_vgv26"]
 [ext_resource type="Texture2D" uid="uid://c57dl8l6jcvuc" path="res://Sprites/RabbitStewWithMushroomIcon.png" id="9_rnwuw"]
 [ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="9_s0xcm"]
+[ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="11_73hey"]
 
 [node name="HunterShopUI" instance=ExtResource("1_5jmxq")]
 offset_left = 424.0
@@ -107,13 +108,29 @@ theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
 text = "   000"
 
-[node name="NoCoinLabel" parent="." index="1"]
+[node name="Button" type="Button" parent="." index="1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 28.0
+offset_top = -2.0
+offset_right = 274.0
+offset_bottom = 246.0
+
+[node name="Inv_UI_Slot" parent="." index="2"]
+visible = false
+offset_left = 132.0
+offset_top = 106.0
+offset_right = 164.0
+offset_bottom = 138.0
+slot_sprite = ExtResource("11_73hey")
+
+[node name="NoCoinLabel" parent="." index="3"]
 offset_left = 93.0
 offset_top = 77.0
 offset_right = 261.0
 offset_bottom = 100.0
 
-[node name="OwnedLabel" parent="." index="2"]
+[node name="OwnedLabel" parent="." index="4"]
 offset_left = 85.0
 offset_top = 77.0
 offset_right = 204.0
@@ -122,3 +139,5 @@ offset_bottom = 100.0
 [connection signal="pressed" from="NinePatchRect/GridContainer/Trap" to="." method="_on_trap_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Stew" to="." method="_on_stew_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Stew2" to="." method="_on_stew_2_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="send_favorite" from="Inv_UI_Slot" to="." method="_on_inv_ui_slot_send_favorite"]

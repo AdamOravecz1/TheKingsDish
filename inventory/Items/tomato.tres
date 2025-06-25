@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_vsa78")
-name = "tomato"
+name = "Tomato"
 texture = ExtResource("2_j0bkp")
 value = 0
 types = Array[String]([])

@@ -14,6 +14,7 @@ var dragged_item: InvItem
 var dragging: bool = false  # To check if an item is being dragged
 var drag_across: bool = false
 
+signal send_favorite(food, place)
 
 func _ready():
 	$SlotBG.texture = slot_sprite
@@ -38,6 +39,10 @@ func _process(delta):
 		drag_label.global_position = get_global_mouse_position() + Vector2(8, 8)
 
 func _on_button_pressed():
+	if get_parent().get_parent().get_parent().name == "Hunter":
+		if main.current_item:
+			send_favorite.emit(main.current_item.name, main.current_slot)
+		return
 	if shop_ui.size() >= main.shop_slot and main.buying and main.current_item:
 		if slot_out.item:
 			shop_ui[main.shop_slot].stop_dragging()

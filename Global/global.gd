@@ -37,7 +37,15 @@ const hunter_dialogue1: Dictionary = {
 		"text": "Have a nice day.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"}
+			{"text": ">Buy", "next": "shop"},
+			{"text": ">Give rabbit stew", "next": "give"},
+		]
+	},
+	"give": {
+		"text": "You already made it?.",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	}
 }

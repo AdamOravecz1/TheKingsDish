@@ -143,13 +143,15 @@ func _process(_delta):
 			open()
 
 func open():
-	player.can_attack = false
-	playerinv.visible = true
+	if player and playerinv:
+		player.can_attack = false
+		playerinv.visible = true
 	is_open = true
 	
 func close():
-	player.can_attack = true
-	playerinv.visible = false
+	if player and playerinv:
+		player.can_attack = true
+		playerinv.visible = false
 	is_open = false
 
 func openRecipes():

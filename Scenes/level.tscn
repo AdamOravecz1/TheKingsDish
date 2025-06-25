@@ -1253,6 +1253,15 @@ script = ExtResource("1_1boid")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="LightningDim" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0, 0, 0, 0)
+
 [node name="PlayerInv" parent="CanvasLayer" instance=ExtResource("2_l0iat")]
 visible = false
 offset_left = 640.0
@@ -1326,15 +1335,6 @@ layer = 100
 
 [node name="PauseMenu" parent="CanvasLayer/CanvasLayer" instance=ExtResource("2_nes4q")]
 visible = false
-
-[node name="LightningDim" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-color = Color(0, 0, 0, 0)
 
 [node name="BG" type="Node2D" parent="."]
 

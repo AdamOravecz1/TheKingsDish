@@ -1,11 +1,20 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhiiu8buon4ad"]
+[gd_scene load_steps=22 format=3 uid="uid://dhiiu8buon4ad"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_h33kr"]
 [ext_resource type="Script" path="res://Scenes/hunter.gd" id="2_4lm6s"]
 [ext_resource type="Texture2D" uid="uid://ccmumca4t41dc" path="res://Sprites/Hunter.png" id="2_4nxku"]
+[ext_resource type="Script" path="res://inventory/inventory.gd" id="3_1x4hn"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="3_k381m"]
+[ext_resource type="Script" path="res://inventory/Inv_slot.gd" id="4_rkvey"]
 [ext_resource type="PackedScene" uid="uid://d2vuoitb3v0qd" path="res://inventory/hunter_shop_ui2.tscn" id="5_fyfqk"]
 [ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="6_3yy4c"]
+
+[sub_resource type="Resource" id="Resource_jcs2c"]
+script = ExtResource("4_rkvey")
+
+[sub_resource type="Resource" id="Resource_m5c1m"]
+script = ExtResource("3_1x4hn")
+slots = Array[ExtResource("4_rkvey")]([SubResource("Resource_jcs2c")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xljol"]
 size = Vector2(20, 42)
@@ -83,6 +92,7 @@ radius = 23.0
 collision_layer = 4
 collision_mask = 21
 script = ExtResource("2_4lm6s")
+inv = SubResource("Resource_m5c1m")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, -1)

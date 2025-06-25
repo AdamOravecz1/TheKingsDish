@@ -755,6 +755,7 @@ position = Vector2(3175, 123)
 
 [node name="Hunter" parent="Main/Entities" index="7" instance=ExtResource("20_ca2fu")]
 position = Vector2(343, -52)
+inv = null
 
 [node name="Miller" parent="Main/Entities" index="8" instance=ExtResource("18_dvq3n")]
 position = Vector2(957, -20)

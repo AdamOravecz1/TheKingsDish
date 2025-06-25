@@ -30,9 +30,9 @@ layout_mode = 2
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = -107.0
-offset_top = -144.0
+offset_top = -105.0
 offset_right = 139.0
-offset_bottom = 104.0
+offset_bottom = 143.0
 
 [node name="Inv_UI_Slot" parent="NinePatchRect/GridContainer" index="1" instance=ExtResource("3_pcw1p")]
 layout_mode = 2

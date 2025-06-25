@@ -81,7 +81,10 @@ func select_option(index: int):
 
 	if selected.has("next"):
 		show_node(selected["next"])
-		Global.dialogue_progress[npc.name] = selected["next"]
+		if not Global.dialogue_progress.has(npc.name):
+			Global.dialogue_progress[npc.name] = ""
+		if Global.dialogue_progress[npc.name] != "good_bye":
+			Global.dialogue_progress[npc.name] = selected["next"]
 		print(Global.dialogue_progress)
 	elif selected.get("end", false):
 		end_dialogue()

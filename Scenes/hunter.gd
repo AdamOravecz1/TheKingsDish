@@ -1,5 +1,6 @@
 extends Entity
 
+@export var inv: Inv 
 var item = load("res://inventory/Items/hunter.tres") as InvItem
 
 @onready var interaction_area_shop: InteractionArea = $InteractionAreaShop
@@ -32,12 +33,23 @@ func _ready():
 
 func open_shop():
 	is_shop_visible = true
+	shop.position.x = 653
+	shop.buy()
 	shop.visible = true
+	
+func open_give():
+	is_shop_visible = true
+	shop.position.x = 753
+	shop.give()
+	shop.visible = true
+	playerinv.position.x = 450
+	main.open()
 	
 func close_shop():
 	is_shop_visible = false
 	shop.visible = false
-	
+	main.close()
+	player.can_attack = false
 	
 func _pickup():
 	player.collect(item)
@@ -81,4 +93,5 @@ func close():
 
 func _on_player_left_body_exited(body):
 	close()
+	main.close()
 
