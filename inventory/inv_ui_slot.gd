@@ -9,6 +9,7 @@ extends Panel
 @onready var main = get_tree().current_scene
 @onready var shop_ui = get_tree().get_nodes_in_group("ShopUI")
 
+var npcs := ["Hunter", "Miller", "BlackSmith", "Fisher", "Butler", "King", "Monk"]
 var slot_out: InvSlot
 var dragged_item: InvItem
 var dragging: bool = false  # To check if an item is being dragged
@@ -39,7 +40,7 @@ func _process(delta):
 		drag_label.global_position = get_global_mouse_position() + Vector2(8, 8)
 
 func _on_button_pressed():
-	if get_parent().get_parent().get_parent().name == "Hunter":
+	if get_parent().get_parent().get_parent().name in npcs:
 		if main.current_item:
 			send_favorite.emit(main.current_item.name, main.current_slot)
 		return

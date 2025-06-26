@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ck4yvougmk8yw"]
+[gd_scene load_steps=9 format=3 uid="uid://ck4yvougmk8yw"]
 
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_stquf"]
 [ext_resource type="Script" path="res://inventory/fisher_shop_ui2.gd" id="2_w4bhb"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="4_fxk1m"]
 [ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="5_1isbt"]
 [ext_resource type="Texture2D" uid="uid://cbkl4cllawpdk" path="res://Sprites/FishersSoupIcon.png" id="6_cy8rx"]
+[ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="8_3gywf"]
 
 [node name="FisherShopUI" instance=ExtResource("1_stquf")]
 offset_left = 662.0
@@ -39,21 +40,47 @@ theme = ExtResource("2_x6rcy")
 icon = ExtResource("6_cy8rx")
 icon_alignment = 1
 
-[node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer" index="2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="2"]
+layout_mode = 2
+
+[node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer/VBoxContainer" index="0"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_fxk1m")
 theme_override_font_sizes/font_size = 8
 text = "   000"
 
-[node name="CoinIcon" type="Sprite2D" parent="NinePatchRect" index="2"]
-position = Vector2(144, 126)
+[node name="CoinIcon" type="Sprite2D" parent="NinePatchRect/GridContainer/VBoxContainer" index="1"]
+position = Vector2(7, 4)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_1isbt")
 
-[node name="OwnedLabel" parent="." index="2"]
-offset_left = 98.0
-offset_top = 23.0
-offset_right = 217.0
-offset_bottom = 46.0
+[node name="Button2" type="Button" parent="." index="1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 79.0
+offset_right = 253.0
+offset_bottom = 259.0
+
+[node name="Inv_UI_Slot" parent="." index="2"]
+visible = false
+offset_left = 141.0
+offset_top = 83.0
+offset_right = 173.0
+offset_bottom = 115.0
+slot_sprite = ExtResource("8_3gywf")
+
+[node name="NoCoinLabel" parent="." index="3"]
+offset_left = 104.0
+offset_top = 54.0
+offset_right = 272.0
+offset_bottom = 77.0
+
+[node name="OwnedLabel" parent="." index="4"]
+offset_left = 99.0
+offset_top = 54.0
+offset_right = 218.0
+offset_bottom = 77.0
 
 [connection signal="pressed" from="NinePatchRect/GridContainer/Recipe" to="." method="_on_recipe_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="send_favorite" from="Inv_UI_Slot" to="." method="_on_inv_ui_slot_send_favorite"]

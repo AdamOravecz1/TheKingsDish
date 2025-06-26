@@ -38,11 +38,11 @@ const hunter_dialogue1: Dictionary = {
 		"action": "close_shop",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-			{"text": ">Give rabbit stew", "next": "give"},
+			{"text": ">Give rabbit stew.", "next": "give"}
 		]
 	},
 	"give": {
-		"text": "You already made it?.",
+		"text": "You already made it?",
 		"action": "open_give",
 		"options": [
 			{"text": ">Not yet.", "next": "good_bye"}
@@ -129,7 +129,15 @@ const miller_dialogue1: Dictionary = {
 		"text": "See you next time.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"}
+			{"text": ">Buy", "next": "shop"},
+			{"text": ">Give duck confit.", "next": "give"}
+		]
+	},
+	"give": {
+		"text": "Thank you so much.",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	}
 }
@@ -176,7 +184,8 @@ const blacksmit_dialogue1: Dictionary = {
 		"text": "Suit yourself.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"}
+			{"text": ">Buy", "next": "shop"},
+			{"text": ">Give boar steak.", "next": "give"}
 		]
 	},
 	"see": {
@@ -189,6 +198,13 @@ const blacksmit_dialogue1: Dictionary = {
 		"text": "Told you soo. Here, if you're ready to buy something better from me.",
 		"options": [
 			{"text": ">Ready.", "next": "shop"}
+		]
+	},
+	"give": {
+		"text": "That was fast.",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	}
 }
@@ -217,7 +233,15 @@ const fisher_dialogue1: Dictionary = {
 		"text": "...",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"}
+			{"text": ">Buy", "next": "shop"},
+			{"text": ">Give fishers soup.", "next": "give"}
+		]
+	},
+	"give": {
+		"text": "...",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	}
 }

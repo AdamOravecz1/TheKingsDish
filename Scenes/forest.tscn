@@ -350,10 +350,10 @@ size = Vector2(66, 20)
 [node name="Forest" instance=ExtResource("1_g5d53")]
 metadata/_edit_horizontal_guides_ = [-206.0]
 
-[node name="PlayerHealthBar" parent="CanvasLayer" index="1"]
+[node name="PlayerHealthBar" parent="CanvasLayer" index="2"]
 metadata/_edit_use_anchors_ = true
 
-[node name="CoinAmount" parent="CanvasLayer" index="3"]
+[node name="CoinAmount" parent="CanvasLayer" index="4"]
 metadata/_edit_use_anchors_ = true
 
 [node name="Sky" type="ParallaxLayer" parent="BG/ParallaxBackground" index="0"]

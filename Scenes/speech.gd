@@ -85,6 +85,9 @@ func select_option(index: int):
 			Global.dialogue_progress[npc.name] = ""
 		if Global.dialogue_progress[npc.name] != "good_bye":
 			Global.dialogue_progress[npc.name] = selected["next"]
+		if Global.dialogue_progress[npc.name] == "shop":
+			Global.dialogue_progress[npc.name] = "good_bye"
+
 		print(Global.dialogue_progress)
 	elif selected.get("end", false):
 		end_dialogue()

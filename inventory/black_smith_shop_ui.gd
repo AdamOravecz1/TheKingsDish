@@ -3,9 +3,9 @@ extends gen_shop
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
-	$NinePatchRect/GridContainer/AxeLabel.text = "  " + str(Global.weapon_price["AXE"])
-	$NinePatchRect/GridContainer/CrossbowLabel.text = "  " + str(Global.weapon_price["CROSSBOW"])
-	$NinePatchRect/GridContainer/BoltLabel.text = "  " + str(Global.weapon_price["BOLT"])
+	$NinePatchRect/GridContainer/VBoxContainer/AxeLabel.text = "  " + str(Global.weapon_price["AXE"])
+	$NinePatchRect/GridContainer/VBoxContainer2/CrossbowLabel.text = "  " + str(Global.weapon_price["CROSSBOW"])
+	$NinePatchRect/GridContainer/VBoxContainer3/BoltLabel.text = "  " + str(Global.weapon_price["BOLT"])
 
 func _on_axe_pressed():
 	if Global.weapons.AXE in Global.unlocked_weapons:
@@ -44,3 +44,27 @@ func _on_bolt_pressed():
 	else:
 		flash_text()
 	
+func give():
+	$NinePatchRect/GridContainer.visible = false
+	$Inv_UI_Slot.visible = true
+	$Button2.visible = true
+	$Button2.disabled = false
+	
+func buy():
+	$NinePatchRect/GridContainer.visible = true
+	$Inv_UI_Slot.visible = false
+	$Button2.visible = false
+	$Button2.disabled = true
+
+func _on_inv_ui_slot_send_favorite(food, place):
+	if food == "Boar Steak":
+		get_tree().get_first_node_in_group("PlayerInv").inv.remove_from_place(place)
+		_on_button_pressed()
+	else:
+		_on_button_pressed()
+
+func _on_button_2_pressed():
+	main.get_dragging(false)
+	main.buying = false
+	main.current_item = null
+	main.current_slot = 100

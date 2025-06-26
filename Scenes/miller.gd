@@ -77,6 +77,15 @@ func close():
 func open_shop():
 	is_shop_visible = true
 	shop.visible = true
+	shop.buy()
+	playerinv.position.x = 450
+	main.open()
+	
+func open_give():
+	is_shop_visible = true
+	shop.position.x = 753
+	shop.give()
+	shop.visible = true
 	playerinv.position.x = 450
 	main.open()
 	

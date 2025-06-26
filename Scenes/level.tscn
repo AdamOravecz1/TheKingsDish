@@ -1250,6 +1250,7 @@ sources/4 = SubResource("TileSetAtlasSource_l1ysk")
 [node name="Level" type="Node2D" groups=["Level"]]
 material = SubResource("ShaderMaterial_4twb7")
 script = ExtResource("1_1boid")
+full_screen = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

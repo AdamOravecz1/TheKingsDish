@@ -73,12 +73,24 @@ func close():
 func open_shop():
 	is_shop_visible = true
 	shop.visible = true
+	shop.buy()
+	
+func open_give():
+	is_shop_visible = true
+	shop.position.x = 753
+	shop.give()
+	shop.visible = true
+	playerinv.position.x = 450
+	main.open()
 	
 func close_shop():
 	is_shop_visible = false
 	shop.visible = false
+	main.close()
+	player.can_attack = false
 
 func _on_player_left_body_exited(body):
 	close()
+	main.close()
 
 

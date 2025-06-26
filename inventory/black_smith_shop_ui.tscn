@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0nl3udli1hxh"]
+[gd_scene load_steps=11 format=3 uid="uid://c0nl3udli1hxh"]
 
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_l2mot"]
 [ext_resource type="Script" path="res://inventory/black_smith_shop_ui.gd" id="2_8ovqv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cyqm8p541lly2" path="res://Sprites/BoltIcon.png" id="6_38vvg"]
 [ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="8_2xh88"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="8_54wi1"]
+[ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="9_w0u8j"]
 
 [node name="BlackSmithShop_UI" instance=ExtResource("1_l2mot")]
 offset_left = 428.0
@@ -47,45 +48,78 @@ layout_mode = 2
 theme = ExtResource("4_fi1si")
 icon = ExtResource("6_38vvg")
 
-[node name="AxeLabel" type="Label" parent="NinePatchRect/GridContainer" index="3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="3"]
+layout_mode = 2
+
+[node name="AxeLabel" type="Label" parent="NinePatchRect/GridContainer/VBoxContainer" index="0"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_54wi1")
 theme_override_font_sizes/font_size = 8
 text = "  000"
 
-[node name="CrossbowLabel" type="Label" parent="NinePatchRect/GridContainer" index="4"]
+[node name="CoinIcon" type="Sprite2D" parent="NinePatchRect/GridContainer/VBoxContainer" index="1"]
+position = Vector2(6, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_2xh88")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="4"]
+layout_mode = 2
+
+[node name="CrossbowLabel" type="Label" parent="NinePatchRect/GridContainer/VBoxContainer2" index="0"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_54wi1")
 theme_override_font_sizes/font_size = 8
 text = "  000"
 
-[node name="BoltLabel" type="Label" parent="NinePatchRect/GridContainer" index="5"]
+[node name="CoinIcon2" type="Sprite2D" parent="NinePatchRect/GridContainer/VBoxContainer2" index="1"]
+position = Vector2(4, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_2xh88")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="5"]
+layout_mode = 2
+
+[node name="BoltLabel" type="Label" parent="NinePatchRect/GridContainer/VBoxContainer3" index="0"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_54wi1")
 theme_override_font_sizes/font_size = 8
 text = "  000"
 
-[node name="OwnedLabel" parent="." index="2"]
+[node name="CoinIcon3" type="Sprite2D" parent="NinePatchRect/GridContainer/VBoxContainer3" index="1"]
+position = Vector2(4, 4)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_2xh88")
+
+[node name="Button2" type="Button" parent="." index="1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 32.0
+offset_right = 374.0
+offset_bottom = 281.0
+
+[node name="Inv_UI_Slot" parent="." index="2"]
+visible = false
+offset_left = 161.0
+offset_top = 143.0
+offset_right = 193.0
+offset_bottom = 175.0
+slot_sprite = ExtResource("9_w0u8j")
+
+[node name="NoCoinLabel" parent="." index="3"]
+offset_left = 125.0
+offset_top = 125.0
+offset_right = 293.0
+offset_bottom = 148.0
+
+[node name="OwnedLabel" parent="." index="4"]
 offset_left = 124.0
 offset_top = 125.0
 offset_right = 243.0
 offset_bottom = 148.0
 
-[node name="CoinIcon" type="Sprite2D" parent="." index="3"]
-position = Vector2(131, 186)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_2xh88")
-
-[node name="CoinIcon2" type="Sprite2D" parent="." index="4"]
-position = Vector2(165, 186)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_2xh88")
-
-[node name="CoinIcon3" type="Sprite2D" parent="." index="5"]
-position = Vector2(201, 186)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_2xh88")
-
 [connection signal="pressed" from="NinePatchRect/GridContainer/Axe" to="." method="_on_axe_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Crossbow" to="." method="_on_crossbow_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Bolt" to="." method="_on_bolt_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="send_favorite" from="Inv_UI_Slot" to="." method="_on_inv_ui_slot_send_favorite"]

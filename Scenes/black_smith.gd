@@ -12,6 +12,7 @@ var item = load("res://inventory/Items/black_smith.tres") as InvItem
 @onready var main = get_tree().current_scene
 
 @onready var player = get_tree().get_first_node_in_group("Player")
+@onready var playerinv = get_tree().get_first_node_in_group("PlayerInv")
 
 var is_open := false
 var is_shop_visible := false
@@ -77,14 +78,26 @@ func close():
 	
 func open_shop():
 	is_shop_visible = true
+	shop.buy()
 	shop.visible = true
+	
+func open_give():
+	is_shop_visible = true
+	shop.position.x = 753
+	shop.give()
+	shop.visible = true
+	playerinv.position.x = 450
+	main.open()
 	
 func close_shop():
 	is_shop_visible = false
 	shop.visible = false
+	main.close()
+	player.can_attack = false
 
 func _on_player_left_body_exited(body):
 	close()
+	main.close()
 	
 func add_recipe():
 	var key := "res://inventory/Items/boar_steak.tres"

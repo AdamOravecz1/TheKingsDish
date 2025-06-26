@@ -108,7 +108,7 @@ theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
 text = "   000"
 
-[node name="Button" type="Button" parent="." index="1"]
+[node name="Button2" type="Button" parent="." index="1"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 28.0
@@ -139,5 +139,5 @@ offset_bottom = 100.0
 [connection signal="pressed" from="NinePatchRect/GridContainer/Trap" to="." method="_on_trap_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Stew" to="." method="_on_stew_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Stew2" to="." method="_on_stew_2_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="send_favorite" from="Inv_UI_Slot" to="." method="_on_inv_ui_slot_send_favorite"]
