@@ -107,11 +107,10 @@ shape = SubResource("CircleShape2D_f1gkg")
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
 
 [node name="BlackSmithShop_UI" parent="CanvasLayer" index="0" instance=ExtResource("5_j8jd0")]
-visible = false
 offset_left = 561.0
-offset_top = 150.0
+offset_top = 110.0
 offset_right = -204.0
-offset_bottom = -259.0
+offset_bottom = -299.0
 
 [node name="Speech" parent="CanvasLayer" index="1" instance=ExtResource("6_5bfwv")]
 visible = false

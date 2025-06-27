@@ -2,9 +2,11 @@ extends Node
 
 var current_day: int = 0
 
+var food_given: Array = []
+
 var dialogue_progress: Dictionary = {}
 
-const hunter_dialogue1: Dictionary = {
+var hunter_dialogue1: Dictionary = {
 	"start": {
 		"text": "Hey! You are the new new cook. Have you seen this [color=red]rabbit[/color]? Realy hard to catch it with just your hand.",
 		"options": [
@@ -38,19 +40,11 @@ const hunter_dialogue1: Dictionary = {
 		"action": "close_shop",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-			{"text": ">Give rabbit stew.", "next": "give"}
-		]
-	},
-	"give": {
-		"text": "You already made it?",
-		"action": "open_give",
-		"options": [
-			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	}
 }
 
-const hunter_dialogue2: Dictionary = {
+var hunter_dialogue2: Dictionary = {
 	"start": {
 		"text": "New day new rabbit.",
 		"options": [
@@ -88,7 +82,7 @@ const hunter_dialogue2: Dictionary = {
 	}
 }
 
-const miller_dialogue1: Dictionary = {
+var miller_dialogue1: Dictionary = {
 	"start":{
 		"text": "Greatings. Haven't seen you yet.",
 		"options":[
@@ -99,7 +93,7 @@ const miller_dialogue1: Dictionary = {
 		"text": "So you can make me some [color=red]duck confit[/color]? Sorry. I just love duck so much and I dont have time to make it myself. I can [color=red]sell[/color] you some ingredients.",
 		"options":[
 			{"text": ">How do I make it?", "next": "recipe"},
-			{"text": ">Buy", "next": "shop_not_recipe"}
+			{"text": ">Buy", "next": "shop"}
 		]
 	},
 	"recipe": {
@@ -108,14 +102,6 @@ const miller_dialogue1: Dictionary = {
 		"options": [
 			{"text": ">Good bye.", "next": "good_bye"},
 			{"text": ">Buy", "next": "shop"}
-		]
-	},
-	"shop_not_recipe": {
-		"text": "It's all fresh, locally sourced.",
-		"action": "open_shop",
-		"options": [
-			{"text": ">Good bye.", "next": "good_bye"},
-			{"text": ">How do I make that duck confit?", "next": "recipe"}
 		]
 	},
 	"shop": {
@@ -132,17 +118,10 @@ const miller_dialogue1: Dictionary = {
 			{"text": ">Buy", "next": "shop"},
 			{"text": ">Give duck confit.", "next": "give"}
 		]
-	},
-	"give": {
-		"text": "Thank you so much.",
-		"action": "open_give",
-		"options": [
-			{"text": ">Not yet.", "next": "good_bye"}
-		]
 	}
 }
 
-const monk_dialogue1: Dictionary = {
+var monk_dialogue1: Dictionary = {
 	"start":{
 		"text": "Fuck you want",
 		"options": [
@@ -151,7 +130,7 @@ const monk_dialogue1: Dictionary = {
 	}
 }
 
-const blacksmit_dialogue1: Dictionary = {
+var blacksmit_dialogue1: Dictionary = {
 	"start":{
 		"text": "Be carefull. That [color=red]boar[/color] is dangerous.",
 		"options": [
@@ -167,7 +146,7 @@ const blacksmit_dialogue1: Dictionary = {
 		]
 	},
 	"you":{
-		"text": "Yeah I do. It's my favorite meat in this whole wide world. Here take this, best way to prepare this beast.",
+		"text": "Yeah I do. It's my favorite meat in this whole wide world. Here take this [color=red]recipe[/color], best way to prepare this beast.",
 		"action": "add_recipe",
 		"options": [
 			{"text": ">How will I kill it?", "next": "shop"} 
@@ -199,17 +178,10 @@ const blacksmit_dialogue1: Dictionary = {
 		"options": [
 			{"text": ">Ready.", "next": "shop"}
 		]
-	},
-	"give": {
-		"text": "That was fast.",
-		"action": "open_give",
-		"options": [
-			{"text": ">Not yet.", "next": "good_bye"}
-		]
 	}
 }
 
-const fisher_dialogue1: Dictionary = {
+var fisher_dialogue1: Dictionary = {
 	"start":{
 		"text": "...",
 		"options": [
@@ -236,17 +208,10 @@ const fisher_dialogue1: Dictionary = {
 			{"text": ">Buy", "next": "shop"},
 			{"text": ">Give fishers soup.", "next": "give"}
 		]
-	},
-	"give": {
-		"text": "...",
-		"action": "open_give",
-		"options": [
-			{"text": ">Not yet.", "next": "good_bye"}
-		]
 	}
 }
 
-const butler_dialogue1: Dictionary = {
+var butler_dialogue1: Dictionary = {
 	"start": {
 		"text": "Congartulation on your new position as head (and only) chef of the King. Your job will be to find ingredients and cook for his Majesty each and every day. The better the dish is the more gold you will be payed.",
 		"options": [
@@ -263,10 +228,10 @@ const butler_dialogue1: Dictionary = {
 	"clear": {
 		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
 		"options": [
-			{"text": "Ready.", "next": "give"}
+			{"text": "Ready.", "next": "give_to_king"}
 		]
 	},
-	"give":{
+	"give_to_king":{
 		"text": "  ",
 		"action": "open_shop",
 		"options": [
@@ -275,7 +240,45 @@ const butler_dialogue1: Dictionary = {
 	}
 }
 
-const dialogue: Dictionary = {
+var give_dialogues = {
+	"Hunter": {
+		"text": "You already made it?",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	},
+	"Miller": {
+		"text": "Thank you so much.",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	},
+	"BlackSmith": {
+		"text": "That was fast.",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	},
+	"Fisher": {
+		"text": "...",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	}
+}
+
+var thank_dialogues: Dictionary = {
+	"Hunter": {
+		"text": "THANK YOU",
+		"action": "close_shop"
+	}
+}
+
+var dialogue: Dictionary = {
 	"Hunter": [hunter_dialogue1, hunter_dialogue2],
 	"Miller": [miller_dialogue1],
 	"BlackSmith": [blacksmit_dialogue1],
@@ -283,6 +286,13 @@ const dialogue: Dictionary = {
 	"Butler": [butler_dialogue1],
 	"Monk": [monk_dialogue1],
 	"King": []
+}
+
+var npc_food: Dictionary = {
+	"Hunter": "rabbit stew",
+	"Miller": "duck confit",
+	"BlackSmith": "boar steak",
+	"Fisher": "fishers soup"
 }
 
 enum weapons {KNIFE, AXE, CROSSBOW}
@@ -301,6 +311,8 @@ const animal_parameters = {
 	"monk": {"health": 20},
 	"zombie": {"speed": 20, "health": 500}
 }
+
+
 
 const weapon_price = {
 	"AXE" : 5,

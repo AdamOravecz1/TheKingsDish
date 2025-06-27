@@ -78,6 +78,7 @@ func close():
 	
 func open_shop():
 	is_shop_visible = true
+	shop.position.x = 653
 	shop.buy()
 	shop.visible = true
 	

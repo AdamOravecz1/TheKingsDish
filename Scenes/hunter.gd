@@ -21,7 +21,6 @@ var dialogue = hunter_dialogues[Global.current_day]
 
 func _ready():
 	if self.name in Global.dialogue_progress:
-		print(Global.dialogue_progress[self.name])
 		talk.show_node(Global.dialogue_progress[self.name])
 	else:
 		talk.show_node("start")
@@ -94,4 +93,8 @@ func close():
 func _on_player_left_body_exited(body):
 	close()
 	main.close()
+	
+func thanks_dialogue():
+	dialogue = Global.thank_dialogues
+	talk.show_node(self.name)
 

@@ -12,10 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="9_w0u8j"]
 
 [node name="BlackSmithShop_UI" instance=ExtResource("1_l2mot")]
-offset_left = 428.0
-offset_top = 160.0
-offset_right = -321.0
-offset_bottom = -249.0
+offset_left = 425.0
+offset_top = 67.0
+offset_right = -324.0
+offset_bottom = -342.0
 script = ExtResource("2_8ovqv")
 
 [node name="NinePatchRect" parent="." index="0"]

@@ -18,6 +18,31 @@ var hovering_option2 := false
 func _ready():
 	$Head.texture = get_frame_texture()
 	$Head.flip_h = flip
+	prepare_dialogue()
+
+func prepare_dialogue():
+	if npc.name not in Global.food_given:
+		if "good_bye" in npc.dialogue and npc.name in Global.give_dialogues:
+			# Add the "give" node if missing
+			if "give" not in npc.dialogue:
+				print(npc.dialogue)
+				npc.dialogue["give"] = Global.give_dialogues[npc.name]
+
+			# Avoid duplicate "give" options
+			var options = npc.dialogue["good_bye"].get("options", [])
+			var has_give := false
+			for opt in options:
+				if opt.get("next") == "give":
+					has_give = true
+					break
+
+			if not has_give:
+				options.append({
+					"text": ">Give " + Global.npc_food[npc.name] + ".",
+					"next": "give"
+				})
+				npc.dialogue["good_bye"]["options"] = options
+
 
 func get_frame_texture() -> Texture2D:
 	if not sprite_sheet:
@@ -88,7 +113,6 @@ func select_option(index: int):
 		if Global.dialogue_progress[npc.name] == "shop":
 			Global.dialogue_progress[npc.name] = "good_bye"
 
-		print(Global.dialogue_progress)
 	elif selected.get("end", false):
 		end_dialogue()
 
