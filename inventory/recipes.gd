@@ -7,10 +7,15 @@ var buffer_node: Control
 @onready var vbox := $ScrollContainer/VBoxContainer
 @onready var scroll := $ScrollContainer
 
+var from_ready := false 
+
 func _ready():
 	setup()
+	from_ready = true
 
 func setup():
+	if from_ready:
+		get_tree().get_first_node_in_group("Player").flash_recipe()
 	clear_recipes()
 
 	# Get and sort recipe names alphabetically

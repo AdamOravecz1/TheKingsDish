@@ -107,5 +107,4 @@ func _on_cook_pressed():
 		inv.initialize_inv(4)
 		inv.insert_to_place(new_item, 0)
 
-					
 

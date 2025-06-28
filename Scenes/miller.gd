@@ -16,7 +16,9 @@ var item = load("res://inventory/Items/miller.tres") as InvItem
 var is_open := false
 var is_shop_visible := false
 
-var dialogue := Global.miller_dialogue1
+var miller_dialogues = Global.dialogue["Miller"]
+var dialogue = miller_dialogues[Global.current_day] 
+
 
 func _ready():
 	if self.name in Global.dialogue_progress:
@@ -95,13 +97,19 @@ func close_shop():
 	main.close()
 	player.can_attack = false
 	
-func add_recipe():
+func add_duck_confit():
 	var key := "res://inventory/Items/duck_confit_with_side_of_bread.tres"
 	if key not in Global.found_recipes:
 		if Global.recipes.has(key):
 			Global.found_recipes[key] = Global.recipes[key]
 		recipes.setup()
 
+func add_arabiata():
+	var key := "res://inventory/Items/arabiata.tres"
+	if key not in Global.found_recipes:
+		if Global.recipes.has(key):
+			Global.found_recipes[key] = Global.recipes[key]
+		recipes.setup()
 
 func _on_player_left_body_exited(body):
 	close()

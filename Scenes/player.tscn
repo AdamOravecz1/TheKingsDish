@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://6s62hkkab772"]
+[gd_scene load_steps=35 format=3 uid="uid://6s62hkkab772"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_3nr38"]
 [ext_resource type="PackedScene" uid="uid://cirs61t03la8g" path="res://Scenes/player_graphics.tscn" id="2_ao26x"]
@@ -24,6 +24,10 @@
 size = Vector2(19, 42)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c2q4f"]
+shader = ExtResource("5_t73gr")
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fri7d"]
 shader = ExtResource("5_t73gr")
 shader_parameter/alpha = 1.0
 
@@ -155,25 +159,42 @@ target_position = Vector2(20, 20)
 [node name="Left" type="RayCast2D" parent="FloorRays" index="1"]
 target_position = Vector2(-20, 20)
 
-[node name="Label" type="Label" parent="." index="5"]
+[node name="NoSpace" type="Label" parent="." index="5"]
 material = SubResource("ShaderMaterial_c2q4f")
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -66.5
-offset_top = -26.0
-offset_right = 66.5
-offset_bottom = -18.0
+offset_left = -66.0
+offset_top = -25.0
+offset_right = 67.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 8
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("5_je0pj")
 theme_override_font_sizes/font_size = 8
 text = "No space in inventory"
 
-[node name="Bubbles" type="HBoxContainer" parent="." index="6"]
+[node name="Recipe" type="Label" parent="." index="6"]
+material = SubResource("ShaderMaterial_fri7d")
+offset_left = -64.0
+offset_top = -25.0
+offset_right = 63.0
+offset_bottom = -2.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("5_je0pj")
+theme_override_font_sizes/font_size = 8
+text = "You got a new recipe"
+
+[node name="Bubbles" type="HBoxContainer" parent="." index="7"]
 z_index = 10
 offset_left = -38.0
 offset_top = -67.0
@@ -202,7 +223,7 @@ sprite_frames = SubResource("SpriteFrames_vlux2")
 position = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_vlux2")
 
-[node name="Nose" type="Area2D" parent="." index="7"]
+[node name="Nose" type="Area2D" parent="." index="8"]
 collision_layer = 2
 collision_mask = 0
 
@@ -244,7 +265,7 @@ stream = ExtResource("17_iuf4v")
 [node name="PickUp" type="AudioStreamPlayer2D" parent="Sound" index="11"]
 stream = ExtResource("18_4785m")
 
-[node name="Rain" type="GPUParticles2D" parent="." index="9"]
+[node name="Rain" type="GPUParticles2D" parent="." index="10"]
 z_index = 1000
 position = Vector2(-17, -314)
 emitting = false

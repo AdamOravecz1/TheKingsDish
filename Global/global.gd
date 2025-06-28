@@ -92,13 +92,12 @@ var miller_dialogue1: Dictionary = {
 	"the_cook":{
 		"text": "So you can make me some [color=red]duck confit[/color]? Sorry. I just love duck so much and I dont have time to make it myself. I can [color=red]sell[/color] you some ingredients.",
 		"options":[
-			{"text": ">How do I make it?", "next": "recipe"},
-			{"text": ">Buy", "next": "shop"}
+			{"text": ">How do I make it?", "next": "recipe"}
 		]
 	},
 	"recipe": {
 		"text": "Oh yes totaly forgot, here is the [color=red]recipe[/color].",
-		"action": "add_recipe",
+		"action": "add_duck_confit",
 		"options": [
 			{"text": ">Good bye.", "next": "good_bye"},
 			{"text": ">Buy", "next": "shop"}
@@ -116,6 +115,39 @@ var miller_dialogue1: Dictionary = {
 		"action": "close_shop",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
+			{"text": ">Give duck confit.", "next": "give"}
+		]
+	}
+}
+
+var miller_dialogue2: Dictionary = {
+	"start":{
+		"text": "Hello. Today I have some pasta to sell. You could make some [color=red]arabiata[/color] with it.",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Do you have a recipe?", "next": "recipe"}
+		]
+	},
+	"recipe":{
+		"text": "Here you go.",
+		"action": "add_arabiata",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "It's all fresh, locally sourced.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
 			{"text": ">Give duck confit.", "next": "give"}
 		]
 	}
@@ -215,27 +247,35 @@ var butler_dialogue1: Dictionary = {
 	"start": {
 		"text": "Congartulation on your new position as head (and only) chef of the King. Your job will be to find ingredients and cook for his Majesty each and every day. The better the dish is the more gold you will be payed.",
 		"options": [
-			{"text": "What can I buy with the gold?", "next": "gold"},
-			{"text": "Understood.", "next": "clear"}
+			{"text": ">What can I buy with the gold?", "next": "gold"},
+			{"text": ">Understood.", "next": "good_bye"}
 		]
 	},
 	"gold": {
 		"text": "You can buy new recipes, ingredients and tools from the villagers.",
 		"options": [
-			{"text": "Understood.", "next": "clear"}
+			{"text": ">Understood.", "next": "good_bye"},
+			{"text": ">Do you want something to eat to?", "next": "eat"}
 		]
 	},
-	"clear": {
+	"good_bye": {
 		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
+		"action": "close_shop",
 		"options": [
-			{"text": "Ready.", "next": "give_to_king"}
+			{"text": ">Ready.", "next": "give_to_king"},
+		]
+	},
+	"eat": {
+		"text": "No thank you I also taste test for the king. I can try every dish you make. But... there is this legend about a [color=red]plant that taste like meat[/color]. I would like to try that some time.",
+		"options": [
+			{"text": ">Understood.", "next": "good_bye"}
 		]
 	},
 	"give_to_king":{
 		"text": "  ",
 		"action": "open_shop",
 		"options": [
-			{"text": "Close.", "next": "clear", "action": "close_shop"}
+			{"text": ">Close.", "next": "good_bye"}
 		]
 	}
 }
@@ -268,6 +308,13 @@ var give_dialogues = {
 		"options": [
 			{"text": ">Not yet.", "next": "good_bye"}
 		]
+	},
+	"Butler": {
+		"text": "No way! It's real?",
+		"action": "open_give",
+		"options": [
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
 	}
 }
 
@@ -280,7 +327,7 @@ var thank_dialogues: Dictionary = {
 
 var dialogue: Dictionary = {
 	"Hunter": [hunter_dialogue1, hunter_dialogue2],
-	"Miller": [miller_dialogue1],
+	"Miller": [miller_dialogue1, miller_dialogue2],
 	"BlackSmith": [blacksmit_dialogue1],
 	"Fisher": [fisher_dialogue1],
 	"Butler": [butler_dialogue1],
@@ -292,7 +339,8 @@ var npc_food: Dictionary = {
 	"Hunter": "rabbit stew",
 	"Miller": "duck confit",
 	"BlackSmith": "boar steak",
-	"Fisher": "fishers soup"
+	"Fisher": "fishers soup",
+	"Butler": "lamb chops with mashed potatoes"
 }
 
 enum weapons {KNIFE, AXE, CROSSBOW}

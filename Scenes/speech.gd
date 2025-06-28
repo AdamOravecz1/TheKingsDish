@@ -25,7 +25,6 @@ func prepare_dialogue():
 		if "good_bye" in npc.dialogue and npc.name in Global.give_dialogues:
 			# Add the "give" node if missing
 			if "give" not in npc.dialogue:
-				print(npc.dialogue)
 				npc.dialogue["give"] = Global.give_dialogues[npc.name]
 
 			# Avoid duplicate "give" options

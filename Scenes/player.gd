@@ -57,7 +57,8 @@ func _ready():
 	if get_tree().current_scene.name in Global.player_data:
 		#position = Global.player_data[get_tree().current_scene.name][0]
 		velocity = Global.player_data[get_tree().current_scene.name][1]
-	$Label.material.set_shader_parameter("alpha", 0.0)
+	$NoSpace.material.set_shader_parameter("alpha", 0.0)
+	$Recipe.material.set_shader_parameter("alpha", 0.0)
 	$Bubbles.visible = false
 	if inv == null:
 		inv = load("res://inventory/playerinv.tres") as Inv
@@ -299,8 +300,13 @@ func collect(item):
 		
 func flash_text():
 	var tween = create_tween()
-	tween.tween_property($Label, "material:shader_parameter/alpha", 1.0, 0.0)
-	tween.tween_property($Label, "material:shader_parameter/alpha", 0.0, 1.0)
+	tween.tween_property($NoSpace, "material:shader_parameter/alpha", 1.0, 0.0)
+	tween.tween_property($NoSpace, "material:shader_parameter/alpha", 0.0, 1.0)
+	
+func flash_recipe():
+	var tween = create_tween()
+	tween.tween_property($Recipe, "material:shader_parameter/alpha", 1.0, 0.0)
+	tween.tween_property($Recipe, "material:shader_parameter/alpha", 0.0, 2.5)
 
 func _on_knock_back(source, force):
 	can_move = false

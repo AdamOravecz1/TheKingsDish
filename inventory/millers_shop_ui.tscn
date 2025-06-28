@@ -52,7 +52,7 @@ price = 2
 layout_mode = 2
 slot_sprite = ExtResource("3_c2bhb")
 item = ExtResource("5_c4ga4")
-price = 4
+price = 3
 
 [node name="Shop_UI_Slot3" parent="NinePatchRect/GridContainer" index="5" instance=ExtResource("2_h5hr6")]
 layout_mode = 2

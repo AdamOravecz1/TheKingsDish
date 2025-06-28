@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dybwmp1py4err"]
+[gd_scene load_steps=7 format=3 uid="uid://dybwmp1py4err"]
 
 [ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_otmb6"]
+[ext_resource type="Script" path="res://inventory/butler_inv.gd" id="2_r5n5a"]
 [ext_resource type="Texture2D" uid="uid://cwc305cyupuix" path="res://Sprites/Plate.png" id="2_t0xn0"]
 [ext_resource type="PackedScene" uid="uid://bv6u1rmhe8lay" path="res://inventory/inv_ui_slot.tscn" id="3_pcw1p"]
 [ext_resource type="Texture2D" uid="uid://kkxf87nksj5q" path="res://Sprites/InvSlotBowl.png" id="4_j15m1"]
+[ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="6_cw4vo"]
 
 [node name="ButlerInv" instance=ExtResource("1_otmb6")]
 offset_left = 760.0
@@ -11,6 +13,7 @@ offset_top = 151.0
 offset_right = -147.0
 offset_bottom = -252.0
 size_flags_horizontal = 6
+script = ExtResource("2_r5n5a")
 
 [node name="NinePatchRect" parent="." index="0"]
 offset_right = 245.0
@@ -38,4 +41,24 @@ offset_bottom = 143.0
 layout_mode = 2
 slot_sprite = ExtResource("4_j15m1")
 
+[node name="Button2" type="Button" parent="." index="1"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -9.0
+offset_top = -3.0
+offset_right = 254.0
+offset_bottom = 254.0
+
+[node name="Inv_UI_Slot" parent="." index="2" instance=ExtResource("3_pcw1p")]
+visible = false
+layout_mode = 0
+offset_left = 107.0
+offset_top = 108.0
+offset_right = 139.0
+offset_bottom = 140.0
+slot_sprite = ExtResource("6_cw4vo")
+
 [connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="send_favorite" from="Inv_UI_Slot" to="." method="_on_inv_ui_slot_send_favorite"]
