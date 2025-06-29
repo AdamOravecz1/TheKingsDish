@@ -16,7 +16,8 @@ var item = load("res://inventory/Items/fisher.tres") as InvItem
 var is_open := false
 var is_shop_visible := false
 
-var dialogue := Global.fisher_dialogue1
+var fisher_dialogues = Global.dialogue["Fisher"]
+var dialogue = fisher_dialogues[Global.current_day] 
 
 func _ready():
 	if self.name in Global.dialogue_progress:

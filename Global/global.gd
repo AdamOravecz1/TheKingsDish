@@ -115,7 +115,6 @@ var miller_dialogue1: Dictionary = {
 		"action": "close_shop",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-			{"text": ">Give duck confit.", "next": "give"}
 		]
 	}
 }
@@ -148,7 +147,6 @@ var miller_dialogue2: Dictionary = {
 		"action": "close_shop",
 		"options": [
 			{"text": ">Buy.", "next": "shop"},
-			{"text": ">Give duck confit.", "next": "give"}
 		]
 	}
 }
@@ -162,7 +160,7 @@ var monk_dialogue1: Dictionary = {
 	}
 }
 
-var blacksmit_dialogue1: Dictionary = {
+var blacksmith_dialogue1: Dictionary = {
 	"start":{
 		"text": "Be carefull. That [color=red]boar[/color] is dangerous.",
 		"options": [
@@ -196,7 +194,6 @@ var blacksmit_dialogue1: Dictionary = {
 		"action": "close_shop",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-			{"text": ">Give boar steak.", "next": "give"}
 		]
 	},
 	"see": {
@@ -211,6 +208,37 @@ var blacksmit_dialogue1: Dictionary = {
 			{"text": ">Ready.", "next": "shop"}
 		]
 	}
+}
+
+var blacksmith_dialogue2: Dictionary = {
+	"start":{
+		"text": "Hello!",
+		"options": [
+			{"text": ">What can I do with that crossbow?.", "next": "crossbow"},
+			{"text": ">Buy.", "next": "shop"}
+		]
+	},
+	"crossbow":{
+		"text": "It doesnt do a lot of damage but it is great to pick of fast and small animals.",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop":{
+		"text": "What are you intrested in today?",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "Take care.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"},
+		]
+	},
 }
 
 var fisher_dialogue1: Dictionary = {
@@ -238,7 +266,42 @@ var fisher_dialogue1: Dictionary = {
 		"action": "close_shop",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-			{"text": ">Give fishers soup.", "next": "give"}
+		]
+	}
+}
+
+var fisher_dialogue2: Dictionary = {
+	"start":{
+		"text": "...",
+		"options": [
+			{"text": ">Hello.", "next": "hello"},
+			{"text": ">...", "next": "..."},
+		]
+	},
+	"hello":{
+		"text": "You don't learn. Do you?",
+		"options":[
+			{"text": ">You got new recipes?", "next": "shop"}
+		]
+	},
+	"...":{
+		"text": "...",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+		]
+	},
+	"shop": {
+		"text": "...",
+		"action": "open_shop",
+		"options":[
+			{"text": ">Good bye...", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "...",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
 		]
 	}
 }
@@ -328,8 +391,8 @@ var thank_dialogues: Dictionary = {
 var dialogue: Dictionary = {
 	"Hunter": [hunter_dialogue1, hunter_dialogue2],
 	"Miller": [miller_dialogue1, miller_dialogue2],
-	"BlackSmith": [blacksmit_dialogue1],
-	"Fisher": [fisher_dialogue1],
+	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2],
+	"Fisher": [fisher_dialogue1, fisher_dialogue2],
 	"Butler": [butler_dialogue1],
 	"Monk": [monk_dialogue1],
 	"King": []
@@ -372,7 +435,8 @@ const weapon_price = {
 const recipe_price = {
 	"Rabbit stew": 2,
 	"Fishers soup": 4,
-	"Rabbit stew with mushroom": 3
+	"Rabbit stew with mushroom": 3,
+	"Vegetable soup": 5
 }
 
 const weapon_data = {

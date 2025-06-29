@@ -76,7 +76,7 @@ func check_player_distance():
 		if not fly:
 			$Sound/Flight.play()
 		$Timers/Flight.start()
-		speed_modifier = 4
+		speed_modifier = 5
 		fly = true
 		if (delta_x > 0 and x_direction < 0) or (delta_x < 0 and x_direction > 0):
 			x_direction *= -1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck4yvougmk8yw"]
+[gd_scene load_steps=10 format=3 uid="uid://ck4yvougmk8yw"]
 
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_stquf"]
 [ext_resource type="Script" path="res://inventory/fisher_shop_ui2.gd" id="2_w4bhb"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="4_fxk1m"]
 [ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="5_1isbt"]
 [ext_resource type="Texture2D" uid="uid://cbkl4cllawpdk" path="res://Sprites/FishersSoupIcon.png" id="6_cy8rx"]
+[ext_resource type="Texture2D" uid="uid://bqaler3q1f4fg" path="res://Sprites/VegetableSoupIcon.png" id="7_5lwsk"]
 [ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="8_3gywf"]
 
 [node name="FisherShopUI" instance=ExtResource("1_stquf")]
@@ -24,7 +25,7 @@ texture = ExtResource("3_okt1d")
 [node name="GridContainer" parent="NinePatchRect" index="1"]
 offset_left = 137.0
 offset_top = 69.0
-offset_right = 242.0
+offset_right = 234.0
 offset_bottom = 130.0
 columns = 1
 
@@ -40,7 +41,14 @@ theme = ExtResource("2_x6rcy")
 icon = ExtResource("6_cy8rx")
 icon_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="2"]
+[node name="Recipe2" type="Button" parent="NinePatchRect/GridContainer" index="2"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_x6rcy")
+icon = ExtResource("7_5lwsk")
+icon_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="3"]
 layout_mode = 2
 
 [node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer/VBoxContainer" index="0"]
@@ -82,5 +90,6 @@ offset_right = 218.0
 offset_bottom = 77.0
 
 [connection signal="pressed" from="NinePatchRect/GridContainer/Recipe" to="." method="_on_recipe_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Recipe2" to="." method="_on_recipe_2_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="send_favorite" from="Inv_UI_Slot" to="." method="_on_inv_ui_slot_send_favorite"]

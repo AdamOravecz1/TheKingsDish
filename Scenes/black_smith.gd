@@ -17,7 +17,8 @@ var item = load("res://inventory/Items/black_smith.tres") as InvItem
 var is_open := false
 var is_shop_visible := false
 
-var dialogue := Global.blacksmit_dialogue1
+var blacksmith_dialogues = Global.dialogue["BlackSmith"]
+var dialogue = blacksmith_dialogues[Global.current_day] 
 
 func _ready():
 	close()
