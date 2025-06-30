@@ -346,22 +346,29 @@ var butler_dialogue1: Dictionary = {
 }
 
 var butler_dialogue2: Dictionary = {
+	"start0": {
+		"text": "What you served yesterday was absolutely horrible. If you dare to pull a stunt like that again you are \"fired\".",
+		"options": [
+			{"text": ">Give todays dish.", "next": "shop"},
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	},
 	"start1": {
-		"text": "1",
+		"text": "The King ate what you made yesterday but didn't realy enjoyed it. Here is your salary.",
 		"options": [
 			{"text": ">Give todays dish.", "next": "shop"},
 			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	},
 	"start2": {
-		"text": "2",
+		"text": "The King enjoyed what you made yesterday. Keep up this good work. Here is your salary.",
 		"options": [
 			{"text": ">Give todays dish.", "next": "shop"},
 			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	},
 	"start3": {
-		"text": "3",
+		"text": "The King couldn't stop praising you during yeasterdays dinner. If you keep this up you might be able to meet with him. Here is your salary.",
 		"options": [
 			{"text": ">Give todays dish.", "next": "shop"},
 			{"text": ">Not yet.", "next": "good_bye"}

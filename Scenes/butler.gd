@@ -37,6 +37,7 @@ var extra_drop = InvItem
 func _process(delta):
 	if global_position.x < -510:
 		visible = false
+		main.can_next_day = true
 	velocity.x = x_direction * speed * speed_modifier
 	apply_gravity(delta)
 	move_and_slide()
@@ -53,7 +54,9 @@ func _ready():
 		talk.show_node(Global.dialogue_progress[self.name])
 	else:
 		if Global.current_day > 0:
-			if Global.previous_day_value <= 5:
+			if Global.previous_day_value == 0:
+				talk.show_node("start0")
+			elif Global.previous_day_value > 0 and Global.previous_day_value <= 5:
 				talk.show_node("start1")
 			elif Global.previous_day_value > 5 and Global.previous_day_value <= 10:
 				talk.show_node("start2")
@@ -92,6 +95,10 @@ func _pickup():
 		remove()
 		
 func _talk():
+	if Global.previous_day_value != 0:
+		$Sound/Pay.play()
+	player.pay(-Global.previous_day_value)
+	Global.previous_day_value = 0
 	if is_open:
 		close()
 		player.can_attack = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dsqjc76hcoo3d"]
+[gd_scene load_steps=21 format=3 uid="uid://dsqjc76hcoo3d"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_8agaq"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="2_66e00"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cc16r1ln6o8gd" path="res://Sprites/Butler.png" id="3_upehp"]
 [ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="5_4t6m3"]
 [ext_resource type="PackedScene" uid="uid://dybwmp1py4err" path="res://inventory/butler_inv.tscn" id="5_u2qf3"]
+[ext_resource type="AudioStream" uid="uid://cjvrf5mynqrav" path="res://Sounds/PayDay.wav" id="7_y3w7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsrik"]
 size = Vector2(20, 40)
@@ -149,6 +150,9 @@ visible = false
 [node name="Food" type="Sprite2D" parent="." index="7"]
 position = Vector2(7.5, -23)
 scale = Vector2(0.8, 0.8)
+
+[node name="Pay" type="AudioStreamPlayer2D" parent="Sound" index="1"]
+stream = ExtResource("7_y3w7i")
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
 [connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]

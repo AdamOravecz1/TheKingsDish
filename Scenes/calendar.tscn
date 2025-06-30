@@ -1,9 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://gtld0mwvxdou"]
+[gd_scene load_steps=8 format=3 uid="uid://gtld0mwvxdou"]
 
 [ext_resource type="Texture2D" uid="uid://cmcigrhk214wy" path="res://Sprites/Calendar.png" id="1_7kmky"]
 [ext_resource type="Script" path="res://Scenes/calendar.gd" id="2_6k2ic"]
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="3_lbbuy"]
+[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="4_yjeh5"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="5_e6nvm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qauj1"]
+size = Vector2(20, 61)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udrc0"]
+shader = ExtResource("4_yjeh5")
+shader_parameter/alpha = 1.0
 
 [node name="Calendar" type="Sprite2D"]
 texture = ExtResource("1_7kmky")
 vframes = 7
 script = ExtResource("2_6k2ic")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_lbbuy")]
+position = Vector2(0, 36)
+action_name = "next day"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_qauj1")
+
+[node name="GiveFoodFirst" type="Label" parent="."]
+material = SubResource("ShaderMaterial_udrc0")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -76.0
+offset_right = 62.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_e6nvm")
+theme_override_font_sizes/font_size = 8
+text = "The King hasn't eaten yet"

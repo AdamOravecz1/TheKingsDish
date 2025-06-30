@@ -15,6 +15,8 @@ var is_open = false
 var is_recipes_open = false
 var can_save := true
 
+var can_next_day = false
+
 @export var full_screen: bool = false
 @export var rain_day: int = 2
 
@@ -53,7 +55,6 @@ func _ready():
 	for i in $Main/Entities.get_child_count():
 		entity_names.append($Main/Entities.get_child(i))
 	for i in $Main/Entities.get_child_count():
-		print(Global.animal_data)
 		if scene_name in Global.animal_data:
 			entity_names[i].setup(Global.animal_data[scene_name][i])
 		if entity_names[i].name in Global.perma_death and not Global.animal_data.has(self.name):
