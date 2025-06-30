@@ -2,6 +2,8 @@ extends Node
 
 var current_day: int = 0
 
+var previous_day_value: int = 0
+
 var food_given: Array = []
 
 var dialogue_progress: Dictionary = {}
@@ -325,7 +327,7 @@ var butler_dialogue1: Dictionary = {
 		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Ready.", "next": "give_to_king"},
+			{"text": ">Ready.", "next": "shop"},
 		]
 	},
 	"eat": {
@@ -334,7 +336,45 @@ var butler_dialogue1: Dictionary = {
 			{"text": ">Understood.", "next": "good_bye"}
 		]
 	},
-	"give_to_king":{
+	"shop":{
+		"text": "  ",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Close.", "next": "good_bye"}
+		]
+	}
+}
+
+var butler_dialogue2: Dictionary = {
+	"start1": {
+		"text": "1",
+		"options": [
+			{"text": ">Give todays dish.", "next": "shop"},
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	},
+	"start2": {
+		"text": "2",
+		"options": [
+			{"text": ">Give todays dish.", "next": "shop"},
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	},
+	"start3": {
+		"text": "3",
+		"options": [
+			{"text": ">Give todays dish.", "next": "shop"},
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Ready.", "next": "shop"},
+		]
+	},
+	"shop":{
 		"text": "  ",
 		"action": "open_shop",
 		"options": [
@@ -393,7 +433,7 @@ var dialogue: Dictionary = {
 	"Miller": [miller_dialogue1, miller_dialogue2],
 	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2],
 	"Fisher": [fisher_dialogue1, fisher_dialogue2],
-	"Butler": [butler_dialogue1],
+	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2],
 	"Monk": [monk_dialogue1],
 	"King": []
 }
@@ -422,8 +462,6 @@ const animal_parameters = {
 	"monk": {"health": 20},
 	"zombie": {"speed": 20, "health": 500}
 }
-
-
 
 const weapon_price = {
 	"AXE" : 5,
@@ -593,7 +631,8 @@ func save_game():
 		"found_recipes": found_recipes,
 		"scene": scene,
 		"perma_death": perma_death,
-		"current_day": current_day
+		"current_day": current_day,
+		"previous_day_value": previous_day_value
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -628,8 +667,9 @@ func load_game():
 			scene = result["scene"]
 			perma_death = result["perma_death"]
 			current_day = result["current_day"]
+			previous_day_value = result["previous_day_value"]
 			print("Mentés betöltve.")
-			get_tree().get_first_node_in_group("Level").pauseMenu()
+			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			get_tree().get_first_node_in_group("Level").can_save = false
 			if scene == "Forest":
 				TransitionLayer.change_scene("res://Scenes/forest.tscn")

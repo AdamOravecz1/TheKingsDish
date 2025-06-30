@@ -7,3 +7,5 @@
 script = ExtResource("1_ddvep")
 name = "Cake"
 texture = ExtResource("2_kwnft")
+value = 5
+types = Array[String]([])

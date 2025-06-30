@@ -29,11 +29,14 @@ var is_shop_visible := false
 
 var all_strings := true
 
-var dialogue := Global.butler_dialogue1
+var butler_dialogues = Global.dialogue["Butler"]
+var dialogue = butler_dialogues[Global.current_day] 
+
+var extra_drop = InvItem
 
 func _process(delta):
 	if global_position.x < -510:
-		remove()
+		visible = false
 	velocity.x = x_direction * speed * speed_modifier
 	apply_gravity(delta)
 	move_and_slide()
@@ -49,7 +52,15 @@ func _ready():
 		print(Global.dialogue_progress[self.name])
 		talk.show_node(Global.dialogue_progress[self.name])
 	else:
-		talk.show_node("start")
+		if Global.current_day > 0:
+			if Global.previous_day_value <= 5:
+				talk.show_node("start1")
+			elif Global.previous_day_value > 5 and Global.previous_day_value <= 10:
+				talk.show_node("start2")
+			else:
+				talk.show_node("start3")
+		else:
+			talk.show_node("start")
 	if Global.chests_load:
 		if Global.chest_inv.has(chest_name):
 			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
@@ -72,6 +83,10 @@ func initialize():
 	inv.initialize_inv(1)
 	
 func _pickup():
+	if extra_drop:
+		player.collect(extra_drop)
+		extra_drop = null
+		$Food.texture = null
 	player.collect(item)
 	if player.free_inv_slot:
 		remove()
@@ -139,19 +154,15 @@ func close_shop():
 func _on_player_left_body_exited(body):
 	close()
 	main.close()
-	
-func _on_tree_exited():
-	if inv != null:
-		# Save the Inv instance to the global dictionary
-		Global.chest_inv[chest_name] = inv
-		print("Inventory saved to global dictionary with key: ", chest_name)
-
 
 func _on_butler_inv_send_food(food):
-	$Food.texture = food
+	extra_drop = food
 	if food:
+		$Food.texture = food.texture
+		Global.previous_day_value = food.value
 		speed_modifier = 1
 		$AnimatedSprite2D.play("walk")
 		$AnimatedSprite2D.flip_h = false
 		x_direction = -1
+		$InteractionAreaShop.monitoring = false
 

@@ -7,3 +7,5 @@
 script = ExtResource("1_xdf4c")
 name = "Rabbit Stew"
 texture = ExtResource("2_u74bb")
+value = 10
+types = Array[String]([])

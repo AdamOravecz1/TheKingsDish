@@ -26,7 +26,7 @@ func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
 		if inv.slots[i].item:
-			send_food.emit(inv.slots[i].item.texture)
+			send_food.emit(inv.slots[i].item)
 		else:
 			send_food.emit(null)
 

@@ -7,3 +7,5 @@
 script = ExtResource("1_ktlu2")
 name = "Hammer and Nails"
 texture = ExtResource("2_54ftm")
+value = 15
+types = Array[String]([])

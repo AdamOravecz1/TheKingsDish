@@ -7,3 +7,5 @@
 script = ExtResource("1_v2amb")
 name = "tomato sauce"
 texture = ExtResource("2_umt4h")
+value = 5
+types = Array[String]([])

@@ -7,7 +7,6 @@ func give():
 	$Button2.disabled = false
 	
 func buy():
-	print("ittt")
 	$NinePatchRect/GridContainer.visible = true
 	$Inv_UI_Slot.visible = false
 	$Button2.visible = false
