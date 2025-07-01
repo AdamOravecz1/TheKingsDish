@@ -105,6 +105,9 @@ func add_arabiata():
 		
 func add_pancake():
 	add_recipe("res://inventory/Items/pancake.tres")
+	
+func add_mac_n_cheese():
+	add_recipe("res://inventory/Items/mac_n_cheese.tres")
 
 func _on_player_left_body_exited(body):
 	close()

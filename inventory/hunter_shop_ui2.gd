@@ -7,14 +7,26 @@ func _ready():
 	if Global.current_day == 0:
 		$NinePatchRect/GridContainer.position.x += 20
 		$NinePatchRect/GridContainer.columns = 2
-		$NinePatchRect/GridContainer/StewName2.visible = false
-		$NinePatchRect/GridContainer/Stew2.visible = false
-		$NinePatchRect/GridContainer/VBoxContainer3.visible = false
-	if Global.current_day == 1:
+	elif Global.current_day == 1:
 		$NinePatchRect/GridContainer.columns = 3
+		$NinePatchRect/GridContainer/StewName2.visible = true
+		$NinePatchRect/GridContainer/Stew2.visible = true
+		$NinePatchRect/GridContainer/VBoxContainer3.visible = true
+	elif Global.current_day == 2:
+		$NinePatchRect/GridContainer.columns = 3
+		$NinePatchRect/GridContainer/SoupName.visible = true
+		$NinePatchRect/GridContainer/Soup.visible = true
+		$NinePatchRect/GridContainer/VBoxContainer4.visible = true
+	elif Global.current_day == 3:
+		$NinePatchRect/GridContainer.columns = 3
+		$NinePatchRect/GridContainer/StirFryName.visible = true
+		$NinePatchRect/GridContainer/StirFry.visible = true
+		$NinePatchRect/GridContainer/VBoxContainer5.visible = true
 	$NinePatchRect/GridContainer/VBoxContainer/TrapLabel.text = "   " + str(Global.weapon_price["TRAP"])
 	$NinePatchRect/GridContainer/VBoxContainer2/StewLabel.text = "   " + str(Global.recipe_price["Rabbit stew"])
 	$NinePatchRect/GridContainer/VBoxContainer3/StewLabel2.text = "   " + str(Global.recipe_price["Rabbit stew with mushroom"])
+	$NinePatchRect/GridContainer/VBoxContainer4/SoupLabel.text = "   " + str(Global.recipe_price["Mushroom soup"])
+	$NinePatchRect/GridContainer/VBoxContainer5/StirFryLabel.text + "   " + str(Global.recipe_price["Stir fry"])
 
 func _on_trap_pressed():
 	if player.coin >= Global.weapon_price["TRAP"]:
@@ -69,3 +81,11 @@ func _on_button_2_pressed():
 	main.buying = false
 	main.current_item = null
 	main.current_slot = 100
+
+
+func _on_soup_pressed():
+	give_recipe("Mushroom soup", "res://inventory/Items/mushroom_soup.tres")
+
+
+func _on_stir_fry_pressed():
+	give_recipe("Stir fry", "res://inventory/Items/mushroom_stir_fry.tres")

@@ -84,6 +84,55 @@ var hunter_dialogue2: Dictionary = {
 	}
 }
 
+var hunter_dialogue3: Dictionary = {
+	"start": {
+		"text": "Would you be intrested in some new recipes?",
+		"options": [
+			{"text": ">Sure.", "next": "shop"},
+			{"text": ">Not now.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "Take a look.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"}
+		]
+	}
+}
+
+var hunter_dialogue4: Dictionary = {
+	"start": {
+		"text": "I've been checking out that wierd mushroom high on that tree but I have no idea how to get to it.",
+		"options": [
+			{"text": ">What would you make from it?", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "Check out this [color=red]mushroom stir fry[/color].",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"}
+		]
+	}
+}
+
+
 var miller_dialogue1: Dictionary = {
 	"start":{
 		"text": "Greatings. Haven't seen you yet.",
@@ -164,6 +213,38 @@ var miller_dialogue3: Dictionary = {
 	"recipe":{
 		"text": "Here you go. You can try adding blueberries instead of suggar.",
 		"action": "add_pancake",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "It's all fresh, locally sourced.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+		]
+	}
+}
+
+var miller_dialogue4: Dictionary = {
+	"start":{
+		"text": "Hello. I finally managed to get hold of some cheese. Are you interested?",
+		"options":[
+			{"text": ">Of course I am.", "next": "shop"},
+			{"text": ">What can i make with it?", "next": "recipe"}
+		]
+	},
+	"recipe":{
+		"text": "There is this nice pasta dish that full of cheese. It's delicious.",
+		"action": "add_mac_n_cheese",
 		"options":[
 			{"text": ">Buy.", "next": "shop"},
 			{"text": ">Good bye.", "next": "good_bye"}
@@ -286,6 +367,30 @@ var blacksmith_dialogue2: Dictionary = {
 	},
 }
 
+var blacksmith_dialogue3: Dictionary = {
+	"start":{
+		"text": "Hello! The regular?",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop":{
+		"text": "What are you intrested in today?",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "Take care.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"},
+		]
+	},
+}
+
 var fisher_dialogue1: Dictionary = {
 	"start":{
 		"text": "...",
@@ -337,6 +442,42 @@ var fisher_dialogue2: Dictionary = {
 	},
 	"shop": {
 		"text": "...",
+		"action": "open_shop",
+		"options":[
+			{"text": ">Good bye...", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "...",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+		]
+	}
+}
+
+var fisher_dialogue4: Dictionary = {
+	"start":{
+		"text": "...",
+		"options": [
+			{"text": ">Hello.", "next": "hello"},
+			{"text": ">...", "next": "..."},
+		]
+	},
+	"hello":{
+		"text": "What is your problem?",
+		"options":[
+			{"text": ">You got new recipes?", "next": "shop"}
+		]
+	},
+	"...":{
+		"text": "...",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+		]
+	},
+	"shop": {
+		"text": "Hey, I hope you realise this is just a plain cake. After you bake it you need to add some fruits or vegetables. You are the Chef I shouldn't have to telly you this.",
 		"action": "open_shop",
 		"options":[
 			{"text": ">Good bye...", "next": "good_bye"}
@@ -479,13 +620,13 @@ var thank_dialogues: Dictionary = {
 }
 
 var dialogue: Dictionary = {
-	"Hunter": [hunter_dialogue1, hunter_dialogue2],
-	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3],
-	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2],
-	"Fisher": [fisher_dialogue1, fisher_dialogue2],
+	"Hunter": [hunter_dialogue1, hunter_dialogue2, hunter_dialogue3, hunter_dialogue4],
+	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4],
+	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3],
+	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
 	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2],
 	"Monk": [monk_dialogue1],
-	"King": []
+	"King": [monk_dialogue1]
 }
 
 var npc_food: Dictionary = {
@@ -504,13 +645,13 @@ const animal_parameters = {
 	"fish": {"speed": 0.1, "health": 20},
 	"duck": {"speed": 30, "health": 20},
 	"dragon": {"health": 2000},
-	"miller": {"health": 50},
-	"black_smith": {"health": 60},
-	"hunter": {"health": 50},
-	"fisher": {"health": 50},
-	"butler": {"health": 50},
+	"miller": {"health": 300},
+	"black_smith": {"health": 401},
+	"hunter": {"health": 300},
+	"fisher": {"health": 300},
+	"butler": {"health": 300},
 	"monk": {"health": 20},
-	"zombie": {"speed": 20, "health": 500}
+	"zombie": {"speed": 20, "health": 1300}
 }
 
 const weapon_price = {
@@ -524,7 +665,11 @@ const recipe_price = {
 	"Rabbit stew": 2,
 	"Fishers soup": 4,
 	"Rabbit stew with mushroom": 3,
-	"Vegetable soup": 5
+	"Vegetable soup": 5,
+	"Mushroom soup": 3,
+	"Meat soup": 6,
+	"Stir fry": 5,
+	"Cake": 5
 }
 
 const weapon_data = {
@@ -599,8 +744,8 @@ const recipes: Dictionary = {
 	"res://inventory/Items/vegetable_soup_in_bread.tres": ["res://inventory/Items/vegetable_soup.tres", "res://inventory/Items/bread.tres"],
 	"res://inventory/Items/meat_soup.tres": ["res://inventory/Items/water.tres", "res://inventory/Items/duck.tres", "res://inventory/Items/boar.tres", "res://inventory/Items/rabbit.tres"],
 	"res://inventory/Items/meat_soup_in_bread.tres": ["res://inventory/Items/meat_soup.tres", "res://inventory/Items/bread.tres"],
-	"res://inventory/Items/spaghetti_meatball.tres": ["res://inventory/Items/pasta.tres", "res://inventory/Items/tomato.tres", "res://inventory/Items/boar.tres", "res://inventory/Items/cheese.tres"],
-	"res://inventory/Items/sandwich.tres": ["res://inventory/Items/bread.tres", "res://inventory/Items/tomato.tres", "res://inventory/Items/lettuce.tres", "res://inventory/Items/boar.tres"],
+	"res://inventory/Items/spaghetti_meatball.tres": ["res://inventory/Items/pasta.tres", "res://inventory/Items/tomato.tres", "res://inventory/Items/rabbit.tres", "res://inventory/Items/cheese.tres"],
+	"res://inventory/Items/sandwich.tres": ["res://inventory/Items/bread.tres", "res://inventory/Items/tomato.tres", "res://inventory/Items/lettuce.tres", "res://inventory/Items/duck.tres"],
 	"res://inventory/Items/duck_confit_with_side_of_bread.tres": ["res://inventory/Items/bread.tres", "res://inventory/Items/duck.tres"],
 	"res://inventory/Items/duck_salad.tres": ["res://inventory/Items/lettuce.tres", "res://inventory/Items/duck.tres"],
 	"res://inventory/Items/comfy_peasant.tres": ["res://inventory/Items/bread.tres", "res://inventory/Items/miller.tres"],
