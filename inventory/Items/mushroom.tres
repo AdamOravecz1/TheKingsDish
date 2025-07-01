@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cngwsvwjvjegi"]
 
 [ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_w0ern"]
-[ext_resource type="Texture2D" uid="uid://bhsejsqe7v352" path="res://Sprites/MushroomIcon.png" id="2_nd42u"]
+[ext_resource type="Texture2D" uid="uid://by147ym0u5dua" path="res://Sprites/MushroomIcon3.png" id="2_78e1c"]
 
 [resource]
 script = ExtResource("1_w0ern")
 name = "Mushroom"
-texture = ExtResource("2_nd42u")
+texture = ExtResource("2_78e1c")
+value = 0
+types = Array[String]([])

@@ -98,22 +98,23 @@ func close_shop():
 	player.can_attack = false
 	
 func add_duck_confit():
-	var key := "res://inventory/Items/duck_confit_with_side_of_bread.tres"
-	if key not in Global.found_recipes:
-		if Global.recipes.has(key):
-			Global.found_recipes[key] = Global.recipes[key]
-		recipes.setup()
+	add_recipe("res://inventory/Items/duck_confit_with_side_of_bread.tres")
 
 func add_arabiata():
-	var key := "res://inventory/Items/arabiata.tres"
-	if key not in Global.found_recipes:
-		if Global.recipes.has(key):
-			Global.found_recipes[key] = Global.recipes[key]
-		recipes.setup()
+	add_recipe("res://inventory/Items/arabiata.tres")
+		
+func add_pancake():
+	add_recipe("res://inventory/Items/pancake.tres")
 
 func _on_player_left_body_exited(body):
 	close()
 	main.close()
+	
+func add_recipe(key):
+	if key not in Global.found_recipes:
+		if Global.recipes.has(key):
+			Global.found_recipes[key] = Global.recipes[key]
+		recipes.setup()
 
 
 

@@ -153,11 +153,54 @@ var miller_dialogue2: Dictionary = {
 	}
 }
 
+var miller_dialogue3: Dictionary = {
+	"start":{
+		"text": "Hello. Today I'm selling milk. It is good for a lot of recipes.",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">For example?", "next": "recipe"}
+		]
+	},
+	"recipe":{
+		"text": "Here you go. You can try adding blueberries instead of suggar.",
+		"action": "add_pancake",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "It's all fresh, locally sourced.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+		]
+	}
+}
+
 var monk_dialogue1: Dictionary = {
 	"start":{
-		"text": "Fuck you want",
+		"text": "Here is a secret. You can switch any mushroom with the bad kind to make the King sick. You should give it a try.",
 		"options": [
-			{"text": ">Poison", "action": "open_shop"}
+			{"text": ">Who are you?", "action": "me"},
+			{"text": ">Good bye", "action": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "You will want to visit me next day too.",
+		"action": "close_shop",
+	},
+	"me":{
+		"text": "I'm your friend.",
+		"options": [
+			{"text": ">Good bye?", "action": "good_bye"}
 		]
 	}
 }
@@ -437,7 +480,7 @@ var thank_dialogues: Dictionary = {
 
 var dialogue: Dictionary = {
 	"Hunter": [hunter_dialogue1, hunter_dialogue2],
-	"Miller": [miller_dialogue1, miller_dialogue2],
+	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3],
 	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2],
 	"Fisher": [fisher_dialogue1, fisher_dialogue2],
 	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2],
@@ -520,6 +563,7 @@ var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
 	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
 	"res://inventory/Items/fries.tres": ["res://inventory/Items/oil.tres", "res://inventory/Items/potato.tres"],
+	"res://inventory/Items/sugar.tres": ["res://inventory/Items/carrot.tres"]
 }
 
 const recipes: Dictionary = {

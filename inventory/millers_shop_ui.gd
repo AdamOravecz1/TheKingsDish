@@ -7,17 +7,21 @@ func _ready():
 		if "Control" in i.name:
 			controls += 1
 	if Global.current_day == 0:
-		$NinePatchRect/GridContainer/Shop_UI_Slot.item = preload("res://inventory/Items/water.tres")
-		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = preload("res://inventory/Items/flour.tres")
-		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = preload("res://inventory/Items/oil.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/water.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = load("res://inventory/Items/flour.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = load("res://inventory/Items/oil.tres")
 	elif Global.current_day == 1:
 		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/water.tres")
 		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = load("res://inventory/Items/flour.tres")
 		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = load("res://inventory/Items/pasta.tres")
-	else:
-		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/water.tres")
+	elif Global.current_day == 2:
+		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/milk.tres")
 		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = load("res://inventory/Items/flour.tres")
 		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = load("res://inventory/Items/oil.tres")
+	elif Global.current_day == 4:
+		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/milk.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = load("res://inventory/Items/cheese.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = load("res://inventory/Items/pasta.tres")
 	$NinePatchRect/GridContainer/Shop_UI_Slot._ready()
 	$NinePatchRect/GridContainer/Shop_UI_Slot2._ready()
 	$NinePatchRect/GridContainer/Shop_UI_Slot3._ready()

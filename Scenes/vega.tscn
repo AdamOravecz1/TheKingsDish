@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://g752qdjc6082"]
 
 [ext_resource type="Script" path="res://Scenes/vega.gd" id="1_mstei"]
-[ext_resource type="Texture2D" uid="uid://glxpuugju2dy" path="res://Sprites/Vega3.png" id="2_umg2l"]
+[ext_resource type="Texture2D" uid="uid://dlxeep210fy0b" path="res://Sprites/Vega5.png" id="2_qgho0"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="2_vik77"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vla6u"]
@@ -11,7 +11,7 @@ radius = 16.0312
 script = ExtResource("1_mstei")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_umg2l")
+texture = ExtResource("2_qgho0")
 hframes = 2
 vframes = 16
 

@@ -40,7 +40,7 @@ func _on_stew_pressed():
 
 
 func _on_stew_2_pressed():
-	give_recipe("Rabbit stew with mushroom", "res://inventory/Items/rabbit_stew_wsith_mushroom.tres")
+	give_recipe("Rabbit stew with mushroom", "res://inventory/Items/rabbit_stew_with_mushroom.tres")
 	
 func give():
 	$NinePatchRect/GridContainer.visible = false

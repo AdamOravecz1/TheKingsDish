@@ -12,11 +12,15 @@ extends Entity
 var is_open := false
 var is_shop_visible := false
 
-var dialogue := Global.monk_dialogue1
+var monk_dialogues = Global.dialogue["Monk"]
+var dialogue = monk_dialogues[Global.current_day] 
 
 
 func _ready():
-	talk.show_node("start")
+	if self.name in Global.dialogue_progress:
+		talk.show_node(Global.dialogue_progress[self.name])
+	else:
+		talk.show_node("start")
 	$PlayerLeft.set_deferred("monitoring", false)
 	health = Global.animal_parameters["monk"]["health"]
 	interaction_area_shop.interact = Callable(self, "_talk")
