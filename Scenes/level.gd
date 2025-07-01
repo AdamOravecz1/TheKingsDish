@@ -22,7 +22,8 @@ var can_next_day = false
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
-func _ready():	
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if Global.current_day == rain_day and self.name != "Dungeon":
 		$Sound/Rain.play()
 		$BG/ParallaxBackground/SheepCloud.visible = false
@@ -146,12 +147,14 @@ func _process(_delta):
 			open()
 
 func open():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if player and playerinv:
 		player.can_attack = false
 		playerinv.visible = true
 	is_open = true
 	
 func close():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if player and playerinv:
 		player.can_attack = true
 		playerinv.visible = false
@@ -164,11 +167,13 @@ func openRecipes():
 
 func pauseMenu():
 	if paused:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		pause_menu.hide()
 		#Engine.time_scale = 1
 		get_tree().paused = false
 		player.can_move = true
 	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		pause_menu.show()
 		#Engine.time_scale = 0
 		get_tree().paused = true

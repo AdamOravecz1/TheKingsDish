@@ -286,6 +286,19 @@ var monk_dialogue1: Dictionary = {
 	}
 }
 
+var monk_dialogue2: Dictionary = {
+	"start":{
+		"text": "Have you noticed that all of these villagers have a favorite food. All of these dishes contain meat. But why kill poor animals when the meat can substituted with there own flesh.",
+		"options": [
+			{"text": ">Ok?", "action": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "You will want to visit me again.",
+		"action": "close_shop",
+	}
+}
+
 var blacksmith_dialogue1: Dictionary = {
 	"start":{
 		"text": "Be carefull. That [color=red]boar[/color] is dangerous.",
@@ -614,9 +627,9 @@ var give_dialogues = {
 
 var thank_dialogues: Dictionary = {
 	"Hunter": {
-		"text": "THANK YOU",
+		"text": "Here is a nice idea I have seen once in another kingdom. You can take any soup and put in bread bowl. I think the King might apriciate it.",
 		"action": "close_shop"
-	}
+	},
 }
 
 var dialogue: Dictionary = {
@@ -625,7 +638,7 @@ var dialogue: Dictionary = {
 	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3],
 	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
 	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2],
-	"Monk": [monk_dialogue1],
+	"Monk": [monk_dialogue1, monk_dialogue2],
 	"King": [monk_dialogue1]
 }
 
@@ -708,7 +721,8 @@ var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
 	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
 	"res://inventory/Items/fries.tres": ["res://inventory/Items/oil.tres", "res://inventory/Items/potato.tres"],
-	"res://inventory/Items/sugar.tres": ["res://inventory/Items/carrot.tres"]
+	"res://inventory/Items/sugar.tres": ["res://inventory/Items/carrot.tres"],
+	"res://inventory/Items/mashed_potatoes.tres": ["res://inventory/Items/potato.tres", "res://inventory/Items/milk.tres"]
 }
 
 const recipes: Dictionary = {

@@ -25,6 +25,10 @@ func hit(damage, pos, force):
 	knock_back.emit(pos, force)
 	if self.name == "Player":
 		get_tree().get_first_node_in_group("Level").update_health(health)
+	if health > 0:
+		var tween = create_tween()
+		tween.tween_property($HitLabel, "material:shader_parameter/alpha", 1.0, 0.0)
+		tween.tween_property($HitLabel, "material:shader_parameter/alpha", 0.0, 2.0)
 		
 func remove():
 	# Load and instance the scene dynamically

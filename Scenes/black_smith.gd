@@ -22,6 +22,7 @@ var dialogue = blacksmith_dialogues[Global.current_day]
 
 func _ready():
 	close()
+	$HitLabel.material.set_shader_parameter("alpha", 0.0)
 	if self.name in Global.dialogue_progress:
 		print(Global.dialogue_progress[self.name])
 		talk.show_node(Global.dialogue_progress[self.name])
@@ -64,6 +65,7 @@ func _on_animated_sprite_2d_animation_finished():
 	$AnimatedSprite2D.play("after_death")
 	
 func open():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	player.can_attack = false
 	$PlayerLeft.monitoring = true
 	talk.visible = true
@@ -71,6 +73,7 @@ func open():
 	is_open = true
 	
 func close():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	player.can_attack = true
 	talk.visible = false
 	shop.visible = false

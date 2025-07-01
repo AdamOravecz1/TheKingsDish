@@ -33,13 +33,12 @@ func _talk():
 
 func trigger_death():
 	if alive:
-		if self.name not in Global.perma_death:
-			Global.perma_death.append(self.name)
 		$InteractionAreaShop.monitoring = false
 		$AnimatedSprite2D.play("death")
 		set_collision_layer_value(3, false)
 		
 func open():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	player.can_attack = false
 	$PlayerLeft.monitoring = true
 	talk.visible = true
@@ -50,6 +49,7 @@ func open():
 	is_open = true
 	
 func close():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	player.can_attack = true
 	talk.visible = false
 	shop.visible = false

@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://blorwsk7msxwu"]
+[gd_scene load_steps=6 format=3 uid="uid://blorwsk7msxwu"]
 
 [ext_resource type="Script" path="res://Scenes/entity.gd" id="1_i6hnx"]
 [ext_resource type="AudioStream" uid="uid://c4icjerdwahxl" path="res://Sounds/Hit.wav" id="2_cmed8"]
+[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="3_vuc3y"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="4_58mrx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8vsl"]
+shader = ExtResource("3_vuc3y")
+shader_parameter/alpha = 1.0
 
 [node name="Entity" type="CharacterBody2D" groups=["Animal"]]
 script = ExtResource("1_i6hnx")
@@ -14,3 +20,23 @@ script = ExtResource("1_i6hnx")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("2_cmed8")
+
+[node name="HitLabel" type="Label" parent="."]
+z_index = 100
+material = SubResource("ShaderMaterial_o8vsl")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("4_58mrx")
+theme_override_font_sizes/font_size = 8

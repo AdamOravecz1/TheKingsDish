@@ -25,6 +25,8 @@ TransitionLayer="*res://Scenes/transition_layer.tscn"
 
 window/stretch/mode="viewport"
 window/stretch/scale=0.75
+mouse_cursor/custom_image="res://Sprites/WoodenSpoon.png"
+mouse_cursor/custom_image_hotspot=Vector2(5, 23)
 
 [input]
 
