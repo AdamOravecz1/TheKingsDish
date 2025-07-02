@@ -114,7 +114,7 @@ size = Vector2(20, 6)
 particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(800, 1, 1)
-gravity = Vector3(0, 98, 0)
+gravity = Vector3(0, 500, 0)
 
 [node name="Player" groups=["Player"] instance=ExtResource("1_3nr38")]
 collision_layer = 2

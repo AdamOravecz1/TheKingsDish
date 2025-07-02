@@ -12,8 +12,10 @@ extends Entity
 var is_open := false
 var is_shop_visible := false
 
+var talked := true
+
 var monk_dialogues = Global.dialogue["Monk"]
-var dialogue = monk_dialogues[Global.current_day] 
+var dialogue = monk_dialogues[Global.monk_counter] 
 
 
 func _ready():
@@ -26,6 +28,9 @@ func _ready():
 	interaction_area_shop.interact = Callable(self, "_talk")
 	
 func _talk():
+	if talked:
+		Global.monk_counter += 1
+		talked = false
 	if is_open:
 		close()
 	else:
@@ -70,7 +75,7 @@ func close_shop():
 
 func _on_player_left_body_exited(body):
 	close()
-	main.playerinv.position.x = 606	
+	main.playerinv.position.x = 606
 	main.close()
 
 

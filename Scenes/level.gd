@@ -14,6 +14,7 @@ var buying := false
 var is_open = false
 var is_recipes_open = false
 var can_save := true
+var can_open := true
 
 var can_next_day = false
 
@@ -143,12 +144,20 @@ func _exit_tree():
 		can_save = true
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("inventory"):
+	if Input.is_action_just_pressed("inventory") and can_open:
 		playerinv.position.x = 625
 		if is_open:
-			close()
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+			if player and playerinv:
+				player.can_attack = true
+				playerinv.visible = false
+			is_open = false
 		else:
-			open()
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			if player and playerinv:
+				player.can_attack = false
+				playerinv.visible = true
+			is_open = true
 
 func open():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -156,18 +165,23 @@ func open():
 		player.can_attack = false
 		playerinv.visible = true
 	is_open = true
+	can_open = false
 	
 func close():
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if player and playerinv:
 		player.can_attack = true
 		playerinv.visible = false
 	is_open = false
+	can_open = true
 
 func openRecipes():
-	is_recipes_open = !is_recipes_open
-	$CanvasLayer/Recipes.visible = is_recipes_open
-
+	if can_open:
+		is_recipes_open = !is_recipes_open
+		$CanvasLayer/Recipes.visible = is_recipes_open
+		if is_recipes_open:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else: 
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func pauseMenu():
 	if paused:

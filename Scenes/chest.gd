@@ -56,6 +56,7 @@ func open():
 	is_open = true
 	
 func close():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	chestinv.visible = false
 	main.close()
 	is_open = false

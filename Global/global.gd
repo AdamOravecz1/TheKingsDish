@@ -8,6 +8,8 @@ var food_given: Array = []
 
 var dialogue_progress: Dictionary = {}
 
+var monk_counter: int = 0
+
 var hunter_dialogue1: Dictionary = {
 	"start": {
 		"text": "Hey! You are the new new cook. Have you seen this [color=red]rabbit[/color]? Realy hard to catch it with just your hand.",
@@ -381,8 +383,8 @@ var monk_dialogue1: Dictionary = {
 	"start":{
 		"text": "Here is a secret. You can switch any mushroom with the bad kind to make the King sick. You should give it a try.",
 		"options": [
-			{"text": ">Who are you?", "action": "me"},
-			{"text": ">Good bye", "action": "good_bye"}
+			{"text": ">Who are you?", "next": "me"},
+			{"text": ">Good bye", "next": "good_bye"}
 		]
 	},
 	"good_bye": {
@@ -392,7 +394,7 @@ var monk_dialogue1: Dictionary = {
 	"me":{
 		"text": "I'm your friend.",
 		"options": [
-			{"text": ">Good bye?", "action": "good_bye"}
+			{"text": ">Good bye?", "next": "good_bye"}
 		]
 	}
 }
@@ -401,12 +403,69 @@ var monk_dialogue2: Dictionary = {
 	"start":{
 		"text": "Have you noticed that all of these villagers have a favorite food. All of these dishes contain meat. But why kill poor animals when the meat can substituted with there own flesh.",
 		"options": [
-			{"text": ">Ok?", "action": "good_bye"}
+			{"text": ">Ok?", "next": "good_bye"}
 		]
 	},
 	"good_bye": {
 		"text": "You will want to visit me again.",
 		"action": "close_shop",
+	}
+}
+
+var monk_dialogue3: Dictionary = {
+	"start":{
+		"text": "There is a [color=purple]ritual[/color]. A dish that opens ones \"eyes\". To make it take this \"plant\" and mix it with the head of those who live in dead.",
+		"options": [
+			{"text": ">Ok?", "next": "good_bye"},
+			{"text": ">Who are those who live in death?", "next": "death"}
+		]
+	},
+	"death":{
+		"text": "Souls get recycled. After someones death another who passed long ago might get reanimated.",
+		"options": [
+			{"text": ">Ok?", "next": "good_bye"},
+		]
+	},
+	"good_bye": {
+		"text": "I will have more secrets next time.",
+		"action": "close_shop",
+	}
+}
+
+var monk_dialogue4: Dictionary = {
+	"start":{
+		"text": "Because you are still here I'm guessing you havn't made the King sick yet. That's good. He would have survived but you wouldn't. Dream big. Weak mushrooms wouldn't work. Get this.",
+		"options": [
+			{"text": ">Get what?", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"},
+		]
+	},
+	"shop":{
+		"text": "This. You just have to add it to the dish after you made it.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "Next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"},
+		]
+	}
+}
+
+var monk_dialogue5: Dictionary = {
+	"start":{
+		"text": "What is happening? You still havn't finished the ritual!",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"},
+		]
+	},
+	"good_bye": {
+		"text": "Don't take your time!",
+		"action": "close_shop"
 	}
 }
 
@@ -691,7 +750,7 @@ var butler_dialogue1: Dictionary = {
 
 var butler_dialogue2: Dictionary = {
 	"start0": {
-		"text": "What you served yesterday was absolutely horrible. If you dare to pull a stunt like that again you are \"fired\".",
+		"text": "What you served yesterday was absolutely horrible. His Majisty wouldn't even touch it. If you dare to pull a stunt like that again you are \"fired\".",
 		"options": [
 			{"text": ">Give todays dish.", "next": "shop"},
 			{"text": ">Not yet.", "next": "good_bye"}
@@ -785,7 +844,7 @@ var dialogue: Dictionary = {
 	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3, blacksmith_dialogue4, blacksmith_dialogue3, blacksmith_dialogue3],
 	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue3, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
 	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2],
-	"Monk": [monk_dialogue1, monk_dialogue2],
+	"Monk": [monk_dialogue1, monk_dialogue2, monk_dialogue3, monk_dialogue4, monk_dialogue5, monk_dialogue5, monk_dialogue5],
 	"King": [monk_dialogue1]
 }
 
@@ -995,7 +1054,8 @@ func save_game():
 		"perma_death": perma_death,
 		"current_day": current_day,
 		"previous_day_value": previous_day_value,
-		"zombie_count": zombie_count
+		"zombie_count": zombie_count,
+		"monk_counter": monk_counter
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -1032,6 +1092,7 @@ func load_game():
 			current_day = result["current_day"]
 			previous_day_value = result["previous_day_value"]
 			zombie_count = result["zombie_count"]
+			monk_counter = result["monk_counter"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			get_tree().get_first_node_in_group("Level").can_save = false
