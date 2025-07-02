@@ -17,9 +17,10 @@ func trigger_death():
 	pass
 	
 func hit(damage, pos, force):
-	if self.name.begins_with("Fish"):
+	if self.name.begins_with("Fish") and self.name != "Fisher":
 		$Sound/Hit.pitch_scale = 0.6
 		$Sound/Hit.volume_db = -20
+	
 	$Sound/Hit.play()
 	health -= damage
 	knock_back.emit(pos, force)
@@ -29,6 +30,7 @@ func hit(damage, pos, force):
 		var tween = create_tween()
 		tween.tween_property($HitLabel, "material:shader_parameter/alpha", 1.0, 0.0)
 		tween.tween_property($HitLabel, "material:shader_parameter/alpha", 0.0, 2.0)
+	
 		
 func remove():
 	# Load and instance the scene dynamically

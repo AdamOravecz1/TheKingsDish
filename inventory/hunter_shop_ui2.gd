@@ -22,11 +22,21 @@ func _ready():
 		$NinePatchRect/GridContainer/StirFryName.visible = true
 		$NinePatchRect/GridContainer/StirFry.visible = true
 		$NinePatchRect/GridContainer/VBoxContainer5.visible = true
+	elif Global.current_day == 4:
+		$NinePatchRect/GridContainer.columns = 3
+		$NinePatchRect/GridContainer/PumpkinPieName.visible = true
+		$NinePatchRect/GridContainer/PumpkinPie.visible = true
+		$NinePatchRect/GridContainer/VBoxContainer6.visible = true
+	else: 
+		$NinePatchRect/GridContainer.columns = 6
+		for i in $NinePatchRect/GridContainer.get_children():
+			i.visible = true
 	$NinePatchRect/GridContainer/VBoxContainer/TrapLabel.text = "   " + str(Global.weapon_price["TRAP"])
 	$NinePatchRect/GridContainer/VBoxContainer2/StewLabel.text = "   " + str(Global.recipe_price["Rabbit stew"])
 	$NinePatchRect/GridContainer/VBoxContainer3/StewLabel2.text = "   " + str(Global.recipe_price["Rabbit stew with mushroom"])
 	$NinePatchRect/GridContainer/VBoxContainer4/SoupLabel.text = "   " + str(Global.recipe_price["Mushroom soup"])
 	$NinePatchRect/GridContainer/VBoxContainer5/StirFryLabel.text + "   " + str(Global.recipe_price["Stir fry"])
+	$NinePatchRect/GridContainer/VBoxContainer6/PumpkinPieLabel.text  + "   " + str(Global.recipe_price["Pumpkin pie"])
 
 func _on_trap_pressed():
 	if player.coin >= Global.weapon_price["TRAP"]:
@@ -89,3 +99,7 @@ func _on_soup_pressed():
 
 func _on_stir_fry_pressed():
 	give_recipe("Stir fry", "res://inventory/Items/mushroom_stir_fry.tres")
+
+
+func _on_pumpkin_pie_pressed():
+	give_recipe("Pumpkin pie", "res://inventory/Items/pumpkin_pie.tres")

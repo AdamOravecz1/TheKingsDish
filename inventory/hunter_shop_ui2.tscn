@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d2vuoitb3v0qd"]
+[gd_scene load_steps=15 format=3 uid="uid://d2vuoitb3v0qd"]
 
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_5jmxq"]
 [ext_resource type="Script" path="res://inventory/hunter_shop_ui2.gd" id="2_nkwmj"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://o70qfsaobqtt" path="res://Sprites/MushroomSoupIcon.png" id="10_txoml"]
 [ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="11_73hey"]
 [ext_resource type="Texture2D" uid="uid://1tb0ubgvpi1t" path="res://Sprites/MushroomStirFryIcon.png" id="11_gsta5"]
+[ext_resource type="Texture2D" uid="uid://dp88bdqwfm2gh" path="res://Sprites/PumpkinPieIcon.png" id="12_kqdoa"]
 
 [node name="HunterShopUI" instance=ExtResource("1_5jmxq")]
 offset_left = 424.0
@@ -66,40 +67,54 @@ theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
 text = "Recipe"
 
-[node name="Trap" type="Button" parent="NinePatchRect/GridContainer" index="5"]
+[node name="PumpkinPieName" type="Label" parent="NinePatchRect/GridContainer" index="5"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2wlh1")
+theme_override_font_sizes/font_size = 8
+text = "Recipe"
+
+[node name="Trap" type="Button" parent="NinePatchRect/GridContainer" index="6"]
 layout_mode = 2
 theme = ExtResource("5_w5u66")
 icon = ExtResource("6_qenvn")
 icon_alignment = 1
 
-[node name="Stew" type="Button" parent="NinePatchRect/GridContainer" index="6"]
+[node name="Stew" type="Button" parent="NinePatchRect/GridContainer" index="7"]
 layout_mode = 2
 theme = ExtResource("7_lbad8")
 icon = ExtResource("8_vgv26")
 icon_alignment = 1
 
-[node name="Stew2" type="Button" parent="NinePatchRect/GridContainer" index="7"]
+[node name="Stew2" type="Button" parent="NinePatchRect/GridContainer" index="8"]
 visible = false
 layout_mode = 2
 theme = ExtResource("7_lbad8")
 icon = ExtResource("9_rnwuw")
 icon_alignment = 1
 
-[node name="Soup" type="Button" parent="NinePatchRect/GridContainer" index="8"]
+[node name="Soup" type="Button" parent="NinePatchRect/GridContainer" index="9"]
 visible = false
 layout_mode = 2
 theme = ExtResource("7_lbad8")
 icon = ExtResource("10_txoml")
 icon_alignment = 1
 
-[node name="StirFry" type="Button" parent="NinePatchRect/GridContainer" index="9"]
+[node name="StirFry" type="Button" parent="NinePatchRect/GridContainer" index="10"]
 visible = false
 layout_mode = 2
 theme = ExtResource("7_lbad8")
 icon = ExtResource("11_gsta5")
 icon_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="10"]
+[node name="PumpkinPie" type="Button" parent="NinePatchRect/GridContainer" index="11"]
+visible = false
+layout_mode = 2
+theme = ExtResource("7_lbad8")
+icon = ExtResource("12_kqdoa")
+icon_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="12"]
 layout_mode = 2
 
 [node name="CoinIcon" type="Sprite2D" parent="NinePatchRect/GridContainer/VBoxContainer" index="0"]
@@ -113,7 +128,7 @@ theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
 text = "   000"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="11"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="13"]
 layout_mode = 2
 
 [node name="CoinIcon2" type="Sprite2D" parent="NinePatchRect/GridContainer/VBoxContainer2" index="0"]
@@ -127,7 +142,7 @@ theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
 text = "   000"
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="12"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="14"]
 visible = false
 layout_mode = 2
 
@@ -142,7 +157,7 @@ theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
 text = "   000"
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="13"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="15"]
 visible = false
 layout_mode = 2
 
@@ -157,7 +172,7 @@ theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
 text = "   000"
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="14"]
+[node name="VBoxContainer5" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="16"]
 visible = false
 layout_mode = 2
 
@@ -167,6 +182,21 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("9_s0xcm")
 
 [node name="StirFryLabel" type="Label" parent="NinePatchRect/GridContainer/VBoxContainer5" index="1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2wlh1")
+theme_override_font_sizes/font_size = 8
+text = "   000"
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="17"]
+visible = false
+layout_mode = 2
+
+[node name="CoinIcon6" type="Sprite2D" parent="NinePatchRect/GridContainer/VBoxContainer6" index="0"]
+position = Vector2(7, 3.99999)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("9_s0xcm")
+
+[node name="PumpkinPieLabel" type="Label" parent="NinePatchRect/GridContainer/VBoxContainer6" index="1"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_2wlh1")
 theme_override_font_sizes/font_size = 8
@@ -205,5 +235,6 @@ offset_bottom = 100.0
 [connection signal="pressed" from="NinePatchRect/GridContainer/Stew2" to="." method="_on_stew_2_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Soup" to="." method="_on_soup_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/StirFry" to="." method="_on_stir_fry_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/PumpkinPie" to="." method="_on_pumpkin_pie_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="send_favorite" from="Inv_UI_Slot" to="." method="_on_inv_ui_slot_send_favorite"]

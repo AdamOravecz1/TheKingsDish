@@ -21,6 +21,7 @@ var dialogue = miller_dialogues[Global.current_day]
 
 
 func _ready():
+	$HitLabel.material = $HitLabel.material.duplicate()
 	$HitLabel.material.set_shader_parameter("alpha", 0.0)
 	if self.name in Global.dialogue_progress:
 		print(Global.dialogue_progress[self.name])
@@ -111,6 +112,12 @@ func add_pancake():
 	
 func add_mac_n_cheese():
 	add_recipe("res://inventory/Items/mac_n_cheese.tres")
+	
+func add_duck():
+	if Global.current_day == 4:
+		add_recipe("res://inventory/Items/duck_salad.tres")
+	elif Global.current_day == 5:
+		add_recipe("res://inventory/Items/sandwich.tres")
 
 func _on_player_left_body_exited(body):
 	close()
@@ -121,6 +128,4 @@ func add_recipe(key):
 		if Global.recipes.has(key):
 			Global.found_recipes[key] = Global.recipes[key]
 		recipes.setup()
-
-
 

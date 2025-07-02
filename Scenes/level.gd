@@ -56,10 +56,14 @@ func _ready():
 	for i in $Main/Entities.get_child_count():
 		entity_names.append($Main/Entities.get_child(i))
 	for i in $Main/Entities.get_child_count():
-		if scene_name in Global.animal_data:
-			entity_names[i].setup(Global.animal_data[scene_name][i])
-		if entity_names[i].name in Global.perma_death and not Global.animal_data.has(self.name):
-			entity_names[i].remove()
+		if scene_name == "Dungeon":
+			if i > Global.zombie_count:
+				entity_names[i].remove()
+		else: 
+			if scene_name in Global.animal_data:
+				entity_names[i].setup(Global.animal_data[scene_name][i])
+			if entity_names[i].name in Global.perma_death and not Global.animal_data.has(self.name):
+				entity_names[i].remove()
 
 	for i in $Main/Vega.get_child_count():
 		var vega = $Main/Vega.get_child(i)
@@ -202,6 +206,7 @@ func update_trap(trap):
 	$CanvasLayer/TrapAmount.text = trap
 
 func lightning():
+	Global.zombie_count += 1
 	$Sound/LightningStrike.play()
 	# Set up blackout and lightning position
 	$CanvasLayer/LightningDim.color = Color(0, 0, 0, 0)

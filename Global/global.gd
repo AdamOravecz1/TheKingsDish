@@ -132,6 +132,54 @@ var hunter_dialogue4: Dictionary = {
 	}
 }
 
+var hunter_dialogue5: Dictionary = {
+	"start": {
+		"text": "See that [color=red]pumpkin[/color] just behind me? I've got a recipe for it.",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "Here you go.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"}
+		]
+	}
+}
+
+var hunter_dialogue6: Dictionary = {
+	"start": {
+		"text": "Today I don't have anything new but you can purchase anything if you havn't before.",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "Here you go.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"}
+		]
+	}
+}
+
 
 var miller_dialogue1: Dictionary = {
 	"start":{
@@ -245,6 +293,69 @@ var miller_dialogue4: Dictionary = {
 	"recipe":{
 		"text": "There is this nice pasta dish that full of cheese. It's delicious.",
 		"action": "add_mac_n_cheese",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "It's all fresh, locally sourced.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+		]
+	}
+}
+
+var miller_dialogue5: Dictionary = {
+	"start":{
+		"text": "Hello. What can I get you today?",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Any new recipe?", "next": "recipe"}
+		]
+	},
+	"recipe":{
+		"text": "Sure. Here is another duck dish. There is never enough of that.",
+		"action": "add_duck",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop": {
+		"text": "It's all fresh, locally sourced.",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "See you next time.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+		]
+	}
+}
+
+var miller_dialogue6: Dictionary = {
+	"start":{
+		"text": "Hello. What can I get you today?",
+		"options":[
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Any new recipe?", "next": "recipe"}
+		]
+	},
+	"recipe":{
+		"text": "Sorry but that was all I had.",
 		"options":[
 			{"text": ">Buy.", "next": "shop"},
 			{"text": ">Good bye.", "next": "good_bye"}
@@ -383,6 +494,38 @@ var blacksmith_dialogue2: Dictionary = {
 var blacksmith_dialogue3: Dictionary = {
 	"start":{
 		"text": "Hello! The regular?",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"shop":{
+		"text": "What are you intrested in today?",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Good bye.", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "Take care.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy", "next": "shop"},
+		]
+	},
+}
+
+var blacksmith_dialogue4: Dictionary = {
+	"start":{
+		"text": "Hello! Look what I found lying around at home. [color=red]Spaghetti with meatballs recipe[/color]. You can have it if you want.",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+			{"text": ">Take recipe.", "next": "recipe"}
+		]
+	},
+	"recipe":{
+		"text": "Here you go",
+		"action": "add_spaghetti",
 		"options": [
 			{"text": ">Buy.", "next": "shop"},
 			{"text": ">Good bye.", "next": "good_bye"}
@@ -633,11 +776,11 @@ var thank_dialogues: Dictionary = {
 }
 
 var dialogue: Dictionary = {
-	"Hunter": [hunter_dialogue1, hunter_dialogue2, hunter_dialogue3, hunter_dialogue4],
-	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4],
-	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3],
+	"Hunter": [hunter_dialogue1, hunter_dialogue2, hunter_dialogue3, hunter_dialogue4, hunter_dialogue5, hunter_dialogue6, hunter_dialogue6],
+	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4, miller_dialogue5, miller_dialogue5, miller_dialogue6],
+	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3, blacksmith_dialogue4, blacksmith_dialogue3, blacksmith_dialogue3],
 	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
-	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2],
+	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2],
 	"Monk": [monk_dialogue1, monk_dialogue2],
 	"King": [monk_dialogue1]
 }
@@ -682,7 +825,8 @@ const recipe_price = {
 	"Mushroom soup": 3,
 	"Meat soup": 6,
 	"Stir fry": 5,
-	"Cake": 5
+	"Cake": 5,
+	"Pumpkin pie": 4
 }
 
 const weapon_data = {
@@ -716,6 +860,8 @@ var chest_inv: Dictionary
 var scene: String
 
 var perma_death: Array
+
+var zombie_count: int = 0
 
 var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
@@ -842,7 +988,8 @@ func save_game():
 		"scene": scene,
 		"perma_death": perma_death,
 		"current_day": current_day,
-		"previous_day_value": previous_day_value
+		"previous_day_value": previous_day_value,
+		"zombie_count": zombie_count
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -878,6 +1025,7 @@ func load_game():
 			perma_death = result["perma_death"]
 			current_day = result["current_day"]
 			previous_day_value = result["previous_day_value"]
+			zombie_count = result["zombie_count"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			get_tree().get_first_node_in_group("Level").can_save = false

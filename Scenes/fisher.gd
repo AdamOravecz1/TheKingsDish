@@ -20,6 +20,7 @@ var fisher_dialogues = Global.dialogue["Fisher"]
 var dialogue = fisher_dialogues[Global.current_day] 
 
 func _ready():
+	$HitLabel.material = $HitLabel.material.duplicate()
 	$HitLabel.material.set_shader_parameter("alpha", 0.0)
 	if self.name in Global.dialogue_progress:
 		print(Global.dialogue_progress[self.name])

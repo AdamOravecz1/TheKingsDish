@@ -20,6 +20,7 @@ var hunter_dialogues = Global.dialogue["Hunter"]
 var dialogue = hunter_dialogues[Global.current_day] 
 
 func _ready():
+	$HitLabel.material = $HitLabel.material.duplicate()
 	$HitLabel.material.set_shader_parameter("alpha", 0.0)
 	if self.name in Global.dialogue_progress:
 		talk.show_node(Global.dialogue_progress[self.name])
@@ -100,5 +101,4 @@ func _on_player_left_body_exited(body):
 func thanks_dialogue():
 	dialogue = Global.thank_dialogues
 	talk.show_node(self.name)
-
 

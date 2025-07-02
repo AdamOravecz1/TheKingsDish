@@ -22,6 +22,7 @@ var dialogue = blacksmith_dialogues[Global.current_day]
 
 func _ready():
 	close()
+	$HitLabel.material = $HitLabel.material.duplicate()
 	$HitLabel.material.set_shader_parameter("alpha", 0.0)
 	if self.name in Global.dialogue_progress:
 		print(Global.dialogue_progress[self.name])
@@ -110,4 +111,10 @@ func add_recipe():
 		if Global.recipes.has(key):
 			Global.found_recipes[key] = Global.recipes[key]
 		recipes.setup()
-
+		
+func add_spaghetti():
+	var key := "res://inventory/Items/spaghetti_meatball.tres"
+	if key not in Global.found_recipes:
+		if Global.recipes.has(key):
+			Global.found_recipes[key] = Global.recipes[key]
+		recipes.setup()

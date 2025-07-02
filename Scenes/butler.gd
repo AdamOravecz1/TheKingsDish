@@ -49,6 +49,7 @@ func apply_gravity(delta):
 	velocity.y = min(velocity.y, terminal_velocity)
 
 func _ready():
+	$HitLabel.material = $HitLabel.material.duplicate()
 	$HitLabel.material.set_shader_parameter("alpha", 0.0)
 	if self.name in Global.dialogue_progress:
 		print(Global.dialogue_progress[self.name])
