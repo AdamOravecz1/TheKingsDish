@@ -119,5 +119,8 @@ offset_right = 147.0
 offset_bottom = 213.0
 sprite_sheet = ExtResource("3_hl8mr")
 
+[node name="HitLabel" parent="." index="8"]
+text = "Guards!!!"
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]

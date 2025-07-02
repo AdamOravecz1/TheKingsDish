@@ -10,6 +10,8 @@ var dialogue_progress: Dictionary = {}
 
 var monk_counter: int = 0
 
+var king_counter: int = 0
+
 var hunter_dialogue1: Dictionary = {
 	"start": {
 		"text": "Hey! You are the new new cook. Have you seen this [color=red]rabbit[/color]? Realy hard to catch it with just your hand.",
@@ -748,6 +750,45 @@ var butler_dialogue1: Dictionary = {
 	}
 }
 
+var king_dialogue1: Dictionary = {
+	"start": {
+		"text": "Sooooo... You are the great cook who makes such a great dishes.",
+		"options": [
+			{"text": ">Is there a dish that his Majisty would prefer?", "next": "dish"},
+		]
+	},
+	"dish": {
+		"text": "There is this legend about a [color=red]dragon[/color] that lives in this kingdom. I want to eat that. According to the tale the one who eats it will rule for 80 and 1 year.",
+		"options": [
+			{"text": ">Of course your Majisty.", "next": "recipe"},
+		]
+	},
+	"recipe": {
+		"text": "Here. My hororscope told me the [color=red]dragon[/color] should be prepared like to this.",
+		"action": "add_recipe",
+		"options": [
+			{"text": ">With your permission, I shall take my leave.", "next": "good_bye"},
+		]
+	},
+	"good_bye": {
+		"text": "Go! And make my dream come true!",
+		"action": "close_shop"
+	}
+}
+
+var king_dialogue2: Dictionary = {
+	"start": {
+		"text": "How is that [color=red]dragon[/color] coming along?",
+		"options": [
+			{"text": ">It is in the making.", "next": "good_bye"},
+		]
+	},
+	"good_bye": {
+		"text": "Good, good. Best of luck. I'll be waiting for your greatness.",
+		"action": "close_shop"
+	}
+}
+
 var butler_dialogue2: Dictionary = {
 	"start0": {
 		"text": "What you served yesterday was absolutely horrible. His Majisty wouldn't even touch it. If you dare to pull a stunt like that again you are \"fired\".",
@@ -845,7 +886,7 @@ var dialogue: Dictionary = {
 	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue3, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
 	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2],
 	"Monk": [monk_dialogue1, monk_dialogue2, monk_dialogue3, monk_dialogue4, monk_dialogue5, monk_dialogue5, monk_dialogue5],
-	"King": [monk_dialogue1]
+	"King": [king_dialogue1, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2]
 }
 
 var npc_food: Dictionary = {
@@ -870,6 +911,7 @@ const animal_parameters = {
 	"fisher": {"health": 300},
 	"butler": {"health": 300},
 	"monk": {"health": 20},
+	"king": {"health": 200},
 	"zombie": {"speed": 20, "health": 1300}
 }
 
@@ -1055,7 +1097,8 @@ func save_game():
 		"current_day": current_day,
 		"previous_day_value": previous_day_value,
 		"zombie_count": zombie_count,
-		"monk_counter": monk_counter
+		"monk_counter": monk_counter,
+		"king_counter": king_counter
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -1093,6 +1136,7 @@ func load_game():
 			previous_day_value = result["previous_day_value"]
 			zombie_count = result["zombie_count"]
 			monk_counter = result["monk_counter"]
+			king_counter = result["king_counter"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			get_tree().get_first_node_in_group("Level").can_save = false
