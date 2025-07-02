@@ -37,6 +37,7 @@ func open_shop():
 	shop.position.x = 653
 	shop.buy()
 	shop.visible = true
+	main.playerinv.visible = false
 	
 func open_give():
 	is_shop_visible = true

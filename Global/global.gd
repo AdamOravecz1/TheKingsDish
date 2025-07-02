@@ -422,7 +422,7 @@ var blacksmith_dialogue1: Dictionary = {
 		"text": "You won't be able to take it with just that knife of yours.",
 		"options": [
 			{"text": ">Then sell me something stronger.", "next": "shop"},
-			{"text": ">We'll see.", "next": "see"}
+			{"text": ">If I can cook it would you like some?", "next": "you"}
 		]
 	},
 	"you":{
@@ -444,18 +444,6 @@ var blacksmith_dialogue1: Dictionary = {
 		"action": "close_shop",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-		]
-	},
-	"see": {
-		"text": "Your choice.",
-		"options": [
-			{"text": ">Yeah... the knife doesn't work.", "next": "told_you"}
-		]
-	},
-	"told_you":{
-		"text": "Told you soo. Here, if you're ready to buy something better from me.",
-		"options": [
-			{"text": ">Ready.", "next": "shop"}
 		]
 	}
 }
@@ -612,7 +600,7 @@ var fisher_dialogue2: Dictionary = {
 	}
 }
 
-var fisher_dialogue4: Dictionary = {
+var fisher_dialogue3: Dictionary = {
 	"start":{
 		"text": "...",
 		"options": [
@@ -636,6 +624,22 @@ var fisher_dialogue4: Dictionary = {
 		"text": "Hey, I hope you realise this is just a plain cake. After you bake it you need to add some fruits or vegetables. You are the Chef I shouldn't have to telly you this.",
 		"action": "open_shop",
 		"options":[
+			{"text": ">Good bye...", "next": "good_bye"}
+		]
+	},
+	"good_bye": {
+		"text": "...",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Buy.", "next": "shop"},
+		]
+	}
+}
+
+var fisher_dialogue4: Dictionary = {
+	"start":{
+		"text": "If you don't have anything for me you can beat it.",
+		"options": [
 			{"text": ">Good bye...", "next": "good_bye"}
 		]
 	},
@@ -779,7 +783,7 @@ var dialogue: Dictionary = {
 	"Hunter": [hunter_dialogue1, hunter_dialogue2, hunter_dialogue3, hunter_dialogue4, hunter_dialogue5, hunter_dialogue6, hunter_dialogue6],
 	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4, miller_dialogue5, miller_dialogue5, miller_dialogue6],
 	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3, blacksmith_dialogue4, blacksmith_dialogue3, blacksmith_dialogue3],
-	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
+	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue3, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
 	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2],
 	"Monk": [monk_dialogue1, monk_dialogue2],
 	"King": [monk_dialogue1]
@@ -826,7 +830,9 @@ const recipe_price = {
 	"Meat soup": 6,
 	"Stir fry": 5,
 	"Cake": 5,
-	"Pumpkin pie": 4
+	"Pumpkin pie": 4,
+	"Salad": 3,
+	"Fruit salad": 3
 }
 
 const weapon_data = {

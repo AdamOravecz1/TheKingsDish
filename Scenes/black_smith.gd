@@ -72,6 +72,7 @@ func open():
 	talk.visible = true
 	shop.visible = is_shop_visible
 	is_open = true
+	main.playerinv.visible = false
 	
 func close():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

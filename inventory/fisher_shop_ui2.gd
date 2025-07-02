@@ -7,28 +7,21 @@ func _ready():
 	if Global.current_day == 0:
 		$NinePatchRect/GridContainer/VBoxContainer/RecipeLabel.text = "   " + str(Global.recipe_price["Fishers soup"])
 		$NinePatchRect/GridContainer/Recipe.visible = true
-		$NinePatchRect/GridContainer/Recipe2.visible = false
-		$NinePatchRect/GridContainer/Recipe3.visible = false
-		$NinePatchRect/GridContainer/Recipe4.visible = false
 	elif Global.current_day == 1:
 		$NinePatchRect/GridContainer/VBoxContainer/RecipeLabel.text = "   " + str(Global.recipe_price["Vegetable soup"])
-		$NinePatchRect/GridContainer/Recipe.visible = false
 		$NinePatchRect/GridContainer/Recipe2.visible = true
-		$NinePatchRect/GridContainer/Recipe3.visible = false
-		$NinePatchRect/GridContainer/Recipe4.visible = false
 	elif Global.current_day == 2:
 		$NinePatchRect/GridContainer/VBoxContainer/RecipeLabel.text = "   " + str(Global.recipe_price["Meat soup"])
-		$NinePatchRect/GridContainer/Recipe.visible = false
-		$NinePatchRect/GridContainer/Recipe2.visible = false
 		$NinePatchRect/GridContainer/Recipe3.visible = true
-		$NinePatchRect/GridContainer/Recipe4.visible = false
 	elif Global.current_day == 3:
 		$NinePatchRect/GridContainer/VBoxContainer/RecipeLabel.text = "   " + str(Global.recipe_price["Cake"])
-		$NinePatchRect/GridContainer/Recipe.visible = false
-		$NinePatchRect/GridContainer/Recipe2.visible = false
-		$NinePatchRect/GridContainer/Recipe3.visible = false
 		$NinePatchRect/GridContainer/Recipe4.visible = true
-
+	elif Global.current_day == 4:
+		$NinePatchRect/GridContainer/VBoxContainer/RecipeLabel.text = "   " + str(Global.recipe_price["Salad"])
+		$NinePatchRect/GridContainer/Recipe5.visible = true
+	elif Global.current_day == 5:
+		$NinePatchRect/GridContainer/VBoxContainer/RecipeLabel.text = "   " + str(Global.recipe_price["Fruit salad"])
+		$NinePatchRect/GridContainer/Recipe6.visible = true
 
 func _on_recipe_pressed():
 	give_recipe("Fishers soup", "res://inventory/Items/fishers_soup.tres")
@@ -82,3 +75,11 @@ func _on_recipe_3_pressed():
 
 func _on_recipe_4_pressed():
 	give_recipe("Cake", "res://inventory/Items/cake.tres")
+
+
+func _on_recipe_5_pressed():
+	give_recipe("Salad", "res://inventory/Items/salad.tres")
+
+
+func _on_recipe_6_pressed():
+	give_recipe("Fruit salad", "res://inventory/Items/fruit_salad.tres")

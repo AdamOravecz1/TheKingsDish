@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ck4yvougmk8yw"]
+[gd_scene load_steps=14 format=3 uid="uid://ck4yvougmk8yw"]
 
 [ext_resource type="PackedScene" uid="uid://jbyv8t20osmu" path="res://inventory/gen_shop.tscn" id="1_stquf"]
 [ext_resource type="Script" path="res://inventory/fisher_shop_ui2.gd" id="2_w4bhb"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bs44m3y8l2b0l" path="res://Sprites/InvSlot.png" id="8_3gywf"]
 [ext_resource type="Texture2D" uid="uid://bwnk71hpfatqo" path="res://Sprites/MeatSoupIcon.png" id="8_8jhaa"]
 [ext_resource type="Texture2D" uid="uid://brcw66yxfosr7" path="res://Sprites/CakeIcon.png" id="9_u382v"]
+[ext_resource type="Texture2D" uid="uid://cgtfgvqaadxia" path="res://Sprites/SaladIcon.png" id="10_ra11g"]
+[ext_resource type="Texture2D" uid="uid://b8tann4iqv8yi" path="res://Sprites/FruitSaladIcon.png" id="11_16dfy"]
 
 [node name="FisherShopUI" instance=ExtResource("1_stquf")]
 offset_left = 662.0
@@ -38,6 +40,7 @@ theme_override_font_sizes/font_size = 8
 text = "Recipe"
 
 [node name="Recipe" type="Button" parent="NinePatchRect/GridContainer" index="1"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_x6rcy")
 icon = ExtResource("6_cy8rx")
@@ -64,7 +67,21 @@ theme = ExtResource("2_x6rcy")
 icon = ExtResource("9_u382v")
 icon_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="5"]
+[node name="Recipe5" type="Button" parent="NinePatchRect/GridContainer" index="5"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_x6rcy")
+icon = ExtResource("10_ra11g")
+icon_alignment = 1
+
+[node name="Recipe6" type="Button" parent="NinePatchRect/GridContainer" index="6"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_x6rcy")
+icon = ExtResource("11_16dfy")
+icon_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/GridContainer" index="7"]
 layout_mode = 2
 
 [node name="RecipeLabel" type="Label" parent="NinePatchRect/GridContainer/VBoxContainer" index="0"]
@@ -109,5 +126,7 @@ offset_bottom = 77.0
 [connection signal="pressed" from="NinePatchRect/GridContainer/Recipe2" to="." method="_on_recipe_2_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Recipe3" to="." method="_on_recipe_3_pressed"]
 [connection signal="pressed" from="NinePatchRect/GridContainer/Recipe4" to="." method="_on_recipe_4_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Recipe5" to="." method="_on_recipe_5_pressed"]
+[connection signal="pressed" from="NinePatchRect/GridContainer/Recipe6" to="." method="_on_recipe_6_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="send_favorite" from="Inv_UI_Slot" to="." method="_on_inv_ui_slot_send_favorite"]
