@@ -60,6 +60,8 @@ func _on_inv_ui_slot_send_favorite(food, place):
 	if food == "Boar Steak":
 		get_tree().get_first_node_in_group("PlayerInv").inv.remove_from_place(place)
 		_on_button_pressed()
+		Global.food_given.append(get_parent().get_parent().name)
+		get_parent().get_parent().thanks_dialogue()
 	else:
 		_on_button_pressed()
 

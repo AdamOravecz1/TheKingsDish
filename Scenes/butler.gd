@@ -191,3 +191,7 @@ func _on_tree_exited():
 		$CollisionShape2D.disabled = true
 		Global.can_next_day = true
 		
+		
+func thanks_dialogue():
+	dialogue = Global.thank_dialogues
+	talk.show_node(self.name)

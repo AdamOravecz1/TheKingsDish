@@ -48,6 +48,10 @@ func _ready():
 				player.position = gate.global_position
 	elif get_tree().current_scene.name in Global.player_data:
 		player.position = Global.player_data[get_tree().current_scene.name][0]
+	
+	for gate in $TransitionGates.get_children():
+		if gate.index in Global.gates_satutus:
+			gate.locked = false
 
 	InteractionManager.set_player()
 	var scene_name = get_tree().current_scene.name
@@ -150,7 +154,7 @@ func _process(_delta):
 				player.can_attack = true
 				playerinv.visible = false
 			is_open = false
-		else:
+		elif player.can_attack:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			if player and playerinv:
 				player.can_attack = false
@@ -173,7 +177,7 @@ func close():
 	can_open = true
 
 func openRecipes():
-	if can_open:
+	if can_open and player.can_attack:
 		is_recipes_open = !is_recipes_open
 		$CanvasLayer/Recipes.visible = is_recipes_open
 		if is_recipes_open:
@@ -183,7 +187,8 @@ func openRecipes():
 
 func pauseMenu():
 	if paused:
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+		if player.can_attack and not $CanvasLayer/Recipes.visible:
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		pause_menu.hide()
 		#Engine.time_scale = 1
 		get_tree().paused = false

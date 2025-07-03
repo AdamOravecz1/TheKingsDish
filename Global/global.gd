@@ -876,7 +876,23 @@ var give_dialogues = {
 
 var thank_dialogues: Dictionary = {
 	"Hunter": {
-		"text": "Here is a nice idea I have seen once in another kingdom. You can take any soup and put in bread bowl. I think the King might apriciate it.",
+		"text": "Here is a nice idea I have seen once in another kingdom. You can take any soup and put in bread bowl. I think the King might appriciate it.",
+		"action": "close_shop"
+	},
+	"Fisher":{
+		"text": "You are finally usefull for once. Why don't you take a swim in the lake. You might find something interesting in there.",
+		"action": "close_shop"
+	},
+	"BlackSmith":{
+		"text": "There is this folk lore in which the hero used a well aimed arrow to blind the dragon. I realy like that tale. It's my favorite.",
+		"action": "close_shop"
+	},
+	"Miller":{
+		"text": "I'm here. Every day. When it shines when it rains. And after every rainy day you can see these two clouds close to the mill. It's almost like you can stand on it.",
+		"action": "close_shop"
+	},
+	"Butler":{
+		"text": "Do you know the Kings favorite dish. I think he would be delighted if you could do some flare with it. Like put a crown on top of it.",
 		"action": "close_shop"
 	},
 }
@@ -971,6 +987,8 @@ var scene: String
 var perma_death: Array
 
 var zombie_count: int = 0
+
+var gates_satutus: Array = []
 
 var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
@@ -1100,7 +1118,8 @@ func save_game():
 		"previous_day_value": previous_day_value,
 		"zombie_count": zombie_count,
 		"monk_counter": monk_counter,
-		"king_counter": king_counter
+		"king_counter": king_counter,
+		"gates_satutus": gates_satutus
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -1139,6 +1158,7 @@ func load_game():
 			zombie_count = result["zombie_count"]
 			monk_counter = result["monk_counter"]
 			king_counter = result["king_counter"]
+			gates_satutus = result["gates_satutus"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			get_tree().get_first_node_in_group("Level").can_save = false

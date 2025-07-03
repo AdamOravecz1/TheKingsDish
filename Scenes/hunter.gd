@@ -33,6 +33,7 @@ func _ready():
 	$InteractionArea.monitoring = false
 
 func open_shop():
+	main.can_open = false
 	is_shop_visible = true
 	shop.position.x = 653
 	shop.buy()
@@ -80,6 +81,8 @@ func _on_animated_sprite_2d_animation_finished():
 	$AnimatedSprite2D.play("after_death")
 	
 func open():
+	if self.name in Global.dialogue_progress:
+		talk.show_node(Global.dialogue_progress[self.name])
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	player.can_attack = false
 	$PlayerLeft.monitoring = true

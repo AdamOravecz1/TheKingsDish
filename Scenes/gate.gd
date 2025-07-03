@@ -22,6 +22,7 @@ func _enterr():
 	else:
 		$Door.play()
 		TransitionLayer.change_scene(levels[level])
+		Global.gates_satutus.append(index)
 		Global.gate_index = index
 		Global.can_gate = true
 

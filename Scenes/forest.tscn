@@ -808,6 +808,7 @@ level = "castle"
 position = Vector2(801, 149)
 level = "dungeon"
 index = 1
+locked = true
 
 [node name="Gate3" parent="TransitionGates" index="2" instance=ExtResource("3_i7lx2")]
 position = Vector2(4128, 310)

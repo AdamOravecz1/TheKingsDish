@@ -119,3 +119,7 @@ func add_spaghetti():
 		if Global.recipes.has(key):
 			Global.found_recipes[key] = Global.recipes[key]
 		recipes.setup()
+		
+func thanks_dialogue():
+	dialogue = Global.thank_dialogues
+	talk.show_node(self.name)
