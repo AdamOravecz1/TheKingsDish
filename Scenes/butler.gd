@@ -37,7 +37,10 @@ var extra_drop = InvItem
 func _process(delta):
 	if global_position.x < -510:
 		visible = false
-		main.can_next_day = true
+		$InteractionAreaShop.monitoring = false
+		$CollisionShape2D.disabled = true
+		if global_position.x > -530:
+			Global.can_next_day = true
 	velocity.x = x_direction * speed * speed_modifier
 	apply_gravity(delta)
 	move_and_slide()
@@ -49,6 +52,10 @@ func apply_gravity(delta):
 	velocity.y = min(velocity.y, terminal_velocity)
 
 func _ready():
+	if Global.can_next_day:
+		visible = false
+		$InteractionAreaShop.monitoring = false
+		$CollisionShape2D.disabled = true
 	$HitLabel.material = $HitLabel.material.duplicate()
 	$HitLabel.material.set_shader_parameter("alpha", 0.0)
 	if self.name in Global.dialogue_progress:
@@ -177,3 +184,10 @@ func _on_butler_inv_send_food(food):
 		x_direction = -1
 		$InteractionAreaShop.monitoring = false
 
+func _on_tree_exited():
+	if extra_drop:
+		visible = false
+		$InteractionAreaShop.monitoring = false
+		$CollisionShape2D.disabled = true
+		Global.can_next_day = true
+		

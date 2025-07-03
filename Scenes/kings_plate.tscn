@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhmg5pwspdnm"]
+
+[ext_resource type="Script" path="res://Scenes/kings_plate.gd" id="1_nb0pv"]
+[ext_resource type="PackedScene" uid="uid://dp676u8kieu0q" path="res://inventory/kings_plate_inv.tscn" id="2_16flr"]
+[ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="3_mum1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70u6e"]
+size = Vector2(20, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c6ij2"]
+radius = 21.0238
+
+[node name="KingsPlate" type="Node2D"]
+script = ExtResource("1_nb0pv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="KingsPlateInv" parent="CanvasLayer" instance=ExtResource("2_16flr")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 729.0
+offset_top = 179.0
+offset_right = 729.0
+offset_bottom = 179.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 0
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_mum1h")]
+action_name = "serve food directly to the King"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_70u6e")
+
+[node name="PlayerLeft" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLeft"]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_c6ij2")
+
+[node name="Food" type="Sprite2D" parent="."]
+position = Vector2(2.84217e-14, 5.96046e-08)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="send_food" from="CanvasLayer/KingsPlateInv" to="." method="_on_kings_plate_inv_send_food"]
+[connection signal="body_exited" from="PlayerLeft" to="." method="_on_player_left_body_exited"]

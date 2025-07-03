@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bcx2rpj5yumkr"]
+[gd_scene load_steps=33 format=3 uid="uid://bcx2rpj5yumkr"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_ktjp5"]
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="2_11o3y"]
@@ -31,6 +31,10 @@ script = ExtResource("3_cdx2i")
 slots = Array[ExtResource("6_gts25")]([])
 
 [sub_resource type="Resource" id="Resource_a0n62"]
+script = ExtResource("3_cdx2i")
+slots = Array[ExtResource("6_gts25")]([])
+
+[sub_resource type="Resource" id="Resource_bdhc3"]
 script = ExtResource("3_cdx2i")
 slots = Array[ExtResource("6_gts25")]([])
 
@@ -222,12 +226,17 @@ position = Vector2(-15, 18)
 inv = SubResource("Resource_a0n62")
 chest_name = "Chest2"
 
-[node name="Dog" parent="Main/Objects" index="2" instance=ExtResource("5_mingg")]
+[node name="Chest3" parent="Main/Objects" index="2" instance=ExtResource("2_lfra3")]
+position = Vector2(-45, -74)
+inv = SubResource("Resource_bdhc3")
+chest_name = "Chest3"
+
+[node name="Dog" parent="Main/Objects" index="3" instance=ExtResource("5_mingg")]
 position = Vector2(380, 16)
 inv = SubResource("Resource_tqxkt")
 chest_name = "Dog"
 
-[node name="Cauldron" parent="Main/Objects" index="3" instance=ExtResource("4_pn5oe")]
+[node name="Cauldron" parent="Main/Objects" index="4" instance=ExtResource("4_pn5oe")]
 position = Vector2(249, 16)
 inv = SubResource("Resource_5wjkk")
 chest_name = "Cauldron"

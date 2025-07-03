@@ -50,6 +50,7 @@ func remove_item():
 	main.current_slot = 100
 	
 func _on_button_pressed():
+	print(self.name)
 	main.get_dragging(false)
 	main.buying = false
 	remove_item()

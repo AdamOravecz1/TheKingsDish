@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp676u8kieu0q"]
+
+[ext_resource type="PackedScene" uid="uid://chkskxeyqmsql" path="res://inventory/gen_inv.tscn" id="1_ap0gc"]
+[ext_resource type="Texture2D" uid="uid://7xsajqw68epd" path="res://Sprites/KingsPlate.png" id="2_l2xlm"]
+[ext_resource type="PackedScene" uid="uid://bv6u1rmhe8lay" path="res://inventory/inv_ui_slot.tscn" id="3_5ngsb"]
+[ext_resource type="Texture2D" uid="uid://kkxf87nksj5q" path="res://Sprites/InvSlotBowl.png" id="4_6x3ds"]
+
+[node name="KingsPlateInv" instance=ExtResource("1_ap0gc")]
+offset_left = 727.0
+offset_top = 219.0
+offset_right = -224.0
+offset_bottom = -241.0
+
+[node name="NinePatchRect" parent="." index="0"]
+scale = Vector2(5, 5)
+texture = ExtResource("2_l2xlm")
+
+[node name="GridContainer" parent="NinePatchRect" index="0"]
+offset_left = 16.8
+offset_top = 16.2
+offset_right = 56.8
+offset_bottom = 56.2
+scale = Vector2(0.2, 0.2)
+
+[node name="Control" type="Control" parent="NinePatchRect/GridContainer" index="0"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="NinePatchRect/GridContainer/Control" index="0"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -86.0
+offset_top = -87.0
+offset_right = 115.0
+offset_bottom = 108.0
+
+[node name="Inv_UI_Slot" parent="NinePatchRect/GridContainer" index="1" instance=ExtResource("3_5ngsb")]
+layout_mode = 2
+slot_sprite = ExtResource("4_6x3ds")
+
+[connection signal="pressed" from="NinePatchRect/GridContainer/Control/Button" to="." method="_on_button_pressed"]

@@ -16,8 +16,6 @@ var is_recipes_open = false
 var can_save := true
 var can_open := true
 
-var can_next_day = false
-
 @export var full_screen: bool = false
 @export var rain_day: int = 2
 

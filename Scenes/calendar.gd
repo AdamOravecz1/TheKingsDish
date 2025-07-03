@@ -10,7 +10,9 @@ func _ready():
 	
 	
 func _next_day():
-	if level.can_next_day:
+	if Global.can_next_day:
+		Global.can_next_day = false
+		print(Global.can_next_day)
 		Global.next_day()
 	else:
 		var tween = create_tween()

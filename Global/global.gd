@@ -12,6 +12,8 @@ var monk_counter: int = 0
 
 var king_counter: int = 0
 
+var can_next_day: bool = false
+
 var hunter_dialogue1: Dictionary = {
 	"start": {
 		"text": "Hey! You are the new new cook. Have you seen this [color=red]rabbit[/color]? Realy hard to catch it with just your hand.",
@@ -780,7 +782,7 @@ var king_dialogue2: Dictionary = {
 	"start": {
 		"text": "How is that [color=red]dragon[/color] coming along?",
 		"options": [
-			{"text": ">It is in the making.", "next": "good_bye"},
+			{"text": ">It is in the making.", "next": "good_be"},
 		]
 	},
 	"good_bye": {
@@ -1157,10 +1159,12 @@ func load_game():
 		
 func next_day():
 	current_day += 1
+	can_next_day = false
 
 	save_game()
 	load_game()
 
+	can_next_day = false
 	vega_data = {}
 	animal_data = {}
 	dialogue_progress = {}

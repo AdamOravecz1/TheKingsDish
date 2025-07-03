@@ -77,7 +77,7 @@ func buy():
 	$Button2.disabled = true
 
 func _on_inv_ui_slot_send_favorite(food, place):
-	if food == "Rabbit Stew" or food == "Tomato":
+	if food == "Rabbit Stew":
 		get_tree().get_first_node_in_group("PlayerInv").inv.remove_from_place(place)
 		_on_button_pressed()
 		Global.food_given.append(get_parent().get_parent().name)
