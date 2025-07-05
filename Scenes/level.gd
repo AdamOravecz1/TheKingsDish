@@ -22,6 +22,7 @@ var can_open := true
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
+	Music.play_level_music()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	if Global.current_day == rain_day and self.name != "Dungeon":
 		$Sound/Rain.play()
