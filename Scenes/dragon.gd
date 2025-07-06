@@ -34,6 +34,7 @@ func trigger_death():
 		$AnimatedSprite2D.play("death")
 		$PlayerDetect.queue_free()
 		$DamageZone.queue_free()
+		$MusicArea.queue_free()
 		$InteractionArea.monitoring = true
 		alive = false
 		set_collision_layer_value(3, false)
@@ -55,6 +56,7 @@ func _on_damage_zone_body_entered(body):
 			damage_timer.start()  # Start the timer when player enters
 
 func _on_damage_zone_body_exited(body):
+
 	if body != self and "hit" in body:
 		damage_timer.stop()  # Stop hitting when player leaves
 
@@ -76,3 +78,13 @@ func _on_animated_sprite_2d_animation_finished():
 		$DamageZone.monitoring = true
 		$PlayerDetect.monitoring = true
 		can_damage = true  # Re-enable damage
+
+
+func _on_music_area_body_entered(body):
+	Music.level_music = preload("res://Music/Dragon_v1.wav")
+	Music.play_level_music()
+
+
+func _on_music_area_body_exited(body):
+	Music.level_music = preload("res://Music/Forest_v3.wav")
+	Music.play_level_music()
