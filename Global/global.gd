@@ -736,7 +736,7 @@ var butler_dialogue1: Dictionary = {
 		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Ready.", "next": "shop"},
+			{"text": ">Give todays dish.", "next": "shop"},
 		]
 	},
 	"eat": {
@@ -826,7 +826,7 @@ var butler_dialogue2: Dictionary = {
 		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Ready.", "next": "shop"},
+			{"text": ">Give todays dish.", "next": "shop"},
 		]
 	},
 	"shop":{
@@ -1198,6 +1198,6 @@ func next_day():
 	
 func check_ending():
 	if bad_food_counter == 2:
-		print("szopás")
+		TransitionLayer.get_ending("res://Scenes/you_got_fired.tscn")
 
 

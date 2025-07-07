@@ -1,36 +1,18 @@
-[gd_scene load_steps=36 format=3 uid="uid://c5v8wbcm7obq"]
+[gd_scene load_steps=21 format=3 uid="uid://cbpsanhfh8cix"]
 
-[ext_resource type="Script" path="res://Scenes/level.gd" id="1_1boid"]
-[ext_resource type="Texture2D" uid="uid://6v8gvrdhahkr" path="res://Sprites/ForestTileSet.png" id="1_41cn5"]
-[ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="1_ixwrm"]
-[ext_resource type="PackedScene" uid="uid://b0erdntkmx03w" path="res://inventory/player_inv.tscn" id="2_l0iat"]
-[ext_resource type="PackedScene" uid="uid://lj336g1j5mwr" path="res://Scenes/pause_menu.tscn" id="2_nes4q"]
-[ext_resource type="Texture2D" uid="uid://y7gm7f8njqll" path="res://Sprites/HealthBarOver.png" id="4_8o7jy"]
-[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="4_pqmal"]
-[ext_resource type="Texture2D" uid="uid://bkbmjicrknj2f" path="res://Sprites/HealthBarProgress.png" id="5_6nctt"]
-[ext_resource type="Texture2D" uid="uid://dlca2xoysmbxi" path="res://Sprites/WindMillTileSet2.png" id="5_h50d3"]
-[ext_resource type="Texture2D" uid="uid://nmfgafxv8cl4" path="res://Sprites/CoinIcon.png" id="6_0ytjr"]
-[ext_resource type="Texture2D" uid="uid://cyqm8p541lly2" path="res://Sprites/BoltIcon.png" id="7_kxy6s"]
-[ext_resource type="Texture2D" uid="uid://bri0365pivtbf" path="res://Sprites/TrapIcon.png" id="8_x7dut"]
-[ext_resource type="PackedScene" uid="uid://bmlnx1xtp0pji" path="res://inventory/recipes.tscn" id="9_bqhox"]
-[ext_resource type="Texture2D" uid="uid://fn4u8iyu3xmv" path="res://Sprites/LakeTileSet.png" id="9_mubqa"]
-[ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="10_i8y0w"]
-[ext_resource type="Texture2D" uid="uid://d2jvxo5k4qs8r" path="res://Sprites/JailTileSet.png" id="12_hf56y"]
-[ext_resource type="Texture2D" uid="uid://c3xf1sep4gvpi" path="res://Sprites/BlackSmithTileSet2.png" id="13_1plag"]
-[ext_resource type="Texture2D" uid="uid://bv4e1yhm3nshl" path="res://Sprites/ThroneRoomTileSet2.png" id="16_tt7ri"]
-[ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="17_a16g4"]
-[ext_resource type="Texture2D" uid="uid://dmp6kdxwa2tao" path="res://Sprites/CastleTileSet6.png" id="20_4jo2u"]
-[ext_resource type="AudioStream" uid="uid://c6mvidi4chqma" path="res://Sounds/Rain.wav" id="20_f1uw0"]
-[ext_resource type="Texture2D" uid="uid://cmcgj2o856ilr" path="res://Sprites/Lightning.png" id="21_fqxin"]
-[ext_resource type="Texture2D" uid="uid://bhelfym6j8kjd" path="res://Sprites/light.png" id="22_gqboo"]
-[ext_resource type="AudioStream" uid="uid://byvugolxjnfra" path="res://Sounds/LightningStrike.wav" id="24_o3npl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4twb7"]
-shader = ExtResource("1_ixwrm")
-shader_parameter/alpha = 1.0
+[ext_resource type="Script" path="res://Scenes/ending.gd" id="1_0dpfr"]
+[ext_resource type="Texture2D" uid="uid://6v8gvrdhahkr" path="res://Sprites/ForestTileSet.png" id="1_g8k87"]
+[ext_resource type="Texture2D" uid="uid://fn4u8iyu3xmv" path="res://Sprites/LakeTileSet.png" id="2_540hu"]
+[ext_resource type="Texture2D" uid="uid://c3xf1sep4gvpi" path="res://Sprites/BlackSmithTileSet2.png" id="3_btge2"]
+[ext_resource type="Texture2D" uid="uid://dlca2xoysmbxi" path="res://Sprites/WindMillTileSet2.png" id="4_woq6i"]
+[ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="5_dqobr"]
+[ext_resource type="Texture2D" uid="uid://bv4e1yhm3nshl" path="res://Sprites/ThroneRoomTileSet2.png" id="6_t4ogh"]
+[ext_resource type="Texture2D" uid="uid://d2jvxo5k4qs8r" path="res://Sprites/JailTileSet.png" id="7_ca5nq"]
+[ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="8_ajtox"]
+[ext_resource type="Texture2D" uid="uid://dmp6kdxwa2tao" path="res://Sprites/CastleTileSet6.png" id="9_a1r25"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8oue2"]
-texture = ExtResource("1_41cn5")
+texture = ExtResource("1_g8k87")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -208,7 +190,7 @@ texture_region_size = Vector2i(32, 32)
 0:8/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lkwei"]
-texture = ExtResource("9_mubqa")
+texture = ExtResource("2_540hu")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -286,7 +268,7 @@ texture_region_size = Vector2i(32, 32)
 3:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v0dba"]
-texture = ExtResource("13_1plag")
+texture = ExtResource("3_btge2")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -384,8 +366,7 @@ texture_region_size = Vector2i(32, 32)
 1:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5n474"]
-texture = ExtResource("5_h50d3")
-texture_region_size = Vector2i(32, 32)
+texture = ExtResource("4_woq6i")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -501,7 +482,7 @@ texture_region_size = Vector2i(32, 32)
 3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3jacb"]
-texture = ExtResource("10_i8y0w")
+texture = ExtResource("5_dqobr")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -736,7 +717,7 @@ texture_region_size = Vector2i(32, 32)
 5:9/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l1ysk"]
-texture = ExtResource("16_tt7ri")
+texture = ExtResource("6_t4ogh")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -822,7 +803,7 @@ texture_region_size = Vector2i(32, 32)
 0:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vi6rf"]
-texture = ExtResource("12_hf56y")
+texture = ExtResource("7_ca5nq")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -878,7 +859,7 @@ texture_region_size = Vector2i(32, 32)
 0:5/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hfayu"]
-texture = ExtResource("17_a16g4")
+texture = ExtResource("8_ajtox")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -1017,7 +998,7 @@ texture_region_size = Vector2i(32, 32)
 1:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ihrkx"]
-texture = ExtResource("20_4jo2u")
+texture = ExtResource("9_a1r25")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -1233,7 +1214,7 @@ texture_region_size = Vector2i(32, 32)
 7:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:7/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="TileSet" id="TileSet_68k0u"]
+[sub_resource type="TileSet" id="TileSet_1p3fs"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 22
@@ -1247,173 +1228,29 @@ sources/9 = SubResource("TileSetAtlasSource_ihrkx")
 sources/10 = SubResource("TileSetAtlasSource_v0dba")
 sources/4 = SubResource("TileSetAtlasSource_l1ysk")
 
-[node name="Level" type="Node2D" groups=["Level"]]
-material = SubResource("ShaderMaterial_4twb7")
-script = ExtResource("1_1boid")
-full_screen = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="LightningDim" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-color = Color(0, 0, 0, 0)
-
-[node name="PlayerInv" parent="CanvasLayer" instance=ExtResource("2_l0iat")]
-visible = false
-offset_left = 640.0
-offset_top = 200.0
-offset_right = -236.0
-offset_bottom = -312.0
-
-[node name="PlayerHealthBar" type="TextureProgressBar" parent="CanvasLayer"]
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 269.0
-offset_bottom = 49.0
-value = 100.0
-texture_over = ExtResource("4_8o7jy")
-texture_progress = ExtResource("5_6nctt")
-
-[node name="CoinIcon" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(23, 62)
-scale = Vector2(2, 2)
-texture = ExtResource("6_0ytjr")
-
-[node name="CoinAmount" type="Label" parent="CanvasLayer"]
-offset_left = 40.0
-offset_top = 53.0
-offset_right = 82.0
-offset_bottom = 76.0
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("4_pqmal")
-text = "000"
-
-[node name="BoltIcon" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(22, 99)
-scale = Vector2(2, 2)
-texture = ExtResource("7_kxy6s")
-
-[node name="BoltAmount" type="Label" parent="CanvasLayer"]
-offset_left = 40.0
-offset_top = 89.0
-offset_right = 82.0
-offset_bottom = 112.0
-theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("4_pqmal")
-text = "000"
-
-[node name="TrapIcon" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(22, 129)
-texture = ExtResource("8_x7dut")
-
-[node name="TrapAmount" type="Label" parent="CanvasLayer"]
-offset_left = 41.0
-offset_top = 120.0
-offset_right = 83.0
-offset_bottom = 143.0
-theme_override_colors/font_color = Color(0.907942, 0.907942, 0.907942, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("4_pqmal")
-text = "000"
-
-[node name="Recipes" parent="CanvasLayer" instance=ExtResource("9_bqhox")]
-visible = false
-offset_left = 1110.0
-offset_right = 136.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
-layer = 100
-
-[node name="PauseMenu" parent="CanvasLayer/CanvasLayer" instance=ExtResource("2_nes4q")]
-visible = false
+[node name="Ending" type="Node2D"]
+script = ExtResource("1_0dpfr")
 
 [node name="BG" type="Node2D" parent="."]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="BG"]
-
-[node name="TBG" type="TileMap" parent="BG"]
-self_modulate = Color(1, 1, 1, 0.486275)
-tile_set = SubResource("TileSet_68k0u")
-format = 2
-
 [node name="BG" type="TileMap" parent="BG"]
-tile_set = SubResource("TileSet_68k0u")
+tile_set = SubResource("TileSet_1p3fs")
 format = 2
 
 [node name="Design" type="Node2D" parent="BG"]
 
-[node name="Lightning" type="Sprite2D" parent="BG/Design"]
-visible = false
-z_index = -99
-position = Vector2(-4, -129)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("21_fqxin")
-
-[node name="LightningLight" type="PointLight2D" parent="BG/Design"]
-visible = false
-position = Vector2(-4, -129)
-scale = Vector2(1.5, 1.5)
-energy = 10.0
-texture = ExtResource("22_gqboo")
-texture_scale = 2.0
-
 [node name="Main" type="Node2D" parent="."]
 
-[node name="Projectiles" type="Node2D" parent="Main"]
-
 [node name="Main" type="TileMap" parent="Main"]
-tile_set = SubResource("TileSet_68k0u")
+tile_set = SubResource("TileSet_1p3fs")
 format = 2
 
-[node name="Objects" type="Node2D" parent="Main"]
-
-[node name="Vega" type="Node2D" parent="Main"]
-
-[node name="Entities" type="Node2D" parent="Main"]
-
-[node name="Players" type="Node2D" parent="Main"]
+[node name="Characters" type="Node2D" parent="Main"]
 
 [node name="FG" type="Node2D" parent="."]
 
-[node name="TFG" type="TileMap" parent="FG"]
-self_modulate = Color(1, 1, 1, 0.486275)
-tile_set = SubResource("TileSet_68k0u")
-format = 2
-
 [node name="FG" type="TileMap" parent="FG"]
-tile_set = SubResource("TileSet_68k0u")
+tile_set = SubResource("TileSet_1p3fs")
 format = 2
-
-[node name="Design" type="Node2D" parent="FG"]
-
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-
-[node name="TransitionGates" type="Node2D" parent="."]
-
-[node name="Catchers" type="Node2D" parent="."]
-
-[node name="Curtains" type="Node2D" parent="."]
-
-[node name="Water" type="Node2D" parent="."]
-
-[node name="GroundSound" type="Node2D" parent="."]
 
 [node name="Sound" type="Node2D" parent="."]
-
-[node name="Rain" type="AudioStreamPlayer" parent="Sound"]
-stream = ExtResource("20_f1uw0")
-bus = &"SFX"
-
-[node name="LightningStrike" type="AudioStreamPlayer" parent="Sound"]
-stream = ExtResource("24_o3npl")
-bus = &"SFX"
