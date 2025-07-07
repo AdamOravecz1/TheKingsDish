@@ -256,9 +256,11 @@ autoplay = "walk"
 
 [node name="Death" type="AudioStreamPlayer2D" parent="Sound" index="1"]
 stream = ExtResource("6_kqu16")
+bus = &"SFX"
 
 [node name="Flight" type="AudioStreamPlayer2D" parent="Sound" index="2"]
 stream = ExtResource("7_bf45w")
 volume_db = 10.0
+bus = &"SFX"
 
 [connection signal="timeout" from="Timers/Flight" to="." method="_on_flight_timeout"]

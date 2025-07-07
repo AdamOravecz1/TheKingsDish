@@ -16,5 +16,6 @@ texture = ExtResource("1_5f6vl")
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_mofeb")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

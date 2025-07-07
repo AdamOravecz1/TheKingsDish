@@ -1411,6 +1411,8 @@ format = 2
 
 [node name="Rain" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("20_f1uw0")
+bus = &"SFX"
 
 [node name="LightningStrike" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("24_o3npl")
+bus = &"SFX"

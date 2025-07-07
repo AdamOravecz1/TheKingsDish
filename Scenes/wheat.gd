@@ -30,6 +30,9 @@ func _on_area_entered(area):
 	bend(dir)
 
 func bend(dir):
+	if type < 6:
+		$Rustle.pitch_scale = randf_range(0.8, 1.2)
+		$Rustle.play()
 	if dir > 0:
 		$AnimationPlayer.play("bend_right")
 	else:

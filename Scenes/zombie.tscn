@@ -156,6 +156,8 @@ disabled = true
 
 [node name="Death" type="AudioStreamPlayer2D" parent="Sound" index="1"]
 stream = ExtResource("6_nsi3d")
+pitch_scale = 1.5
+bus = &"SFX"
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
 [connection signal="timeout" from="Timers/ChargeTimer" to="." method="_on_charge_timer_timeout"]

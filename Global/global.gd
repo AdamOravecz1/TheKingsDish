@@ -12,6 +12,8 @@ var monk_counter: int = 0
 
 var king_counter: int = 0
 
+var bad_food_counter: int = 0
+
 var can_next_day: bool = false
 
 var hunter_dialogue1: Dictionary = {
@@ -990,6 +992,8 @@ var zombie_count: int = 0
 
 var gates_satutus: Array = []
 
+var butlers_inv: InvItem
+
 var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
 	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
@@ -1107,7 +1111,6 @@ func save_game():
 		"unlocked_weapons": unlocked_weapons,
 		"player_data": player_data,
 		"player_inv": player_inv,
-		"animal_data": animal_data,
 		"vega_data": vega_data,
 		"trap_data": trap_data,
 		"chest_inv": get_items(chest_inv) if chests_load else chest_inv,
@@ -1119,7 +1122,8 @@ func save_game():
 		"zombie_count": zombie_count,
 		"monk_counter": monk_counter,
 		"king_counter": king_counter,
-		"gates_satutus": gates_satutus
+		"gates_satutus": gates_satutus,
+		"bad_food_counter": bad_food_counter
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -1146,7 +1150,6 @@ func load_game():
 			unlocked_weapons = result["unlocked_weapons"]
 			player_data = result["player_data"]
 			player_inv = result["player_inv"]
-			animal_data = result["animal_data"]
 			vega_data = result["vega_data"]
 			trap_data = result["trap_data"]
 			chest_inv = result["chest_inv"]
@@ -1159,6 +1162,7 @@ func load_game():
 			monk_counter = result["monk_counter"]
 			king_counter = result["king_counter"]
 			gates_satutus = result["gates_satutus"]
+			bad_food_counter = result["bad_food_counter"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			get_tree().get_first_node_in_group("Level").can_save = false
@@ -1180,6 +1184,7 @@ func load_game():
 func next_day():
 	current_day += 1
 	can_next_day = false
+	animal_data = {}
 
 	save_game()
 	load_game()
@@ -1189,5 +1194,10 @@ func next_day():
 	animal_data = {}
 	dialogue_progress = {}
 	player_data["health"] = 100
+	check_ending()
+	
+func check_ending():
+	if bad_food_counter == 2:
+		print("szopás")
 
 

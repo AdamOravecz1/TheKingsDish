@@ -32,14 +32,21 @@ var all_strings := true
 var butler_dialogues = Global.dialogue["Butler"]
 var dialogue = butler_dialogues[Global.current_day] 
 
-var extra_drop = InvItem
+var is_butler_here := true
+
+var extra_drop: InvItem = null
 
 func _process(delta):
 	if global_position.x < -510:
+		if extra_drop:
+			$Sound/Door.play()
+		extra_drop = null
+		Global.butlers_inv = null
 		visible = false
 		$InteractionAreaShop.monitoring = false
 		$CollisionShape2D.disabled = true
 		if global_position.x > -530:
+			is_butler_here = false
 			Global.can_next_day = true
 	velocity.x = x_direction * speed * speed_modifier
 	apply_gravity(delta)
@@ -52,6 +59,10 @@ func apply_gravity(delta):
 	velocity.y = min(velocity.y, terminal_velocity)
 
 func _ready():
+	if Global.butlers_inv:
+		$AnimatedSprite2D.flip_h = false
+		$Food.texture = Global.butlers_inv.texture
+		extra_drop = Global.butlers_inv
 	if Global.can_next_day:
 		visible = false
 		$InteractionAreaShop.monitoring = false
@@ -96,6 +107,7 @@ func initialize():
 	
 func _pickup():
 	if extra_drop:
+		Global.butlers_inv = null
 		player.collect(extra_drop)
 		extra_drop = null
 		$Food.texture = null
@@ -104,8 +116,6 @@ func _pickup():
 		remove()
 		
 func _talk():
-	if Global.previous_day_value != 0:
-		$Sound/Pay.play()
 	player.pay(-Global.previous_day_value)
 	Global.previous_day_value = 0
 	if is_open:
@@ -174,9 +184,12 @@ func _on_player_left_body_exited(body):
 	main.close()
 
 func _on_butler_inv_send_food(food):
-	extra_drop = food
 	if food:
+		extra_drop = food
 		$Food.texture = food.texture
+		if food.value == 0:
+			print("itt")
+			Global.bad_food_counter += 1
 		Global.previous_day_value = food.value
 		speed_modifier = 1
 		$AnimatedSprite2D.play("walk")
@@ -186,10 +199,14 @@ func _on_butler_inv_send_food(food):
 
 func _on_tree_exited():
 	if extra_drop:
+		Global.butlers_inv = extra_drop
 		visible = false
 		$InteractionAreaShop.monitoring = false
 		$CollisionShape2D.disabled = true
+	if is_butler_here and extra_drop:
+		Global.butlers_inv = null
 		Global.can_next_day = true
+		is_butler_here = false
 		
 		
 func thanks_dialogue():

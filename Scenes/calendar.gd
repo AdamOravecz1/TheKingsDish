@@ -2,6 +2,7 @@ extends Sprite2D
 
 @onready var level = get_tree().get_first_node_in_group("Level")
 @onready var interaction_area: InteractionArea = $InteractionArea
+var can_press := true
 
 func _ready():
 	$GiveFoodFirst.material.set_shader_parameter("alpha", 0.0)
@@ -10,9 +11,9 @@ func _ready():
 	
 	
 func _next_day():
-	if Global.can_next_day:
+	if Global.can_next_day and can_press:
+		can_press = false
 		Global.can_next_day = false
-		print(Global.can_next_day)
 		Global.next_day()
 	else:
 		var tween = create_tween()

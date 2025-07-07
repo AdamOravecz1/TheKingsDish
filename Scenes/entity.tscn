@@ -20,6 +20,7 @@ script = ExtResource("1_i6hnx")
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("2_cmed8")
+bus = &"SFX"
 
 [node name="HitLabel" type="Label" parent="."]
 z_index = 100

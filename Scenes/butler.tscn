@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cc16r1ln6o8gd" path="res://Sprites/Butler.png" id="3_upehp"]
 [ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="5_4t6m3"]
 [ext_resource type="PackedScene" uid="uid://dybwmp1py4err" path="res://inventory/butler_inv.tscn" id="5_u2qf3"]
-[ext_resource type="AudioStream" uid="uid://cjvrf5mynqrav" path="res://Sounds/PayDay.wav" id="7_y3w7i"]
+[ext_resource type="AudioStream" uid="uid://baxf8olrahrqg" path="res://Sounds/Door.wav" id="7_ho7i3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsrik"]
 size = Vector2(20, 40)
@@ -151,8 +151,9 @@ visible = false
 position = Vector2(7.5, -23)
 scale = Vector2(0.8, 0.8)
 
-[node name="Pay" type="AudioStreamPlayer2D" parent="Sound" index="1"]
-stream = ExtResource("7_y3w7i")
+[node name="Door" type="AudioStreamPlayer2D" parent="Sound" index="1"]
+stream = ExtResource("7_ho7i3")
+bus = &"SFX"
 
 [node name="HitLabel" parent="." index="9"]
 text = "I will call the guards!"

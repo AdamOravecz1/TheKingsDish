@@ -24,6 +24,7 @@ shape = SubResource("CapsuleShape2D_5a0x0")
 
 [node name="Door" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_evv4q")
+bus = &"SFX"
 
 [node name="LockedLabel" type="Label" parent="."]
 self_modulate = Color(1, 0.0117647, 0, 1)

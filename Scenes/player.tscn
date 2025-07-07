@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://6s62hkkab772"]
+[gd_scene load_steps=36 format=3 uid="uid://6s62hkkab772"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_3nr38"]
 [ext_resource type="PackedScene" uid="uid://cirs61t03la8g" path="res://Scenes/player_graphics.tscn" id="2_ao26x"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://byw3a52geem42" path="res://Sounds/CrossbowShot.wav" id="16_pn7cm"]
 [ext_resource type="AudioStream" uid="uid://cisy8u0nj546n" path="res://Sounds/CrossbowReloading.wav" id="17_iuf4v"]
 [ext_resource type="AudioStream" uid="uid://6fsi67rfam47" path="res://Sounds/PickUp.wav" id="18_4785m"]
+[ext_resource type="AudioStream" uid="uid://cjvrf5mynqrav" path="res://Sounds/PayDay.wav" id="19_lcjvk"]
 [ext_resource type="Texture2D" uid="uid://ct1ed8nobio3e" path="res://Sprites/RainDrop.png" id="19_xwtl4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don8d"]
@@ -233,37 +234,52 @@ shape = SubResource("RectangleShape2D_wuxko")
 
 [node name="WalkingLeftGrass" type="AudioStreamPlayer2D" parent="Sound" index="0"]
 stream = ExtResource("8_t37qx")
+bus = &"SFX"
 
 [node name="WalkingRightGrass" type="AudioStreamPlayer2D" parent="Sound" index="1"]
 stream = ExtResource("9_iypdp")
+bus = &"SFX"
 
 [node name="WalkingLeftStone" type="AudioStreamPlayer2D" parent="Sound" index="2"]
 stream = ExtResource("10_mblby")
+bus = &"SFX"
 
 [node name="WalknigRightStone" type="AudioStreamPlayer2D" parent="Sound" index="3"]
 stream = ExtResource("11_haksa")
+bus = &"SFX"
 
 [node name="WalkingLeftWood" type="AudioStreamPlayer2D" parent="Sound" index="4"]
 stream = ExtResource("12_pd3ek")
+bus = &"SFX"
 
 [node name="WalkingRightWood" type="AudioStreamPlayer2D" parent="Sound" index="5"]
 stream = ExtResource("13_btyn1")
+bus = &"SFX"
 
 [node name="WaterDive" type="AudioStreamPlayer2D" parent="Sound" index="6"]
 stream = ExtResource("14_8ghc2")
+bus = &"SFX"
 
 [node name="Land" type="AudioStreamPlayer2D" parent="Sound" index="7"]
 stream = ExtResource("12_h2ywl")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="CrossbowShoot" type="AudioStreamPlayer2D" parent="Sound" index="8"]
 stream = ExtResource("16_pn7cm")
+bus = &"SFX"
 
 [node name="CrossbowReload" type="AudioStreamPlayer2D" parent="Sound" index="9"]
 stream = ExtResource("17_iuf4v")
+bus = &"SFX"
 
 [node name="PickUp" type="AudioStreamPlayer2D" parent="Sound" index="11"]
 stream = ExtResource("18_4785m")
+bus = &"SFX"
+
+[node name="Pay" type="AudioStreamPlayer2D" parent="Sound" index="12"]
+stream = ExtResource("19_lcjvk")
+bus = &"SFX"
 
 [node name="Rain" type="GPUParticles2D" parent="." index="10"]
 z_index = 1000

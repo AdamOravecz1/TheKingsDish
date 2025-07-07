@@ -519,9 +519,11 @@ speed_scale = 2.0
 
 [node name="KnifeSlash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_rp7p2")
+bus = &"SFX"
 
 [node name="AxeSlash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ruyb5")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="KnifeHit" to="." method="_on_knife_hit_animation_finished"]
 [connection signal="animation_finished" from="AxeHit" to="." method="_on_axe_hit_animation_finished"]

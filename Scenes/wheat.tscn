@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://babpwpvq4iulc"]
+[gd_scene load_steps=13 format=3 uid="uid://babpwpvq4iulc"]
 
 [ext_resource type="Script" path="res://Scenes/wheat.gd" id="1_gdrmd"]
 [ext_resource type="Texture2D" uid="uid://cd5olpcfgkxrw" path="res://Sprites/WindMillTileSet.png" id="1_w1din"]
 [ext_resource type="Texture2D" uid="uid://fn4u8iyu3xmv" path="res://Sprites/LakeTileSet.png" id="3_bj44y"]
+[ext_resource type="AudioStream" uid="uid://do1p5rmphf25" path="res://Sounds/Rustle3.wav" id="4_nxspe"]
 
 [sub_resource type="Animation" id="Animation_c431v"]
 length = 0.001
@@ -19,22 +20,6 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_sdt43"]
-resource_name = "bend_right"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TileMaps:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_ko0yi"]
 resource_name = "bend_left"
 length = 0.5
@@ -49,6 +34,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.174533, 0.0, 0.174533, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sdt43"]
+resource_name = "bend_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TileMaps:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, 0.0, -0.174533, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_whagy"]
@@ -328,6 +329,11 @@ layer_0/tile_data = PackedInt32Array(-65537, 458753, 8, -1, 458753, 9)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, -14.5)
 shape = SubResource("RectangleShape2D_7tk0u")
+
+[node name="Rustle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_nxspe")
+max_distance = 500.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

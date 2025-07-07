@@ -25,6 +25,8 @@ offset_bottom = 40.0
 
 [node name="Fail" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_x5wuc")
+bus = &"SFX"
 
 [node name="Success" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_g0fj3")
+bus = &"SFX"

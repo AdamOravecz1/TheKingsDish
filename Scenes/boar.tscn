@@ -85,6 +85,7 @@ disabled = true
 
 [node name="Death" type="AudioStreamPlayer2D" parent="Sound" index="1"]
 stream = ExtResource("5_tjjlr")
+bus = &"SFX"
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
 [connection signal="timeout" from="Timers/DigTimer" to="." method="_on_timer_timeout"]

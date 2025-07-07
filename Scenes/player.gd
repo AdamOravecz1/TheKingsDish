@@ -50,6 +50,7 @@ var bolt := 0
 var trap := 0
 
 func _ready():
+	can_attack = true
 	health = Global.player_data["health"]
 	coin = Global.player_data["coin"]
 	bolt = Global.player_data["bolt"]
@@ -324,6 +325,8 @@ func _on_knock_back(source, force):
 	knockback_force.y -= 4000.0
 	
 func pay(price):
+	if price != 0:
+		$Sound/Pay.play()
 	coin -= price
 	level.update_coin(str(coin))
 	
