@@ -483,15 +483,7 @@ var blacksmith_dialogue1: Dictionary = {
 	"start":{
 		"text": "Be carefull. That [color=red]boar[/color] is dangerous.",
 		"options": [
-			{"text": ">I want to cook it.", "next": "me"},
 			{"text": ">Do you want me to cook it for you?", "next": "you"}
-		]
-	},
-	"me":{
-		"text": "You won't be able to take it with just that knife of yours.",
-		"options": [
-			{"text": ">Then sell me something stronger.", "next": "shop"},
-			{"text": ">If I can cook it would you like some?", "next": "you"}
 		]
 	},
 	"you":{
@@ -725,14 +717,12 @@ var butler_dialogue1: Dictionary = {
 	"start": {
 		"text": "Congartulation on your new position as head (and only) chef of the King. Your job will be to find ingredients and cook for his Majesty each and every day. The better the dish is the more gold you will be payed.",
 		"options": [
-			{"text": ">What can I buy with the gold?", "next": "gold"},
-			{"text": ">Understood.", "next": "good_bye"}
+			{"text": ">What can I buy with the gold?", "next": "gold"}
 		]
 	},
 	"gold": {
 		"text": "You can buy new recipes, ingredients and tools from the villagers.",
 		"options": [
-			{"text": ">Understood.", "next": "good_bye"},
 			{"text": ">Do you want something to eat to?", "next": "eat"}
 		]
 	},

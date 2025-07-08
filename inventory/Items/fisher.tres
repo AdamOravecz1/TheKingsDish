@@ -7,3 +7,5 @@
 script = ExtResource("1_1f8jf")
 name = "Fisher"
 texture = ExtResource("2_gy87j")
+value = 0
+types = Array[String](["npc"])

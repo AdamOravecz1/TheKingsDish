@@ -189,7 +189,13 @@ func _on_butler_inv_send_food(food):
 	if food:
 		extra_drop = food
 		$Food.texture = food.texture
-		if "sick" in food.types:
+		if "poison" in food.types:
+			Global.execution = true
+			Global.execution_text = "The dish you made killed my butler when he tested it.\nFor the assassination attempt your sentence\nis death by hanging."
+		elif "npc" in food.types:
+			Global.execution = true
+			Global.execution_text = "Your sentence for killing the " + food.name + "\nis death by hanging."
+		elif "sick" in food.types:
 			Global.execution = true
 			Global.execution_text = "The thing you served made me and my butler sick.\nYou will never do that again."
 		elif food.value == 0:

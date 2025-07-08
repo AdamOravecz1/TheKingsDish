@@ -46,8 +46,8 @@ func _on_cook_pressed():
 		var new_item := target_item.duplicate()
 		
 		# Add poison if not already present
-		if "poisoned" not in new_item.types:
-			new_item.types.append("poisoned")
+		if "poison" not in new_item.types:
+			new_item.types.append("poison")
 			new_item.name = "Poisoned %s" % new_item.name
 
 		# Reinitialize inventory and insert modified item

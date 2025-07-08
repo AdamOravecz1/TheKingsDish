@@ -7,3 +7,5 @@
 script = ExtResource("1_qsg8i")
 name = "Black Smith"
 texture = ExtResource("2_3ui5l")
+value = 0
+types = Array[String](["npc"])
