@@ -8,10 +8,12 @@ func _process(delta):
 		
 
 func _ready():
+	Music.stop()
 	$CanvasLayer/ColorRect.modulate = Color(0, 0)
 	$CanvasLayer/Label.modulate = Color(0.65, 0, 0, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	await get_tree().create_timer(2.0).timeout
+	$Sound/Jingle.play()
 	move_cam = true
 	await get_tree().create_timer(7.0).timeout
 	var tween = create_tween()

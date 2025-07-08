@@ -1256,3 +1256,6 @@ format = 2
 [node name="DesignFG" type="Node2D" parent="FG"]
 
 [node name="Sound" type="Node2D" parent="."]
+
+[node name="Jingle" type="AudioStreamPlayer" parent="Sound"]
+bus = &"SFX"

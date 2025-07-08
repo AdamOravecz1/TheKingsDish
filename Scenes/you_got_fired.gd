@@ -16,10 +16,12 @@ func _process(delta):
 		player.move_and_slide()
 
 func _ready():
+	Music.stop()
 	$CanvasLayer/ColorRect.modulate = Color(0, 0)
 	$CanvasLayer/Label.modulate = Color(0.65, 0, 0, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	await get_tree().create_timer(5.0).timeout
+	$Sound/Jingle.play()
 	$Main/Characters/Player/AnimatedSprite2D.flip_h = false
 	walk = true
 	await get_tree().create_timer(3.0).timeout

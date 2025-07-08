@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dtnq208by6bad"]
+[gd_scene load_steps=18 format=3 uid="uid://dtnq208by6bad"]
 
 [ext_resource type="PackedScene" uid="uid://cbpsanhfh8cix" path="res://Scenes/ending.tscn" id="1_mkwdl"]
 [ext_resource type="Script" path="res://Scenes/you_got_executed.gd" id="2_1gq8j"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://xwxusxtkn30s" path="res://Sprites/King.png" id="13_otehj"]
 [ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="14_bwjl7"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="15_fvh2d"]
+[ext_resource type="AudioStream" uid="uid://bhcenhh3dfbqw" path="res://Music/Executed_v1.wav" id="16_j8niw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o4i3b"]
 shader = ExtResource("14_bwjl7")
@@ -241,3 +242,6 @@ horizontal_alignment = 1
 
 [node name="FG" parent="FG" index="0"]
 layer_0/tile_data = PackedInt32Array(-720890, 196608, 2, -655354, 196608, 3, -589818, 196608, 4, -786425, 196608, 2, -720889, 262144, 3, -655353, 262144, 3, -589817, 262144, 3, -524281, 196608, 4, -786424, 262144, 2, -720888, 262144, 3, -655352, 262144, 3, -589816, 262144, 3, -524280, 262144, 4, -786423, 262144, 2, -720887, 262144, 3, -655351, 262144, 3, -589815, 262144, 3, -524279, 262144, 4, -786422, 262144, 2, -720886, 262144, 3, -655350, 262144, 3, -589814, 262144, 3, -524278, 262144, 4, -786421, 262144, 2, -720885, 262144, 3, -655349, 262144, 3, -589813, 262144, 3, -524277, 262144, 4, -1179636, 196616, 4, -786420, 327680, 2, -720884, 262144, 3, -655348, 262144, 3, -589812, 262144, 3, -524276, 327680, 4, -720883, 327680, 2, -655347, 327680, 3, -589811, 327680, 4, -1179623, 196608, 2, -1114087, 196608, 3, -1048551, 196608, 4, -1179622, 262144, 3, -1114086, 262144, 3, -1048550, 262144, 3, -983014, 196608, 4, -1179621, 262144, 3, -1114085, 262144, 3, -1048549, 262144, 3, -983013, 262144, 4, -1179620, 262144, 3, -1114084, 262144, 3, -1048548, 262144, 3, -983012, 327680, 4, -1179619, 327680, 2, -1114083, 327680, 3, -1048547, 327680, 4)
+
+[node name="Jingle" parent="Sound" index="0"]
+stream = ExtResource("16_j8niw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cuymlr5uka0nq"]
+[gd_scene load_steps=25 format=3 uid="uid://cuymlr5uka0nq"]
 
 [ext_resource type="PackedScene" uid="uid://cbpsanhfh8cix" path="res://Scenes/ending.tscn" id="1_3a7hq"]
 [ext_resource type="FontFile" uid="uid://bwb52a73ovbca" path="res://Fonts/OldLondon.ttf" id="2_3xivq"]
@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="13_w375x"]
 [ext_resource type="AudioStream" uid="uid://cednyeutbushg" path="res://Sounds/sfx_step_grass_l.wav" id="15_gdgw1"]
 [ext_resource type="AudioStream" uid="uid://dhmxqtilpen1h" path="res://Sounds/sfx_step_grass_r.wav" id="16_ci8a6"]
+[ext_resource type="AudioStream" uid="uid://twiqxte2gjxk" path="res://Music/Fired_v1.wav" id="18_qrn7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4mxh"]
 size = Vector2(20, 50)
@@ -207,32 +208,32 @@ color = Color(0.0588235, 0.188235, 0.121569, 1)
 [node name="BG" parent="BG" index="0"]
 layer_0/tile_data = PackedInt32Array(-262151, 131081, 7, -196615, 131081, 7, -262150, 131081, 7, -196614, 131081, 7, -720899, 131081, 7, -655363, 131081, 7, -589827, 131081, 7, -524291, 131081, 7, -458755, 131081, 7, -393219, 131081, 7, -327683, 131081, 7, -262147, 131081, 7, -196611, 131081, 7, -131075, 458761, 5, -65539, 131081, 7, -3, 131081, 7, 65533, 131081, 7, -720898, 131081, 7, -655362, 458761, 5, -589826, 131081, 7, -524290, 131081, 7, -458754, 458761, 5, -393218, 131081, 7, -327682, 131081, 7, -262146, 131081, 7, -196610, 131081, 7, -131074, 131081, 7, -65538, 9, 3, -2, 9, 4, 65534, 9, 5, -720897, 131081, 7, -655361, 131081, 7, -589825, 131081, 7, -524289, 131081, 7, -458753, 131081, 7, -393217, 131081, 7, -327681, 458761, 5, -262145, 131081, 7, -196609, 131081, 7, -131073, 131081, 7, -65537, 65545, 3, -1, 65545, 4, 65535, 65545, 5, -786432, 131081, 7, -720896, 458761, 5, -655360, 131081, 7, -589824, 458761, 5, -524288, 131081, 7, -458752, 131081, 7, -393216, 131081, 7, -327680, 131081, 7, -262144, 131081, 7, -196608, 131081, 7, -131072, 131081, 7, -65536, 131081, 7, 0, 131081, 7, -786431, 196617, 7, -720895, 196617, 7, -655359, 196617, 7, -589823, 196617, 7, -524287, 196617, 7, -458751, 196617, 7, -393215, 196617, 7, -327679, 196617, 7, -262143, 196617, 7, -196607, 196617, 7, -131071, 196617, 7, -65535, 196617, 7, 1, 196617, 7, 3, 0, 6, 4, 65536, 6, 5, 131072, 6, 7, 262144, 7, -524279, 196608, 0, -458743, 196608, 0, -393207, 196608, 0, -327671, 196608, 0, -262135, 196608, 0, -196599, 196608, 0, -131063, 196608, 0, -65527, 196608, 0, 9, 196608, 0, -524278, 327680, 0, -458742, 327680, 0, -393206, 327680, 0, -327670, 327680, 0, -262134, 327680, 0, -196598, 327680, 0, -131062, 327680, 1, -65526, 327680, 0, 10, 327680, 0, -131061, 0, 3, -131060, 131072, 3, 65549, 327683, 5, 131085, 65536, 1, 65550, 0, 6, 65551, 65536, 6, 65552, 131072, 6, 65557, 262144, 7, 131093, 65536, 1, 23, 327683, 4, 24, 262144, 7, -655334, 65536, 3, -983013, 262144, 1, -917477, 262144, 1, -851941, 262144, 1, -786405, 65536, 7, -720869, 262144, 1, -655333, 0, 7, -589797, 262144, 1, -524261, 65536, 7, -458725, 262144, 1, -393189, 262144, 1, -327653, 262144, 1, -262117, 262144, 1, -196581, 262144, 1, -131045, 262144, 1, -65509, 262144, 1, 27, 262144, 1, -786404, 131072, 3, -524260, 0, 3, 28, 0, 8, -524259, 131072, 3)
 
-[node name="FG_Design#RabbitHole" type="Sprite2D" parent="BG/Design" index="0"]
+[node name="BG_Design#FG_Design#RabbitHole" type="Sprite2D" parent="BG/DesignBG" index="0"]
 position = Vector2(400, 48)
 texture = ExtResource("8_fqo26")
 hframes = 2
 vframes = 2
 
-[node name="FG_Design#RabbitHole2" type="Sprite2D" parent="BG/Design" index="1"]
+[node name="BG_Design#FG_Design#RabbitHole2" type="Sprite2D" parent="BG/DesignBG" index="1"]
 position = Vector2(720, 48)
 texture = ExtResource("8_fqo26")
 hframes = 2
 vframes = 2
 
-[node name="Vega5" type="Sprite2D" parent="BG/Design" index="2"]
+[node name="BG_Design#Vega5" type="Sprite2D" parent="BG/DesignBG" index="2"]
 position = Vector2(353, -120)
 texture = ExtResource("9_yj6ot")
 hframes = 2
 vframes = 16
 
-[node name="Vega6" type="Sprite2D" parent="BG/Design" index="3"]
+[node name="BG_Design#Vega6" type="Sprite2D" parent="BG/DesignBG" index="3"]
 position = Vector2(201, 16)
 texture = ExtResource("9_yj6ot")
 hframes = 2
 vframes = 16
 frame = 2
 
-[node name="Vega7" type="Sprite2D" parent="BG/Design" index="4"]
+[node name="BG_Design#Vega7" type="Sprite2D" parent="BG/DesignBG" index="4"]
 position = Vector2(288, 16)
 texture = ExtResource("9_yj6ot")
 hframes = 2
@@ -298,3 +299,7 @@ stream = ExtResource("15_gdgw1")
 
 [node name="Right" type="AudioStreamPlayer" parent="Sound" index="1"]
 stream = ExtResource("16_ci8a6")
+
+[node name="Jingle" parent="Sound" index="2"]
+stream = ExtResource("18_qrn7e")
+bus = &"Music"
