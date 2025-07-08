@@ -23,8 +23,8 @@ func get_ending(target):
 	tween.tween_property($ColorRect, "modulate", Color(0, 1), 0.5)
 	tween.tween_property($Label, "modulate", Color(0.65, 0, 0, 1), 0.5)
 	tween.tween_callback(Callable(self, "open_scene").bind(target))
-	tween.tween_property($ColorRect, "modulate", Color(0, 0), 2)
-	tween.tween_property($Label, "modulate", Color(0.65, 0, 0, 0), 2)
+	tween.tween_property($ColorRect, "modulate", Color(0, 0), 1.5)
+	tween.tween_property($Label, "modulate", Color(0.65, 0, 0, 0), 1.5)
 
 func open_scene(scene_path):
 	get_tree().change_scene_to_file(scene_path)

@@ -127,6 +127,8 @@ func _talk():
 		
 func trigger_death():
 	if alive:
+		Global.execution = true
+		Global.execution_text = "I have no one to serve food for me now.\nIt was a bad idea to kill my butler."
 		if self.name not in Global.perma_death:
 			get_tree().get_first_node_in_group("Level").lightning()
 		if self.name not in Global.perma_death:
@@ -187,8 +189,10 @@ func _on_butler_inv_send_food(food):
 	if food:
 		extra_drop = food
 		$Food.texture = food.texture
-		if food.value == 0:
-			print("itt")
+		if "sick" in food.types:
+			Global.execution = true
+			Global.execution_text = "The thing you served made me and my butler sick.\nYou will never do that again."
+		elif food.value == 0:
 			Global.bad_food_counter += 1
 		Global.previous_day_value = food.value
 		speed_modifier = 1

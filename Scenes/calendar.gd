@@ -11,7 +11,9 @@ func _ready():
 	
 	
 func _next_day():
-	if Global.can_next_day and can_press:
+	if Global.execution:
+		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
+	elif Global.can_next_day and can_press:
 		can_press = false
 		Global.can_next_day = false
 		Global.next_day()

@@ -16,6 +16,10 @@ var bad_food_counter: int = 0
 
 var can_next_day: bool = false
 
+var execution: bool = false
+
+var execution_text: String = ""
+
 var hunter_dialogue1: Dictionary = {
 	"start": {
 		"text": "Hey! You are the new new cook. Have you seen this [color=red]rabbit[/color]? Realy hard to catch it with just your hand.",
@@ -1197,6 +1201,8 @@ func next_day():
 	check_ending()
 	
 func check_ending():
+	if execution:
+		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
 	if bad_food_counter == 2:
 		TransitionLayer.get_ending("res://Scenes/you_got_fired.tscn")
 
