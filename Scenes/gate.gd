@@ -5,6 +5,7 @@ extends Node2D
 @export var index: int
 @export var locked: bool = false
 var levels = {}
+var can_open = true
 
 func _ready():
 	$LockedLabel.material.set_shader_parameter("alpha", 0.0)
@@ -19,7 +20,8 @@ func _ready():
 func _enterr():
 	if locked:
 		flash_text()
-	else:
+	elif can_open:
+		can_open = false
 		$Door.play()
 		TransitionLayer.change_scene(levels[level])
 		Global.gates_satutus.append(index)

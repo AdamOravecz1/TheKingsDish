@@ -8,4 +8,4 @@ script = ExtResource("1_r4l6y")
 name = "Butter Chops with Mashed Potatoes"
 texture = ExtResource("2_g7cl2")
 value = 15
-types = Array[String]([])
+types = Array[String](["meat"])

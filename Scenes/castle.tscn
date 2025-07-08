@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bcx2rpj5yumkr"]
+[gd_scene load_steps=46 format=3 uid="uid://bcx2rpj5yumkr"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_ktjp5"]
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="2_11o3y"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://gtld0mwvxdou" path="res://Scenes/calendar.tscn" id="9_ehh3a"]
 [ext_resource type="Texture2D" uid="uid://ct1ed8nobio3e" path="res://Sprites/RainDrop.png" id="10_5yqvp"]
 [ext_resource type="PackedScene" uid="uid://dsqjc76hcoo3d" path="res://Scenes/butler.tscn" id="13_6eyrm"]
+[ext_resource type="Resource" uid="uid://cmjvht3jv3f2a" path="res://inventory/Items/zombie.tres" id="13_qvsbn"]
 [ext_resource type="PackedScene" uid="uid://jwggbtfx4827" path="res://Scenes/walking_material.tscn" id="17_77yx2"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lwq74"]
@@ -33,6 +34,47 @@ slots = Array[ExtResource("6_gts25")]([])
 [sub_resource type="Resource" id="Resource_a0n62"]
 script = ExtResource("3_cdx2i")
 slots = Array[ExtResource("6_gts25")]([])
+
+[sub_resource type="Resource" id="Resource_aascj"]
+script = ExtResource("6_gts25")
+item = ExtResource("13_qvsbn")
+
+[sub_resource type="Resource" id="Resource_qsksc"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_aklt4"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_vpngc"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_cjckj"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_fmbmv"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_1vhin"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_kcdk7"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_h8xuu"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_ryi6o"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_2r3kk"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_4fwan"]
+script = ExtResource("6_gts25")
+
+[sub_resource type="Resource" id="Resource_qhgv4"]
+script = ExtResource("3_cdx2i")
+slots = Array[ExtResource("6_gts25")]([SubResource("Resource_aascj"), SubResource("Resource_qsksc"), SubResource("Resource_aklt4"), SubResource("Resource_vpngc"), SubResource("Resource_cjckj"), SubResource("Resource_fmbmv"), SubResource("Resource_1vhin"), SubResource("Resource_kcdk7"), SubResource("Resource_h8xuu"), SubResource("Resource_ryi6o"), SubResource("Resource_2r3kk"), SubResource("Resource_4fwan")])
 
 [sub_resource type="Resource" id="Resource_tqxkt"]
 script = ExtResource("3_cdx2i")
@@ -222,12 +264,17 @@ position = Vector2(-15, 18)
 inv = SubResource("Resource_a0n62")
 chest_name = "Chest2"
 
-[node name="Dog" parent="Main/Objects" index="2" instance=ExtResource("5_mingg")]
+[node name="Chest3" parent="Main/Objects" index="2" instance=ExtResource("2_lfra3")]
+position = Vector2(-43, -74)
+inv = SubResource("Resource_qhgv4")
+chest_name = "test"
+
+[node name="Dog" parent="Main/Objects" index="3" instance=ExtResource("5_mingg")]
 position = Vector2(380, 16)
 inv = SubResource("Resource_tqxkt")
 chest_name = "Dog"
 
-[node name="Cauldron" parent="Main/Objects" index="3" instance=ExtResource("4_pn5oe")]
+[node name="Cauldron" parent="Main/Objects" index="4" instance=ExtResource("4_pn5oe")]
 position = Vector2(249, 16)
 inv = SubResource("Resource_5wjkk")
 chest_name = "Cauldron"

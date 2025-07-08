@@ -231,21 +231,21 @@ layer_0/tile_data = PackedInt32Array(-65535, 3, 3, -65534, 65539, 3, 1, 3, 5, 2,
 position = Vector2(3290, 1456)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Objects/ArrowTrap" index="1"]
-position = Vector2(43, 80.5)
+position = Vector2(-31, 79.4999)
 shape = SubResource("RectangleShape2D_wuj2f")
 
 [node name="ArrowTrap2" parent="Main/Objects" index="1" instance=ExtResource("3_uva05")]
 position = Vector2(3258, 1456)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Objects/ArrowTrap2" index="1"]
-position = Vector2(75, 80.5)
+position = Vector2(1.00003, 79.4999)
 shape = SubResource("RectangleShape2D_wuj2f")
 
 [node name="ArrowTrap3" parent="Main/Objects" index="2" instance=ExtResource("3_uva05")]
 position = Vector2(3226, 1456)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Objects/ArrowTrap3" index="1"]
-position = Vector2(107, 80.5)
+position = Vector2(33, 79.4999)
 shape = SubResource("RectangleShape2D_wuj2f")
 
 [node name="ArrowTrap4" parent="Main/Objects" index="3" instance=ExtResource("3_uva05")]
@@ -254,11 +254,11 @@ rotation = 4.71239
 shoot_direction = "right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Objects/ArrowTrap4" index="1"]
-position = Vector2(-22.9999, 230)
+position = Vector2(-21.9999, 156)
 shape = SubResource("RectangleShape2D_b0q0b")
 
 [node name="PressurePlate" parent="Main/Objects" index="4" instance=ExtResource("4_o5ntb")]
-position = Vector2(3333, 1536)
+position = Vector2(3259, 1535)
 
 [node name="PressurePlate2" parent="Main/Objects" index="5" instance=ExtResource("4_o5ntb")]
 position = Vector2(342, 960)

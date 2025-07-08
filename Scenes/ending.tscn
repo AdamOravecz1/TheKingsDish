@@ -1237,7 +1237,7 @@ script = ExtResource("1_0dpfr")
 tile_set = SubResource("TileSet_1p3fs")
 format = 2
 
-[node name="Design" type="Node2D" parent="BG"]
+[node name="DesignBG" type="Node2D" parent="BG"]
 
 [node name="Main" type="Node2D" parent="."]
 
@@ -1252,5 +1252,7 @@ format = 2
 [node name="FG" type="TileMap" parent="FG"]
 tile_set = SubResource("TileSet_1p3fs")
 format = 2
+
+[node name="DesignFG" type="Node2D" parent="FG"]
 
 [node name="Sound" type="Node2D" parent="."]

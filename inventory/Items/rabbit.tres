@@ -7,3 +7,5 @@
 script = ExtResource("1_jivje")
 name = "rabbit"
 texture = ExtResource("2_mpxil")
+value = 0
+types = Array[String](["meat"])

@@ -27,6 +27,7 @@ position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_qauj1")
 
 [node name="GiveFoodFirst" type="Label" parent="."]
+light_mask = 0
 material = SubResource("ShaderMaterial_udrc0")
 anchors_preset = 8
 anchor_left = 0.5

@@ -38,6 +38,8 @@ var extra_drop: InvItem = null
 
 func _process(delta):
 	if global_position.x < -510:
+		speed_modifier = 0
+		global_position.x = -500
 		if extra_drop:
 			$Sound/Door.play()
 		extra_drop = null
@@ -48,6 +50,7 @@ func _process(delta):
 		if global_position.x > -530:
 			is_butler_here = false
 			Global.can_next_day = true
+			await get_tree().create_timer(1.0).timeout
 	velocity.x = x_direction * speed * speed_modifier
 	apply_gravity(delta)
 	move_and_slide()
@@ -189,7 +192,18 @@ func _on_butler_inv_send_food(food):
 	if food:
 		extra_drop = food
 		$Food.texture = food.texture
-		if "poison" in food.types:
+		if "meat" in food.types and Global.current_day == 4:
+			Global.execution = true
+			Global.execution_text = "You think you can serve meat on lent?\nGod will punish you now."
+		elif "dragon" in food.types:
+			Global.execution = true
+			Global.execution_text = "YOU! Somehow managed to fell a Dragon and\nYOU have the audacity to serv it raw??"
+		elif "zombie" in food.types:
+			Global.execution = true
+			Global.execution_text = "It was a sick joke to serve up a dead persons head.\nYou got what you deserved."
+		elif "ritual" in food.types:
+			Global.ritual = true
+		elif "poison" in food.types:
 			Global.execution = true
 			Global.execution_text = "The dish you made killed my butler when he tested it.\nFor the assassination attempt your sentence\nis death by hanging."
 		elif "npc" in food.types:

@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://crpu2bu80bdfj"]
 
 [ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_d1rac"]
-[ext_resource type="Texture2D" uid="uid://b4r0ka0geik67" path="res://Sprites/DeathWishIcon.png" id="2_3nro2"]
+[ext_resource type="Texture2D" uid="uid://dwe41tpj0rr3c" path="res://Sprites/DeathWishIcon2.png" id="2_jexq8"]
 
 [resource]
 script = ExtResource("1_d1rac")
 name = "Death Wish"
-texture = ExtResource("2_3nro2")
+texture = ExtResource("2_jexq8")
+value = 0
+types = Array[String](["ritual"])

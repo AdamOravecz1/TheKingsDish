@@ -18,6 +18,8 @@ var can_next_day: bool = false
 
 var execution: bool = false
 
+var ritual: bool = false
+
 var execution_text: String = ""
 
 var hunter_dialogue1: Dictionary = {
@@ -832,6 +834,54 @@ var butler_dialogue2: Dictionary = {
 	}
 }
 
+var butler_dialogue3: Dictionary = {
+	"start0": {
+		"text": "What you served yesterday was absolutely horrible. His Majisty wouldn't even touch it. If you dare to pull a stunt like that again you are \"fired\".",
+		"options": [
+			{"text": ">Today is lent.", "next": "lent"}
+		]
+	},
+	"start1": {
+		"text": "The King ate what you made yesterday but didn't realy enjoyed it. Here is your salary.",
+		"options": [
+			{"text": ">Today is lent.", "next": "lent"}
+		]
+	},
+	"start2": {
+		"text": "The King enjoyed what you made yesterday. Keep up this good work. Here is your salary.",
+		"options": [
+			{"text": ">Today is lent.", "next": "lent"}
+		]
+	},
+	"start3": {
+		"text": "The King couldn't stop praising you during yeasterdays dinner. If you keep this up you might be able to meet with him. Here is your salary.",
+		"options": [
+			{"text": ">Today is lent.", "next": "lent"}
+		]
+	},
+	"good_bye": {
+		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
+		"action": "close_shop",
+		"options": [
+			{"text": ">Give todays dish.", "next": "shop"},
+		]
+	},
+	"shop":{
+		"text": "  ",
+		"action": "open_shop",
+		"options": [
+			{"text": ">Close.", "next": "good_bye"}
+		]
+	},
+	"lent":{
+		"text": "That's right. So be careful not to serv meat to his Majesty otherwise you are going to hang.",
+		"options": [
+			{"text": ">Give todays dish.", "next": "shop"},
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	}
+}
+
 var give_dialogues = {
 	"Hunter": {
 		"text": "You already made it?",
@@ -898,7 +948,7 @@ var dialogue: Dictionary = {
 	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4, miller_dialogue5, miller_dialogue5, miller_dialogue6],
 	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3, blacksmith_dialogue4, blacksmith_dialogue3, blacksmith_dialogue3],
 	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue3, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
-	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue2],
+	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue3, butler_dialogue2, butler_dialogue2],
 	"Monk": [monk_dialogue1, monk_dialogue2, monk_dialogue3, monk_dialogue4, monk_dialogue5, monk_dialogue5, monk_dialogue5],
 	"King": [king_dialogue1, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2]
 }
@@ -1176,6 +1226,8 @@ func load_game():
 		file.close()
 		
 func next_day():
+	if not can_next_day:
+		return
 	current_day += 1
 	can_next_day = false
 	animal_data = {}
@@ -1191,9 +1243,11 @@ func next_day():
 	check_ending()
 	
 func check_ending():
-	if execution:
+	if ritual:
+		TransitionLayer.get_ending("res://Scenes/it_is_here.tscn")
+	elif execution:
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
-	if bad_food_counter == 2:
+	elif bad_food_counter == 2:
 		TransitionLayer.get_ending("res://Scenes/you_got_fired.tscn")
 
 
