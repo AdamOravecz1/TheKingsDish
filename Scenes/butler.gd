@@ -133,8 +133,9 @@ func _talk():
 		
 func trigger_death():
 	if alive:
-		Global.execution = true
-		Global.execution_text = "I have no one to serve food for me now.\nIt was a bad idea to kill my butler."
+		if Global.good_food_counter < 2:
+			Global.execution = true
+			Global.execution_text = "I have no one to serve food for me now.\nIt was a bad idea to kill my butler."
 		if self.name not in Global.perma_death:
 			get_tree().get_first_node_in_group("Level").lightning()
 		if self.name not in Global.perma_death:
@@ -212,6 +213,8 @@ func _on_butler_inv_send_food(food):
 		elif "poison" in food.types:
 			Global.execution = true
 			Global.execution_text = "The dish you made killed my butler when he tested it.\nFor the assassination attempt your sentence\nis death by hanging."
+		elif "dragon_slayer" in food.types:
+			Global.dragon_slayer = true
 		elif "npc" in food.types:
 			Global.execution = true
 			Global.execution_text = "Your sentence for killing the " + food.name + "\nis death by hanging."

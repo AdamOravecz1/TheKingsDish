@@ -22,6 +22,8 @@ var execution: bool = false
 
 var ritual: bool = false
 
+var dragon_slayer: bool = false
+
 var execution_text: String = ""
 
 var hunter_dialogue1: Dictionary = {
@@ -1055,7 +1057,7 @@ var perma_death: Array
 
 var zombie_count: int = 0
 
-var gates_satutus: Array = [3]
+var gates_satutus: Array = []
 
 var butlers_inv: InvItem
 
@@ -1274,6 +1276,8 @@ func check_ending():
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
 	elif bad_food_counter == 2:
 		TransitionLayer.get_ending("res://Scenes/you_got_fired.tscn")
+	elif dragon_slayer:
+		TransitionLayer.get_ending("res://Scenes/you_are_the_dragon_slayer.tscn")
 	elif current_day == 7:
 		TransitionLayer.get_ending("res://Scenes/you_did_good.tscn")
 

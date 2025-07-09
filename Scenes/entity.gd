@@ -30,6 +30,10 @@ func hit(damage, pos, force):
 		var tween = create_tween()
 		tween.tween_property($HitLabel, "material:shader_parameter/alpha", 1.0, 0.0)
 		tween.tween_property($HitLabel, "material:shader_parameter/alpha", 0.0, 2.0)
+	if self.name == "King" and health > 0:
+		await get_tree().create_timer(1.0).timeout
+		Global.execution_text = "This is what you get for hitting me!"
+		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
 	
 		
 func remove():

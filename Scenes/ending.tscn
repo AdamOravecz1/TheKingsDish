@@ -1258,4 +1258,5 @@ format = 2
 [node name="Sound" type="Node2D" parent="."]
 
 [node name="Jingle" type="AudioStreamPlayer" parent="Sound"]
+volume_db = -20.0
 bus = &"SFX"

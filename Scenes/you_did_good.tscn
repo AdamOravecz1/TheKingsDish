@@ -20,7 +20,7 @@
 shader = ExtResource("13_yx44t")
 shader_parameter/alpha = 1.0
 
-[node name="You did good" instance=ExtResource("1_051df")]
+[node name="You got promoted" instance=ExtResource("1_051df")]
 script = ExtResource("2_inh1d")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
