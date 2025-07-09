@@ -12,7 +12,7 @@ func _ready():
 func _next_day():
 	if Global.execution and Global.execution_text.begins_with("I have no one"):
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
-	elif Global.can_next_day:
+	elif Global.can_next_day or Global.king_killer:
 		interaction_area.monitoring = false
 		Global.next_day()
 	else:

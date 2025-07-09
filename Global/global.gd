@@ -24,6 +24,8 @@ var ritual: bool = false
 
 var dragon_slayer: bool = false
 
+var king_killer: bool = false
+
 var execution_text: String = ""
 
 var hunter_dialogue1: Dictionary = {
@@ -1253,8 +1255,6 @@ func load_game():
 		file.close()
 		
 func next_day():
-	if not can_next_day:
-		return
 	current_day += 1
 	can_next_day = false
 	animal_data = {}
@@ -1274,6 +1274,8 @@ func check_ending():
 		TransitionLayer.get_ending("res://Scenes/it_is_here.tscn")
 	elif execution:
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
+	elif king_killer:
+		TransitionLayer.get_ending("res://Scenes/you_killed_the_king.tscn")
 	elif bad_food_counter == 2:
 		TransitionLayer.get_ending("res://Scenes/you_got_fired.tscn")
 	elif dragon_slayer:

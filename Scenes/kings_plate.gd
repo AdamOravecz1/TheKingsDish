@@ -85,9 +85,7 @@ func _on_kings_plate_inv_send_food(food):
 			Global.execution = true
 			Global.execution_text = "You think I can't read the label on the bottle you gave me?\nFor the assassination attempt your sentence\nis death by hanging."
 		elif "poison" in food.types:
-			pass
-			#Global.execution = true
-			#Global.execution_text = "The dish you made killed my butler when he tested it.\nFor the assassination attempt your sentence\nis death by hanging."
+			Global.king_killer = true
 		elif "dragon_slayer" in food.types:
 			Global.dragon_slayer = true
 		elif "npc" in food.types:

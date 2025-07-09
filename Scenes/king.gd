@@ -48,6 +48,7 @@ func _talk():
 
 func trigger_death():
 	if alive:
+		Global.king_killer = true
 		if self.name not in Global.perma_death:
 			get_tree().get_first_node_in_group("Level").lightning()
 		if self.name not in Global.perma_death:
