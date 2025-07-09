@@ -920,6 +920,12 @@ var give_dialogues = {
 	}
 }
 
+var buffer_dialogue: Dictionary = {
+	"start":{
+		"text": " "
+	}
+}
+
 var thank_dialogues: Dictionary = {
 	"Hunter": {
 		"text": "Here is a nice idea I have seen once in another kingdom. You can take any soup and put in bread bowl. I think the King might appriciate it.",
@@ -944,13 +950,13 @@ var thank_dialogues: Dictionary = {
 }
 
 var dialogue: Dictionary = {
-	"Hunter": [hunter_dialogue1, hunter_dialogue2, hunter_dialogue3, hunter_dialogue4, hunter_dialogue5, hunter_dialogue6, hunter_dialogue6],
-	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4, miller_dialogue5, miller_dialogue5, miller_dialogue6],
-	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3, blacksmith_dialogue4, blacksmith_dialogue3, blacksmith_dialogue3],
-	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue3, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4],
-	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue3, butler_dialogue2, butler_dialogue2],
-	"Monk": [monk_dialogue1, monk_dialogue2, monk_dialogue3, monk_dialogue4, monk_dialogue5, monk_dialogue5, monk_dialogue5],
-	"King": [king_dialogue1, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2]
+	"Hunter": [hunter_dialogue1, hunter_dialogue2, hunter_dialogue3, hunter_dialogue4, hunter_dialogue5, hunter_dialogue6, hunter_dialogue6, buffer_dialogue],
+	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4, miller_dialogue5, miller_dialogue5, miller_dialogue6, buffer_dialogue],
+	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3, blacksmith_dialogue4, blacksmith_dialogue3, blacksmith_dialogue3, buffer_dialogue],
+	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue3, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4, buffer_dialogue],
+	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue3, butler_dialogue2, butler_dialogue2, buffer_dialogue],
+	"Monk": [monk_dialogue1, monk_dialogue2, monk_dialogue3, monk_dialogue4, monk_dialogue5, monk_dialogue5, monk_dialogue5, buffer_dialogue],
+	"King": [king_dialogue1, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, king_dialogue2, buffer_dialogue]
 }
 
 var npc_food: Dictionary = {
@@ -1249,5 +1255,7 @@ func check_ending():
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
 	elif bad_food_counter == 2:
 		TransitionLayer.get_ending("res://Scenes/you_got_fired.tscn")
+	elif current_day == 7:
+		TransitionLayer.get_ending("res://Scenes/you_did_good.tscn")
 
 
