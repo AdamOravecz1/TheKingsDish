@@ -49,13 +49,13 @@ func _ready():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if Global.can_gate:
 		for gate in $TransitionGates.get_children():
-			if gate.index == Global.gate_index and Global.can_gate:
+			if gate.gate_id == Global.gate_index and Global.can_gate:
 				player.position = gate.global_position
 	elif get_tree().current_scene.name in Global.player_data:
 		player.position = Global.player_data[get_tree().current_scene.name][0]
 	
 	for gate in $TransitionGates.get_children():
-		if gate.index in Global.gates_satutus:
+		if gate.gate_id in Global.gates_satutus:
 			gate.locked = false
 
 	InteractionManager.set_player()
@@ -268,4 +268,7 @@ func _end_lightning():
 	$CanvasLayer/LightningDim.visible = false
 	$BG/Design/Lightning.visible = false
 	$BG/Design/LightningLight.visible = false
+	
+func close_throne_door():
+	$TransitionGates/Gate2.locked = true
 

@@ -70,11 +70,36 @@ func _on_player_left_body_exited(body):
 
 func _on_kings_plate_inv_send_food(food):
 	if food:
-		print(food.name)
+		if "meat" in food.types and Global.current_day == 4:
+			Global.execution = true
+			Global.execution_text = "You think you can serve meat on lent?\nGod will punish you now."
+		elif "dragon" in food.types:
+			Global.execution = true
+			Global.execution_text = "YOU! Somehow managed to fell a Dragon and\nYOU have the audacity to serv it raw??"
+		elif "zombie" in food.types:
+			Global.execution = true
+			Global.execution_text = "It was a sick joke to serve up a dead persons head.\nYou got what you deserved."
+		elif "ritual" in food.types:
+			Global.ritual = true
+		elif "pure_poison" in food.types:
+			Global.execution = true
+			Global.execution_text = "You think I can't read the label on the bottle you gave me?\nFor the assassination attempt your sentence\nis death by hanging."
+		elif "poison" in food.types:
+			pass
+			#Global.execution = true
+			#Global.execution_text = "The dish you made killed my butler when he tested it.\nFor the assassination attempt your sentence\nis death by hanging."
+		elif "npc" in food.types:
+			Global.execution = true
+			Global.execution_text = "Your sentence for killing the " + food.name + "\nis death by hanging."
+		elif "sick" in food.types:
+			Global.execution = true
+			Global.execution_text = "The thing you served made me and my butler sick.\nYou will never do that again."
+		elif food.value == 0:
+			Global.bad_food_counter += 1
 		Global.previous_day_value = food.value
 		$Food.texture = food.texture
 		Global.can_next_day = true
-		print(Global.can_next_day)
+
 	else:
 		Global.previous_day_value = 0
 		$Food.texture = null

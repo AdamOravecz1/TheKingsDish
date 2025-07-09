@@ -14,6 +14,8 @@ var king_counter: int = 0
 
 var bad_food_counter: int = 0
 
+var good_food_counter: int = 0
+
 var can_next_day: bool = false
 
 var execution: bool = false
@@ -818,6 +820,13 @@ var butler_dialogue2: Dictionary = {
 			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	},
+	"start4": {
+		"text": "The King wishes to meet personally with the men who cook this well. The door to the throne room is now open. Here is your salary.",
+		"options": [
+			{"text": ">Give todays dish.", "next": "shop"},
+			{"text": ">Not yet.", "next": "good_bye"}
+		]
+	},
 	"good_bye": {
 		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
 		"action": "close_shop",
@@ -855,6 +864,12 @@ var butler_dialogue3: Dictionary = {
 	},
 	"start3": {
 		"text": "The King couldn't stop praising you during yeasterdays dinner. If you keep this up you might be able to meet with him. Here is your salary.",
+		"options": [
+			{"text": ">Today is lent.", "next": "lent"}
+		]
+	},
+	"start4": {
+		"text": "The King wishes to meet personally with the men who cook this well. The door to the throne room is now open. Here is your salary.",
 		"options": [
 			{"text": ">Today is lent.", "next": "lent"}
 		]
@@ -1040,7 +1055,7 @@ var perma_death: Array
 
 var zombie_count: int = 0
 
-var gates_satutus: Array = []
+var gates_satutus: Array = [3]
 
 var butlers_inv: InvItem
 
@@ -1173,7 +1188,8 @@ func save_game():
 		"monk_counter": monk_counter,
 		"king_counter": king_counter,
 		"gates_satutus": gates_satutus,
-		"bad_food_counter": bad_food_counter
+		"bad_food_counter": bad_food_counter,
+		"good_food_counter": good_food_counter
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -1211,8 +1227,11 @@ func load_game():
 			zombie_count = result["zombie_count"]
 			monk_counter = result["monk_counter"]
 			king_counter = result["king_counter"]
-			gates_satutus = result["gates_satutus"]
+			gates_satutus = []
+			for gate in result["gates_satutus"]:
+				gates_satutus.append(int(gate))
 			bad_food_counter = result["bad_food_counter"]
+			good_food_counter = result["good_food_counter"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			get_tree().get_first_node_in_group("Level").can_save = false

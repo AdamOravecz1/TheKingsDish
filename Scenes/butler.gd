@@ -77,7 +77,10 @@ func _ready():
 		talk.show_node(Global.dialogue_progress[self.name])
 	else:
 		if Global.current_day > 0:
-			if Global.previous_day_value == 0:
+			if Global.good_food_counter == 2:
+				Global.gates_satutus.append(3)
+				talk.show_node("start4")
+			elif Global.previous_day_value == 0:
 				talk.show_node("start0")
 			elif Global.previous_day_value > 0 and Global.previous_day_value <= 5:
 				talk.show_node("start1")
@@ -203,6 +206,9 @@ func _on_butler_inv_send_food(food):
 			Global.execution_text = "It was a sick joke to serve up a dead persons head.\nYou got what you deserved."
 		elif "ritual" in food.types:
 			Global.ritual = true
+		elif "pure_poison" in food.types:
+			Global.execution = true
+			Global.execution_text = "You think I can't read the label on the bottle you gave me?\nFor the assassination attempt your sentence\nis death by hanging."
 		elif "poison" in food.types:
 			Global.execution = true
 			Global.execution_text = "The dish you made killed my butler when he tested it.\nFor the assassination attempt your sentence\nis death by hanging."
@@ -214,8 +220,11 @@ func _on_butler_inv_send_food(food):
 			Global.execution_text = "The thing you served made me and my butler sick.\nYou will never do that again."
 		elif food.value == 0:
 			Global.bad_food_counter += 1
+		elif food.value >= 15:
+			Global.good_food_counter += 1
 		Global.previous_day_value = food.value
 		speed_modifier = 1
+		main.close_throne_door()
 		$AnimatedSprite2D.play("walk")
 		$AnimatedSprite2D.flip_h = false
 		x_direction = -1

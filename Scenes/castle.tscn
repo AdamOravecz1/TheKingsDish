@@ -299,7 +299,7 @@ position = Vector2(162, 20)
 [node name="Gate2" parent="TransitionGates" index="1" instance=ExtResource("3_78jt2")]
 position = Vector2(-511, -171)
 level = "throne_room"
-index = 3
+gate_id = 3
 locked = true
 
 [node name="WalkingMaterial" parent="GroundSound" index="0" instance=ExtResource("17_77yx2")]

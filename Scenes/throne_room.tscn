@@ -210,7 +210,7 @@ blend_mode = 2
 [node name="Gate" parent="TransitionGates" index="0" instance=ExtResource("8_aqvvp")]
 position = Vector2(320, 47)
 level = "castle"
-index = 3
+gate_id = 3
 
 [node name="WalkingMaterial" parent="GroundSound" index="0" instance=ExtResource("12_mw6s3")]
 ground = "stone"

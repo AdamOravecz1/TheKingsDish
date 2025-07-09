@@ -996,13 +996,13 @@ level = "castle"
 [node name="Gate2" parent="TransitionGates" index="1" instance=ExtResource("3_i7lx2")]
 position = Vector2(801, 149)
 level = "dungeon"
-index = 1
+gate_id = 1
 locked = true
 
 [node name="Gate3" parent="TransitionGates" index="2" instance=ExtResource("3_i7lx2")]
 position = Vector2(4128, 310)
 level = "dungeon"
-index = 2
+gate_id = 2
 
 [node name="Catcher" parent="Catchers" index="0" instance=ExtResource("7_kicbo")]
 position = Vector2(207, 124)

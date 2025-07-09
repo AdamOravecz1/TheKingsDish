@@ -309,11 +309,11 @@ blend_mode = 2
 
 [node name="Gate" parent="TransitionGates" index="0" instance=ExtResource("3_byiqx")]
 position = Vector2(64, 10)
-index = 1
+gate_id = 1
 
 [node name="Gate2" parent="TransitionGates" index="1" instance=ExtResource("3_byiqx")]
 position = Vector2(3456, 179)
-index = 2
+gate_id = 2
 
 [node name="Catcher" parent="Catchers" index="0" instance=ExtResource("8_3vn1k")]
 position = Vector2(2197, 1764)

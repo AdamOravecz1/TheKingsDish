@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var interaction_area: InteractionArea = $InteractionArea
 @export_enum("forest", "castle", "dungeon", "throne_room") var level := "forest"
-@export var index: int
+@export var gate_id: int
 @export var locked: bool = false
 var levels = {}
 var can_open = true
@@ -24,8 +24,9 @@ func _enterr():
 		can_open = false
 		$Door.play()
 		TransitionLayer.change_scene(levels[level])
-		Global.gates_satutus.append(index)
-		Global.gate_index = index
+		if gate_id not in Global.gates_satutus:
+			Global.gates_satutus.append(gate_id)
+		Global.gate_index = gate_id
 		Global.can_gate = true
 
 func flash_text():
