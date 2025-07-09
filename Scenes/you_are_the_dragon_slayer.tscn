@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cbpsanhfh8cix" path="res://Scenes/ending.tscn" id="1_6xa8o"]
 [ext_resource type="Script" path="res://Scenes/you_are_the_dragon_slayer.gd" id="2_3c8in"]
-[ext_resource type="FontFile" uid="uid://bwb52a73ovbca" path="res://Fonts/OldLondon.ttf" id="3_gwc54"]
 [ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="4_fawnp"]
 [ext_resource type="Texture2D" uid="uid://s1dkmybl32yc" path="res://Sprites/BG2Cloud.png" id="5_jtuab"]
 [ext_resource type="Texture2D" uid="uid://cwnm6rc36im07" path="res://Sprites/BG1Cloud.png" id="6_od7l3"]
@@ -21,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cvve3iaapqk5w" path="res://Sprites/Miller.png" id="19_q0ju7"]
 [ext_resource type="Texture2D" uid="uid://ddqpmsa4vl8je" path="res://Sprites/BlackSmith.png" id="20_caibc"]
 [ext_resource type="Texture2D" uid="uid://ckhdkpiot06vi" path="res://Sprites/Fisher3.png" id="21_42a1u"]
+[ext_resource type="Texture2D" uid="uid://c76n2hy8tc57j" path="res://Sprites/BloodSpatter.png" id="21_770oc"]
 [ext_resource type="AudioStream" uid="uid://cftdpfwt0cs5r" path="res://Music/Dragon_salyer_v1.wav" id="22_psasv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qn75b"]
@@ -30,36 +30,7 @@ shader_parameter/alpha = 1.0
 [node name="You are the Dragon Slayer" instance=ExtResource("1_6xa8o")]
 script = ExtResource("2_3c8in")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="CanvasLayer" index="1"]
-modulate = Color(0.517647, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -117.5
-offset_right = 213.0
-offset_bottom = 117.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_gwc54")
-theme_override_font_sizes/font_size = 100
-text = "End"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 
@@ -259,7 +230,9 @@ text = "Today is a festival!
  and one years on the throne!"
 horizontal_alignment = 1
 
-[node name="Butler" type="Sprite2D" parent="Main/Characters" index="2"]
+[node name="MightBeDead" type="Node2D" parent="Main/Characters" index="2"]
+
+[node name="Butler" type="Sprite2D" parent="Main/Characters/MightBeDead" index="0"]
 position = Vector2(209, 12)
 texture = ExtResource("16_n6sf1")
 flip_h = true
@@ -267,33 +240,39 @@ hframes = 3
 vframes = 3
 frame = 1
 
-[node name="TheKingsDishIcon" type="Sprite2D" parent="Main/Characters/Butler" index="0"]
+[node name="TheKingsDishIcon" type="Sprite2D" parent="Main/Characters/MightBeDead/Butler" index="0"]
 position = Vector2(-6, -36)
 texture = ExtResource("17_pjnx0")
 
-[node name="Hunter" type="Sprite2D" parent="Main/Characters" index="3"]
+[node name="Hunter" type="Sprite2D" parent="Main/Characters/MightBeDead" index="1"]
 position = Vector2(439, 44)
 texture = ExtResource("18_7g6wf")
 hframes = 2
 vframes = 3
 
-[node name="Hunter2" type="Sprite2D" parent="Main/Characters" index="4"]
+[node name="Miller" type="Sprite2D" parent="Main/Characters/MightBeDead" index="2"]
 position = Vector2(490, 44)
 texture = ExtResource("19_q0ju7")
 hframes = 2
 vframes = 3
 
-[node name="Hunter3" type="Sprite2D" parent="Main/Characters" index="5"]
+[node name="BlackSmith" type="Sprite2D" parent="Main/Characters/MightBeDead" index="3"]
 position = Vector2(540, 44)
 texture = ExtResource("20_caibc")
 hframes = 2
 vframes = 3
 
-[node name="Hunter4" type="Sprite2D" parent="Main/Characters" index="6"]
+[node name="Fisher" type="Sprite2D" parent="Main/Characters/MightBeDead" index="4"]
 position = Vector2(582, 42)
 texture = ExtResource("21_42a1u")
 hframes = 3
 vframes = 3
+frame = 6
+
+[node name="BloodSpatter" type="Sprite2D" parent="Main/Characters" index="3"]
+position = Vector2(369, -2)
+texture = ExtResource("21_770oc")
+vframes = 7
 frame = 6
 
 [node name="FG" parent="FG" index="0"]

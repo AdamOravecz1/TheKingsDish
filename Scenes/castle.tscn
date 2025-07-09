@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bcx2rpj5yumkr"]
+[gd_scene load_steps=49 format=3 uid="uid://bcx2rpj5yumkr"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_ktjp5"]
 [ext_resource type="PackedScene" uid="uid://6s62hkkab772" path="res://Scenes/player.tscn" id="2_11o3y"]
@@ -22,6 +22,7 @@
 [ext_resource type="Resource" uid="uid://crpu2bu80bdfj" path="res://inventory/Items/death_wish.tres" id="15_wld75"]
 [ext_resource type="Resource" uid="uid://bmy6dk3v0d0fe" path="res://inventory/Items/meat_soup.tres" id="16_uo1lb"]
 [ext_resource type="PackedScene" uid="uid://jwggbtfx4827" path="res://Scenes/walking_material.tscn" id="17_77yx2"]
+[ext_resource type="Resource" uid="uid://cgis2byjdqjyk" path="res://inventory/Items/the_kings_dish.tres" id="17_qdsog"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lwq74"]
 particle_flag_disable_z = true
@@ -55,6 +56,7 @@ item = ExtResource("16_uo1lb")
 
 [sub_resource type="Resource" id="Resource_cjckj"]
 script = ExtResource("6_gts25")
+item = ExtResource("17_qdsog")
 
 [sub_resource type="Resource" id="Resource_fmbmv"]
 script = ExtResource("6_gts25")

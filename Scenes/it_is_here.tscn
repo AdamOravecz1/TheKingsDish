@@ -1,7 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://ctacan7e8gvh"]
 
 [ext_resource type="PackedScene" uid="uid://cbpsanhfh8cix" path="res://Scenes/ending.tscn" id="1_smem3"]
-[ext_resource type="FontFile" uid="uid://bwb52a73ovbca" path="res://Fonts/OldLondon.ttf" id="2_02flr"]
 [ext_resource type="Script" path="res://Scenes/it_is_here.gd" id="2_i4keh"]
 [ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="3_rh6ma"]
 [ext_resource type="Texture2D" uid="uid://s1dkmybl32yc" path="res://Sprites/BG2Cloud.png" id="4_2fewy"]
@@ -17,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://rvjhn1n4lxd3" path="res://Sprites/BigPortal.png" id="12_yct3r"]
 [ext_resource type="Texture2D" uid="uid://d2gmeke3ti37b" path="res://Sprites/Monk.png" id="13_udpon"]
 [ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="14_jnt5h"]
+[ext_resource type="Texture2D" uid="uid://c76n2hy8tc57j" path="res://Sprites/BloodSpatter.png" id="15_ltj1o"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="15_yo447"]
 [ext_resource type="AudioStream" uid="uid://d0mdenowoxiwn" path="res://Music/Ritual_v1.wav" id="19_2mvht"]
 
@@ -27,36 +27,7 @@ shader_parameter/alpha = 1.0
 [node name="It is here" instance=ExtResource("1_smem3")]
 script = ExtResource("2_i4keh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="CanvasLayer" index="1"]
-modulate = Color(0.517647, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -117.5
-offset_right = 213.0
-offset_bottom = 117.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_02flr")
-theme_override_font_sizes/font_size = 100
-text = "End"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 modulate = Color(0.435192, 0.435192, 0.435192, 1)
@@ -258,6 +229,12 @@ text = "IT IS HEREEEE.
 THE NEW WORLD ORDER IS COMING"
 horizontal_alignment = 1
 
+[node name="BloodSpatter" type="Sprite2D" parent="Main/Characters" index="3"]
+position = Vector2(650, 30)
+texture = ExtResource("15_ltj1o")
+vframes = 7
+frame = 6
+
 [node name="FG" parent="FG" index="0"]
 layer_0/tile_data = PackedInt32Array(-720890, 196608, 2, -655354, 196608, 3, -589818, 196608, 4, -786425, 196608, 2, -720889, 262144, 3, -655353, 262144, 3, -589817, 262144, 3, -524281, 196608, 4, -786424, 262144, 2, -720888, 262144, 3, -655352, 262144, 3, -589816, 262144, 3, -524280, 262144, 4, -786423, 262144, 2, -720887, 262144, 3, -655351, 262144, 3, -589815, 262144, 3, -524279, 262144, 4, -786422, 262144, 2, -720886, 262144, 3, -655350, 262144, 3, -589814, 262144, 3, -524278, 262144, 4, -786421, 262144, 2, -720885, 262144, 3, -655349, 262144, 3, -589813, 262144, 3, -524277, 262144, 4, -1179636, 196616, 4, -786420, 327680, 2, -720884, 262144, 3, -655348, 262144, 3, -589812, 262144, 3, -524276, 327680, 4, -720883, 327680, 2, -655347, 327680, 3, -589811, 327680, 4, -1179623, 196608, 2, -1114087, 196608, 3, -1048551, 196608, 4, -1179622, 262144, 3, -1114086, 262144, 3, -1048550, 262144, 3, -983014, 196608, 4, -1179621, 262144, 3, -1114085, 262144, 3, -1048549, 262144, 3, -983013, 262144, 4, -1179620, 262144, 3, -1114084, 262144, 3, -1048548, 262144, 3, -983012, 327680, 4, -1179619, 327680, 2, -1114083, 327680, 3, -1048547, 327680, 4)
 
@@ -322,13 +299,13 @@ energy = 3.0
 texture = ExtResource("12_1ts02")
 texture_scale = 2.0
 
-[node name="Jingle" parent="Sound" index="0"]
-stream = ExtResource("19_2mvht")
-
-[node name="Camera2D" type="Camera2D" parent="." index="6"]
+[node name="Camera2D" type="Camera2D" parent="." index="5"]
 position = Vector2(553, -47)
 zoom = Vector2(2, 2)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="7"]
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." index="6"]
 color = Color(0.435192, 0.435192, 0.435192, 1)
 blend_mode = 1
+
+[node name="Jingle" parent="Sound" index="0"]
+stream = ExtResource("19_2mvht")

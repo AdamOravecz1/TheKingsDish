@@ -1,7 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://cuymlr5uka0nq"]
 
 [ext_resource type="PackedScene" uid="uid://cbpsanhfh8cix" path="res://Scenes/ending.tscn" id="1_3a7hq"]
-[ext_resource type="FontFile" uid="uid://bwb52a73ovbca" path="res://Fonts/OldLondon.ttf" id="2_3xivq"]
 [ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="2_aq56h"]
 [ext_resource type="Script" path="res://Scenes/you_got_fired.gd" id="2_f5rdc"]
 [ext_resource type="Texture2D" uid="uid://s1dkmybl32yc" path="res://Sprites/BG2Cloud.png" id="3_1xpo6"]
@@ -15,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cc16r1ln6o8gd" path="res://Sprites/Butler.png" id="11_6y2js"]
 [ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="12_g4huv"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="13_w375x"]
+[ext_resource type="Texture2D" uid="uid://c76n2hy8tc57j" path="res://Sprites/BloodSpatter.png" id="15_6kl51"]
 [ext_resource type="AudioStream" uid="uid://cednyeutbushg" path="res://Sounds/sfx_step_grass_l.wav" id="15_gdgw1"]
 [ext_resource type="AudioStream" uid="uid://dhmxqtilpen1h" path="res://Sounds/sfx_step_grass_r.wav" id="16_ci8a6"]
 [ext_resource type="AudioStream" uid="uid://twiqxte2gjxk" path="res://Music/Fired_v1.wav" id="18_qrn7e"]
@@ -63,36 +63,7 @@ shader_parameter/alpha = 1.0
 [node name="You got fired" instance=ExtResource("1_3a7hq")]
 script = ExtResource("2_f5rdc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="CanvasLayer" index="1"]
-modulate = Color(0.517647, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -117.5
-offset_right = 213.0
-offset_bottom = 117.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_3xivq")
-theme_override_font_sizes/font_size = 100
-text = "End"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 
@@ -290,6 +261,12 @@ text = "I warned you.
 The King doesn't need someone
 who can't cook."
 horizontal_alignment = 1
+
+[node name="BloodSpatter" type="Sprite2D" parent="Main/Characters" index="2"]
+position = Vector2(128, -2)
+texture = ExtResource("15_6kl51")
+vframes = 7
+frame = 6
 
 [node name="FG" parent="FG" index="0"]
 layer_0/tile_data = PackedInt32Array(-720890, 196608, 2, -655354, 196608, 3, -589818, 196608, 4, -786425, 196608, 2, -720889, 262144, 3, -655353, 262144, 3, -589817, 262144, 3, -524281, 196608, 4, -786424, 262144, 2, -720888, 262144, 3, -655352, 262144, 3, -589816, 262144, 3, -524280, 262144, 4, -786423, 262144, 2, -720887, 262144, 3, -655351, 262144, 3, -589815, 262144, 3, -524279, 262144, 4, -786422, 262144, 2, -720886, 262144, 3, -655350, 262144, 3, -589814, 262144, 3, -524278, 262144, 4, -786421, 262144, 2, -720885, 262144, 3, -655349, 262144, 3, -589813, 262144, 3, -524277, 262144, 4, -1179636, 196616, 4, -786420, 327680, 2, -720884, 262144, 3, -655348, 262144, 3, -589812, 262144, 3, -524276, 327680, 4, -720883, 327680, 2, -655347, 327680, 3, -589811, 327680, 4, -1179623, 196608, 2, -1114087, 196608, 3, -1048551, 196608, 4, -1179622, 262144, 3, -1114086, 262144, 3, -1048550, 262144, 3, -983014, 196608, 4, -1179621, 262144, 3, -1114085, 262144, 3, -1048549, 262144, 3, -983013, 262144, 4, -1179620, 262144, 3, -1114084, 262144, 3, -1048548, 262144, 3, -983012, 327680, 4, -1179619, 327680, 2, -1114083, 327680, 3, -1048547, 327680, 4)

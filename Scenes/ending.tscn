@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://cbpsanhfh8cix"]
+[gd_scene load_steps=22 format=3 uid="uid://cbpsanhfh8cix"]
 
 [ext_resource type="Script" path="res://Scenes/ending.gd" id="1_0dpfr"]
 [ext_resource type="Texture2D" uid="uid://6v8gvrdhahkr" path="res://Sprites/ForestTileSet.png" id="1_g8k87"]
 [ext_resource type="Texture2D" uid="uid://fn4u8iyu3xmv" path="res://Sprites/LakeTileSet.png" id="2_540hu"]
+[ext_resource type="FontFile" uid="uid://bwb52a73ovbca" path="res://Fonts/OldLondon.ttf" id="2_mdhgt"]
 [ext_resource type="Texture2D" uid="uid://c3xf1sep4gvpi" path="res://Sprites/BlackSmithTileSet2.png" id="3_btge2"]
 [ext_resource type="Texture2D" uid="uid://dlca2xoysmbxi" path="res://Sprites/WindMillTileSet2.png" id="4_woq6i"]
 [ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="5_dqobr"]
@@ -1230,6 +1231,35 @@ sources/4 = SubResource("TileSetAtlasSource_l1ysk")
 
 [node name="Ending" type="Node2D"]
 script = ExtResource("1_0dpfr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color(0.517647, 0, 0, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -213.0
+offset_top = -117.5
+offset_right = 213.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_mdhgt")
+theme_override_font_sizes/font_size = 100
+text = "End"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BG" type="Node2D" parent="."]
 

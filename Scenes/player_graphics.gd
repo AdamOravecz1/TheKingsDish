@@ -1,11 +1,20 @@
 extends Node2D
 
 @onready var weapon = get_parent().current_weapon
+@onready var blood_spatter = $BloodSpatter
+
 var fired := 0
 var dir := 1
 var can_hit := true
+var blood_number := 0
+
+func _process(delta):
+	if len(Global.perma_death) != blood_number:
+		blood_number = len(Global.perma_death)
+		blood_spatter.frame = blood_number
 
 func _ready():
+	blood_spatter.frame = len(Global.perma_death)
 	$Knife/KnifeHitbox.disabled = true
 	$Axe/AxeHitbox.disabled = true
 	
@@ -13,6 +22,7 @@ func update_legs(direction, on_floor):
 	#flip
 	if direction.x:
 		$Legs.flip_h = direction.x > 0
+		blood_spatter.flip_h = direction.x > 0
 		
 	#state
 	var state := "idle"
@@ -96,3 +106,5 @@ func drySlashSound():
 	$KnifeSlash.pitch_scale = 1
 	$AxeSlash.volume_db = 0
 	$AxeSlash.pitch_scale = 1
+	
+

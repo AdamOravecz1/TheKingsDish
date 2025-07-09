@@ -1,6 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://cirs61t03la8g"]
+[gd_scene load_steps=39 format=3 uid="uid://cirs61t03la8g"]
 
 [ext_resource type="Script" path="res://Scenes/player_graphics.gd" id="1_nikel"]
+[ext_resource type="Texture2D" uid="uid://c76n2hy8tc57j" path="res://Sprites/BloodSpatter.png" id="3_j7xpa"]
 [ext_resource type="AudioStream" uid="uid://b24eonoh0kedb" path="res://Sounds/KnifeSlash.wav" id="3_rp7p2"]
 [ext_resource type="Texture2D" uid="uid://dgi02gp5mhbhh" path="res://Sprites/Player_8.png" id="3_rw6fq"]
 [ext_resource type="AudioStream" uid="uid://q81hoplevrvq" path="res://Sounds/AxeSlash.wav" id="4_ruyb5"]
@@ -473,6 +474,11 @@ visible = false
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_1xava")
 animation = &"hit"
+
+[node name="BloodSpatter" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("3_j7xpa")
+vframes = 7
 
 [node name="Knife" type="Area2D" parent="."]
 position = Vector2(-7, -11)

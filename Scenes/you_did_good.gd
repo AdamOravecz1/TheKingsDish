@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	Music.stop()
+	$Main/Characters/BloodSpatter.frame = len(Global.perma_death)
 	$CanvasLayer/ColorRect.modulate = Color(0, 0)
 	$CanvasLayer/Label.modulate = Color(0.65, 0, 0, 0)
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

@@ -204,6 +204,18 @@ func apply_movement(delta):
 	if on_floor and not is_on_floor() and velocity.y >= 0:
 		$Timers/Coyote.start()
 		
+func trigger_death():
+	if alive:
+		can_attack = false
+		can_move = false
+		health = 100
+		$Timers/DrowningTimer.stop()
+		if coin < 5:
+			coin = 0
+		else:
+			coin -= 5
+		TransitionLayer.change_scene("res://Scenes/castle.tscn")
+		
 func swim():
 	$Sound/WaterDive.play()
 	$Sound/Land.volume_db = -20

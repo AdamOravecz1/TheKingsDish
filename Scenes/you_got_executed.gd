@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	Music.stop()
+	$Main/Characters/BloodSpatter.frame = len(Global.perma_death)
 	await get_tree().create_timer(1.0).timeout
 	$Sound/Jingle.play()
 	$Main/Characters/King/Label.text = Global.execution_text

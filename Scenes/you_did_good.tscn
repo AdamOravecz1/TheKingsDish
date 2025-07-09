@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cbpsanhfh8cix" path="res://Scenes/ending.tscn" id="1_051df"]
 [ext_resource type="Script" path="res://Scenes/you_did_good.gd" id="2_inh1d"]
-[ext_resource type="FontFile" uid="uid://bwb52a73ovbca" path="res://Fonts/OldLondon.ttf" id="3_slqj4"]
 [ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="4_ajs0f"]
 [ext_resource type="Texture2D" uid="uid://s1dkmybl32yc" path="res://Sprites/BG2Cloud.png" id="5_t3d2i"]
 [ext_resource type="Texture2D" uid="uid://cwnm6rc36im07" path="res://Sprites/BG1Cloud.png" id="6_x5lq1"]
@@ -14,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://xwxusxtkn30s" path="res://Sprites/King.png" id="12_pbx33"]
 [ext_resource type="Shader" path="res://Shaders/flash_text.gdshader" id="13_yx44t"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="14_65l83"]
+[ext_resource type="Texture2D" uid="uid://c76n2hy8tc57j" path="res://Sprites/BloodSpatter.png" id="14_ai1fk"]
 [ext_resource type="AudioStream" uid="uid://b531148hu43dp" path="res://Music/Promotion_v2.wav" id="15_0tnwj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oknuv"]
@@ -23,36 +23,7 @@ shader_parameter/alpha = 1.0
 [node name="You got promoted" instance=ExtResource("1_051df")]
 script = ExtResource("2_inh1d")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="CanvasLayer" index="1"]
-modulate = Color(0.517647, 0, 0, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -117.5
-offset_right = 213.0
-offset_bottom = 117.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_slqj4")
-theme_override_font_sizes/font_size = 100
-text = "End"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
 [node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 position = Vector2(-411, 50)
@@ -244,6 +215,12 @@ text = "For your week-long hard work,
 I hereby promote you to Master Chef.
 Continue to uphold this level of excellence."
 horizontal_alignment = 1
+
+[node name="BloodSpatter" type="Sprite2D" parent="Main/Characters" index="2"]
+position = Vector2(242, 30)
+texture = ExtResource("14_ai1fk")
+vframes = 7
+frame = 6
 
 [node name="Jingle" parent="Sound" index="0"]
 stream = ExtResource("15_0tnwj")
