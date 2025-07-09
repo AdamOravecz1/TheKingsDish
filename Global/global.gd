@@ -26,6 +26,8 @@ var dragon_slayer: bool = false
 
 var king_killer: bool = false
 
+var king_taker: bool = false
+
 var execution_text: String = ""
 
 var hunter_dialogue1: Dictionary = {
@@ -1270,7 +1272,9 @@ func next_day():
 	check_ending()
 	
 func check_ending():
-	if ritual:
+	if king_taker:
+		TransitionLayer.get_ending("res://Scenes/you_are_the_king.tscn")
+	elif ritual:
 		TransitionLayer.get_ending("res://Scenes/it_is_here.tscn")
 	elif execution:
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")

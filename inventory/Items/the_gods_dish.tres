@@ -8,4 +8,4 @@ script = ExtResource("1_bal6b")
 name = "The Gods Dish"
 texture = ExtResource("2_baikt")
 value = 100
-types = Array[String]([])
+types = Array[String](["king"])

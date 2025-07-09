@@ -70,7 +70,10 @@ func _on_player_left_body_exited(body):
 
 func _on_kings_plate_inv_send_food(food):
 	if food:
-		if "meat" in food.types and Global.current_day == 4:
+		if "king" in food.types:
+			Global.king_killer = false
+			Global.king_taker = true
+		elif "meat" in food.types and Global.current_day == 4:
 			Global.execution = true
 			Global.execution_text = "You think you can serve meat on lent?\nGod will punish you now."
 		elif "dragon" in food.types:
@@ -99,8 +102,8 @@ func _on_kings_plate_inv_send_food(food):
 		Global.previous_day_value = food.value
 		$Food.texture = food.texture
 		Global.can_next_day = true
-
 	else:
+		Global.king_killer = false
 		Global.previous_day_value = 0
 		$Food.texture = null
 		Global.can_next_day = false
