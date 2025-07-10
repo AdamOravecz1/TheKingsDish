@@ -16,7 +16,7 @@ var is_recipes_open = false
 var can_save := true
 var can_open := true
 
-@export var full_screen: bool = false
+@export var full_screen: bool = Global.full_screen
 @export var rain_day: int = 2
 
 @onready var player = get_tree().get_first_node_in_group("Player")

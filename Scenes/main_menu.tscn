@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nx7rviucylv6"]
+[gd_scene load_steps=11 format=3 uid="uid://nx7rviucylv6"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_5j3h6"]
 [ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="1_h7xkd"]
@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://bj5svi707j5tw" path="res://Sprites/BGHill.png" id="4_dvy4m"]
 [ext_resource type="Texture2D" uid="uid://cowxy3pmmhyfr" path="res://Sprites/BG2Tree3.png" id="5_2gmn6"]
 [ext_resource type="Texture2D" uid="uid://m7nh0rasedc8" path="res://Sprites/BG1Tree2.png" id="6_164i3"]
+[ext_resource type="Theme" uid="uid://b0n8l87dehvwg" path="res://default.tres" id="8_4od5h"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="9_yv0it"]
+[ext_resource type="PackedScene" uid="uid://evctvj6lpyht" path="res://Scenes/input_settings.tscn" id="10_stpta"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" groups=["MainMenu"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -217,9 +220,104 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Start Game
+theme = ExtResource("8_4od5h")
+text = "New Game
 "
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[node name="Settings" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "Settings"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "Quit"
+
+[node name="Settings" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Sound" type="Button" parent="CanvasLayer/MarginContainer/Settings"]
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "Sound"
+
+[node name="Controls" type="Button" parent="CanvasLayer/MarginContainer/Settings"]
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "Controls"
+
+[node name="FullScreen" type="Button" parent="CanvasLayer/MarginContainer/Settings"]
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "FullScreen"
+
+[node name="Back" type="Button" parent="CanvasLayer/MarginContainer/Settings"]
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "Back"
+
+[node name="SoundControls" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="CanvasLayer/MarginContainer/SoundControls"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_yv0it")
+text = "Music:"
+
+[node name="Music" type="HSlider" parent="CanvasLayer/MarginContainer/SoundControls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFXLabel" type="Label" parent="CanvasLayer/MarginContainer/SoundControls"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_yv0it")
+text = "Sound Effects"
+
+[node name="SFX" type="HSlider" parent="CanvasLayer/MarginContainer/SoundControls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="BackSetting" type="Button" parent="CanvasLayer/MarginContainer/SoundControls"]
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "Back"
+
+[node name="InputSettings" parent="CanvasLayer/MarginContainer" instance=ExtResource("10_stpta")]
+visible = false
+layout_mode = 2
+
+[node name="BackControls" type="Button" parent="CanvasLayer/MarginContainer/InputSettings"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 273.0
+offset_right = 32.0
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("9_yv0it")
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Settings/Sound" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Settings/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Settings/FullScreen" to="." method="_on_full_screen_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/Settings/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="CanvasLayer/MarginContainer/SoundControls/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MarginContainer/SoundControls/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/SoundControls/BackSetting" to="." method="_on_back_setting_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/InputSettings/BackControls" to="." method="_on_back_controls_pressed"]

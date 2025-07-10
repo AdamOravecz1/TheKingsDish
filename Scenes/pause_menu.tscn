@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://lj336g1j5mwr"]
+[gd_scene load_steps=4 format=3 uid="uid://lj336g1j5mwr"]
 
 [ext_resource type="Script" path="res://Scenes/pause_menu.gd" id="1_qf843"]
+[ext_resource type="PackedScene" uid="uid://evctvj6lpyht" path="res://Scenes/input_settings.tscn" id="2_pq7gf"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="3_7riqm"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -53,9 +55,36 @@ text = "Load"
 layout_mode = 2
 text = "Next day"
 
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+
+[node name="InputSettings" parent="MarginContainer" instance=ExtResource("2_pq7gf")]
+visible = false
+layout_mode = 2
+
+[node name="BackControls" type="Button" parent="MarginContainer/InputSettings"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = 297.0
+offset_right = 32.0
+offset_bottom = 321.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_7riqm")
+text = "Back"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FullScreen" to="." method="_on_full_screen_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MarginContainer/InputSettings/BackControls" to="." method="_on_back_controls_pressed"]

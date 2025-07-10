@@ -1,5 +1,7 @@
 extends Node
 
+var full_screen: bool = false
+
 var current_day: int = 0
 
 var previous_day_value: int = 0
