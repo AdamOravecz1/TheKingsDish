@@ -37,3 +37,5 @@ func _on_controls_pressed():
 func _on_back_controls_pressed():
 	$MarginContainer/InputSettings.hide()
 	$MarginContainer/VBoxContainer.show()
+	InteractionManager.change_text()
+	BigGlobal.save_game()

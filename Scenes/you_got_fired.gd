@@ -29,7 +29,8 @@ func _ready():
 	var tween = create_tween()
 	tween.tween_property($CanvasLayer/ColorRect, "modulate", Color(0, 1), 1)
 	tween.tween_property($CanvasLayer/Label, "modulate", Color(0.65, 0, 0, 1), 1)
-	await get_tree().create_timer(1.0).timeout
+	tween.tween_property($CanvasLayer/Label, "modulate", Color(0.65, 0, 0, 0), 1)
+	tween.tween_callback(Callable(self, "end"))
 	walk = false
 	
 func play_alternating_sound():

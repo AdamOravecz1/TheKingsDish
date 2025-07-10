@@ -13,4 +13,5 @@ func _ready():
 	var tween = create_tween()
 	tween.tween_property($CanvasLayer/ColorRect, "modulate", Color(0, 1), 1)
 	tween.tween_property($CanvasLayer/Label, "modulate", Color(0.65, 0, 0, 1), 1)
-
+	tween.tween_property($CanvasLayer/Label, "modulate", Color(0.65, 0, 0, 0), 1)
+	tween.tween_callback(Callable(self, "end"))

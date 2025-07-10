@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtnq208by6bad"]
+[gd_scene load_steps=18 format=3 uid="uid://dtnq208by6bad"]
 
 [ext_resource type="PackedScene" uid="uid://cbpsanhfh8cix" path="res://Scenes/ending.tscn" id="1_mkwdl"]
 [ext_resource type="Script" path="res://Scenes/you_got_executed.gd" id="2_1gq8j"]
-[ext_resource type="FontFile" uid="uid://bwb52a73ovbca" path="res://Fonts/OldLondon.ttf" id="3_qu0ue"]
 [ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="4_c8k3i"]
 [ext_resource type="Texture2D" uid="uid://s1dkmybl32yc" path="res://Sprites/BG2Cloud.png" id="5_8gtdo"]
 [ext_resource type="Texture2D" uid="uid://cwnm6rc36im07" path="res://Sprites/BG1Cloud.png" id="6_yn3bl"]
@@ -25,36 +24,7 @@ shader_parameter/alpha = 1.0
 [node name="You got executed" instance=ExtResource("1_mkwdl")]
 script = ExtResource("2_1gq8j")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." index="0"]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" index="0"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CanvasLayer2" index="1"]
-modulate = Color(0.517647, 0, 0, 0)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -117.5
-offset_right = 213.0
-offset_bottom = 117.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_qu0ue")
-theme_override_font_sizes/font_size = 100
-text = "End"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="1"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
 

@@ -4,15 +4,19 @@ extends Node2D
 
 @onready var label = $Label
 
-const base_text = "[E] to "
+var base_text = "[E] to "
 
 var active_areas = []
 var can_interact = true
 
+func change_text():
+	if "interact" in BigGlobal.saved_inputs:
+		base_text = "[" + str(BigGlobal.saved_inputs["interact"].as_text().trim_suffix(" (Physical)")) + "] to "
+	else:
+		base_text = "[E] to "
 
 func set_player():
 	player = get_tree().get_first_node_in_group("Player")
-	print(player)
 	if player == null:
 		print("Player node not found in the scene.")
 

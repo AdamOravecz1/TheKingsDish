@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://nx7rviucylv6"]
+[gd_scene load_steps=12 format=3 uid="uid://nx7rviucylv6"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_5j3h6"]
 [ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="1_h7xkd"]
@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://b0n8l87dehvwg" path="res://default.tres" id="8_4od5h"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="9_yv0it"]
 [ext_resource type="PackedScene" uid="uid://evctvj6lpyht" path="res://Scenes/input_settings.tscn" id="10_stpta"]
+[ext_resource type="PackedScene" uid="uid://bmlnx1xtp0pji" path="res://inventory/recipes.tscn" id="11_k02we"]
 
 [node name="MainMenu" type="Control" groups=["MainMenu"]]
 layout_mode = 3
@@ -204,6 +205,28 @@ texture = ExtResource("6_164i3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Recipes" parent="CanvasLayer" instance=ExtResource("11_k02we")]
+visible = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 88.0
+offset_right = 768.0
+
+[node name="BackRecipes" type="Button" parent="CanvasLayer/Recipes"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -322.0
+offset_top = -40.0
+offset_right = -246.0
+offset_bottom = -14.0
+grow_horizontal = 2
+theme = ExtResource("8_4od5h")
+text = "Back"
+
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -230,6 +253,11 @@ text = "New Game
 layout_mode = 2
 theme = ExtResource("8_4od5h")
 text = "Settings"
+
+[node name="Recipes" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "Recipes"
 
 [node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -310,8 +338,10 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("9_yv0it")
 text = "Back"
 
+[connection signal="pressed" from="CanvasLayer/Recipes/BackRecipes" to="." method="_on_back_recipes_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Recipes" to="." method="_on_recipes_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Settings/Sound" to="." method="_on_sound_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/Settings/Controls" to="." method="_on_controls_pressed"]

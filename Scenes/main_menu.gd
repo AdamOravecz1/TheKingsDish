@@ -64,3 +64,15 @@ func _on_sfx_value_changed(value):
 func _on_back_controls_pressed():
 	$CanvasLayer/MarginContainer/InputSettings.hide()
 	$CanvasLayer/MarginContainer/Settings.show()
+	InteractionManager.change_text()
+	BigGlobal.save_game()
+
+
+func _on_recipes_pressed():
+	$CanvasLayer/MarginContainer.hide()
+	$CanvasLayer/Recipes.show()
+
+
+func _on_back_recipes_pressed():
+	$CanvasLayer/MarginContainer.show()
+	$CanvasLayer/Recipes.hide()

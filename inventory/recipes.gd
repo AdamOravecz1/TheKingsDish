@@ -7,6 +7,7 @@ var buffer_node: Control
 @onready var vbox := $ScrollContainer/VBoxContainer
 @onready var scroll := $ScrollContainer
 
+var sorted_recipe_names := Global.found_recipes.keys()
 var from_ready := false 
 
 func _ready():
@@ -19,7 +20,10 @@ func setup():
 	clear_recipes()
 
 	# Get and sort recipe names alphabetically
-	var sorted_recipe_names := Global.found_recipes.keys()
+	if get_tree().current_scene.name == "MainMenu":
+		sorted_recipe_names = Global.recipes.keys()
+	else:
+		sorted_recipe_names = Global.found_recipes.keys()
 	sorted_recipe_names.sort()  # Sorts in-place, alphabetical by default
 
 	for recipe_name in sorted_recipe_names:
