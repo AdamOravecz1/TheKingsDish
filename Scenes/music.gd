@@ -10,6 +10,8 @@ func _play_music(music = AudioStream):
 	play()
 	
 func play_level_music():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	print(process_mode)  # Should print '1' (PROCESS_MODE_ALWAYS)
 	_play_music(level_music)
 
 	

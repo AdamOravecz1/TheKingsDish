@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://lj336g1j5mwr"]
+[gd_scene load_steps=6 format=3 uid="uid://lj336g1j5mwr"]
 
 [ext_resource type="Script" path="res://Scenes/pause_menu.gd" id="1_qf843"]
+[ext_resource type="Theme" uid="uid://b0n8l87dehvwg" path="res://default.tres" id="2_471lu"]
 [ext_resource type="PackedScene" uid="uid://evctvj6lpyht" path="res://Scenes/input_settings.tscn" id="2_pq7gf"]
+[ext_resource type="Texture2D" uid="uid://c0guhh074wxux" path="res://Sprites/PauseBG.png" id="2_rxtr4"]
 [ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="3_7riqm"]
 
 [node name="PauseMenu" type="Control"]
@@ -14,6 +16,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qf843")
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -108.0
+offset_right = 100.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("2_rxtr4")
+expand_mode = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -21,43 +42,51 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -21.0
-offset_top = -20.0
-offset_right = 21.0
-offset_bottom = 20.0
+offset_left = -100.0
+offset_top = -108.0
+offset_right = 100.0
+offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_471lu")
 text = "Resume"
 
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit"
+theme = ExtResource("2_471lu")
+text = "Main Menu"
 
 [node name="FullScreen" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_471lu")
 text = "Full Screen"
 
-[node name="Save" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Sound" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Save"
-
-[node name="Load" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Load"
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Next day"
+theme = ExtResource("2_471lu")
+text = "Sound"
 
 [node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_471lu")
 text = "Controls"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_471lu")
+text = "Quit"
 
 [node name="InputSettings" parent="MarginContainer" instance=ExtResource("2_pq7gf")]
 visible = false
@@ -71,20 +100,51 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -32.0
-offset_top = 297.0
+offset_top = 255.0
 offset_right = 32.0
-offset_bottom = 321.0
+offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("3_7riqm")
 text = "Back"
 
+[node name="SoundControls" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/SoundControls"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7riqm")
+text = "Music:"
+
+[node name="Music" type="HSlider" parent="MarginContainer/SoundControls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFXLabel" type="Label" parent="MarginContainer/SoundControls"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7riqm")
+text = "Sound Effects"
+
+[node name="SFX" type="HSlider" parent="MarginContainer/SoundControls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="BackSetting" type="Button" parent="MarginContainer/SoundControls"]
+layout_mode = 2
+theme = ExtResource("2_471lu")
+text = "Back"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/FullScreen" to="." method="_on_full_screen_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Sound" to="." method="_on_sound_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MarginContainer/InputSettings/BackControls" to="." method="_on_back_controls_pressed"]
+[connection signal="value_changed" from="MarginContainer/SoundControls/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/SoundControls/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="pressed" from="MarginContainer/SoundControls/BackSetting" to="." method="_on_back_setting_pressed"]

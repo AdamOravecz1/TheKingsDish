@@ -196,6 +196,7 @@ func pauseMenu():
 		pause_menu.hide()
 		#Engine.time_scale = 1
 		get_tree().paused = false
+		
 		player.can_move = true
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
