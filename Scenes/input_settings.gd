@@ -59,7 +59,6 @@ func _input(event):
 			
 func _update_action_list(button, event):
 	button.get_node("MarginContainer/HBoxContainer/LabelInput").text = event.as_text().trim_suffix(" (Physical)")
-	
 
 func _on_reset_button_pressed():
 	BigGlobal.saved_inputs = {}

@@ -151,6 +151,7 @@ func _exit_tree():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("inventory") and can_open:
+		
 		playerinv.position.x = 625
 		if is_open:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
@@ -272,3 +273,7 @@ func _end_lightning():
 func close_throne_door():
 	$TransitionGates/Gate2.locked = true
 
+func show_tutorial(action, action_name):
+	$CanvasLayer/CanvasLayer/Tutorial.show_tutorial(action, action_name)
+	
+	

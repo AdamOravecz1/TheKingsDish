@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var main = get_tree().get_first_node_in_group("Level")
 @onready var interaction_area: InteractionArea = $InteractionArea
 @export_enum("forest", "castle", "dungeon", "throne_room") var level := "forest"
 @export var gate_id: int
@@ -22,6 +23,7 @@ func _enterr():
 		flash_text()
 	elif can_open:
 		can_open = false
+		main.show_tutorial("hit", "hit")
 		$Door.play()
 		TransitionLayer.change_scene(levels[level])
 		if gate_id not in Global.gates_satutus:

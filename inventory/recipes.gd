@@ -10,6 +10,8 @@ var buffer_node: Control
 var sorted_recipe_names := Global.found_recipes.keys()
 var from_ready := false 
 
+@onready var main = get_tree().get_first_node_in_group("Level")
+
 func _ready():
 	setup()
 	from_ready = true
@@ -17,6 +19,7 @@ func _ready():
 func setup():
 	if from_ready:
 		get_tree().get_first_node_in_group("Player").flash_recipe()
+		main.show_tutorial("recipes", "open recipes")
 	clear_recipes()
 
 	# Get and sort recipe names alphabetically

@@ -42,6 +42,7 @@ func _on_trap_pressed():
 	if player.coin >= Global.weapon_price["TRAP"]:
 		player.trap_calculate(1)
 		player.pay(Global.weapon_price["TRAP"])
+		main.show_tutorial("trap", "place down trap")
 	else:
 		flash_text()
 		

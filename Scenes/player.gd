@@ -210,6 +210,7 @@ func trigger_death():
 		can_move = false
 		health = 100
 		$Timers/DrowningTimer.stop()
+		$CollisionShape2D.set_deferred("disabled", true)
 		if coin < 5:
 			coin = 0
 		else:
@@ -300,6 +301,7 @@ func back():
 	position = last_pos
 	
 func collect(item):
+	level.show_tutorial("inventory", "open inventory")
 	var emptyslot = inv.slots.filter(func(slot): return slot.item == null)
 	if emptyslot.size() > 0:
 		$Sound/PickUp.play()

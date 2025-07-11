@@ -1035,7 +1035,7 @@ const weapon_data = {
 	weapons.CROSSBOW: {'damage': 30, 'knockback': 1000.0, 'speed': 300, 'texture': preload("res://Sprites/Bolt4.png")}
 }
 
-var unlocked_weapons = [weapons.KNIFE, weapons.AXE, weapons.CROSSBOW]
+var unlocked_weapons = [weapons.KNIFE]
 
 var player_data: Dictionary = {
 	"health": 100,
@@ -1064,6 +1064,8 @@ var perma_death: Array
 var zombie_count: int = 0
 
 var gates_satutus: Array = []
+
+var tutorial: Array = []
 
 var butlers_inv: InvItem
 

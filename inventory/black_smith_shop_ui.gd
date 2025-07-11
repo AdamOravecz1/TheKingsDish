@@ -18,6 +18,7 @@ func _on_axe_pressed():
 		$NinePatchRect/GridContainer/Axe.add_theme_color_override("icon_focus_color", Color(0, 0, 0))
 		Global.unlocked_weapons.append(Global.weapons.AXE)
 		player.pay( Global.weapon_price["AXE"])
+		main.show_tutorial("switch", "switch weapons")
 	else:
 		flash_text()
 
@@ -33,6 +34,7 @@ func _on_crossbow_pressed():
 		$NinePatchRect/GridContainer/Crossbow.add_theme_color_override("icon_focus_color", Color(0, 0, 0))
 		Global.unlocked_weapons.append(Global.weapons.CROSSBOW)
 		player.pay( Global.weapon_price["CROSSBOW"])
+		main.show_tutorial("switch", "switch weapons")
 	else:
 		flash_text()
 
@@ -41,6 +43,7 @@ func _on_bolt_pressed():
 	if player.coin >= Global.weapon_price["BOLT"]:
 		player.bolt_calculate(1)
 		player.pay( Global.weapon_price["BOLT"])
+		main.show_tutorial("reload", "reload crossbow")
 	else:
 		flash_text()
 	

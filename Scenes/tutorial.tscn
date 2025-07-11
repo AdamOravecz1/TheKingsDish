@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1wxsi6x3bhct"]
+
+[ext_resource type="Script" path="res://Scenes/tutorial.gd" id="1_rq1vo"]
+[ext_resource type="FontFile" uid="uid://cpojoq47dln4s" path="res://Fonts/PixelOperator.ttf" id="2_qanhh"]
+[ext_resource type="Texture2D" uid="uid://uff56661s7xw" path="res://Sprites/TutorialFrame2.png" id="2_xjdyf"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_rq1vo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = 4096
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TutorialFrame" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(256, -80)
+texture = ExtResource("2_xjdyf")
+
+[node name="Label" type="Label" parent="MarginContainer/TutorialFrame"]
+offset_left = -208.0
+offset_top = -24.0
+offset_right = 944.0
+offset_bottom = -8.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_qanhh")
+theme_override_font_sizes/font_size = 16
+text = "Test"
