@@ -72,5 +72,6 @@ func _remap_from_global():
 		if event:
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action, event)
+	InteractionManager.change_text()
 
 

@@ -300,8 +300,6 @@ func back():
 	position = last_pos
 	
 func collect(item):
-	coin += 1
-	level.update_coin(str(coin))
 	var emptyslot = inv.slots.filter(func(slot): return slot.item == null)
 	if emptyslot.size() > 0:
 		$Sound/PickUp.play()

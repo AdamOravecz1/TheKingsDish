@@ -1,4 +1,4 @@
-extends Node2D
+extends ending
 
 @onready var player = $Main/Characters/Player
 @onready var left = $Sound/Left

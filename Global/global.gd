@@ -1184,8 +1184,6 @@ func save_game():
 		"unlocked_weapons": unlocked_weapons,
 		"player_data": player_data,
 		"player_inv": player_inv,
-		"vega_data": vega_data,
-		"trap_data": trap_data,
 		"chest_inv": get_items(chest_inv) if chests_load else chest_inv,
 		"found_recipes": found_recipes,
 		"scene": scene,
@@ -1206,6 +1204,7 @@ func save_game():
 		file.close()
 		print("Mentés sikeres.")
 
+var can_save := true
 
 #Betöltés funkció
 func load_game():
@@ -1224,8 +1223,6 @@ func load_game():
 			unlocked_weapons = result["unlocked_weapons"]
 			player_data = result["player_data"]
 			player_inv = result["player_inv"]
-			vega_data = result["vega_data"]
-			trap_data = result["trap_data"]
 			chest_inv = result["chest_inv"]
 			found_recipes = result["found_recipes"]
 			scene = result["scene"]
@@ -1242,7 +1239,6 @@ func load_game():
 			good_food_counter = result["good_food_counter"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
-			get_tree().get_first_node_in_group("Level").can_save = false
 			if scene == "Forest":
 				TransitionLayer.change_scene("res://Scenes/forest.tscn")
 			elif scene == "Castle":
@@ -1251,6 +1247,7 @@ func load_game():
 				TransitionLayer.change_scene("res://Scenes/dungeon.tscn")
 			elif scene == "ThroneRoom":
 				TransitionLayer.change_scene("res://Scenes/throne_room.tscn")
+			can_save = false
 			#get_tree().get_first_node_in_group("Level")._ready()
 			#get_tree().get_first_node_in_group("Player")._ready()
 
@@ -1274,19 +1271,40 @@ func next_day():
 	check_ending()
 	
 func check_ending():
+	var ended = false
 	if king_taker:
 		TransitionLayer.get_ending("res://Scenes/you_are_the_king.tscn")
+		ended = true
 	elif ritual:
 		TransitionLayer.get_ending("res://Scenes/it_is_here.tscn")
+		ended = true
 	elif execution:
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
+		ended = true
 	elif king_killer:
 		TransitionLayer.get_ending("res://Scenes/you_killed_the_king.tscn")
+		ended = true
 	elif bad_food_counter == 2:
 		TransitionLayer.get_ending("res://Scenes/you_got_fired.tscn")
+		ended = true
 	elif dragon_slayer:
 		TransitionLayer.get_ending("res://Scenes/you_are_the_dragon_slayer.tscn")
+		ended = true
 	elif current_day == 7:
 		TransitionLayer.get_ending("res://Scenes/you_did_good.tscn")
+		ended = true
+	if ended:
+		delete_save()
+		
+func delete_save():
+	if FileAccess.file_exists(save_path):
+		var error = DirAccess.remove_absolute(save_path)
+		if error == OK:
+			print("Save file deleted successfully.")
+		else:
+			print("Failed to delete save file. Error code: ", error)
+	else:
+		print("No save file found to delete.")
+
 
 

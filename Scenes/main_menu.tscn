@@ -249,6 +249,12 @@ theme = ExtResource("8_4od5h")
 text = "New Game
 "
 
+[node name="Resume" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("8_4od5h")
+text = "Continue"
+
 [node name="Settings" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("8_4od5h")
@@ -340,6 +346,7 @@ text = "Back"
 
 [connection signal="pressed" from="CanvasLayer/Recipes/BackRecipes" to="." method="_on_back_recipes_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Recipes" to="." method="_on_recipes_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

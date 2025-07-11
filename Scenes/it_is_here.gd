@@ -1,4 +1,4 @@
-extends Node2D
+extends ending
 
 var move_cam := false
 

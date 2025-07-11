@@ -1,4 +1,4 @@
-extends Node2D
+extends ending
 
 func _ready():
 	Music.stop()

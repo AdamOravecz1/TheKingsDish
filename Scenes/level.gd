@@ -13,7 +13,6 @@ var dragging := false
 var buying := false
 var is_open = false
 var is_recipes_open = false
-var can_save := true
 var can_open := true
 
 @export var full_screen: bool = Global.full_screen
@@ -122,7 +121,7 @@ func create_trap(pos, caught):
 	trap.setup(pos, caught)
 
 func _exit_tree():
-	if can_save:
+	if Global.can_save:
 		var current_animal_data: Array
 		for entity in $Main/Entities.get_children():
 			current_animal_data.append([entity.position, entity.velocity, entity.health])
@@ -148,7 +147,7 @@ func _exit_tree():
 		Global.get_items_from_player(player.inv)
 		Global.scene = get_tree().current_scene.name
 	else:
-		can_save = true
+		Global.can_save = true
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("inventory") and can_open:

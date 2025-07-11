@@ -8,7 +8,8 @@ extends Control
 
 func _ready():
 	Music.play_level_music()
-
+	if FileAccess.file_exists(Global.save_path):
+		$CanvasLayer/MarginContainer/VBoxContainer/Resume.show()
 	music.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
 	sfx.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
 
@@ -76,3 +77,6 @@ func _on_recipes_pressed():
 func _on_back_recipes_pressed():
 	$CanvasLayer/MarginContainer.show()
 	$CanvasLayer/Recipes.hide()
+
+func _on_resume_pressed():
+	Global.load_game()
