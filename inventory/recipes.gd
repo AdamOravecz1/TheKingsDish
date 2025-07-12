@@ -17,7 +17,7 @@ func _ready():
 	from_ready = true
 
 func setup():
-	if from_ready:
+	if from_ready and get_tree().current_scene.name != "MainMenu":
 		get_tree().get_first_node_in_group("Player").flash_recipe()
 		main.show_tutorial("recipes", "open recipes")
 	clear_recipes()

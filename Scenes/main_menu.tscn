@@ -212,7 +212,7 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -200.0
-offset_top = 88.0
+offset_top = 152.0
 offset_right = 768.0
 
 [node name="BackRecipes" type="Button" parent="CanvasLayer/Recipes"]
@@ -221,12 +221,28 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -322.0
-offset_top = -40.0
+offset_top = -104.0
 offset_right = -246.0
-offset_bottom = -14.0
+offset_bottom = -78.0
 grow_horizontal = 2
 theme = ExtResource("8_4od5h")
 text = "Back"
+
+[node name="RecipeReset" type="Button" parent="CanvasLayer/Recipes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -408.0
+offset_right = -168.0
+offset_bottom = -377.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_4od5h")
+text = "Reset All Recipes"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -363,6 +379,7 @@ theme_override_font_sizes/font_size = 128
 text = "The Kings Dish"
 
 [connection signal="pressed" from="CanvasLayer/Recipes/BackRecipes" to="." method="_on_back_recipes_pressed"]
+[connection signal="pressed" from="CanvasLayer/Recipes/RecipeReset" to="." method="_on_recipe_reset_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

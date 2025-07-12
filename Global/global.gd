@@ -36,19 +36,17 @@ var hunter_dialogue1: Dictionary = {
 	"start": {
 		"text": "Hey! You are the new new cook. Have you seen this [color=red]rabbit[/color]? Realy hard to catch it with just your hand.",
 		"options": [
-			{"text": ">Can you catch it?", "next": "catch"},
-			{"text": ">Whats your favorite food?", "next": "food"}
+			{"text": ">Can you catch it?", "next": "catch"}
 		]
 	},
 	"catch": {
-		"text": "Of course I can. I can sell you some [color=red]traps[/color] so you can catch some too. I also sell the [color=red]recipe[/color] for my dish, it would be much apriciated if you can meke it for me.",
+		"text": "Of course I can. I can sell you some [color=red]traps[/color] so you can catch some also.",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
 			{"text": ">Whats your favorite food?", "next": "food"}
 		]
 	},
 	"food": {
-		"text": "I realy like [color=red]rabbit stew[/color]. Loved it you could make some for me. You can buy some [color=red]traps[/color] to help you catch that rabbit to.",
+		"text": "I realy like [color=red]rabbit stew[/color]. Loved it you could make some for me. I can sell you the [color=red]recipe[/color] too.",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
 			{"text": ">Good bye.", "next": "good_bye"}
@@ -747,6 +745,7 @@ var butler_dialogue1: Dictionary = {
 	},
 	"eat": {
 		"text": "No thank you I also taste test for the king. I can try every dish you make. But... there is this legend about a [color=red]plant that taste like meat[/color]. I would like to try that some time.",
+		"action": "add_recipe",
 		"options": [
 			{"text": ">Understood.", "next": "good_bye"}
 		]
@@ -1045,6 +1044,7 @@ var player_data: Dictionary = {
 }
 
 var gate_index: int
+
 var can_gate := false 
 
 var player_inv: Array
@@ -1197,7 +1197,8 @@ func save_game():
 		"king_counter": king_counter,
 		"gates_satutus": gates_satutus,
 		"bad_food_counter": bad_food_counter,
-		"good_food_counter": good_food_counter
+		"good_food_counter": good_food_counter,
+		"food_given": food_given
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -1239,6 +1240,7 @@ func load_game():
 				gates_satutus.append(int(gate))
 			bad_food_counter = result["bad_food_counter"]
 			good_food_counter = result["good_food_counter"]
+			food_given = result["food_given"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			if scene == "Forest":
@@ -1273,40 +1275,103 @@ func next_day():
 	check_ending()
 	
 func check_ending():
-	var ended = false
 	if king_taker:
 		TransitionLayer.get_ending("res://Scenes/you_are_the_king.tscn")
-		ended = true
 	elif ritual:
 		TransitionLayer.get_ending("res://Scenes/it_is_here.tscn")
-		ended = true
 	elif execution:
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
-		ended = true
 	elif king_killer:
 		TransitionLayer.get_ending("res://Scenes/you_killed_the_king.tscn")
-		ended = true
 	elif bad_food_counter == 2:
 		TransitionLayer.get_ending("res://Scenes/you_got_fired.tscn")
-		ended = true
 	elif dragon_slayer:
 		TransitionLayer.get_ending("res://Scenes/you_are_the_dragon_slayer.tscn")
-		ended = true
 	elif current_day == 7:
 		TransitionLayer.get_ending("res://Scenes/you_did_good.tscn")
-		ended = true
-	if ended:
-		delete_save()
+
 		
 func delete_save():
 	if FileAccess.file_exists(save_path):
 		var error = DirAccess.remove_absolute(save_path)
 		if error == OK:
 			print("Save file deleted successfully.")
+			remove_progress()
 		else:
 			print("Failed to delete save file. Error code: ", error)
 	else:
 		print("No save file found to delete.")
+		
+func remove_progress():
+	current_day = 0
+
+	previous_day_value = 0
+
+	food_given = []
+
+	dialogue_progress = {}
+
+	monk_counter = 0
+
+	king_counter = 0
+
+	bad_food_counter = 0
+
+	good_food_counter = 0
+
+	can_next_day = false
+
+	execution = false
+
+	ritual = false
+
+	dragon_slayer = false
+
+	king_killer = false
+
+	king_taker = false
+
+	execution_text = ""
+	
+	unlocked_weapons = [weapons.KNIFE]
+
+	player_data = {
+		"health": 100,
+		"coin": 10,
+		"bolt": 0,
+		"trap": 0
+	}
+
+	player_inv = []
+
+	animal_data = {}
+
+	vega_data = {}
+
+	trap_data = {}
+
+	chest_inv = {}
+
+	scene = ""
+
+	perma_death = []
+
+	zombie_count = 0
+
+	gates_satutus = []
+
+	tutorial = []
+
+	butlers_inv = null
+
+	found_recipes = {
+		"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
+		"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
+		"res://inventory/Items/fries.tres": ["res://inventory/Items/oil.tres", "res://inventory/Items/potato.tres"],
+		"res://inventory/Items/sugar.tres": ["res://inventory/Items/carrot.tres"],
+		"res://inventory/Items/mashed_potatoes.tres": ["res://inventory/Items/potato.tres", "res://inventory/Items/milk.tres"]
+	}
+
 
 
 

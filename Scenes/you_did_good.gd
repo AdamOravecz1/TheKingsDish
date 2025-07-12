@@ -1,7 +1,7 @@
 extends ending
 
 func _ready():
-	Music.stop()
+	Music.stop_music()
 	$Main/Characters/BloodSpatter.frame = len(Global.perma_death)
 	$CanvasLayer/ColorRect.modulate = Color(0, 0)
 	$CanvasLayer/Label.modulate = Color(0.65, 0, 0, 0)

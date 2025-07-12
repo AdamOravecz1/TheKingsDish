@@ -13,5 +13,7 @@ func play_level_music():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_play_music(level_music)
 
-	
+func stop_music():
+	stop()
+	stream = null
 	

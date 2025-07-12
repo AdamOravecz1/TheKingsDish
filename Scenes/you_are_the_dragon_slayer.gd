@@ -2,7 +2,7 @@ extends ending
 
 
 func _ready():
-	Music.stop()
+	Music.stop_music()
 	for npc in $Main/Characters/MightBeDead.get_children():
 		if npc.name in Global.perma_death:
 			npc.visible = false

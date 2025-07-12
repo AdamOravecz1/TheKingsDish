@@ -1,7 +1,7 @@
 extends ending
 
 func _ready():
-	Music.stop()
+	Music.stop_music()
 	$Main/Characters/BloodSpatter.frame = len(Global.perma_death)
 	await get_tree().create_timer(1.0).timeout
 	$Sound/Jingle.play()

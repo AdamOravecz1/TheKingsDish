@@ -3,6 +3,8 @@ extends Entity
 @export var inv: Inv 
 @export var chest_name: String  # A unique identifier for this chest
 
+@onready var recipes = get_tree().get_first_node_in_group("Recipes")
+
 var x_direction := -1
 var speed = 100
 var speed_modifier := 0
@@ -251,3 +253,10 @@ func _on_tree_exited():
 func thanks_dialogue():
 	dialogue = Global.thank_dialogues
 	talk.show_node(self.name)
+
+func add_recipe():
+	var key = "res://inventory/Items/lamb_chops_with_mashed_potatoes.tres"
+	if key not in Global.found_recipes:
+		if Global.recipes.has(key):
+			Global.found_recipes[key] = Global.recipes[key]
+		recipes.setup()

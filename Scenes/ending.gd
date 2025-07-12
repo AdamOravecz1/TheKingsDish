@@ -6,10 +6,12 @@ func end():
 		if not BigGlobal.found_recipes.has(key):
 			BigGlobal.found_recipes[key] = Global.found_recipes[key]
 	BigGlobal.save_game()
+	Global.delete_save()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$CanvasLayer/VBoxContainer.show()
 
 func _on_main_menu_pressed():
+	Music.play_level_music()
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func _on_quit_pressed():

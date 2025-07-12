@@ -16,7 +16,7 @@ func _process(delta):
 		player.move_and_slide()
 
 func _ready():
-	Music.stop()
+	Music.stop_music()
 	$Main/Characters/BloodSpatter.frame = len(Global.perma_death)
 	$CanvasLayer/ColorRect.modulate = Color(0, 0)
 	$CanvasLayer/Label.modulate = Color(0.65, 0, 0, 0)
@@ -31,6 +31,7 @@ func _ready():
 	tween.tween_property($CanvasLayer/Label, "modulate", Color(0.65, 0, 0, 1), 1)
 	tween.tween_property($CanvasLayer/Label, "modulate", Color(0.65, 0, 0, 0), 1)
 	tween.tween_callback(Callable(self, "end"))
+	await get_tree().create_timer(1.0).timeout
 	walk = false
 	
 func play_alternating_sound():
