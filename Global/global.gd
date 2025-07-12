@@ -44,7 +44,7 @@ var hunter_dialogue1: Dictionary = {
 		"text": "Of course I can. I can sell you some [color=red]traps[/color] so you can catch some too. I also sell the [color=red]recipe[/color] for my dish, it would be much apriciated if you can meke it for me.",
 		"options": [
 			{"text": ">Buy", "next": "shop"},
-			{"text": ">Good bye.", "next": "good_bye"}
+			{"text": ">Whats your favorite food?", "next": "food"}
 		]
 	},
 	"food": {
@@ -1009,10 +1009,10 @@ const animal_parameters = {
 }
 
 const weapon_price = {
-	"AXE" : 5,
-	"CROSSBOW" : 10 ,
+	"AXE" : 20,
+	"CROSSBOW" : 30,
 	"BOLT" : 1,
-	"TRAP" : 1
+	"TRAP" : 3
 }
 
 const recipe_price = {
@@ -1040,8 +1040,8 @@ var unlocked_weapons = [weapons.KNIFE]
 var player_data: Dictionary = {
 	"health": 100,
 	"coin": 10,
-	"bolt": 100,
-	"trap": 1
+	"bolt": 0,
+	"trap": 0
 }
 
 var gate_index: int

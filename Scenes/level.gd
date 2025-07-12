@@ -47,6 +47,7 @@ func _ready():
 	if full_screen:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if Global.can_gate:
+		show_tutorial("hit", "hit")
 		for gate in $TransitionGates.get_children():
 			if gate.gate_id == Global.gate_index and Global.can_gate:
 				player.position = gate.global_position

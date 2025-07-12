@@ -38,6 +38,7 @@ func _on_sound_pressed():
 func _on_controls_pressed():
 	$CanvasLayer/MarginContainer/InputSettings.show()
 	$CanvasLayer/MarginContainer/Settings.hide()
+	$CanvasLayer/Title.hide()
 
 func _on_full_screen_pressed():
 	if Global.full_screen:
@@ -65,6 +66,7 @@ func _on_sfx_value_changed(value):
 func _on_back_controls_pressed():
 	$CanvasLayer/MarginContainer/InputSettings.hide()
 	$CanvasLayer/MarginContainer/Settings.show()
+	$CanvasLayer/Title.show()
 	InteractionManager.change_text()
 	BigGlobal.save_game()
 
@@ -72,11 +74,12 @@ func _on_back_controls_pressed():
 func _on_recipes_pressed():
 	$CanvasLayer/MarginContainer.hide()
 	$CanvasLayer/Recipes.show()
-
+	$CanvasLayer/Title.hide()
 
 func _on_back_recipes_pressed():
 	$CanvasLayer/MarginContainer.show()
 	$CanvasLayer/Recipes.hide()
+	$CanvasLayer/Title.show()
 
 func _on_resume_pressed():
 	Global.load_game()
