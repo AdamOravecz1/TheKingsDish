@@ -35,8 +35,8 @@ func _ready():
 	$NinePatchRect/GridContainer/VBoxContainer2/StewLabel.text = "   " + str(Global.recipe_price["Rabbit stew"])
 	$NinePatchRect/GridContainer/VBoxContainer3/StewLabel2.text = "   " + str(Global.recipe_price["Rabbit stew with mushroom"])
 	$NinePatchRect/GridContainer/VBoxContainer4/SoupLabel.text = "   " + str(Global.recipe_price["Mushroom soup"])
-	$NinePatchRect/GridContainer/VBoxContainer5/StirFryLabel.text + "   " + str(Global.recipe_price["Stir fry"])
-	$NinePatchRect/GridContainer/VBoxContainer6/PumpkinPieLabel.text  + "   " + str(Global.recipe_price["Pumpkin pie"])
+	$NinePatchRect/GridContainer/VBoxContainer5/StirFryLabel.text = "   " + str(Global.recipe_price["Stir fry"])
+	$NinePatchRect/GridContainer/VBoxContainer6/PumpkinPieLabel.text = "   " + str(Global.recipe_price["Pumpkin pie"])
 
 func _on_trap_pressed():
 	if player.coin >= Global.weapon_price["TRAP"]:

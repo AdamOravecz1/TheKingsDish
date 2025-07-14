@@ -973,7 +973,7 @@ var thank_dialogues: Dictionary = {
 
 var dialogue: Dictionary = {
 	"Hunter": [hunter_dialogue1, hunter_dialogue2, hunter_dialogue3, hunter_dialogue4, hunter_dialogue5, hunter_dialogue6, hunter_dialogue6, buffer_dialogue],
-	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4, miller_dialogue5, miller_dialogue5, miller_dialogue6, buffer_dialogue],
+	"Miller": [miller_dialogue1, miller_dialogue2, miller_dialogue3, miller_dialogue4, miller_dialogue5, miller_dialogue6, miller_dialogue6, buffer_dialogue],
 	"BlackSmith": [blacksmith_dialogue1, blacksmith_dialogue2, blacksmith_dialogue3, blacksmith_dialogue3, blacksmith_dialogue4, blacksmith_dialogue3, blacksmith_dialogue3, buffer_dialogue],
 	"Fisher": [fisher_dialogue1, fisher_dialogue2, fisher_dialogue2, fisher_dialogue3, fisher_dialogue2, fisher_dialogue2, fisher_dialogue4, buffer_dialogue],
 	"Butler": [butler_dialogue1, butler_dialogue2, butler_dialogue2, butler_dialogue2, butler_dialogue3, butler_dialogue2, butler_dialogue2, buffer_dialogue],
@@ -1275,6 +1275,7 @@ func next_day():
 	check_ending()
 	
 func check_ending():
+	print(current_day)
 	if king_taker:
 		TransitionLayer.get_ending("res://Scenes/you_are_the_king.tscn")
 	elif ritual:

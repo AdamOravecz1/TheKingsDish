@@ -31,6 +31,7 @@ func _on_cook_pressed():
 
 		if ingredients_name == cauldron_content:
 			add_recipe(recipe_name)
+			found_recipe(recipe_name)
 			$Success.play()
 			inv.initialize_inv(4)
 			inv.insert_to_place(load(recipe_name), 0)
@@ -58,4 +59,10 @@ func add_recipe(key):
 	if key not in Global.found_recipes:
 		if Global.recipes.has(key):
 			Global.found_recipes[key] = Global.recipes[key]
+		recipes.setup()
+		
+func found_recipe(key):
+	if key not in BigGlobal.made_recipes:
+		if Global.recipes.has(key):
+			BigGlobal.made_recipes[key] = Global.recipes[key]
 		recipes.setup()

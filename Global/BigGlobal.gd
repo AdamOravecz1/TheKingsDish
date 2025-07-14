@@ -8,13 +8,7 @@ const basic_recipes: Dictionary = {
 	"res://inventory/Items/mashed_potatoes.tres": ["res://inventory/Items/potato.tres", "res://inventory/Items/milk.tres"]
 }
 
-var found_recipes: Dictionary = {
-	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
-	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
-	"res://inventory/Items/fries.tres": ["res://inventory/Items/oil.tres", "res://inventory/Items/potato.tres"],
-	"res://inventory/Items/sugar.tres": ["res://inventory/Items/carrot.tres"],
-	"res://inventory/Items/mashed_potatoes.tres": ["res://inventory/Items/potato.tres", "res://inventory/Items/milk.tres"]
-}
+var made_recipes: Dictionary = {}
 
 func _ready():
 	load_game()
@@ -58,7 +52,7 @@ func save_game():
 		
 	var save_data: Dictionary = {
 		"saved_inputs": serializable_inputs,
-		"found_recipes": found_recipes
+		"made_recipes": made_recipes
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -78,8 +72,8 @@ func load_game():
 		var content = file.get_as_text()
 		var result = JSON.parse_string(content)
 		if result:
-			if "found_recipes" in result:
-				found_recipes = result["found_recipes"]
+			if "made_recipes" in result:
+				made_recipes = result["made_recipes"]
 			saved_inputs.clear()
 			for action in result["saved_inputs"].keys():
 				var event_dict = result["saved_inputs"][action]

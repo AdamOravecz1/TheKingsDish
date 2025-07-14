@@ -19,7 +19,7 @@ func setup(recipe_name):
 		var recipe_icon = TextureRect.new()
 		recipe_icon.texture = recipe_texture
 		if get_tree().current_scene.name == "MainMenu":
-			if recipe_name not in BigGlobal.found_recipes:
+			if recipe_name not in BigGlobal.made_recipes:
 				fog = true
 				recipe_icon.modulate = Color(0, 0, 0)
 		recipe_icon.custom_minimum_size = Vector2(32, 32)

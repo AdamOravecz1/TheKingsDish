@@ -2,9 +2,6 @@ class_name ending
 extends Node2D
 
 func end():
-	for key in Global.found_recipes.keys():
-		if not BigGlobal.found_recipes.has(key):
-			BigGlobal.found_recipes[key] = Global.found_recipes[key]
 	BigGlobal.save_game()
 	Global.delete_save()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

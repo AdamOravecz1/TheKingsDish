@@ -86,6 +86,6 @@ func _on_resume_pressed():
 
 
 func _on_recipe_reset_pressed():
-	BigGlobal.found_recipes = BigGlobal.basic_recipes
+	BigGlobal.made_recipes = {}
 	BigGlobal.save_game()
 	$CanvasLayer/Recipes.setup()
