@@ -10,6 +10,8 @@ const basic_recipes: Dictionary = {
 
 var made_recipes: Dictionary = {}
 
+var found_endings: Array = []
+
 func _ready():
 	load_game()
 
@@ -52,7 +54,8 @@ func save_game():
 		
 	var save_data: Dictionary = {
 		"saved_inputs": serializable_inputs,
-		"made_recipes": made_recipes
+		"made_recipes": made_recipes,
+		"found_endings": found_endings
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -74,6 +77,8 @@ func load_game():
 		if result:
 			if "made_recipes" in result:
 				made_recipes = result["made_recipes"]
+			if "found_endings" in result:
+				found_endings = result["found_endings"]
 			saved_inputs.clear()
 			for action in result["saved_inputs"].keys():
 				var event_dict = result["saved_inputs"][action]

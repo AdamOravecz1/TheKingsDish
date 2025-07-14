@@ -7,6 +7,7 @@ extends Control
 @onready var sfx = $CanvasLayer/MarginContainer/SoundControls/SFX
 
 func _ready():
+	endings_list()
 	Music.play_level_music()
 	if FileAccess.file_exists(Global.save_path):
 		$CanvasLayer/MarginContainer/VBoxContainer/Resume.show()
@@ -89,3 +90,37 @@ func _on_recipe_reset_pressed():
 	BigGlobal.made_recipes = {}
 	BigGlobal.save_game()
 	$CanvasLayer/Recipes.setup()
+
+func _on_endings_pressed():
+	$CanvasLayer/MarginContainer.hide()
+	$CanvasLayer/Title.hide()
+	$CanvasLayer/Endings.show()
+
+func endings_list():
+	$CanvasLayer/Endings/EndingCount.text = str(len(BigGlobal.found_endings)) + "/7"
+	for ending_text in BigGlobal.found_endings:
+		var label = Label.new()
+		
+		label.text = ending_text
+		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		label.add_theme_font_override("font", load("res://Fonts/OldLondon.ttf"))
+		label.add_theme_font_size_override("font_size", 50)
+		label.add_theme_color_override("font_color", Color.RED)
+
+		$CanvasLayer/Endings/Endings.add_child(label)
+
+
+func _on_back_endings_pressed():
+	$CanvasLayer/Endings.hide()
+	$CanvasLayer/Title.show()
+	$CanvasLayer/MarginContainer.show()
+
+
+func _on_endings_reset_pressed():
+	BigGlobal.found_endings = []
+	$CanvasLayer/Endings/EndingCount.text = "0/7"
+	BigGlobal.save_game()
+	for endings in $CanvasLayer/Endings/Endings.get_children():
+		endings.queue_free()
+		
+
