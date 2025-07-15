@@ -716,10 +716,7 @@ var fisher_dialogue4: Dictionary = {
 	},
 	"good_bye": {
 		"text": "...",
-		"action": "close_shop",
-		"options": [
-			{"text": ">Buy.", "next": "shop"},
-		]
+		"action": "close_shop"
 	}
 }
 
@@ -834,6 +831,12 @@ var butler_dialogue2: Dictionary = {
 			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	},
+	"start5": {
+		"text": "The King couldn't stop praising you during yeasterdays dinner. Here is your salary.",
+		"options": [
+			{"text": ">Today is lent.", "next": "lent"}
+		]
+	},
 	"good_bye": {
 		"text": "Whenever you're ready, simply hand me what you wish to serve the king, and I shall deliver it to him.",
 		"action": "close_shop",
@@ -877,6 +880,12 @@ var butler_dialogue3: Dictionary = {
 	},
 	"start4": {
 		"text": "The King wishes to meet personally with the men who cook this well. The door to the throne room is now open. Here is your salary.",
+		"options": [
+			{"text": ">Today is lent.", "next": "lent"}
+		]
+	},
+	"start5": {
+		"text": "The King couldn't stop praising you during yeasterdays dinner. Here is your salary.",
 		"options": [
 			{"text": ">Today is lent.", "next": "lent"}
 		]
@@ -1084,6 +1093,8 @@ var tutorial: Array = []
 
 var butlers_inv: InvItem
 
+var remember_dialogue = null
+
 var found_recipes: Dictionary = {
 	"res://inventory/Items/tomato sauce.tres": ["res://inventory/Items/tomato.tres", "res://inventory/Items/tomato.tres"],
 	"res://inventory/Items/bread.tres": ["res://inventory/Items/flour.tres", "res://inventory/Items/water.tres"],
@@ -1275,6 +1286,7 @@ func load_game():
 		file.close()
 		
 func next_day():
+	remember_dialogue = null
 	current_day += 1
 	can_next_day = false
 	animal_data = {}

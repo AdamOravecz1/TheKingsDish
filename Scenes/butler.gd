@@ -75,21 +75,33 @@ func _ready():
 	$HitLabel.material = $HitLabel.material.duplicate()
 	$HitLabel.material.set_shader_parameter("alpha", 0.0)
 	if self.name in Global.dialogue_progress:
-		print(Global.dialogue_progress[self.name])
 		talk.show_node(Global.dialogue_progress[self.name])
 	else:
+
 		if Global.current_day > 0:
-			if Global.good_food_counter == 2:
+			if Global.remember_dialogue:
+				talk.show_node(Global.remember_dialogue)
+			elif Global.good_food_counter == 2:
+				Global.good_food_counter += 1
 				Global.gates_satutus.append(3)
 				talk.show_node("start4")
+				Global.remember_dialogue = "start4"
 			elif Global.previous_day_value == 0:
 				talk.show_node("start0")
+				Global.remember_dialogue = "start0"
 			elif Global.previous_day_value > 0 and Global.previous_day_value <= 5:
 				talk.show_node("start1")
+				Global.remember_dialogue = "start1"
 			elif Global.previous_day_value > 5 and Global.previous_day_value <= 10:
 				talk.show_node("start2")
+				Global.remember_dialogue = "start2"
 			else:
-				talk.show_node("start3")
+				if Global.good_food_counter > 2:
+					talk.show_node("start5")
+					Global.remember_dialogue = "start5"
+				else:
+					talk.show_node("start3")
+					Global.remember_dialogue = "start3"
 		else:
 			talk.show_node("start")
 	if Global.chests_load:
@@ -228,7 +240,7 @@ func _on_butler_inv_send_food(food):
 			Global.execution_text = "The thing you served made me and my butler sick.\nYou will never do that again."
 		elif food.value == 0:
 			Global.bad_food_counter += 1
-		elif food.value >= 15:
+		elif food.value > 10:
 			Global.good_food_counter += 1
 		Global.previous_day_value = food.value
 		speed_modifier = 1

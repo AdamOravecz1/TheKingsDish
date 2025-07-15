@@ -68,7 +68,6 @@ func get_frame_texture() -> Texture2D:
 func show_node(node_name: String):
 	current_node = node_name
 	var node = npc.dialogue.get(node_name, null)
-	print(node)
 	if node == null:
 		end_dialogue()
 		return
@@ -100,24 +99,22 @@ func select_option(index: int):
 		return
 
 	var selected = options[index]
-	print(selected)
 
 	if selected.has("action"):
 		call_action(selected["action"])
 
 	if selected.has("next"):
-		print("yup")
 		show_node(selected["next"])
-		print(selected["next"])
 		if not Global.dialogue_progress.has(npc.name):
 			Global.dialogue_progress[npc.name] = ""
 		if Global.dialogue_progress[npc.name] != "good_bye":
 			Global.dialogue_progress[npc.name] = selected["next"]
 		if Global.dialogue_progress[npc.name] == "shop":
 			Global.dialogue_progress[npc.name] = "good_bye"
-
+		if Global.dialogue_progress[npc.name] == "start0":
+			Global.dialogue_progress[npc.name] = "good_bye"
+			
 	elif selected.get("end", false):
-		print("nemyup")
 		end_dialogue()
 
 func call_action(action_name: String):

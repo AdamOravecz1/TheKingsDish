@@ -22,6 +22,18 @@ func _ready():
 		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/milk.tres")
 		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = load("res://inventory/Items/cheese.tres")
 		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = load("res://inventory/Items/pasta.tres")
+	elif Global.current_day == 4:
+		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/water.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = load("res://inventory/Items/cheese.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = load("res://inventory/Items/oil.tres")
+	elif Global.current_day == 5:
+		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/water.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = load("res://inventory/Items/flour.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = load("res://inventory/Items/pasta.tres")
+	elif Global.current_day == 6:
+		$NinePatchRect/GridContainer/Shop_UI_Slot.item = load("res://inventory/Items/milk.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot2.item = load("res://inventory/Items/flour.tres")
+		$NinePatchRect/GridContainer/Shop_UI_Slot3.item = load("res://inventory/Items/oil.tres")
 	$NinePatchRect/GridContainer/Shop_UI_Slot._ready()
 	$NinePatchRect/GridContainer/Shop_UI_Slot2._ready()
 	$NinePatchRect/GridContainer/Shop_UI_Slot3._ready()
