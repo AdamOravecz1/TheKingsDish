@@ -21,7 +21,8 @@ func hit(damage, pos, force):
 		$Sound/Hit.pitch_scale = 0.6
 		$Sound/Hit.volume_db = -20
 	
-	$Sound/Hit.play()
+	if self.name != "Monk":
+		$Sound/Hit.play()
 	health -= damage
 	knock_back.emit(pos, force)
 	if self.name == "Player":

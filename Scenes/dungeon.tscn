@@ -254,7 +254,7 @@ rotation = 4.71239
 shoot_direction = "right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/Objects/ArrowTrap4" index="1"]
-position = Vector2(-21.9999, 156)
+position = Vector2(-21.9998, 229)
 shape = SubResource("RectangleShape2D_b0q0b")
 
 [node name="PressurePlate" parent="Main/Objects" index="4" instance=ExtResource("4_o5ntb")]

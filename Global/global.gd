@@ -48,7 +48,7 @@ var hunter_dialogue1: Dictionary = {
 	"food": {
 		"text": "I realy like [color=red]rabbit stew[/color]. Loved it you could make some for me. I can sell you the [color=red]recipe[/color] too.",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 			{"text": ">Good bye.", "next": "good_bye"}
 		]
 	},
@@ -63,7 +63,7 @@ var hunter_dialogue1: Dictionary = {
 		"text": "Have a nice day.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 		]
 	}
 }
@@ -101,7 +101,7 @@ var hunter_dialogue2: Dictionary = {
 		"text": "See you next time.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"}
+			{"text": ">Buy.", "next": "shop"}
 		]
 	}
 }
@@ -125,7 +125,7 @@ var hunter_dialogue3: Dictionary = {
 		"text": "See you next time.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"}
+			{"text": ">Buy.", "next": "shop"}
 		]
 	}
 }
@@ -221,7 +221,7 @@ var miller_dialogue1: Dictionary = {
 		"action": "add_duck_confit",
 		"options": [
 			{"text": ">Good bye.", "next": "good_bye"},
-			{"text": ">Buy", "next": "shop"}
+			{"text": ">Buy.", "next": "shop"}
 		]
 	},
 	"shop": {
@@ -235,7 +235,7 @@ var miller_dialogue1: Dictionary = {
 		"text": "See you next time.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 		]
 	}
 }
@@ -471,7 +471,7 @@ var monk_dialogue4: Dictionary = {
 		"text": "Next time.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 		]
 	}
 }
@@ -514,7 +514,7 @@ var blacksmith_dialogue1: Dictionary = {
 		"text": "Suit yourself.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 		]
 	}
 }
@@ -545,7 +545,7 @@ var blacksmith_dialogue2: Dictionary = {
 		"text": "Take care.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 		]
 	},
 }
@@ -569,7 +569,7 @@ var blacksmith_dialogue3: Dictionary = {
 		"text": "Take care.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 		]
 	},
 }
@@ -601,7 +601,7 @@ var blacksmith_dialogue4: Dictionary = {
 		"text": "Take care.",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 		]
 	},
 }
@@ -630,7 +630,7 @@ var fisher_dialogue1: Dictionary = {
 		"text": "...",
 		"action": "close_shop",
 		"options": [
-			{"text": ">Buy", "next": "shop"},
+			{"text": ">Buy.", "next": "shop"},
 		]
 	}
 }
@@ -725,7 +725,7 @@ var fisher_dialogue4: Dictionary = {
 
 var butler_dialogue1: Dictionary = {
 	"start": {
-		"text": "Congartulation on your new position as head (and only) chef of the King. Your job will be to find ingredients and cook for his Majesty each and every day. The better the dish is the more gold you will be payed.",
+		"text": "Congartulation on your new position as the head chef of the King. Your job will be to find ingredients and cook for his Majesty each and every day.",
 		"options": [
 			{"text": ">What can I buy with the gold?", "next": "gold"}
 		]
@@ -951,23 +951,38 @@ var buffer_dialogue: Dictionary = {
 var thank_dialogues: Dictionary = {
 	"Hunter": {
 		"text": "Here is a nice idea I have seen once in another kingdom. You can take any soup and put in bread bowl. I think the King might appriciate it.",
-		"action": "close_shop"
+		"action": "close_shop",
+		"options": [
+			{"text": ">Thank you", "next": "good_bye", "action": "resume_dialogue"}
+		]
 	},
 	"Fisher":{
 		"text": "You are finally usefull for once. Why don't you take a swim in the lake. You might find something interesting in there.",
-		"action": "close_shop"
+		"action": "close_shop",
+		"options": [
+			{"text": ">Thank you", "next": "good_bye", "action": "resume_dialogue"}
+		]
 	},
 	"BlackSmith":{
 		"text": "There is this folk lore in which the hero used a well aimed arrow to blind the dragon. I realy like that tale. It's my favorite.",
-		"action": "close_shop"
+		"action": "close_shop",
+		"options": [
+			{"text": ">Thank you", "next": "good_bye", "action": "resume_dialogue"}
+		]
 	},
 	"Miller":{
 		"text": "I'm here. Every day. When it shines when it rains. And after every rainy day you can see these two clouds close to the mill. It's almost like you can stand on it.",
-		"action": "close_shop"
+		"action": "close_shop",
+		"options": [
+			{"text": ">Thank you", "next": "good_bye", "action": "resume_dialogue"}
+		]
 	},
 	"Butler":{
 		"text": "Do you know the Kings favorite dish. I think he would be delighted if you could do some flare with it. Like put a crown on top of it.",
-		"action": "close_shop"
+		"action": "close_shop",
+		"options": [
+			{"text": ">Thank you", "next": "good_bye", "action": "resume_dialogue"}
+		]
 	},
 }
 
@@ -1008,8 +1023,8 @@ const animal_parameters = {
 }
 
 const weapon_price = {
-	"AXE" : 20,
-	"CROSSBOW" : 30,
+	"AXE" : 15,
+	"CROSSBOW" : 20,
 	"BOLT" : 1,
 	"TRAP" : 3
 }
@@ -1038,7 +1053,7 @@ var unlocked_weapons = [weapons.KNIFE]
 
 var player_data: Dictionary = {
 	"health": 100,
-	"coin": 10,
+	"coin": 15,
 	"bolt": 0,
 	"trap": 0
 }

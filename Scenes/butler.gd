@@ -254,9 +254,25 @@ func thanks_dialogue():
 	dialogue = Global.thank_dialogues
 	talk.show_node(self.name)
 
+func resume_dialogue():
+	var npc_dialogues = Global.dialogue[self.name]
+	dialogue = npc_dialogues[Global.current_day] 
+	var options = dialogue["good_bye"]["options"]
+
+	for i in options.size():
+		if options[i]["next"] == "give":
+			options.remove_at(i)
+			break 
+			
+	dialogue["good_bye"]["options"] = options
+
+	talk.show_node("good_bye")
+
 func add_recipe():
 	var key = "res://inventory/Items/lamb_chops_with_mashed_potatoes.tres"
 	if key not in Global.found_recipes:
 		if Global.recipes.has(key):
 			Global.found_recipes[key] = Global.recipes[key]
 		recipes.setup()
+
+
