@@ -19,10 +19,8 @@ func _ready():
 		else:
 			controls += 0.5
 	if inv:
-		if not inv.update.is_connected(update_slots):
-			inv.update.connect(update_slots)
-			update_slots()
-
+		inv.update.connect(update_slots)
+		update_slots()
 	
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
@@ -52,7 +50,6 @@ func remove_item():
 	main.current_slot = 100
 	
 func _on_button_pressed():
-	print(self.name)
 	main.get_dragging(false)
 	main.buying = false
 	remove_item()

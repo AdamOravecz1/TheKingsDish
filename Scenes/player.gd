@@ -155,7 +155,7 @@ func get_input():
 		slash()
 		
 	#relode
-	if Input.is_action_just_pressed("relode"):
+	if Input.is_action_just_pressed("reload"):
 		if bolt > 0:
 			if not reloded:
 				$Sound/CrossbowReload.play()
@@ -379,7 +379,4 @@ func set_walk_surface(type: String):
 			walking_sounds = [$Sound/WalkingLeftWood, $Sound/WalkingRightWood]
 		"none":
 			walking_sounds = []
-
-func rain_on():
-	$Rain.emitting = true
 

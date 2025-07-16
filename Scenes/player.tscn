@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://6s62hkkab772"]
+[gd_scene load_steps=34 format=3 uid="uid://6s62hkkab772"]
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_3nr38"]
 [ext_resource type="PackedScene" uid="uid://cirs61t03la8g" path="res://Scenes/player_graphics.tscn" id="2_ao26x"]
@@ -19,7 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://cisy8u0nj546n" path="res://Sounds/CrossbowReloading.wav" id="17_iuf4v"]
 [ext_resource type="AudioStream" uid="uid://6fsi67rfam47" path="res://Sounds/PickUp.wav" id="18_4785m"]
 [ext_resource type="AudioStream" uid="uid://cjvrf5mynqrav" path="res://Sounds/PayDay.wav" id="19_lcjvk"]
-[ext_resource type="Texture2D" uid="uid://ct1ed8nobio3e" path="res://Sprites/RainDrop.png" id="19_xwtl4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_don8d"]
 size = Vector2(19, 42)
@@ -110,12 +109,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wuxko"]
 size = Vector2(20, 6)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_prkls"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(800, 1, 1)
-gravity = Vector3(0, 500, 0)
 
 [node name="Player" groups=["Player"] instance=ExtResource("1_3nr38")]
 collision_layer = 2
@@ -280,16 +273,6 @@ bus = &"SFX"
 [node name="Pay" type="AudioStreamPlayer2D" parent="Sound" index="12"]
 stream = ExtResource("19_lcjvk")
 bus = &"SFX"
-
-[node name="Rain" type="GPUParticles2D" parent="." index="10"]
-z_index = 1000
-position = Vector2(-17, -314)
-emitting = false
-amount = 1000
-process_material = SubResource("ParticleProcessMaterial_prkls")
-texture = ExtResource("19_xwtl4")
-lifetime = 4.0
-randomness = 1.0
 
 [connection signal="knock_back" from="." to="." method="_on_knock_back"]
 [connection signal="timeout" from="Timers/DrowningTimer" to="." method="_on_drowning_timer_timeout"]

@@ -16,24 +16,21 @@ var is_open := false
 var all_strings := true
 
 func _ready():
-	if Global.chests_load:
-		if Global.chest_inv.has(chest_name):
-			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
-			var inv_resource_path = Global.chest_inv[chest_name]
-			if typeof(inv_resource_path) == TYPE_ARRAY:
-				var all_strings = inv_resource_path.all(func(item): return typeof(item) == TYPE_STRING)
-			if not all_strings:
-				inv = inv_resource_path
-		elif !inv.slots:
-			inv.initialize_inv(1)
-	elif !inv.slots:
+	if Global.chest_inv.has(chest_name):
+		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
+		var inv_resource_path = Global.chest_inv[chest_name]
+		if typeof(inv_resource_path) == TYPE_ARRAY:
+			var all_strings = inv_resource_path.all(func(item): return typeof(item) == TYPE_STRING)
+		if not all_strings:
+			inv = inv_resource_path
+	else:
 		inv.initialize_inv(1)
+
 	shop.inv = inv
 	shop._ready()
 	$PlayerLeft.set_deferred("monitoring", false)
 
 	interaction_area.interact = Callable(self, "_serve")
-
 	
 func initialize():
 	inv.initialize_inv(1)
@@ -67,9 +64,10 @@ func _on_player_left_body_exited(body):
 	close()
 	main.close()
 
-
 func _on_kings_plate_inv_send_food(food):
+	print("hello")
 	if food:
+		print("bello")
 		if "king" in food.types:
 			Global.king_killer = false
 			Global.king_taker = true
@@ -108,3 +106,5 @@ func _on_kings_plate_inv_send_food(food):
 		$Food.texture = null
 		Global.can_next_day = false
 		
+		
+

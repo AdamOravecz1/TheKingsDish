@@ -834,7 +834,8 @@ var butler_dialogue2: Dictionary = {
 	"start5": {
 		"text": "The King couldn't stop praising you during yeasterdays dinner. Here is your salary.",
 		"options": [
-			{"text": ">Today is lent.", "next": "lent"}
+			{"text": ">Give todays dish.", "next": "shop"},
+			{"text": ">Not yet.", "next": "good_bye"}
 		]
 	},
 	"good_bye": {
@@ -1224,7 +1225,8 @@ func save_game():
 		"gates_satutus": gates_satutus,
 		"bad_food_counter": bad_food_counter,
 		"good_food_counter": good_food_counter,
-		"food_given": food_given
+		"food_given": food_given,
+		"remember_dialogue": remember_dialogue
 	}
 
 	var file = FileAccess.open(save_path, FileAccess.WRITE)
@@ -1267,6 +1269,7 @@ func load_game():
 			bad_food_counter = result["bad_food_counter"]
 			good_food_counter = result["good_food_counter"]
 			food_given = result["food_given"]
+			remember_dialogue = result["remember_dialogue"]
 			print("Mentés betöltve.")
 			#get_tree().get_first_node_in_group("Level").pauseMenu()
 			if scene == "Forest":
@@ -1398,6 +1401,8 @@ func remove_progress():
 		"res://inventory/Items/sugar.tres": ["res://inventory/Items/carrot.tres"],
 		"res://inventory/Items/mashed_potatoes.tres": ["res://inventory/Items/potato.tres", "res://inventory/Items/milk.tres"]
 	}
+	
+	remember_dialogue = null
 
 
 

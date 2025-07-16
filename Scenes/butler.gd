@@ -78,7 +78,6 @@ func _ready():
 	if self.name in Global.dialogue_progress:
 		talk.show_node(Global.dialogue_progress[self.name])
 	else:
-
 		if Global.current_day > 0:
 			if Global.remember_dialogue:
 				talk.show_node(Global.remember_dialogue)

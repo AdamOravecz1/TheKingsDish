@@ -2,7 +2,6 @@ class_name ending
 extends Node2D
 
 func end():
-	print(self.name)
 	if self.name not in BigGlobal.found_endings:
 		BigGlobal.found_endings.append(self.name)
 	BigGlobal.save_game()

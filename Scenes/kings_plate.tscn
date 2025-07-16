@@ -10,7 +10,7 @@ size = Vector2(20, 50)
 [sub_resource type="CircleShape2D" id="CircleShape2D_c6ij2"]
 radius = 21.0238
 
-[node name="KingsPlate" type="Node2D"]
+[node name="KingsPlate" type="Node2D" groups=["KingsPlate"]]
 script = ExtResource("1_nb0pv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

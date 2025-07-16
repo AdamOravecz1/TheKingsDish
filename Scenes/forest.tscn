@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://ccwk7w66e4lvx"]
+[gd_scene load_steps=75 format=3 uid="uid://ccwk7w66e4lvx"]
 
 [ext_resource type="PackedScene" uid="uid://c5v8wbcm7obq" path="res://Scenes/level.tscn" id="1_g5d53"]
 [ext_resource type="PackedScene" uid="uid://dkx5yg0jopxs1" path="res://Scenes/rabbit_hole.tscn" id="2_0i8ep"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://dhiiu8buon4ad" path="res://Scenes/hunter.tscn" id="20_ca2fu"]
 [ext_resource type="PackedScene" uid="uid://4t4c08uevyg8" path="res://Scenes/black_smith.tscn" id="20_p8bkv"]
 [ext_resource type="PackedScene" uid="uid://babpwpvq4iulc" path="res://Scenes/wheat.tscn" id="23_7isty"]
+[ext_resource type="Texture2D" uid="uid://ct1ed8nobio3e" path="res://Sprites/RainDrop.png" id="24_ify40"]
 [ext_resource type="Texture2D" uid="uid://b31s3xl2uidgx" path="res://Sprites/DungeonTileSet3.png" id="28_w3vrm"]
 [ext_resource type="PackedScene" uid="uid://jwggbtfx4827" path="res://Scenes/walking_material.tscn" id="30_a4v2g"]
 [ext_resource type="Texture2D" uid="uid://x1iegfn1p1bc" path="res://Sprites/IslandTileSet2.png" id="32_058fl"]
@@ -118,6 +119,12 @@ _data = {
 "RESET": SubResource("Animation_bj8ul"),
 "wave": SubResource("Animation_5d23x")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u33ey"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(3200, 1, 1)
+gravity = Vector3(0, 400, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tuw42"]
 size = Vector2(2272.5, 30)
@@ -983,6 +990,16 @@ type = 8
 [node name="Wheat48" parent="FG/Design" index="48" instance=ExtResource("23_7isty")]
 position = Vector2(5380, 192)
 type = 8
+
+[node name="Rain" type="GPUParticles2D" parent="FG/Design" index="49"]
+z_index = 1
+position = Vector2(2286, -607)
+amount = 4000
+process_material = SubResource("ParticleProcessMaterial_u33ey")
+texture = ExtResource("24_ify40")
+lifetime = 2.5
+randomness = 1.0
+visibility_rect = Rect2(-3200, -100, 6400, 800)
 
 [node name="DirectionalLight2D" parent="." index="4"]
 color = Color(0, 0, 0, 1)

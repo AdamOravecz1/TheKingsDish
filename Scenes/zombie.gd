@@ -79,7 +79,6 @@ func animate():
 	
 func trigger_death():
 	if alive:
-		Global.perma_death.append(self.name)
 		$Sound/Death.pitch_scale = 1.5
 		$Sound/Death.play()
 		$AnimatedSprite2D.play("death")

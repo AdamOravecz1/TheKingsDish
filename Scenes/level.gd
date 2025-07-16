@@ -16,7 +16,7 @@ var is_recipes_open = false
 var can_open := true
 
 @export var full_screen: bool = Global.full_screen
-@export var rain_day: int = 2
+@export var rain_day: int = 0
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -33,7 +33,7 @@ func _ready():
 		if self.name == "Castle" or self.name == "ThroneRoom":
 			$BG/Design/Rain.emitting = true
 		if self.name == "Forest":
-			player.rain_on()
+			$FG/Design/Rain.emitting = true
 		$DirectionalLight2D.color = Color(0.3, 0.3, 0.3)
 		for picture in $BG/ParallaxBackground.get_children():
 			if picture.name == "Sky":

@@ -1,6 +1,7 @@
 extends Sprite2D
 
 @onready var level = get_tree().get_first_node_in_group("Level")
+
 @onready var interaction_area: InteractionArea = $InteractionArea
 
 func _ready():
@@ -14,6 +15,8 @@ func _next_day():
 		TransitionLayer.get_ending("res://Scenes/you_got_executed.tscn")
 	elif Global.can_next_day or Global.king_killer:
 		interaction_area.monitoring = false
+		if "kings_plate" in Global.chest_inv:
+			Global.chest_inv.erase("kings_plate")
 		Global.next_day()
 	else:
 		var tween = create_tween()
