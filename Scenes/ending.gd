@@ -3,7 +3,8 @@ extends Node2D
 
 func end():
 	print(self.name)
-	BigGlobal.found_endings.append(self.name)
+	if self.name not in BigGlobal.found_endings:
+		BigGlobal.found_endings.append(self.name)
 	BigGlobal.save_game()
 	Global.delete_save()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
