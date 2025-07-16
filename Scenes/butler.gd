@@ -35,6 +35,7 @@ var butler_dialogues = Global.dialogue["Butler"]
 var dialogue = butler_dialogues[Global.current_day] 
 
 var is_butler_here := true
+var did_send_food := false
 
 var extra_drop: InvItem = null
 
@@ -104,16 +105,15 @@ func _ready():
 					Global.remember_dialogue = "start3"
 		else:
 			talk.show_node("start")
-	if Global.chests_load:
-		if Global.chest_inv.has(chest_name):
-			# Assuming Global.chest_inv[chest_name][0] is a path to the resource
-			var inv_resource_path = Global.chest_inv[chest_name]
-			if typeof(inv_resource_path) == TYPE_ARRAY:
-				var all_strings = inv_resource_path.all(func(item): return typeof(item) == TYPE_STRING)
-			if not all_strings:
-				inv = inv_resource_path
-		else:
-			inv.initialize_inv(1)
+	if Global.chest_inv.has(chest_name):
+		# Assuming Global.chest_inv[chest_name][0] is a path to the resource
+		var inv_resource_path = Global.chest_inv[chest_name]
+		if typeof(inv_resource_path) == TYPE_ARRAY:
+			var all_strings = inv_resource_path.all(func(item): return typeof(item) == TYPE_STRING)
+		if not all_strings:
+			inv = inv_resource_path
+	else:
+		inv.initialize_inv(1)
 	shop.inv = inv
 	shop._ready()
 	$PlayerLeft.set_deferred("monitoring", false)
@@ -207,7 +207,10 @@ func _on_player_left_body_exited(body):
 	main.close()
 
 func _on_butler_inv_send_food(food):
-	if food:
+	if food and not extra_drop:
+		if did_send_food:
+			return  # Already sent, ignore
+		did_send_food = true
 		extra_drop = food
 		$Food.texture = food.texture
 		if "king" in food.types:

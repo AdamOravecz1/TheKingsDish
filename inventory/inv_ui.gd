@@ -19,8 +19,10 @@ func _ready():
 		else:
 			controls += 0.5
 	if inv:
-		inv.update.connect(update_slots)
-		update_slots()
+		if not inv.update.is_connected(update_slots):
+			inv.update.connect(update_slots)
+			update_slots()
+
 	
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
@@ -57,6 +59,5 @@ func _on_button_pressed():
 	
 func send_inv():
 	main.get_inv(self)
-
 
 

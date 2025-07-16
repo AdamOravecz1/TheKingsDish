@@ -1302,7 +1302,6 @@ func next_day():
 	check_ending()
 	
 func check_ending():
-	print(current_day)
 	if king_taker:
 		TransitionLayer.get_ending("res://Scenes/you_are_the_king.tscn")
 	elif ritual:
@@ -1365,7 +1364,7 @@ func remove_progress():
 
 	player_data = {
 		"health": 100,
-		"coin": 10,
+		"coin": 15,
 		"bolt": 0,
 		"trap": 0
 	}

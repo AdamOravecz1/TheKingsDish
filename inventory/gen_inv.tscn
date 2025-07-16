@@ -30,3 +30,5 @@ bus = &"SFX"
 [node name="Success" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_g0fj3")
 bus = &"SFX"
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

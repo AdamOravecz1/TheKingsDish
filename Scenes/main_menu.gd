@@ -19,6 +19,7 @@ func _process(delta):
 		parallax.scroll_offset.x += scroll_speed * delta
 
 func _on_start_pressed():
+	Global.remove_progress()
 	TransitionLayer.change_scene("res://Scenes/castle.tscn")
 	
 func _on_settings_pressed():

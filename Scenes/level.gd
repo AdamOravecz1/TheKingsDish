@@ -88,15 +88,15 @@ func _ready():
 				var item = load(item_path)
 				if item:
 					chest.inv.insert_to_place(item, index)
-	if not Global.chests_load:
-		player.inv.initialize_inv(12)
-		var inv_data = Global.player_inv
-		for entry in inv_data:
-			var item_path = entry["item"]
-			var index = entry["index"]
-			var item = load(item_path)
-			if item:
-				player.inv.insert_to_place(item, index)
+
+	player.inv.initialize_inv(12)
+	var inv_data = Global.player_inv
+	for entry in inv_data:
+		var item_path = entry["item"]
+		var index = entry["index"]
+		var item = load(item_path)
+		if item:
+			player.inv.insert_to_place(item, index)
 		
 
 	if scene_name in Global.trap_data:
@@ -276,5 +276,6 @@ func close_throne_door():
 
 func show_tutorial(action, action_name):
 	$CanvasLayer/CanvasLayer/Tutorial.show_tutorial(action, action_name)
+	
 	
 	
