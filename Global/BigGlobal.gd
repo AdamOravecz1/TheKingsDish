@@ -21,7 +21,7 @@ var input_actions = {
 	"right": "Walk Right",
 	"switch": "Switch Weapon",
 	"hit": "Hit/Shoot",
-	"relode": "Relode",
+	"reload": "Relode",
 	"interact": "Interact",
 	"inventory": "Inventory",
 	"pause": "Pause Game",
