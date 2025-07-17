@@ -94,7 +94,7 @@ func _on_kings_plate_inv_send_food(food):
 			Global.execution_text = "Your sentence for killing the " + food.name + "\nis death by hanging."
 		elif "sick" in food.types:
 			Global.execution = true
-			Global.execution_text = "The thing you served made me and my butler sick.\nYou will never do that again."
+			Global.execution_text = "The thing you served made me sick.\nYou will never do that again."
 		elif food.value == 0:
 			Global.bad_food_counter += 1
 		Global.previous_day_value = food.value
