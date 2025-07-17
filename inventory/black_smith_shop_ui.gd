@@ -3,9 +3,23 @@ extends gen_shop
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
+	print(Global.unlocked_weapons)
 	$NinePatchRect/GridContainer/VBoxContainer/AxeLabel.text = "  " + str(Global.weapon_price["AXE"])
 	$NinePatchRect/GridContainer/VBoxContainer2/CrossbowLabel.text = "  " + str(Global.weapon_price["CROSSBOW"])
 	$NinePatchRect/GridContainer/VBoxContainer3/BoltLabel.text = "  " + str(Global.weapon_price["BOLT"])
+	if Global.weapons.CROSSBOW in Global.unlocked_weapons:
+		$NinePatchRect/GridContainer/Crossbow.add_theme_color_override("icon_normal_color", Color(0, 0, 0))
+		$NinePatchRect/GridContainer/Crossbow.add_theme_color_override("icon_pressed_color", Color(0, 0, 0))
+		$NinePatchRect/GridContainer/Crossbow.add_theme_color_override("icon_hover_color", Color(0, 0, 0))
+		$NinePatchRect/GridContainer/Crossbow.add_theme_color_override("icon_hover_pressed_color", Color(0, 0, 0))
+		$NinePatchRect/GridContainer/Crossbow.add_theme_color_override("icon_focus_color", Color(0, 0, 0))
+	if Global.weapons.AXE in Global.unlocked_weapons:
+		$NinePatchRect/GridContainer/Axe.add_theme_color_override("icon_normal_color", Color(0, 0, 0))
+		$NinePatchRect/GridContainer/Axe.add_theme_color_override("icon_pressed_color", Color(0, 0, 0))
+		$NinePatchRect/GridContainer/Axe.add_theme_color_override("icon_hover_color", Color(0, 0, 0))
+		$NinePatchRect/GridContainer/Axe.add_theme_color_override("icon_hover_pressed_color", Color(0, 0, 0))
+		$NinePatchRect/GridContainer/Axe.add_theme_color_override("icon_focus_color", Color(0, 0, 0))
+
 
 func _on_axe_pressed():
 	if Global.weapons.AXE in Global.unlocked_weapons:

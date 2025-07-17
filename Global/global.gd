@@ -1205,6 +1205,13 @@ func get_items_from_player(inv: Inv):
 				"item": slot.item.resource_path
 			})
 	player_inv = result
+	
+func get_valid_weapon_enum(val: int) -> int:
+	if val in weapon_data.keys():
+		return val
+	else:
+		push_warning("Invalid weapon enum in save file: %s" % val)
+		return weapons.KNIFE  # Or handle as you wish
 
 #Mentés funkció
 func save_game():
@@ -1251,7 +1258,10 @@ func load_game():
 		var result = JSON.parse_string(content)
 		_convert_vectors(result)
 		if result:
-			unlocked_weapons = result["unlocked_weapons"]
+			unlocked_weapons = result["unlocked_weapons"].map(
+				func(val):
+					return get_valid_weapon_enum(int(val))
+			)
 			player_data = result["player_data"]
 			player_inv = result["player_inv"]
 			chest_inv = result["chest_inv"]

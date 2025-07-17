@@ -59,9 +59,9 @@ func add_recipe(key):
 	if key not in Global.found_recipes:
 		if Global.recipes.has(key):
 			Global.found_recipes[key] = Global.recipes[key]
+		recipes.setup()
 		
 func found_recipe(key):
 	if key not in BigGlobal.made_recipes:
 		if Global.recipes.has(key):
 			BigGlobal.made_recipes[key] = Global.recipes[key]
-		recipes.setup()

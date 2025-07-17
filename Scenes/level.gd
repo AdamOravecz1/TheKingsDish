@@ -21,6 +21,7 @@ var can_open := true
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 func _ready():
+	print(Global.current_day)
 	if self.name == "Dungeon":
 		Music.level_music = preload("res://Music/Dungeon_v1.wav")
 	else:

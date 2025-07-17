@@ -994,6 +994,7 @@ type = 8
 [node name="Rain" type="GPUParticles2D" parent="FG/Design" index="49"]
 z_index = 1
 position = Vector2(2286, -607)
+emitting = false
 amount = 4000
 process_material = SubResource("ParticleProcessMaterial_u33ey")
 texture = ExtResource("24_ify40")
