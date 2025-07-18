@@ -1,0 +1,149 @@
+[gd_scene load_steps=9 format=3 uid="uid://clu00cbht0xf1"]
+
+[ext_resource type="PackedScene" uid="uid://cbpsanhfh8cix" path="res://Scenes/ending.tscn" id="1_c3wli"]
+[ext_resource type="Texture2D" uid="uid://bdkkn038mhpby" path="res://Sprites/BGSky.png" id="2_wtcf8"]
+[ext_resource type="Texture2D" uid="uid://s1dkmybl32yc" path="res://Sprites/BG2Cloud.png" id="3_dpg5m"]
+[ext_resource type="Texture2D" uid="uid://cwnm6rc36im07" path="res://Sprites/BG1Cloud.png" id="4_bmyll"]
+[ext_resource type="Texture2D" uid="uid://bj5svi707j5tw" path="res://Sprites/BGHill.png" id="5_72f21"]
+[ext_resource type="Texture2D" uid="uid://cowxy3pmmhyfr" path="res://Sprites/BG2Tree3.png" id="6_3gcf8"]
+[ext_resource type="Texture2D" uid="uid://m7nh0rasedc8" path="res://Sprites/BG1Tree2.png" id="7_yli51"]
+[ext_resource type="Texture2D" uid="uid://dgi02gp5mhbhh" path="res://Sprites/Player_8.png" id="8_b6od6"]
+
+[node name="Cover" instance=ExtResource("1_c3wli")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
+
+[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky" index="0"]
+position = Vector2(2286.01, -426)
+scale = Vector2(14.6734, 5.36765)
+texture = ExtResource("2_wtcf8")
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+motion_scale = Vector2(0.8, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" index="0"]
+position = Vector2(-356, -214)
+texture = ExtResource("3_dpg5m")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" index="1"]
+position = Vector2(137, -216)
+texture = ExtResource("3_dpg5m")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" index="2"]
+position = Vector2(629, -216)
+texture = ExtResource("3_dpg5m")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" index="3"]
+position = Vector2(1125, -220)
+texture = ExtResource("3_dpg5m")
+
+[node name="SheepCloud" type="ParallaxLayer" parent="ParallaxBackground" index="2"]
+motion_scale = Vector2(0.8, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SheepCloud" index="0"]
+position = Vector2(-358, -209)
+texture = ExtResource("4_bmyll")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/SheepCloud" index="1"]
+position = Vector2(138, -209)
+texture = ExtResource("4_bmyll")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/SheepCloud" index="2"]
+position = Vector2(628, -208)
+texture = ExtResource("4_bmyll")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/SheepCloud" index="3"]
+position = Vector2(1124, -208)
+texture = ExtResource("4_bmyll")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
+motion_scale = Vector2(0.85, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
+position = Vector2(-361, -134)
+texture = ExtResource("5_72f21")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="1"]
+position = Vector2(134, -135)
+texture = ExtResource("5_72f21")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="2"]
+position = Vector2(628, -141)
+texture = ExtResource("5_72f21")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="3"]
+position = Vector2(1122, -146)
+texture = ExtResource("5_72f21")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" index="4"]
+motion_scale = Vector2(0.9, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+position = Vector2(-357, -88)
+texture = ExtResource("6_3gcf8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="1"]
+position = Vector2(138, -85)
+texture = ExtResource("6_3gcf8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="2"]
+position = Vector2(630, -82)
+texture = ExtResource("6_3gcf8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="3"]
+position = Vector2(1122, -87)
+texture = ExtResource("6_3gcf8")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="5"]
+motion_scale = Vector2(0.95, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
+position = Vector2(-357, -26)
+texture = ExtResource("7_yli51")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="1"]
+position = Vector2(137, -37)
+texture = ExtResource("7_yli51")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="2"]
+position = Vector2(627, -36)
+texture = ExtResource("7_yli51")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="3"]
+position = Vector2(1107, -18)
+texture = ExtResource("7_yli51")
+
+[node name="ParallaxLayer7" type="ParallaxLayer" parent="ParallaxBackground" index="6"]
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer7" index="0"]
+offset_left = -609.0
+offset_top = 98.0
+offset_right = 1413.0
+offset_bottom = 632.0
+color = Color(0.0588235, 0.188235, 0.121569, 1)
+
+[node name="Main" parent="Main" index="0"]
+layer_0/tile_data = PackedInt32Array(-524279, 196616, 0, -524278, 262152, 0, -524277, 327688, 0)
+
+[node name="Player9" type="Sprite2D" parent="Main/Characters" index="0"]
+position = Vector2(337, -264)
+texture = ExtResource("8_b6od6")
+hframes = 6
+vframes = 3
+frame = 14
+
+[node name="Player8" type="Sprite2D" parent="Main/Characters" index="1"]
+position = Vector2(337, -290)
+texture = ExtResource("8_b6od6")
+hframes = 6
+vframes = 3
+frame = 17
+
+[node name="Camera2D" type="Camera2D" parent="Main/Characters/Player8" index="0"]
+position = Vector2(-1, -8)
+zoom = Vector2(2, 2)
+
+[node name="FG" parent="FG" index="0"]
+layer_0/tile_data = PackedInt32Array(-524277, 327688, 3, -458741, 327688, 4)
