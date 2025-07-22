@@ -142,7 +142,7 @@ vframes = 3
 frame = 17
 
 [node name="Camera2D" type="Camera2D" parent="Main/Characters/Player8" index="0"]
-position = Vector2(-1, -8)
+position = Vector2(568, 84)
 zoom = Vector2(2, 2)
 
 [node name="FG" parent="FG" index="0"]

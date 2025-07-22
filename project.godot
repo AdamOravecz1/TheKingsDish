@@ -26,6 +26,7 @@ Music="*res://Scenes/music.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/scale=0.75
 mouse_cursor/custom_image="res://Sprites/WoodenSpoon.png"

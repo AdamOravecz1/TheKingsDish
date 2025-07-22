@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://blorwsk7msxwu" path="res://Scenes/entity.tscn" id="1_8jmtg"]
 [ext_resource type="Script" path="res://Scenes/miller.gd" id="2_gkufe"]
-[ext_resource type="Texture2D" uid="uid://cvve3iaapqk5w" path="res://Sprites/Miller.png" id="2_lv85u"]
+[ext_resource type="Texture2D" uid="uid://d2mpwbjgr1ohe" path="res://Sprites/Miller2.png" id="3_5xg40"]
 [ext_resource type="PackedScene" uid="uid://b5l7nm22qv6uc" path="res://Scenes/interaction_area.tscn" id="4_yeb36"]
 [ext_resource type="PackedScene" uid="uid://dsknoen4552s4" path="res://inventory/millers_shop_ui.tscn" id="5_pc6q5"]
 [ext_resource type="PackedScene" uid="uid://duap7i25qidv2" path="res://Scenes/speech.tscn" id="6_x7lk4"]
@@ -10,38 +10,38 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_la1yi"]
 size = Vector2(20, 39)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n1bic"]
-atlas = ExtResource("2_lv85u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cql2i"]
+atlas = ExtResource("3_5xg40")
 region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8uku"]
-atlas = ExtResource("2_lv85u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qd3k"]
+atlas = ExtResource("3_5xg40")
 region = Rect2(64, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bownk"]
-atlas = ExtResource("2_lv85u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynv1f"]
+atlas = ExtResource("3_5xg40")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ovtw"]
-atlas = ExtResource("2_lv85u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq7yi"]
+atlas = ExtResource("3_5xg40")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q2nyv"]
-atlas = ExtResource("2_lv85u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_we7by"]
+atlas = ExtResource("3_5xg40")
 region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_isylq"]
-atlas = ExtResource("2_lv85u")
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8oxl"]
+atlas = ExtResource("3_5xg40")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_71mke"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n1bic")
+"texture": SubResource("AtlasTexture_cql2i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c8uku")
+"texture": SubResource("AtlasTexture_0qd3k")
 }],
 "loop": true,
 "name": &"after_death",
@@ -49,13 +49,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bownk")
+"texture": SubResource("AtlasTexture_ynv1f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7ovtw")
+"texture": SubResource("AtlasTexture_mq7yi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q2nyv")
+"texture": SubResource("AtlasTexture_we7by")
 }],
 "loop": false,
 "name": &"death",
@@ -63,7 +63,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_isylq")
+"texture": SubResource("AtlasTexture_v8oxl")
 }],
 "loop": true,
 "name": &"default",
@@ -90,6 +90,7 @@ shape = SubResource("RectangleShape2D_la1yi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_71mke")
+animation = &"after_death"
 autoplay = "default"
 
 [node name="InteractionAreaShop" parent="." index="3" instance=ExtResource("4_yeb36")]
@@ -112,7 +113,7 @@ offset_left = 147.0
 offset_top = 597.0
 offset_right = 147.0
 offset_bottom = 213.0
-sprite_sheet = ExtResource("2_lv85u")
+sprite_sheet = ExtResource("3_5xg40")
 
 [node name="MillersShop_UI" parent="CanvasLayer" index="1" instance=ExtResource("5_pc6q5")]
 visible = false

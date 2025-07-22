@@ -208,7 +208,6 @@ func trigger_death():
 	if alive:
 		can_attack = false
 		can_move = false
-		health = 100
 		$Timers/DrowningTimer.stop()
 		$CollisionShape2D.set_deferred("disabled", true)
 		if coin < 5:
@@ -216,6 +215,8 @@ func trigger_death():
 		else:
 			coin -= 5
 		TransitionLayer.change_scene("res://Scenes/castle.tscn")
+		await get_tree().create_timer(1.0).timeout
+		health = 100
 		
 func swim():
 	$Sound/WaterDive.play()

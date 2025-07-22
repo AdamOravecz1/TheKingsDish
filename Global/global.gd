@@ -797,7 +797,7 @@ var king_dialogue2: Dictionary = {
 
 var butler_dialogue2: Dictionary = {
 	"start0": {
-		"text": "What you served yesterday was absolutely horrible. His Majisty wouldn't even touch it. If you dare to pull a stunt like that again you are \"fired\".",
+		"text": "What you served yesterday was absolutely horrible. His Majisty wouldn't even touch it. If you dare to pull a stunt like that again you are FIRED.",
 		"options": [
 			{"text": ">Give todays dish.", "next": "shop"},
 			{"text": ">Not yet.", "next": "good_bye"}
@@ -856,7 +856,7 @@ var butler_dialogue2: Dictionary = {
 
 var butler_dialogue3: Dictionary = {
 	"start0": {
-		"text": "What you served yesterday was absolutely horrible. His Majisty wouldn't even touch it. If you dare to pull a stunt like that again you are \"fired\".",
+		"text": "What you served yesterday was absolutely horrible. His Majisty wouldn't even touch it. If you dare to pull a stunt like that again you are FIRED.",
 		"options": [
 			{"text": ">Today is lent.", "next": "lent"}
 		]
