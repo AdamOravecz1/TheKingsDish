@@ -4,7 +4,7 @@
 
 ##  Áttekintés
 
-A The King's Dish egy 2D-s, oldalnézetes platformer játék, amelyet Godot 4-ben kell megvalósítani GDScript nyelven. A játékos egy kastélyszakács szerepét tölti be, akinek 7 napon át minden nap ételt kell főznie és felszolgálnia a királynak. Napközben a játékos szabadon bejárja a pályákat, alapanyagokat szerez vadászattal vagy kereskedéssel, majd az üstnél ételt főz, amelyet a Király Tányérjára helyez. A játékos döntései határozzák meg, hogy a 7 lehetséges befejezés közül melyik aktiválódik. A játék PC-re (Windows) készül, és teljes egészében billentyűzettel irányítható, átdefiniálható gombkiosztással.
+A The King's Dish egy 2D-s, oldalnézetes platformer játék, amelyet Godot 4-ben kell megvalósítani GDScript nyelven. A játékos egy kastélyszakács szerepét tölti be, akinek 7 napon át minden nap ételt kell főznie és felszolgálnia a királynak. Napközben a játékos szabadon bejárja a pályákat, alapanyagokat szerez vadászattal vagy kereskedéssel, majd az üstnél ételt főz, amelyet a Király Tányérjára helyez. A játékos döntései határozzák meg, hogy a 7 lehetséges befejezés közül melyik aktiválódik. A játék PC-re készül, és teljes egészében billentyűzettel irányítható, átdefiniálható gombkiosztással.
 
 ---
 
