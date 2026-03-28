@@ -106,5 +106,3 @@ func build_input_event(dict: Dictionary) -> InputEvent:
 		print("Invalid input event dictionary")
 
 	return event
-
-

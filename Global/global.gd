@@ -1413,7 +1413,3 @@ func remove_progress():
 	}
 	
 	remember_dialogue = null
-
-
-
-
