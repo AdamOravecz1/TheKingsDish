@@ -96,6 +96,7 @@ git clone https://github.com/AdamOravecz1/TheKingsDish.git
 
 ### Futtatás exportált verzióból
 Ha van exportált `.exe` / `.x86_64` fájl, azt közvetlenül futtathatod Godot telepítése nélkül.
+Ezt a `.exe` fájlt az https://fokos001.itch.io/the-kings-dish oldalról a `Download` gombra kattintva töltheted le.
 
 ---
 
