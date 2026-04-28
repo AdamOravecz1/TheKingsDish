@@ -36,6 +36,10 @@ window/stretch/scale=0.75
 mouse_cursor/custom_image="res://Sprites/WoodenSpoon.png"
 mouse_cursor/custom_image_hotspot=Vector2(5, 23)
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [input]
 
 jump={

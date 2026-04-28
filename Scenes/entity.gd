@@ -64,4 +64,3 @@ func setup(data):
 			died = true
 		health = data[2]
 		
-
